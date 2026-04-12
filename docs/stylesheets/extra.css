@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap");
+
+.md-content {
+  max-width: 980px;
+}
+
+/* Beautiful Trustworthy Blue Headings */
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8rem;
+  color: #60a5fa !important; /* Base Tailwind Blue 400 */
+  border-bottom: 1px solid #1e3a8a; /* Deep blue divider */
+  padding-bottom: 0.3em;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  margin-top: 2rem;
+  color: #93c5fd !important; /* Lighter Blue 300 */
+}
+
+.md-typeset h3, 
+.md-typeset h4 {
+  font-weight: 600;
+  margin-top: 1.5rem;
+  color: #bfdbfe !important; /* Lighter Blue 200 */
+}
+
+.md-typeset p,
+.md-typeset li {
+  line-height: 1.75;
+  color: #e2e8f0; /* Crisp soft slate-gray/white for better contrast */
+}
+
+.md-typeset a {
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: #93c5fd;
+}
+
+/* Custom Hero Section - Navy to Vibrant Blue */
+.sges-hero {
+  padding: 1.4rem 1.4rem 1.1rem;
+  margin: 0.4rem 0 1.4rem;
+  border-radius: 16px;
+  color: #ffffff;
+  background: linear-gradient(130deg, #1e3a8a 0%, #2563eb 52%, #3b82f6 100%);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.2);
+}
+
+.sges-hero h1 {
+  color: #ffffff !important;
+  border: none !important;
+  padding-bottom: 0 !important;
+  margin: 0;
+}
+
+.sges-hero p {
+  color: #e0e7ff !important;
+  margin: 0.45rem 0 0;
+  font-size: 1.05rem;
+}
+
+/* Custom Grid & Cards */
+.sges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+  margin: 1rem 0 1.3rem;
+}
+
+.sges-card {
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  background: #0f172a;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.sges-card:hover {
+  transform: translateY(-2px);
+  border-color: #3b82f6;
+}
+
+.sges-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: #93c5fd !important;
+}
+
+.sges-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #94a3b8 !important;
+}
+
+/* Enhancing Quotes and Callouts */
+.md-typeset blockquote {
+  border-left: 0.3rem solid #3b82f6;
+  background: #1e293b;
+  color: #cbd5e1;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .sges-hero {
+    padding: 1rem;
+  }
+}
