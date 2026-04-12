@@ -1,0 +1,63 @@
+site_name: SGES
+site_url: https://<seu-usuario>.github.io/<seu-repositorio>/
+repo_url: https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-SGES
+repo_name: mdsreq-fga-unb/REQ-2026.1-T01-SGES
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: slate
+      primary: blue
+      accent: indigo
+  font:
+    text: Source Sans 3
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - content.tabs.link
+
+nav:
+  - 'Início': index.md
+  - 'Visão do Produto e Projeto': 'visao_projeto.md'
+  - '1. Cenário Atual do Cliente e do Negócio':
+      - '1.1. Identificação e Contexto': cenario/identificacao_contexto.md
+      - '1.2. Oportunidade e Desafios': cenario/oportunidade_desafios.md
+      - '1.3. Stakeholders': cenario/stakeholders.md
+      - '1.4. Segmentação de Clientes': cenario/segmentacao_clientes.md
+  - '2. Solução Proposta':
+      - '2.1. Objetivo Geral do Produto': solucao/objetivo_geral_do_produto.md
+      - '2.2. Objetivos Específicos do Produto': solucao/objetivos_especificos_oe_do_produto.md
+      - '2.3. Características de Produto': solucao/caracteristicas_de_produto_mapeadas_com_os_objetivos_especificos_do_produto.md
+      - '2.4. Tecnologias a Serem Utilizadas': solucao/tecnologias_a_serem_utilizadas.md
+  - '3. Estratégias de Engenharia de Software':
+      - '3.1. Estratégia Priorizada': estrategias/estratégia_priorizada.md
+      - '3.2. Quadro Comparativo': estrategias/quadro_comparativo.md
+      - '3.3. Justificativa': estrategias/justificativa.md
+  - '4. Engenharia de Requisitos':
+      - '4.1. Atividades e Técnicas': engenharia/atividades_tecnicas.md
+      - '4.2. ScrumXP e Tabela': engenharia/scrumxp_tabela.md
+  - '5. Cronograma e Entregas': 'cronograma_e_entregas.md'
+  - '6. Interação entre Equipe e Cliente':
+      - '6.1. Composição da Equipe': interacao/composicao_equipe.md
+      - '6.2. Comunicação e Reuniões': interacao/comunicacao.md
+      - '6.3. Processo de Validação': interacao/validacao.md
+      - '6.4. Lições Aprendidas': interacao/licoes_aprendidas.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+
+extra_css:
+  - stylesheets/extra.css
