@@ -35,6 +35,9 @@ nav:
       - '2.2. Objetivos Específicos do Produto': solucao/objetivos_especificos_oe_do_produto.md
       - '2.3. Características de Produto': solucao/caracteristicas_de_produto_mapeadas_com_os_objetivos_especificos_do_produto.md
       - '2.4. Tecnologias a Serem Utilizadas': solucao/tecnologias_a_serem_utilizadas.md
+      - '2.5. Pesquisa de Mercado e Análise Competitiva': solucao/pesquisa_de_mercado_e_analise_competitiva.md
+      - '2.6. Viabilidade da Proposta': solucao/viabilidade_da_proposta.md
+      - '2.7. Benefícios Esperados': solucao/beneficios_esperados.md
   - '3. Estratégias de Engenharia de Software':
       - '3.1. Estratégia Priorizada': estrategias/estratégia_priorizada.md
       - '3.2. Quadro Comparativo': estrategias/quadro_comparativo.md
