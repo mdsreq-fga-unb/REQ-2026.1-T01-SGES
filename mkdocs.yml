@@ -23,6 +23,7 @@ theme:
     - content.tabs.link
 
 nav:
+  - 'Vídeo da Unidade 1': unidade_1_video.md
   - 'Início': index.md
   - 'Visão do Produto e Projeto': 'visao_projeto.md'
   - '1. Cenário Atual do Cliente e do Negócio':
