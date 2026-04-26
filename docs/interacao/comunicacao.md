@@ -6,6 +6,8 @@
 
 - **WhatsApp:** Será utilizado para comunicação pontual e direta entre os integrantes da equipe e o cliente. Por sua praticidade e agilidade, o WhatsApp servirá como canal para interações rápidas e informais ao longo do desenvolvimento, especialmente em situações que demandem respostas imediatas, esclarecimentos de dúvidas ou necessidade de ajustes emergenciais fora dos ciclos formais de reunião.
 
+- **Email:** Será utilizado como canal formal de comunicação com o cliente para registrar decisões, alinhamentos, aprovações e histórico de discussões do projeto. Sempre que houver definições relevantes ou encaminhamentos que precisem de rastreabilidade, o registro será consolidado por e-mail.
+
 - **Jira:** Será a ferramenta central de gerenciamento do backlog, controle de tarefas e acompanhamento do progresso de cada sprint. Através do Jira, tanto a equipe quanto o cliente poderão visualizar em tempo real o andamento do projeto, participar ativamente do processo de priorização das funcionalidades e garantir que as entregas estejam alinhadas com os objetivos definidos em cada ciclo.
 
 - **TLDraw:** Será utilizado como quadro colaborativo para diagramações e planejamento visual de funcionalidades. A ferramenta possibilitará a criação de fluxos, protótipos de interface, mapas de arquitetura e demais documentações visuais necessárias durante as etapas de planejamento e refinamento do projeto, facilitando o alinhamento visual entre os membros da equipe.
@@ -22,6 +24,7 @@
 
 ## Frequência de Interações com o Cliente
 
-- **Revisões de Sprint (ao final de cada sprint):** O cliente estará diretamente envolvido nas revisões de sprint, realizadas ao término de cada ciclo de desenvolvimento. Nessas reuniões, poderá validar as entregas, testar as funcionalidades implementadas e fornecer feedback para orientar os próximos passos do projeto.
+- **Revisões de Sprint:** Pelo menos um representante da organização estará diretamente envolvido nas revisões de sprint, realizadas ao término de cada ciclo de desenvolvimento, onde cada um desses ciclos possui a duração de 10 dias úteis. Nessas reuniões, poderá validar as entregas, testar as funcionalidades implementadas e fornecer feedback para orientar os próximos passos do projeto.
 
-- **Interações Adicionais por WhatsApp:** Além das reuniões formais, o cliente terá acesso ao canal de comunicação via WhatsApp, permitindo interações rápidas e informais ao longo do desenvolvimento. Esse canal será utilizado sempre que houver dúvidas pontuais, necessidade de esclarecimentos ou ajustes que demandem uma resposta ágil, sem a necessidade de aguardar o próximo ciclo de sprint.
+- **Planejamento da Sprint:** Após o planejamento de cada sprint, será enviado via email para o cliente, um informativo indicando um conjunto de funcionalidades que serão desenvolvidas ao longo da sprint seguinte, com o intuito de validar e alinhar espectativas.
+
