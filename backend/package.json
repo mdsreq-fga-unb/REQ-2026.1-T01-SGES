@@ -1,0 +1,26 @@
+{
+  "name": "sges",
+  "version": "1.0.0",
+  "description": "Projeto Requisitos de Software 2026.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "./run-tests.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "rsdi": "^3.0.4",
+    "typeorm": "^0.3.29",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vite": "^7.1.5",
+    "vite-tsconfig-paths": "4.3.2",
+    "vitest": "^3.2.4"
+  }
+}
