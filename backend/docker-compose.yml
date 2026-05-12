@@ -1,0 +1,16 @@
+services:
+  postgres:
+    container_name: req.sges.pg
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: req-sges
+    volumes:
+      - ./postgres/data/db:/var/lib/postgresql/data
+      - ./postgres/dump:/docker-entrypoint-initdb.d
+    ports:
+      - '5432:5432'
+
+volumes:
+  sges-db:

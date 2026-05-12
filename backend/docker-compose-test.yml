@@ -1,0 +1,11 @@
+services:
+  postgres:
+    container_name: teste
+    image: postgres:13
+    environment:
+      POSTGRES_USER: teste
+      POSTGRES_PASSWORD: teste
+      POSTGRES_DB: teste
+    ports:
+      - "5432:5432"
+    command: ["postgres", "-c", "ssl=off"]

@@ -1,0 +1,15 @@
+{
+  "name": "req-2026.1-t01-sges",
+  "version": "1.0.0",
+  "description": "Repositório de projeto da disciplina de REQ-T1, 2026.1",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
