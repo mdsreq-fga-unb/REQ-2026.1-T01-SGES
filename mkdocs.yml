@@ -35,6 +35,13 @@ nav:
   - "Atas e Gravações das Sprints":
       - "Vídeo da Unidade 1": unidade_1_video.md
 
+not_in_nav:
+  - cenario/*
+  - solucao/*
+  - estrategias/*
+  - engenharia/*
+  - interacao/*
+
 markdown_extensions:
   - admonition
   - attr_list
