@@ -10,15 +10,25 @@ Brainstorming: Sessões e mensagens com a diretoria para discutir funcionalidade
 
 ### Análise e Consenso
 
-Priorização MoSCoW: Utilizada para definir o MVP por exemplo: o cadastro de beneficiários e a chamada digital são fundamentais (Must have), enquanto dashboards avançados podem ser desenvolvidos em etapas posteriores (Should/Could have).
-
 Análise de Custo / Benefício: Avaliação da viabilidade financeira e a busca por tecnologias de baixo custo (como nuvem gratuita) para garantir que o sistema seja sustentável para a instituição a longo prazo.
 
 ### Declaração
 
 Temas, Épicos e User Stories: Organização dos requisitos em grandes blocos, como "Gestão de Alunos" e "Controle de Frequência", facilitando a visão macro do impacto social que o SGES trará.
 
+### Verificação e Validação
+
+Prototipação de Baixa Fidelidade: Validar com a diretoria se a visão macro dos Épicos atende às expectativas de negócio antes de iniciar as sprints.
+
+### Organização e Atualização
+
+Priorização MoSCoW: Utilizada para definir o MVP por exemplo: o cadastro de beneficiários e a chamada digital são fundamentais (Must have), enquanto dashboards avançados podem ser desenvolvidos em etapas posteriores (Should/Could have).
+
+---
+
 ## Planejamento da Sprint
+
+Realizado pela Equipe de Desenvolvimento e o Cliente que define as prioridades.
 
 ### Elicitação e Descoberta
 
@@ -34,11 +44,17 @@ Análise de Tarefas: Detalhamento das atividades necessárias para criar interfa
 
 ### Declaração
 
-Critérios de Aceitação Detalhados e DoR: Definição de que uma tarefa só está "Pronta para Iniciar" (DoR) se as regras de negócio estiverem claras para evitar erros.
+Critérios de Aceitação: Regras que determinam quando uma história está concluída.
+
+### Verificação e Validação
+
+Definição de Preparado (DoR): Garante que o requisito está claro, testável e sem ambiguidades antes de entrar no desenvolvimento.
 
 ### Organização e Atualização
 
 Grooming do Backlog: Refinamento contínuo das prioridades junto à Vice-presidente para garantir que o desenvolvimento esteja alinhado às urgências da instituição.
+
+---
 
 ## Execução da Sprint
 
@@ -48,46 +64,58 @@ Protótipos e Wireframes: Criação de telas simples e intuitivas para a chamada
 
 ### Verificação e Validação
 
-Checklist e Revisão de Critérios: Verificação para garantir que por exemplo o cadastro de uma nova família cumpra todos os requisitos de segurança e privacidade de dados sociais.
+Critérios de INVEST: Verificação se as histórias de usuário são valiosas e testáveis.
+
+Revisão do Backlog (DEEP): Constante para garantir que o Backlog está detalhado, estimado, emergente e priorizado.
 
 ### Organização e Atualização
 
-Revisão do Backlog da Sprint (DEEP): Ajustes rápidos no fluxo de trabalho caso a equipe identifique uma complexidade não prevista na integração das planilhas antigas.
+Atualização do Quadro de Tarefas: Gestão do progresso dos requisitos durante a execução.
+
+---
 
 ## Revisão da Sprint
 
 ### Verificação e Validação
 
-Coleta de Feedback e Workshop: Demonstração das funcionalidades prontas para os diretores e professores, coletando percepções reais sobre a usabilidade do sistema no dia a dia.
+Coleta de Feedback: Demonstração das funcionalidades prontas para os diretores e professores, coletando percepções reais sobre a usabilidade do sistema no dia a dia.
+
+### Análise e Consenso
+
+Negociação: Planejamento de mudanças baseadas no feedback.
 
 ### Declaração
 
-Incorporar Feedback e Negociação: Ajuste nas User Stories com base no que foi testado pelos voluntários, priorizando correções que facilitem a adoção do sistema.
+Ajuste das User Stories: Ajuste das User Stories com base no que foi testado pelos voluntários, priorizando correções que facilitem a adoção do sistema.
+
+---
 
 ## Retrospectiva da Sprint
 
-### Análise e Organização
+### Verificação e Validação
 
-Discussões em Grupo: Avaliação interna da equipe de desenvolvimento sobre o que funcionou na comunicação com a instituição filantrópica e onde houve falhas de entendimento.
+Feedback: Avaliação interna da equipe de desenvolvimento sobre o que funcionou na comunicação com a instituição filantrópica e onde houve falhas de entendimento.
 
-### Atualização do Processo
+### Organização e Atualização
 
-Atualização do Workflow: Ajuste no processo para lidar melhor com a rotatividade de voluntários ou dificuldades técnicas encontradas durante a integração de dados.
+Atualização do Workflow: Ajuste no processo da equipe de desenvolvimento para lidar com dificuldades técnicas encontradas durante a sprint.
+
+---
 
 ## Planejamento da Próxima Release
 
 ### Elicitação e Descoberta
 
-Workshops e Análise de Domínio: Reuniões para identificar novas necessidades, como a geração de relatórios automáticos para captar recursos com doadores externos.
+Análise de Domínio: Reuniões para identificar novas necessidades, como a geração de relatórios automáticos para captar recursos com doadores externos.
 
 ### Análise e Consenso
 
 Priorização MoSCoW e Mapeamento de Valor: Escolha das próximas funcionalidades de maior impacto, como o dashboard analítico para a diretoria tomar decisões estratégicas.
 
-### Declaração
+### Verificação e Validação
 
-Criação de Épicos e User Stories(INVEST): Detalhamento de novos requisitos garantindo que sejam valiosos e testáveis para a próxima etapa do projeto.
+Critérios DEEP e INVEST: Verificação da maturidade dos requisitos para garantir que os novos itens do backlog são pequenos, testáveis e estão prontos para as futuras sprints.
 
 ### Organização e Atualização
 
-Revisão do Backlog da Release (DEEP): Preparação do terreno para as próximas sprints, garantindo que a base de dados centralizada suporte as novas funcionalidades.
+Manutenção do Roadmap e Backlog: Atualização do cronograma da release e reordenamento dos requisitos.
