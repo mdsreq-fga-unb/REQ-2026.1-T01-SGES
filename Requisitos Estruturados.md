@@ -37,9 +37,7 @@
 | **RNF08** | **Confiabilidade das Informações** | O sistema deve garantir integridade e consistência dos dados cadastrados e registrados.                                                                                                                                        | Reliability              | Requisito de Produto (Confiabilidade)   |
 | **RNF09** | **Escalabilidade**                 | O sistema deve suportar aumento gradual no número de usuários, turmas e registros sem perda significativa de desempenho.                                                                                                       | Performance              | Requisito de Produto (Escalabilidade)   |
 
-## Tabela nova com a rastreabilidade:
-
-Observação: Eu aumentei o nível de abstração, ou seja, em vez de adicionar o CRUD de cada um separadamente, resolvi juntar tudo em um requisito só, mas garanti que os outros requisitos tivessem o mesmo nível de abstração. Além disso, adicionei alguns requisitos novos para garantir que todas as CPs fossem atendidas, ou seja, revise tudo antes de colocar na matriz
+# Tabela nova com a rastreabilidade:
 
 ##
 
@@ -64,7 +62,7 @@ Observação: Eu aumentei o nível de abstração, ou seja, em vez de adicionar 
 
 ##
 
-**Matriz de Valor x Complexidade dos Requisitos**
+# Matriz de Valor x Complexidade dos Requisitos
 
 Com base nos valores e complexidades avaliados em relação aos requisitos escritos de forma abstraida, foi montado uma matriz de valor e complexidade para guiar o desenvolvimento.
 
