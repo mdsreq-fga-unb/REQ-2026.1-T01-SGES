@@ -48,7 +48,7 @@ A complexidade reflete o esforço arquitetural e as horas de desenvolvimento nec
 | **RF09** | Inativar cadastro familiar          |      4      |         2          | **1º Quadrante**  |
 | **RF10** | Cadastrar beneficiário              |      5      |         2          | **1º Quadrante**  |
 | **RF11** | Editar dados do beneficiário        |      3      |         2          | **3º Quadrante**  |
-| **RF12** | Cadastrar oficina/atividade         |      4      |         2          | **1º Quadrante**  |
+| **RF12** | Cadastrar Turma                     |      4      |         2          | **1º Quadrante**  |
 | **RF13** | Matricular beneficiário             |      4      |         3          | **2º Quadrante**  |
 | **RF14** | Registrar presença em lote          |      5      |         2          | **1º Quadrante**  |
 | **RF15** | Alterar registro de frequência      |      4      |         3          | **2º Quadrante**  |
