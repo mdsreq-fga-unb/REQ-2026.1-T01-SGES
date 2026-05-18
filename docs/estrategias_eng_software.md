@@ -30,9 +30,12 @@ O quadro a seguir apresenta características comparativas entre o RAD e OPENUP, 
 ## 3.3. Justificativa
 
 O OpenUP se apresenta como a alternativa mais adequada ao projeto da SEAS quando comparado ao RAD, principalmente por oferecer maior equilíbrio entre organização, documentação e flexibilidade. Embora ambos sejam processos iterativos e incrementais, o OpenUP possui uma estrutura mais definida, permitindo melhor controle do projeto e maior estabilidade durante o desenvolvimento e melhor conexão com a disciplina.
+
 Diferentemente do RAD, que possui forte dependência de prototipação rápida e feedback constante do cliente, o OpenUP permite uma evolução mais controlada dos requisitos e da solução. Isso é especialmente importante no contexto da SEAS, já que a disponibilidade dos stakeholders pode variar devido à atuação voluntária da instituição, dificultando ciclos muito curtos e dependentes de validação contínua imediata.
+
 Além disso, o OpenUP mantém maior preocupação com arquitetura e organização técnica desde as fases iniciais do projeto. Considerando que o SGES envolve centralização de informações, gerenciamento de usuários, controle de frequência e geração de relatórios, torna-se importante possuir uma base estrutural mais consistente para evitar problemas futuros de manutenção e crescimento do sistema.
 Outro fator relevante é a documentação. Enquanto o RAD prioriza documentação mínima e foco quase exclusivo em protótipos, o OpenUP mantém uma documentação enxuta, mas suficiente para registrar requisitos, regras de negócio e decisões importantes. Isso contribui para reduzir ambiguidades, facilitar o alinhamento da equipe e garantir maior rastreabilidade dos requisitos e explorar e desenvolver melhor a disciplina de requisitos.
+
 O OpenUP também apresenta melhor adaptação ao contexto acadêmico do projeto, pois oferece uma organização mais clara das atividades e das fases do processo, auxiliando no planejamento, acompanhamento e gerenciamento das entregas. Dessa forma, o processo contribui para reduzir riscos relacionados à falta de padronização e à evolução descontrolada dos requisitos.
 Portanto, o OpenUP foi considerado mais adequado ao projeto da SEAS por equilibrar agilidade, organização e documentação, permitindo maior estabilidade no desenvolvimento sem exigir uma dependência excessiva de feedback contínuo e imediato do cliente, como ocorre no RAD.
 
