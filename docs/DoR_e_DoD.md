@@ -28,7 +28,7 @@ Para que uma tarefa ou **User Story** seja considerada **Done**, todas as pergun
 
 * O trabalho realizado entrega um incremento funcional e observável ao produto?
 
-* A entrega está claramente rastreada à sua origem, contendo referência à User Story, requisito ou objetivo específico correspondente.
+* A entrega está claramente rastreada à sua origem, contendo referência à User Story, requisito ou objetivo específico correspondente?
 
 ### 2. Cobertura dos Requisitos
 
@@ -48,13 +48,13 @@ Para que uma tarefa ou **User Story** seja considerada **Done**, todas as pergun
 
 * A revisão de código validou os seguintes critérios essenciais:
 
-  * **Conformidade:** o código segue os padrões estabelecidos pela equipe?
+    * **Conformidade:** o código segue os padrões estabelecidos pela equipe?
 
-  * **Lógica:** a implementação atende corretamente aos requisitos definidos?
+    * **Lógica:** a implementação atende corretamente aos requisitos definidos?
 
-  * **Legibilidade:** o código está claro, bem nomeado e de fácil manutenção?
+    * **Legibilidade:** o código está claro, bem nomeado e de fácil manutenção?
 
-  * **Segurança:** não há exposição de dados sensíveis, como senhas ou tokens?
+    * **Segurança:** não há exposição de dados sensíveis, como senhas ou tokens?
 
 ### 5. Documentação
 
