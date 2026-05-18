@@ -1,8 +1,8 @@
-# 4. Matriz de Ação e Priorização
+# 6. Matriz de Ação e Priorização
 
 Esta seção consolida a avaliação de todos os requisitos mapeados, cruzando o **Valor de Negócio (1 a 5)** com a **Complexidade Técnica (1 a 5)** para determinar o quadrante de ação estratégico na esteira de desenvolvimento.
 
-## 4.1. Racional de Pontuação e Rastreabilidade
+## 6.1. Racional de Pontuação e Rastreabilidade
 
 Para garantir que a atribuição de notas não seja baseada em empirismo, a priorização segue uma heurística estrita de rastreabilidade, avaliando o impacto real para a instituição e o esforço de engenharia.
 
@@ -24,7 +24,7 @@ A complexidade reflete o esforço arquitetural e as horas de desenvolvimento nec
 
 ---
 
-## 4.2. Regra dos Quadrantes de Ação
+## 6.2. Regra dos Quadrantes de Ação
 
 - **1º Quadrante (Vitórias Rápidas):** Valor [4-5] e Complexidade [1-2]. Representam funcionalidades de alta prioridade e baixo esforço técnico. Devem ser **executadas imediatamente**, pois entregam alto impacto social e legal com baixo custo de desenvolvimento.
 - **2º Quadrante (Projetos Estratégicos):** Valor [4-5] e Complexidade [3-5]. Alta prioridade e alto esforço. São essenciais para o núcleo da instituição (ex: relatórios, alertas), mas exigem **planejamento rigoroso** e estruturado, podendo ser divididos em fases de entrega.
@@ -33,7 +33,7 @@ A complexidade reflete o esforço arquitetural e as horas de desenvolvimento nec
 
 ---
 
-## 4.3. Priorização de Requisitos Funcionais (RF)
+## 6.3. Priorização de Requisitos Funcionais (RF)
 
 | ID       | Requisito (Ação)                    | Valor (1-5) | Complexidade (1-5) | Quadrante de Ação |
 | :------- | :---------------------------------- | :---------: | :----------------: | :---------------- |
@@ -65,7 +65,7 @@ A complexidade reflete o esforço arquitetural e as horas de desenvolvimento nec
 
 ---
 
-## 4.4. Priorização de Requisitos Não Funcionais (RNF)
+## 6.4. Priorização de Requisitos Não Funcionais (RNF)
 
 | ID        | Nome do Requisito           | Valor (1-5) | Complexidade (1-5) | Quadrante de Ação |
 | :-------- | :-------------------------- | :---------: | :----------------: | :---------------- |

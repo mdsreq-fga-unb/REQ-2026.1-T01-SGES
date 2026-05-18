@@ -1,6 +1,6 @@
 # Documentação de Requisitos de Software
 
-## 1. Características do Produto (CP)
+## 5.1. Características do Produto (CP)
 
 Para garantir a rastreabilidade estrutural do sistema, os requisitos funcionais e não funcionais foram mapeados de acordo com os seguintes módulos ou Características do Produto (CP):
 
@@ -14,7 +14,7 @@ Para garantir a rastreabilidade estrutural do sistema, os requisitos funcionais 
 
 ---
 
-## 2. Requisitos Funcionais (RF)
+## 5.2. Requisitos Funcionais (RF)
 
 | ID       | Requisito (Verbo + Objeto)          | Ator          | Descrição do Requisito                                                                                                                | Métrica de Validação (Critério de Aceite)                                                                                              | Característica do Produto (CP)        |
 | :------- | :---------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------ |
@@ -45,7 +45,7 @@ Para garantir a rastreabilidade estrutural do sistema, os requisitos funcionais 
 
 ---
 
-## 3. Requisitos Não Funcionais (RNF)
+## 5.3. Requisitos Não Funcionais (RNF)
 
 Os requisitos não funcionais definem os atributos de qualidade e restrições da solução. Eles foram desenhados para mitigar riscos técnicos diretamente ligados aos módulos de negócio (Características do Produto), garantindo que a infraestrutura atenda à realidade operacional da instituição.
 
