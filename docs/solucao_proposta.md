@@ -11,24 +11,19 @@ O objetivo geral do produto é focado em uma **visão orientada ao usuário**. A
 - **OE3**: Apoiar a tomada de decisão estratégica da diretoria por meio de dados consolidados das ações da instituição.
 - **OE4**: Fortalecer os vínculos institucionais, humanizando o relacionamento e o atendimento.
 
-## 2.3. Características de Produto
+# 2.3 Características de Produto
 
-Esta seção descreve as capacidades do sistema focadas no valor de negócio e nas necessidades dos usuários, evitando definições tecnológicas prematuras de implementação.
+Esta seção descreve as capacidades estruturais do sistema SGES focadas no valor de negócio e nas necessidades dos usuários, estabelecendo a rastreabilidade direta entre os Objetivos Específicos (OEs) da instituição e o catálogo de requisitos funcionais e não funcionais.
 
-| OE Principal | Contribuição Secundária | ID   | Característica                   | Descrição Resumida                                                                                          | Valor de Negócio Principal                        |
-| :----------- | :---------------------- | :--- | :------------------------------- | :---------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| OE1          | OE3, OE4                | CP1  | **Gestão de Cadastros**          | Centralizar, atualizar e consultar informações de participantes, voluntários e corpo diretivo.              | Centralização e confiabilidade das informações.   |
-| OE1          | OE2                     | CP2  | **Controle de Grupos**           | Estruturar e gerenciar grupos de atividades vinculando instrutores e participantes.                         | Organização da oferta de cursos e atividades.     |
-| OE2          | OE3                     | CP3  | **Monitoramento de Assiduidade** | Mecanismo para registro e acompanhamento da frequência com foco em agilidade operacional.                   | Monitoramento contínuo da participação.           |
-| OE4          | OE1                     | CP4  | **Módulo de Relacionamento**     | Manutenção do histórico de interação e mecanismos para fortalecimento do vínculo com participantes.         | Engajamento e retenção de alunos.                 |
-| OE3          | OE2                     | CP5  | **Visão Analítica**              | Disponibilizar indicadores visuais sobre o desempenho e status das turmas e alunos.                         | Apoio à tomada de decisão estratégica.            |
-| OE1          | OE2                     | CP6  | **Integração de Dados Legados**  | Capacidade de absorver informações provenientes de registros ou sistemas anteriores.                        | Facilita a migração para o ambiente digital.      |
-| OE2          | OE4                     | CP7  | **Histórico de Trajetória**      | Registro consolidado da evolução e participação dos alunos ao longo do tempo.                               | Acompanhamento contínuo dos participantes.        |
-| OE3          | OE2                     | CP8  | **Consolidação de Informações**  | Disponibilizar visões agrupadas de dados para fins de prestação de contas e análise gerencial.              | Transparência e prestação de contas.              |
-| OE2          | OE3                     | CP9  | **Identificação de Evasão**      | Detecção automática de padrões de baixa frequência para intervenção preventiva.                             | Redução da evasão escolar/social.                 |
-| OE4          | OE2                     | CP10 | **Comunicação Ativa**            | Canal para envio de informativos, lembretes e avisos aos envolvidos.                                        | Engajamento e comunicação eficiente.              |
-| OE1          | OE3                     | CP11 | **Gestão de Permissões**         | Controle de níveis de acesso às funcionalidades conforme o perfil do usuário.                               | Segurança e integridade do sistema.               |
-| OE3          | OE1                     | CP12 | **Portabilidade de Dados**       | Permitir a extração de informações do sistema para uso em ferramentas externas ou compartilhamento offline. | Facilidade de compartilhamento e análise externa. |
+| OE Principal | Contribuição Secundária | ID | Característica | Descrição Resumida | Valor de Negócio Principal |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **OE1** | OE3 | CP1 | **Segurança e Controle de Acessos** | Controlar os níveis de permissão de uso conforme o perfil do usuário e resguardar a privacidade das informações gravadas. | Proteção de dados das famílias atendidas e governança sobre quem visualiza ou altera as informações. |
+| **OE1** | OE2 | CP2 | **Gestão de Instrutores** | Cadastrar, atualizar e acompanhar as informações da equipe de instrução e dos voluntários. | Organização da oferta de oficinas e controle das atribuições da equipe técnica. |
+| **OE1** | OE4 | CP3 | **Cadastro Sociodemográfico** | Centralizar, atualizar e consultar as informações sociais, habitacionais e demográficas das famílias e beneficiários. | Centralização, confiabilidade do histórico das famílias e embasamento para um atendimento humanizado. |
+| **OE2** | OE4 | CP4 | **Frequência e Engajamento** | Registrar de forma ágil a assiduidade diária e gerenciar a abertura de turmas, matrículas e limites de vagas. | Acompanhamento contínuo da participação dos alunos e otimização do aproveitamento das vagas abertas. |
+| **OE2** | OE4 | CP5 | **Monitoramento de Evasão** | Identificar de forma automática padrões de ausência crônica e documentar os atendimentos de apoio realizados com as famílias. | Atuação preventiva para redução da evasão social e fortalecimento do vínculo protetivo com a comunidade. |
+| **OE3** | OE1, OE2 | CP6 | **Relatórios e Transparência** | Consolidar dados estatísticos agregados e permitir a extração de informativos de impacto gerencial, preservando as identidades. | Subsídios para tomadas de decisão da diretoria e facilitação da prestação de contas para parceiros e doadores. |
+| **OE3** | OE1 | CP7 | **Arquitetura e Performance** | Prover uma interface simples e de fácil compreensão, assegurando que o sistema permaneça disponível e de fácil manutenção continuada. | Baixa curva de aprendizado para a equipe e garantia de sustentabilidade da ferramenta a longo prazo. |
 
 ## 2.4. Tecnologias a Serem Utilizadas
 
