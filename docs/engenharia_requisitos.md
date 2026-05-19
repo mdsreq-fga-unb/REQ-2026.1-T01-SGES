@@ -120,17 +120,10 @@ Será realizada para garantir que os requisitos sejam compatíveis com a realida
 
 ---
 
-## Verificação e Validação
-
-Feedback: Avaliação interna da equipe de desenvolvimento sobre o que funcionou na comunicação com a instituição filantrópica e onde houve falhas de entendimento.
-
-### Organização dos Requisitos
+# Organização e Atualização dos Requisitos
 
 Essa etapa busca manter os requisitos organizados, atualizados e priorizados ao longo do projeto.
 
-### MoSCoW
-
-Será utilizada para priorizar requisitos entre obrigatórios, importantes, desejáveis e não prioritários.
 
 ### Backlog do Produto
 
