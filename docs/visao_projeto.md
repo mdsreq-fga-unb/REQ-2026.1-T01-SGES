@@ -13,3 +13,5 @@
 | 07/04/2026 | 1.0 | Versão inicial do documento | Matheus, Vinicius, Gabriel, Lucca |
 | 09/04/2026 | 1.1 | Versão corrigida pós feedback do professor |     Matheus |
 | 10/04/2026 | 1.2 | Versão Final com as seções 1 a 5 e 10.1 | Grupo Todo |
+| 05/05/2026 | 1.3 | Versão com as correções da entrega da unidade 1 | Grupo Todo |
+| 18/05/2026 | 1.4 | Versão final da unidade 2 | Grupo Todo |
