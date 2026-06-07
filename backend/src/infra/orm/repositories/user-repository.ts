@@ -9,10 +9,25 @@ export class UserTypeormRepository implements UserRepository {
   async findByEmail(email: string): Promise<User | null> {
     const repo = this.dataSource.getRepository(UserEntity)
     const entity = await repo.findOne({ where: { email } })
-
     if (!entity) return null
-
     return this.toUser(entity)
+  }
+
+  async findById(id: string): Promise<User | null> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    const entity = await repo.findOne({ where: { id } })
+    if (!entity) return null
+    return this.toUser(entity)
+  }
+
+  async findAll(page: number, limit: number): Promise<{ users: User[]; total: number }> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    const [entities, total] = await repo.findAndCount({
+      skip: (page - 1) * limit,
+      take: limit,
+      order: { createdAt: 'DESC' },
+    })
+    return { users: entities.map((e) => this.toUser(e)), total }
   }
 
   async save(data: Omit<User, keyof BaseDomain>): Promise<User> {
@@ -29,6 +44,11 @@ export class UserTypeormRepository implements UserRepository {
   async updatePassword(email: string, hashedPassword: string): Promise<void> {
     const repo = this.dataSource.getRepository(UserEntity)
     await repo.update({ email }, { password: hashedPassword })
+  }
+
+  async deleteById(id: string): Promise<void> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    await repo.delete({ id })
   }
 
   private toUser(entity: UserEntity): User {

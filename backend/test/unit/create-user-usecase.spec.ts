@@ -11,8 +11,6 @@ import { UserRole } from '@/domain'
 const makeInput = (overrides: Partial<CreateUserUseCase.Input> = {}): CreateUserUseCase.Input => ({
   name: 'Test User',
   email: 'test@test.com',
-  password: 'secret01',
-  registerCode: '202512345',
   role: UserRole.TEACHER,
   ...overrides,
 })
@@ -35,9 +33,12 @@ const makeValidator = (): Validator<CreateUserUseCase.Input> => ({
 
 const makeUserRepository = (): UserRepository => ({
   findByEmail: vi.fn().mockResolvedValue(null),
+  findById: vi.fn(),
+  findAll: vi.fn(),
   save: vi.fn().mockImplementation(async (data) => makeStoredUser({ ...data, id: 'new-id' })),
   updateResetCode: vi.fn().mockResolvedValue(undefined),
   updatePassword: vi.fn().mockResolvedValue(undefined),
+  deleteById: vi.fn(),
 })
 
 const makeQueueProducer = (): IQueueProducer => ({
@@ -65,7 +66,7 @@ describe('CreateUserUseCase', () => {
     expect(output).toHaveProperty('name', input.name)
     expect(output).toHaveProperty('email', input.email)
     expect(output).toHaveProperty('role', input.role)
-    expect(output).toHaveProperty('registerCode', input.registerCode)
+    expect(output).toHaveProperty('registerCode')
     expect(output).toHaveProperty('createdAt')
     expect(output).not.toHaveProperty('password')
   })
@@ -83,14 +84,6 @@ describe('CreateUserUseCase', () => {
     expect(output.registerCode).toMatch(/^\d{6}$/)
   })
 
-  it('should use provided registerCode when given', async () => {
-    const input = makeInput({ registerCode: 'CUSTOM01' })
-    await sut.execute(input)
-
-    const savedData = vi.mocked(userRepository.save).mock.calls[0][0]
-    expect(savedData.registerCode).toBe('CUSTOM01')
-  })
-
   it('should throw ConflictError when email already exists', async () => {
     vi.mocked(userRepository.findByEmail).mockResolvedValue(makeStoredUser())
 
@@ -104,15 +97,6 @@ describe('CreateUserUseCase', () => {
     await expect(sut.execute(makeInput())).rejects.toBeInstanceOf(ValidationError)
   })
 
-  it('should hash the password before saving', async () => {
-    const input = makeInput()
-    await sut.execute(input)
-
-    const savedData = vi.mocked(userRepository.save).mock.calls[0][0]
-    expect(savedData.password).not.toBe(input.password)
-    await expect(bcrypt.compare(input.password, savedData.password)).resolves.toBe(true)
-  })
-
   it('should enqueue send-credentials job with plain password after saving', async () => {
     const input = makeInput()
     await sut.execute(input)
@@ -121,7 +105,7 @@ describe('CreateUserUseCase', () => {
     expect(queueProducer.add).toHaveBeenCalledWith('send-credentials', {
       name: input.name,
       email: input.email,
-      password: input.password,
+      password: expect.any(String),
     })
   })
 

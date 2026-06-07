@@ -12,5 +12,14 @@ services:
     ports:
       - '5432:5432'
 
+  redis:
+    image: redis:7-alpine
+    container_name: heartlink.redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - hl-redis:/data
+
 volumes:
   sges-db:
+  hl-redis:

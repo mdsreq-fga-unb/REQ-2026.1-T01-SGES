@@ -76,14 +76,14 @@ describe('POST /v1/users', () => {
     const res = await request(api)
       .post('/v1/users')
       .set('Authorization', `Bearer ${adminToken}`)
-      .send({ name: 'New User', email: NEW_USER_EMAIL, password: 'Pass1234', registerCode: '20251001', role: UserRole.TEACHER })
+      .send({ name: 'New User', email: NEW_USER_EMAIL, role: UserRole.TEACHER })
 
     expect(res.status).toBe(201)
     expect(res.body).toHaveProperty('id')
     expect(res.body).toHaveProperty('name', 'New User')
     expect(res.body).toHaveProperty('email', NEW_USER_EMAIL)
     expect(res.body).toHaveProperty('role', UserRole.TEACHER)
-    expect(res.body).toHaveProperty('registerCode', '20251001')
+    expect(res.body).toHaveProperty('registerCode')
     expect(res.body).not.toHaveProperty('password')
   })
 

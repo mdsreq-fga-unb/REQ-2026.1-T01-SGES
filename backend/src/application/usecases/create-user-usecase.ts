@@ -1,7 +1,8 @@
 import bcrypt from 'bcryptjs'
 import type { Validator } from '@/application/infra/services/shared/validator'
 import { ConflictError } from '@/application/infra/errors'
-import type { UserRole } from '@/domain'
+import logger from '@/infra/logger'
+import { generateDefaultPassord, generateRegisterCode, type UserRole } from '@/domain'
 import type { UserRepository } from '../services/user-repository'
 import type { IQueueProducer } from '../services/queue-producer'
 import { QueueNames } from '../services/queue-producer'
@@ -16,21 +17,36 @@ export class CreateUserUseCase {
   ) {}
 
   async execute(input: CreateUserUseCase.Input): Promise<CreateUserUseCase.Output> {
-    await this.validator.validate(input)
+    const validatedInput = await this.validator.validate(input)
 
-    const existing = await this.userRepository.findByEmail(input.email)
-    if (existing) throw new ConflictError('Email already in use')
+    logger.debug({ email: validatedInput.email, role: validatedInput.role }, 'CreateUser: iniciando criação')
 
-    const registerCode = input.registerCode ?? String(Date.now() % 1_000_000).padStart(6, '0')
-    const hashedPassword = await bcrypt.hash(input.password, 10)
+    const existing = await this.userRepository.findByEmail(validatedInput.email)
+    if (existing) {
+      logger.info({ email: validatedInput.email }, 'CreateUser: email já cadastrado')
+      throw new ConflictError('Email already in use')
+    }
 
-    const user = await this.userRepository.save({ ...input, registerCode, password: hashedPassword })
+    const registerCode = generateRegisterCode();
+
+    const password = generateDefaultPassord();
+    const hashedPassword = await bcrypt.hash(password, 10)
+
+    const user = await this.userRepository.save({
+      ...validatedInput,
+      registerCode,
+      password: hashedPassword,
+    })
+
+    logger.info({ userId: user.id, email: user.email, role: user.role }, 'CreateUser: usuário criado')
 
     await this.queueProducer.add(QueueNames.SEND_CREDENTIALS, {
       name: user.name,
       email: user.email,
-      password: input.password,
+      password,
     })
+
+    logger.debug({ email: user.email, queue: QueueNames.SEND_CREDENTIALS }, 'CreateUser: job de credenciais enfileirado')
 
     return {
       id: user.id,
@@ -47,7 +63,6 @@ export namespace CreateUserUseCase {
   export type Input = {
     name: string
     email: string
-    password: string
     registerCode?: string
     role: UserRole
   }

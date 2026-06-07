@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs'
 import type { Validator } from '@/application/infra/services/shared/validator'
 import { UnauthorizedError } from '@/application/infra/errors'
+import logger from '@/infra/logger'
 import type { UserRepository } from '../services/user-repository'
 
 export class ResetPasswordUseCase {
@@ -12,21 +13,27 @@ export class ResetPasswordUseCase {
   ) {}
 
   async execute(input: ResetPasswordUseCase.Input): Promise<void> {
-    await this.validator.validate(input)
+    const validatedInput = await this.validator.validate(input)
 
-    const user = await this.userRepository.findByEmail(input.email)
+    logger.debug({ email: validatedInput.email }, 'ResetPassword: tentativa de redefinição iniciada')
+
+    const user = await this.userRepository.findByEmail(validatedInput.email)
 
     if (!user?.resetCode || !user?.resetCodeExpiresAt) {
+      logger.info({ email: validatedInput.email }, 'ResetPassword: código de reset não encontrado')
       throw new UnauthorizedError('Invalid or expired reset code')
     }
 
-    if (user.resetCode !== input.code || new Date() > user.resetCodeExpiresAt) {
+    if (user.resetCode !== validatedInput.code || new Date() > user.resetCodeExpiresAt) {
+      logger.info({ email: validatedInput.email }, 'ResetPassword: código inválido ou expirado')
       throw new UnauthorizedError('Invalid or expired reset code')
     }
 
-    const hashedPassword = await bcrypt.hash(input.newPassword, 10)
-    await this.userRepository.updatePassword(input.email, hashedPassword)
-    await this.userRepository.updateResetCode(input.email, null, null)
+    const hashedPassword = await bcrypt.hash(validatedInput.newPassword, 10)
+    await this.userRepository.updatePassword(validatedInput.email, hashedPassword)
+    await this.userRepository.updateResetCode(validatedInput.email, null, null)
+
+    logger.info({ email: validatedInput.email }, 'ResetPassword: senha redefinida com sucesso')
   }
 }
 

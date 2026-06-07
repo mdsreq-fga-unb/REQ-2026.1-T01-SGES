@@ -24,9 +24,12 @@ const makeValidator = (): Validator<ForgotPasswordUseCase.Input> => ({
 
 const makeUserRepository = (): UserRepository => ({
   findByEmail: vi.fn().mockResolvedValue(makeStoredUser()),
+  findById: vi.fn(),
+  findAll: vi.fn(),
   save: vi.fn(),
   updateResetCode: vi.fn().mockResolvedValue(undefined),
   updatePassword: vi.fn().mockResolvedValue(undefined),
+  deleteById: vi.fn(),
 })
 
 const makeQueueProducer = (): IQueueProducer => ({

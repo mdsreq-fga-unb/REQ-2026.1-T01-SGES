@@ -31,7 +31,12 @@ const makeTokenService = (): TokenService => ({
 
 const makeUserRepository = (): UserRepository => ({
   findByEmail: vi.fn(),
+  findById: vi.fn(),
+  findAll: vi.fn(),
   save: vi.fn(),
+  updateResetCode: vi.fn(),
+  updatePassword: vi.fn(),
+  deleteById: vi.fn(),
 })
 
 describe('AuthUseCase', () => {
