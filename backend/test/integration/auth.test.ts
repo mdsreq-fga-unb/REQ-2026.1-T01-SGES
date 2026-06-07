@@ -11,7 +11,9 @@ const TEST_EMAIL = 'auth-integration@test.com'
 const TEST_PASSWORD = 'Pass1234'
 
 beforeAll(async () => {
-  await dataSource.initialize()
+  if (!dataSource.isInitialized) {
+    await dataSource.initialize()
+  }
 
   const hash = await bcrypt.hash(TEST_PASSWORD, 10)
   await dataSource.getRepository(UserEntity).save({

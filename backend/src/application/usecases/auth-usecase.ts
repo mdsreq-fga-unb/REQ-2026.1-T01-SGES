@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs'
 import type { Validator } from '@/application/infra/services/shared/validator'
+import { UnauthorizedError } from '@/application/infra/errors'
 import type { TokenService } from '../services/token-service'
 import type { UserRepository } from '../services/user-repository'
 
@@ -18,13 +19,13 @@ export class AuthUseCase {
     const user = await this.userRepository.findByEmail(input.email)
 
     if (!user) {
-      throw new Error('INVALID_CREDENTIALS')
+      throw new UnauthorizedError('Invalid credentials')
     }
 
     const passwordMatch = await bcrypt.compare(input.password, user.password)
 
     if (!passwordMatch) {
-      throw new Error('INVALID_CREDENTIALS')
+      throw new UnauthorizedError('Invalid credentials')
     }
 
     return {

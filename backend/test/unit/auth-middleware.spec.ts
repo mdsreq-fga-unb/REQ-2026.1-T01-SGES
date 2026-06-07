@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { ForbiddenError, UnauthorizedError } from '@/application/infra/errors'
 import type { TokenPayload } from '@/application/services/token-service'
 import { UserRole } from '@/domain'
 
@@ -39,42 +40,42 @@ describe('authMiddleware', () => {
     vi.clearAllMocks()
   })
 
-  it('should return 401 when Authorization header is missing', () => {
+  it('should call next with UnauthorizedError when Authorization header is missing', () => {
     const req = makeReq()
     const res = makeRes()
     authMiddleware([UserRole.TEACHER])(req as Request, res as Response, next)
 
-    expect(res.status).toHaveBeenCalledWith(401)
-    expect(next).not.toHaveBeenCalled()
+    expect(next).toHaveBeenCalledWith(expect.any(UnauthorizedError))
+    expect(res.status).not.toHaveBeenCalled()
   })
 
-  it('should return 401 when Authorization header does not start with Bearer', () => {
+  it('should call next with UnauthorizedError when Authorization header does not start with Bearer', () => {
     const req = makeReq('Basic sometoken')
     const res = makeRes()
     authMiddleware([UserRole.TEACHER])(req as Request, res as Response, next)
 
-    expect(res.status).toHaveBeenCalledWith(401)
-    expect(next).not.toHaveBeenCalled()
+    expect(next).toHaveBeenCalledWith(expect.any(UnauthorizedError))
+    expect(res.status).not.toHaveBeenCalled()
   })
 
-  it('should return 401 when token is invalid', () => {
+  it('should call next with UnauthorizedError when token is invalid', () => {
     mockVerify.mockImplementation(() => { throw new Error('invalid token') })
     const req = makeReq('Bearer invalidtoken')
     const res = makeRes()
     authMiddleware([UserRole.TEACHER])(req as Request, res as Response, next)
 
-    expect(res.status).toHaveBeenCalledWith(401)
-    expect(next).not.toHaveBeenCalled()
+    expect(next).toHaveBeenCalledWith(expect.any(UnauthorizedError))
+    expect(res.status).not.toHaveBeenCalled()
   })
 
-  it('should return 401 when role is not in the allowed list', () => {
+  it('should call next with ForbiddenError when role is not in the allowed list', () => {
     mockVerify.mockReturnValue({ ...validPayload, role: UserRole.TEACHER })
     const req = makeReq('Bearer validtoken')
     const res = makeRes()
     authMiddleware([UserRole.ADMIN])(req as Request, res as Response, next)
 
-    expect(res.status).toHaveBeenCalledWith(401)
-    expect(next).not.toHaveBeenCalled()
+    expect(next).toHaveBeenCalledWith(expect.any(ForbiddenError))
+    expect(res.status).not.toHaveBeenCalled()
   })
 
   it('should call next and set res.locals.user for valid token and allowed role', () => {
@@ -83,7 +84,7 @@ describe('authMiddleware', () => {
     const res = makeRes()
     authMiddleware([UserRole.TEACHER])(req as Request, res as Response, next)
 
-    expect(next).toHaveBeenCalled()
+    expect(next).toHaveBeenCalledWith()
     expect(res.locals!.user).toEqual(validPayload)
     expect(res.status).not.toHaveBeenCalled()
   })
@@ -94,6 +95,6 @@ describe('authMiddleware', () => {
     const res = makeRes()
     authMiddleware([UserRole.ADMIN, UserRole.TEACHER])(req as Request, res as Response, next)
 
-    expect(next).toHaveBeenCalled()
+    expect(next).toHaveBeenCalledWith()
   })
 })

@@ -6,20 +6,26 @@ describe('AuthUsecaseZodValidator', () => {
   const sut = new AuthUsecaseZodValidator()
 
   it('should return input when valid', async () => {
-    const input = { email: 'user@email.com', password: 'secret01' }
+    const input = { email: 'user@email.com', password: 'secr01' }
     const result = await sut.validate(input)
     expect(result).toEqual(input)
   })
 
   it('should throw ValidationError for invalid email', async () => {
     await expect(
-      sut.validate({ email: 'not-an-email', password: 'secret01' }),
+      sut.validate({ email: 'not-an-email', password: 'secr01' }),
     ).rejects.toBeInstanceOf(ValidationError)
   })
 
   it('should throw ValidationError for empty password', async () => {
     await expect(
       sut.validate({ email: 'user@email.com', password: '' }),
+    ).rejects.toBeInstanceOf(ValidationError)
+  })
+
+  it('should throw ValidationError for password shorter than 4 characters', async () => {
+    await expect(
+      sut.validate({ email: 'user@email.com', password: 'abc' }),
     ).rejects.toBeInstanceOf(ValidationError)
   })
 

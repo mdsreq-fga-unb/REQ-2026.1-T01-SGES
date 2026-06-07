@@ -6,7 +6,7 @@ import type { Validator } from '../validator'
 export class AuthUsecaseZodValidator implements Validator<AuthUseCase.Input> {
   private schema = z.object({
     email: z.email(),
-    password: z.string().min(1).max(8),
+    password: z.string().min(4).max(8),
   })
 
   async validate(input: AuthUseCase.Input): Promise<AuthUseCase.Input> {

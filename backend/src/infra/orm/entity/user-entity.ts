@@ -29,4 +29,10 @@ export class UserEntity {
 
   @DeleteDateColumn({ name: 'deleted_at', type: 'timestamp', nullable: true })
   deletedAt?: Date
+
+  @Column({ name: 'reset_code', type: 'varchar', nullable: true })
+  resetCode?: string | null
+
+  @Column({ name: 'reset_code_expires_at', type: 'timestamptz', nullable: true })
+  resetCodeExpiresAt?: Date | null
 }

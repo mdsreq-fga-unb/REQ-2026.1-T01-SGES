@@ -11,4 +11,6 @@ export type User = BaseDomain & {
   email: string
   password: string
   role: UserRole
+  resetCode?: string | null
+  resetCodeExpiresAt?: Date | null
 }

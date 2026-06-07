@@ -8,6 +8,12 @@ const envSchema = z.object({
   SLAVE_POSTGRES_URL: z.string().optional(),
   DATA_SOURCE_POOL_SIZE: z.coerce.number().default(20),
   JWT_SECRET: z.string(),
+  REDIS_URL: z.string().optional(),
+  SMTP_HOST: z.string().optional(),
+  SMTP_PORT: z.coerce.number().default(587),
+  SMTP_USER: z.string().optional(),
+  SMTP_PASS: z.string().optional(),
+  SMTP_FROM: z.string().optional(),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);

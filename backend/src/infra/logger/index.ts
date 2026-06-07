@@ -17,7 +17,7 @@ export class Logger {
 
   constructor() {
     this.logger = pino({
-      name: 'bcodex-social-arrangement',
+      name: 'sges',
       transport:
         env.NODE_ENV === 'prod' ? { target: 'pino-pretty' } : { target: 'pino-pretty' },
     });

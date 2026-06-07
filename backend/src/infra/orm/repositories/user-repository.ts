@@ -1,6 +1,6 @@
 import type { DataSource } from 'typeorm'
 import type { UserRepository } from '@/application/services/user-repository'
-import type { User } from '@/domain'
+import type { BaseDomain, User } from '@/domain'
 import { UserEntity } from '../entity/user-entity'
 
 export class UserTypeormRepository implements UserRepository {
@@ -12,6 +12,26 @@ export class UserTypeormRepository implements UserRepository {
 
     if (!entity) return null
 
+    return this.toUser(entity)
+  }
+
+  async save(data: Omit<User, keyof BaseDomain>): Promise<User> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    const saved = await repo.save(repo.create(data))
+    return this.toUser(saved)
+  }
+
+  async updateResetCode(email: string, code: string | null, expiresAt: Date | null): Promise<void> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    await repo.update({ email }, { resetCode: code, resetCodeExpiresAt: expiresAt })
+  }
+
+  async updatePassword(email: string, hashedPassword: string): Promise<void> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    await repo.update({ email }, { password: hashedPassword })
+  }
+
+  private toUser(entity: UserEntity): User {
     return {
       id: entity.id,
       registerCode: entity.registerCode,
@@ -19,6 +39,8 @@ export class UserTypeormRepository implements UserRepository {
       email: entity.email,
       password: entity.password,
       role: entity.role,
+      resetCode: entity.resetCode,
+      resetCodeExpiresAt: entity.resetCodeExpiresAt,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
       deletedAt: entity.deletedAt,

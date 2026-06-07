@@ -1,11 +1,12 @@
 import bcrypt from 'bcryptjs'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { UnauthorizedError } from '@/application/infra/errors'
 import { ValidationError } from '@/application/infra/services/shared/validation-error'
+import type { Validator } from '@/application/infra/services/shared/validator'
 import type { TokenService } from '@/application/services/token-service'
 import type { UserRepository } from '@/application/services/user-repository'
 import { AuthUseCase } from '@/application/usecases/auth-usecase'
 import { UserRole } from '@/domain'
-import type { Validator } from '@/application/infra/services/shared/validator'
 
 const makeUser = async (overrides = {}) => ({
   id: 'user-id',
@@ -30,6 +31,7 @@ const makeTokenService = (): TokenService => ({
 
 const makeUserRepository = (): UserRepository => ({
   findByEmail: vi.fn(),
+  save: vi.fn(),
 })
 
 describe('AuthUseCase', () => {
@@ -60,21 +62,21 @@ describe('AuthUseCase', () => {
     })
   })
 
-  it('should throw INVALID_CREDENTIALS when user is not found', async () => {
+  it('should throw UnauthorizedError when user is not found', async () => {
     vi.mocked(userRepository.findByEmail).mockResolvedValue(null)
 
     await expect(
       sut.execute({ email: 'notfound@test.com', password: 'secret01' }),
-    ).rejects.toThrow('INVALID_CREDENTIALS')
+    ).rejects.toBeInstanceOf(UnauthorizedError)
   })
 
-  it('should throw INVALID_CREDENTIALS when password does not match', async () => {
+  it('should throw UnauthorizedError when password does not match', async () => {
     const user = await makeUser()
     vi.mocked(userRepository.findByEmail).mockResolvedValue(user)
 
     await expect(
       sut.execute({ email: user.email, password: 'wrongpw' }),
-    ).rejects.toThrow('INVALID_CREDENTIALS')
+    ).rejects.toBeInstanceOf(UnauthorizedError)
   })
 
   it('should propagate ValidationError from validator', async () => {
