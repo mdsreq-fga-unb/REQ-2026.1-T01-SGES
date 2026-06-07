@@ -18,19 +18,19 @@ Tokens são obtidos via `POST /v1/auth` e expiram em **24 horas**.
 
 | Role | Permissões |
 |------|-----------|
-| `ADMIN` | Criar usuários, todas as operações |
+| `ADMIN` | Criar e deletar usuários, listar usuários, todas as operações |
 | `TEACHER` | Acesso autenticado básico |
 
 ---
 
-## Validações globais de senha
+## Validações de senha
 
-| Regra | Valor |
-|-------|-------|
-| Mínimo de caracteres | 4 |
-| Máximo de caracteres | 8 |
+| Regra | Valor | Onde se aplica |
+|-------|-------|----------------|
+| Mínimo de caracteres | 4 | Login (`POST /v1/auth`), redefinição (`POST /v1/auth/reset-password`) |
+| Máximo de caracteres | 8 | Login (`POST /v1/auth`), redefinição (`POST /v1/auth/reset-password`) |
 
-Aplicada em: criação de usuário, login e redefinição de senha.
+> A senha de acesso inicial é **gerada automaticamente** pelo sistema na criação do usuário e enviada por email.
 
 ---
 
@@ -50,7 +50,7 @@ Verifica se a API está no ar.
 
 **curl:**
 ```bash
-curl -X GET http://localhost:3000/health
+curl http://localhost:3000/health
 ```
 
 ---
@@ -81,37 +81,96 @@ Autentica um usuário e retorna um JWT.
 ```bash
 curl -X POST http://localhost:3000/v1/auth \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "admin@sges.com",
-    "password": "Adm1234"
-  }'
+  -d '{"email":"admin@sges.com","password":"Adm1234"}'
 ```
 
-**curl — credenciais erradas:**
+**curl — credenciais erradas (401):**
 ```bash
 curl -X POST http://localhost:3000/v1/auth \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "admin@sges.com",
-    "password": "errada"
-  }'
+  -d '{"email":"admin@sges.com","password":"errada"}'
 ```
 
-**curl — validação (senha muito curta):**
+**curl — senha muito curta (400):**
 ```bash
 curl -X POST http://localhost:3000/v1/auth \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "admin@sges.com",
-    "password": "ab"
-  }'
+  -d '{"email":"admin@sges.com","password":"ab"}'
+```
+
+---
+
+### GET /v1/users
+
+Lista usuários paginados (10 por página). Restrito a **ADMIN**.
+
+**Autenticação:** Bearer Token (role `ADMIN`)
+
+**Query params:**
+
+| Param | Tipo | Padrão | Descrição |
+|-------|------|--------|-----------|
+| `page` | número inteiro ≥ 1 | `1` | Página solicitada |
+
+**Resposta de sucesso (200):**
+```json
+{
+  "data": [
+    {
+      "id": "uuid",
+      "name": "string",
+      "email": "string",
+      "role": "ADMIN | TEACHER",
+      "registerCode": "string",
+      "createdAt": "ISO 8601"
+    }
+  ],
+  "page": 1,
+  "limit": 10,
+  "total": 42,
+  "totalPages": 5
+}
+```
+
+**Respostas:**
+
+| Status | Situação |
+|--------|----------|
+| 200 | Lista retornada com sucesso |
+| 400 | Parâmetro `page` inválido (< 1 ou não numérico) |
+| 401 | Token ausente ou inválido |
+| 403 | Token válido mas role não é ADMIN |
+
+**curl — página 1 (padrão):**
+```bash
+curl http://localhost:3000/v1/users \
+  -H "Authorization: Bearer <ADMIN_TOKEN>"
+```
+
+**curl — página específica:**
+```bash
+curl "http://localhost:3000/v1/users?page=2" \
+  -H "Authorization: Bearer <ADMIN_TOKEN>"
+```
+
+**curl — sem token (401):**
+```bash
+curl http://localhost:3000/v1/users
+```
+
+**curl — page inválida (400):**
+```bash
+curl "http://localhost:3000/v1/users?page=0" \
+  -H "Authorization: Bearer <ADMIN_TOKEN>"
 ```
 
 ---
 
 ### POST /v1/users
 
-Cria um novo usuário no sistema. Restrito a **ADMIN**.
+Cria um novo usuário. Restrito a **ADMIN**.
+
+A senha de acesso é **gerada automaticamente** pelo sistema e enviada ao email do usuário. O `registerCode` também é gerado automaticamente pelo sistema.
 
 **Autenticação:** Bearer Token (role `ADMIN`)
 
@@ -120,20 +179,16 @@ Cria um novo usuário no sistema. Restrito a **ADMIN**.
 {
   "name": "string (mín. 2 chars)",
   "email": "string (email válido)",
-  "password": "string (4–8 chars)",
-  "registerCode": "string (mín. 1 char) — opcional, gerado automaticamente se omitido",
   "role": "ADMIN | TEACHER"
 }
 ```
-
-> **registerCode** é opcional. Se não for enviado, o sistema gera um código de 6 dígitos baseado no timestamp (`Date.now() % 1_000_000`, com zero-padding). O valor gerado é retornado no body da resposta.
 
 **Respostas:**
 
 | Status | Situação |
 |--------|----------|
 | 201 | Usuário criado — retorna dados sem `password` |
-| 400 | Campos inválidos ou fora dos limites |
+| 400 | Campos inválidos |
 | 401 | Token ausente ou inválido |
 | 403 | Token válido mas role não é ADMIN |
 | 409 | Email já cadastrado |
@@ -146,8 +201,6 @@ curl -X POST http://localhost:3000/v1/users \
   -d '{
     "name": "João Silva",
     "email": "joao@unb.br",
-    "password": "Jao1234",
-    "registerCode": "202512345",
     "role": "TEACHER"
   }'
 ```
@@ -160,8 +213,6 @@ curl -X POST http://localhost:3000/v1/users \
   -d '{
     "name": "Maria Admin",
     "email": "maria@unb.br",
-    "password": "Mar1234",
-    "registerCode": "ADM-002",
     "role": "ADMIN"
   }'
 ```
@@ -170,13 +221,7 @@ curl -X POST http://localhost:3000/v1/users \
 ```bash
 curl -X POST http://localhost:3000/v1/users \
   -H "Content-Type: application/json" \
-  -d '{
-    "name": "Teste",
-    "email": "teste@unb.br",
-    "password": "Test123",
-    "registerCode": "TST-001",
-    "role": "TEACHER"
-  }'
+  -d '{"name":"Teste","email":"teste@unb.br","role":"TEACHER"}'
 ```
 
 **curl — email duplicado (409):**
@@ -184,22 +229,54 @@ curl -X POST http://localhost:3000/v1/users \
 curl -X POST http://localhost:3000/v1/users \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <ADMIN_TOKEN>" \
-  -d '{
-    "name": "Duplicado",
-    "email": "joao@unb.br",
-    "password": "Dup1234",
-    "registerCode": "DUP-001",
-    "role": "TEACHER"
-  }'
+  -d '{"name":"Duplicado","email":"joao@unb.br","role":"TEACHER"}'
+```
+
+---
+
+### DELETE /v1/users/:id
+
+Deleta um usuário pelo ID. Restrito a **ADMIN**.
+
+**Autenticação:** Bearer Token (role `ADMIN`)
+
+**Path param:** `id` — UUID do usuário
+
+**Respostas:**
+
+| Status | Situação |
+|--------|----------|
+| 204 | Usuário deletado (sem body) |
+| 400 | `id` não é um UUID válido |
+| 401 | Token ausente ou inválido |
+| 403 | Token válido mas role não é ADMIN |
+| 404 | Usuário não encontrado |
+
+**curl — sucesso (204):**
+```bash
+curl -X DELETE http://localhost:3000/v1/users/11111111-1111-1111-1111-111111111111 \
+  -H "Authorization: Bearer <ADMIN_TOKEN>"
+```
+
+**curl — id inválido (400):**
+```bash
+curl -X DELETE http://localhost:3000/v1/users/nao-e-uuid \
+  -H "Authorization: Bearer <ADMIN_TOKEN>"
+```
+
+**curl — usuário inexistente (404):**
+```bash
+curl -X DELETE http://localhost:3000/v1/users/00000000-0000-0000-0000-000000000000 \
+  -H "Authorization: Bearer <ADMIN_TOKEN>"
 ```
 
 ---
 
 ### POST /v1/auth/forgot-password
 
-Solicita a recuperação de senha. Gera um código de 6 dígitos, salva no banco com validade de **30 minutos** e dispara um email via fila assíncrona (BullMQ).
+Solicita recuperação de senha. Gera um código de 6 dígitos, salva no banco com validade de **30 minutos** e envia por email.
 
-> **Segurança:** sempre retorna `200` independente de o email existir ou não, para evitar enumeração de usuários.
+> **Segurança:** sempre retorna `200` independente de o email existir ou não (evita enumeração de usuários).
 
 **Autenticação:** Nenhuma
 
@@ -214,41 +291,35 @@ Solicita a recuperação de senha. Gera um código de 6 dígitos, salva no banco
 
 | Status | Situação |
 |--------|----------|
-| 200 | Requisição processada (email existe ou não) |
+| 200 | Requisição processada |
 | 400 | Email com formato inválido |
 
 **curl — email existente:**
 ```bash
 curl -X POST http://localhost:3000/v1/auth/forgot-password \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "joao@unb.br"
-  }'
+  -d '{"email":"joao@unb.br"}'
 ```
 
-**curl — email inexistente (ainda retorna 200):**
+**curl — email inexistente (retorna 200 mesmo assim):**
 ```bash
 curl -X POST http://localhost:3000/v1/auth/forgot-password \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "naoexiste@unb.br"
-  }'
+  -d '{"email":"naoexiste@unb.br"}'
 ```
 
 **curl — email inválido (400):**
 ```bash
 curl -X POST http://localhost:3000/v1/auth/forgot-password \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "nao-e-um-email"
-  }'
+  -d '{"email":"nao-e-um-email"}'
 ```
 
 ---
 
 ### POST /v1/auth/reset-password
 
-Redefine a senha do usuário utilizando o código de 6 dígitos recebido por email. O código é invalidado após uso bem-sucedido.
+Redefine a senha usando o código de 6 dígitos recebido por email. O código é invalidado após o uso.
 
 **Autenticação:** Nenhuma
 
@@ -256,7 +327,7 @@ Redefine a senha do usuário utilizando o código de 6 dígitos recebido por ema
 ```json
 {
   "email": "string (email válido)",
-  "code": "string (exatamente 6 dígitos numéricos)",
+  "code": "string (exatamente 6 dígitos)",
   "newPassword": "string (4–8 chars)"
 }
 ```
@@ -266,7 +337,7 @@ Redefine a senha do usuário utilizando o código de 6 dígitos recebido por ema
 | Status | Situação |
 |--------|----------|
 | 200 | Senha alterada com sucesso |
-| 400 | Campos inválidos (email, código fora do formato, senha fora dos limites) |
+| 400 | Campos inválidos |
 | 401 | Código incorreto, expirado ou inexistente |
 
 **curl — sucesso:**
@@ -284,33 +355,21 @@ curl -X POST http://localhost:3000/v1/auth/reset-password \
 ```bash
 curl -X POST http://localhost:3000/v1/auth/reset-password \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "joao@unb.br",
-    "code": "000000",
-    "newPassword": "NovaJao1"
-  }'
+  -d '{"email":"joao@unb.br","code":"000000","newPassword":"NovaJao1"}'
 ```
 
 **curl — código com formato inválido (400):**
 ```bash
 curl -X POST http://localhost:3000/v1/auth/reset-password \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "joao@unb.br",
-    "code": "123",
-    "newPassword": "NovaJao1"
-  }'
+  -d '{"email":"joao@unb.br","code":"123","newPassword":"NovaJao1"}'
 ```
 
 **curl — nova senha fora dos limites (400):**
 ```bash
 curl -X POST http://localhost:3000/v1/auth/reset-password \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "joao@unb.br",
-    "code": "847291",
-    "newPassword": "SenhaMuitoLonga123"
-  }'
+  -d '{"email":"joao@unb.br","code":"847291","newPassword":"SenhaMuitoLonga123"}'
 ```
 
 ---
@@ -328,7 +387,14 @@ TOKEN=$(curl -s -X POST http://localhost:3000/v1/auth \
 echo "Token: $TOKEN"
 ```
 
-### 2. Criar um professor
+### 2. Listar usuários existentes
+
+```bash
+curl "http://localhost:3000/v1/users?page=1" \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+### 3. Criar um professor (senha gerada automaticamente e enviada por email)
 
 ```bash
 curl -X POST http://localhost:3000/v1/users \
@@ -337,22 +403,20 @@ curl -X POST http://localhost:3000/v1/users \
   -d '{
     "name": "Prof. Carlos",
     "email": "carlos@unb.br",
-    "password": "Car1234",
-    "registerCode": "202512001",
     "role": "TEACHER"
   }'
 ```
 
-### 3. Professor faz login
+### 4. Professor faz login com a senha recebida por email
 
 ```bash
 TEACHER_TOKEN=$(curl -s -X POST http://localhost:3000/v1/auth \
   -H "Content-Type: application/json" \
-  -d '{"email":"carlos@unb.br","password":"Car1234"}' \
+  -d '{"email":"carlos@unb.br","password":"<SENHA_DO_EMAIL>"}' \
   | jq -r '.token')
 ```
 
-### 4. Professor solicita recuperação de senha
+### 5. Professor solicita recuperação de senha
 
 ```bash
 curl -X POST http://localhost:3000/v1/auth/forgot-password \
@@ -360,31 +424,42 @@ curl -X POST http://localhost:3000/v1/auth/forgot-password \
   -d '{"email":"carlos@unb.br"}'
 ```
 
-### 5. (Dev) Buscar o código gerado diretamente no banco
+### 6. (Dev) Buscar o código gerado diretamente no banco
 
 ```bash
-docker exec heartlink.pg psql -U postgres -d req-sges \
+docker exec req.sges.pg psql -U postgres -d req-sges \
   -c "SELECT reset_code, reset_code_expires_at FROM users WHERE email = 'carlos@unb.br';"
 ```
 
-### 6. Redefinir senha com o código
+### 7. Redefinir senha com o código
 
 ```bash
 curl -X POST http://localhost:3000/v1/auth/reset-password \
   -H "Content-Type: application/json" \
   -d '{
     "email": "carlos@unb.br",
-    "code": "<CODIGO_DO_BANCO>",
+    "code": "<CODIGO_DO_EMAIL>",
     "newPassword": "Nova1234"
   }'
 ```
 
-### 7. Login com a nova senha
+### 8. Login com a nova senha
 
 ```bash
 curl -X POST http://localhost:3000/v1/auth \
   -H "Content-Type: application/json" \
   -d '{"email":"carlos@unb.br","password":"Nova1234"}'
+```
+
+### 9. ADMIN deleta o professor
+
+```bash
+# Obter o ID do professor listando usuários
+curl "http://localhost:3000/v1/users" -H "Authorization: Bearer $TOKEN" | jq '.data[] | select(.email=="carlos@unb.br") | .id'
+
+# Deletar pelo ID
+curl -X DELETE http://localhost:3000/v1/users/<ID_DO_PROFESSOR> \
+  -H "Authorization: Bearer $TOKEN"
 ```
 
 ---
@@ -408,10 +483,10 @@ curl -X POST http://localhost:3000/v1/auth \
 }
 ```
 
-**Erro de negócio (401, 403, 409):**
+**Erro de negócio (401, 403, 404, 409):**
 ```json
 {
-  "message": "Invalid credentials"
+  "message": "User not found"
 }
 ```
 
@@ -424,16 +499,30 @@ curl -X POST http://localhost:3000/v1/auth \
 
 ---
 
+## Resumo de endpoints
+
+| Método | Rota | Auth | Descrição |
+|--------|------|------|-----------|
+| GET | `/health` | — | Health check |
+| POST | `/v1/auth` | — | Login |
+| GET | `/v1/users` | ADMIN | Listar usuários (paginado) |
+| POST | `/v1/users` | ADMIN | Criar usuário |
+| DELETE | `/v1/users/:id` | ADMIN | Deletar usuário |
+| POST | `/v1/auth/forgot-password` | — | Solicitar código de reset |
+| POST | `/v1/auth/reset-password` | — | Redefinir senha com código |
+
+---
+
 ## Configuração de ambiente (dev)
 
-| Variável | Valor padrão dev |
-|----------|-----------------|
-| `PORT` | `3000` |
-| `POSTGRES_URL` | `postgresql://postgres:postgres@127.0.0.1:5432/req-sges` |
-| `JWT_SECRET` | `dev-secret-key` |
-| `REDIS_URL` | *(opcional — workers desativados se ausente)* |
-| `SMTP_HOST` | *(opcional — emails não enviados se ausente)* |
-| `SMTP_PORT` | `587` |
-| `SMTP_USER` | *(opcional)* |
-| `SMTP_PASS` | *(opcional)* |
-| `SMTP_FROM` | *(opcional)* |
+| Variável | Descrição |
+|----------|-----------|
+| `PORT` | Porta HTTP (padrão: `3000`) |
+| `POSTGRES_URL` | URL de conexão com o PostgreSQL |
+| `JWT_SECRET` | Chave secreta para assinar JWTs |
+| `REDIS_URL` | URL do Redis — habilita workers BullMQ assíncronos |
+| `SMTP_HOST` | Host SMTP (ex: `smtp.gmail.com`) |
+| `SMTP_PORT` | Porta SMTP (padrão: `587`) |
+| `SMTP_USER` | Email de autenticação SMTP (só o endereço, sem display name) |
+| `SMTP_PASS` | Gmail App Password gerado em https://myaccount.google.com/apppasswords |
+| `SMTP_FROM` | Remetente (pode incluir display name: `SGES <email@gmail.com>`) |
