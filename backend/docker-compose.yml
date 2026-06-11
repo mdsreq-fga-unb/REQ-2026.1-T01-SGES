@@ -10,7 +10,7 @@ services:
     #   - ./postgres/data/db:/var/lib/postgresql/data
     #   - ./postgres/dump:/docker-entrypoint-initdb.d
     ports:
-      - '5432:5432'
+      - '5433:5432'
 
   redis:
     image: redis:7-alpine
