@@ -29,9 +29,9 @@ describe('AuthUsecaseZodValidator', () => {
     ).rejects.toBeInstanceOf(ValidationError)
   })
 
-  it('should throw ValidationError for password longer than 8 characters', async () => {
+  it('should throw ValidationError for password longer than 100 characters', async () => {
     await expect(
-      sut.validate({ email: 'user@email.com', password: '123456789' }),
+      sut.validate({ email: 'user@email.com', password: 'a'.repeat(101) }),
     ).rejects.toBeInstanceOf(ValidationError)
   })
 
