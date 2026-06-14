@@ -110,6 +110,33 @@ let mockClasses = [
   },
 ];
 
+let mockForms = [
+  {
+    id: 'f1',
+    title: 'Pesquisa de Perfil Socioeconômico',
+    description: 'Coleta de dados sobre renda e moradia dos beneficiários da SEAS.',
+    fields: [
+      { id: 'q1', type: 'text', label: 'Possui acesso a computador com internet em casa?', required: true },
+      { id: 'q2', type: 'select', label: 'Renda Familiar aproximada', options: ['Até 1 salário mínimo', '1 a 2 salários mínimos', 'Mais de 2 salários mínimos'], required: true },
+    ],
+    createdAt: new Date().toISOString(),
+  },
+];
+
+let mockFormResponses = [
+  {
+    id: 'r1',
+    formId: 'f1',
+    studentId: 's1',
+    studentName: 'João Silva',
+    answers: {
+      q1: 'Sim, computador compartilhado com a família.',
+      q2: 'Até 1 salário mínimo',
+    },
+    createdAt: new Date().toISOString(),
+  },
+];
+
 // Track the last successful login for /auth/me validation
 let currentLoggedUser: MockUser | null = null;
 
@@ -455,6 +482,89 @@ export function setupMockApi(): void {
           data,
           status: 200,
           statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /forms ---
+      if (url === '/forms' && method === 'get') {
+        await delay(100);
+        config.adapter = async () => ({
+          data: mockForms,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- POST /forms ---
+      if (url === '/forms' && method === 'post') {
+        await delay(200);
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+        const newForm = {
+          id: `f${mockForms.length + 1}`,
+          title: body.title,
+          description: body.description,
+          fields: body.fields || [],
+          createdAt: new Date().toISOString(),
+        };
+        mockForms.push(newForm);
+
+        config.adapter = async () => ({
+          data: newForm,
+          status: 201,
+          statusText: 'Created',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /forms/:id/responses ---
+      if (url.startsWith('/forms/') && url.endsWith('/responses') && method === 'get') {
+        await delay(150);
+        const parts = url.split('/');
+        const formId = parts[2];
+        const responses = mockFormResponses.filter((r) => r.formId === formId);
+
+        config.adapter = async () => ({
+          data: responses,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- POST /forms/:id/responses ---
+      if (url.startsWith('/forms/') && url.endsWith('/responses') && method === 'post') {
+        await delay(200);
+        const parts = url.split('/');
+        const formId = parts[2];
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+
+        // Find student name from mockStudents
+        const student = mockStudents.find((s) => s.id === body.studentId);
+
+        const newResponse = {
+          id: `r${mockFormResponses.length + 1}`,
+          formId,
+          studentId: body.studentId,
+          studentName: student ? student.name : 'Aluno Desconhecido',
+          answers: body.answers || {},
+          createdAt: new Date().toISOString(),
+        };
+        mockFormResponses.push(newResponse);
+
+        config.adapter = async () => ({
+          data: newResponse,
+          status: 201,
+          statusText: 'Created',
           headers: {},
           config,
         });

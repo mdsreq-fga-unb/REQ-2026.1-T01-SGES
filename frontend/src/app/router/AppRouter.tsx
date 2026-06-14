@@ -7,6 +7,7 @@ import { ResetPasswordPage } from '@/pages/ResetPasswordPage';
 import { DashboardPage } from '@/pages/DashboardPage';
 import { StudentsPage } from '@/pages/StudentsPage';
 import { AttendancePage } from '@/pages/AttendancePage';
+import { FormsPage } from '@/pages/FormsPage';
 import { DashboardLayout } from '@/widgets/DashboardLayout';
 
 export const AppRouter: React.FC = () => {
@@ -24,6 +25,7 @@ export const AppRouter: React.FC = () => {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/students" element={<StudentsPage />} />
             <Route path="/attendance" element={<AttendancePage />} />
+            <Route path="/forms" element={<FormsPage />} />
           </Route>
         </Route>
 

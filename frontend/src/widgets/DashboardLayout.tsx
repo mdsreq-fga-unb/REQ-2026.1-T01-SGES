@@ -20,6 +20,7 @@ import {
   Sun,
   Eye,
   Bell,
+  FileText,
 } from 'lucide-react';
 
 // --- Nav items per role ---
@@ -33,7 +34,7 @@ interface NavItem {
 
 const adminNav: NavItem[] = [
   { label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard', active: true },
-  { label: 'Instrutores', icon: Users, to: '#', active: false },
+  { label: 'Formulários', icon: FileText, to: '/forms', active: true },
   { label: 'Cadastros', icon: ClipboardList, to: '/students', active: true },
   { label: 'Relatórios', icon: BarChart3, to: '#', active: false },
   { label: 'Turmas', icon: BookOpen, to: '#', active: false },
@@ -41,7 +42,7 @@ const adminNav: NavItem[] = [
 
 const volunteerNav: NavItem[] = [
   { label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard', active: true },
-  { label: 'Minhas Turmas', icon: BookOpen, to: '#', active: false },
+  { label: 'Formulários', icon: FileText, to: '/forms', active: true },
   { label: 'Registro de Presença', icon: CalendarCheck, to: '/attendance', active: true },
 ];
 
