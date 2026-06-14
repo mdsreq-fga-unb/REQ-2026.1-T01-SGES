@@ -7,9 +7,9 @@ import { AuthProvider } from './app/providers/AuthProvider'
 import { ToastProvider } from './shared/components/Toast'
 import './index.css'
 
-// Inicializa mocks em ambiente de desenvolvimento
+// Inicializa mocks em ambiente de desenvolvimento se habilitados
 async function enableMocking() {
-  if (import.meta.env.DEV) {
+  if (import.meta.env.DEV && import.meta.env.VITE_ENABLE_MOCKS !== 'false') {
     const { setupMockApi } = await import('./mocks/handlers')
     setupMockApi()
   }

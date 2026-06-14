@@ -1,10 +1,10 @@
 .PHONY: up-test down-test test
 
 up-test:
-	docker-compose -f docker-compose-test.yml --project-name req-sges-test up -d
+	docker compose -f docker-compose-test.yml --project-name req-sges-test up -d
 
 down-test:
-	docker-compose -f docker-compose-test.yml --project-name req-sges-test down
+	docker compose -f docker-compose-test.yml --project-name req-sges-test down
 
 test:
 	@set -o allexport; \

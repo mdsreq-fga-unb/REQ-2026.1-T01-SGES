@@ -5,9 +5,9 @@ import type { ResetPasswordUseCase } from '@/application/usecases/reset-password
 
 export class ResetPasswordUsecaseZodValidator implements Validator<ResetPasswordUseCase.Input> {
   private schema = z.object({
-    email: z.email(),
+    email: z.string().email(),
     code: z.string().length(6),
-    newPassword: z.string().min(4).max(8),
+    newPassword: z.string().min(4).max(100),
   })
 
   async validate(input: ResetPasswordUseCase.Input): Promise<ResetPasswordUseCase.Input> {

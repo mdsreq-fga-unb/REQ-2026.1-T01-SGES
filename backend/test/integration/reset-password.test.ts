@@ -135,10 +135,10 @@ describe('POST /v1/auth/reset-password', () => {
     expect(res.body).toHaveProperty('errors')
   })
 
-  it('should return 400 if new password is longer than 8 characters', async () => {
+  it('should return 400 if new password is longer than 100 characters', async () => {
     const res = await request(api)
       .post('/v1/auth/reset-password')
-      .send({ email: TEST_EMAIL, code: VALID_CODE, newPassword: '123456789' })
+      .send({ email: TEST_EMAIL, code: VALID_CODE, newPassword: 'a'.repeat(101) })
 
     expect(res.status).toBe(400)
     expect(res.body).toHaveProperty('errors')

@@ -2,9 +2,8 @@
   "compilerOptions": {
       "types": [],
       "module": "ESNext",
-      "moduleResolution": "Node",
+      "moduleResolution": "Bundler",
       "target": "ES2020",
-      "baseUrl": ".",
       "outDir": "build",
       "esModuleInterop": true,
       "strict": true,
@@ -23,8 +22,7 @@
       "typeRoots": [],
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "strictPropertyInitialization": false,
-      "ignoreDeprecations": "6.0",
+      "strictPropertyInitialization": false
   },
   "include": ["src", "tests"],
   "exclude": ["node_modules"],
