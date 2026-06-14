@@ -1,6 +1,8 @@
 import { env } from '@/env'
 import { DataSource } from 'typeorm'
 import { UserEntity } from './entity/user-entity'
+import { StudentEntity } from './entity/student-entity'
+import { ClassEntity } from './entity/class-entity'
 import { CreateUsersTable1780757930000 } from './migrations/1780757930000-CreateUsersTable'
 import { AddResetCodeToUsers1780857930000 } from './migrations/1780857930000-AddResetCodeToUsers'
 import { FixResetCodeExpiresAtTimezone1780957930000 } from './migrations/1780957930000-FixResetCodeExpiresAtTimezone'
@@ -11,7 +13,7 @@ type Config = {
 
 const defaultConfig = {
   migrationsRun: true,
-  entities: [UserEntity],
+  entities: [UserEntity, StudentEntity, ClassEntity],
   migrations: [
     CreateUsersTable1780757930000,
     AddResetCodeToUsers1780857930000,
