@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Outlet, useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '@/app/providers/AuthProvider';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { useIdleTimer } from '@/shared/hooks/useIdleTimer';
 import { IdleTimerModal } from '@/shared/components/IdleTimerModal';
+import { notificationsApi, type NotificationDto } from '@/shared/api/notifications';
 import {
   Layers,
   LayoutDashboard,
@@ -18,6 +19,7 @@ import {
   Moon,
   Sun,
   Eye,
+  Bell,
 } from 'lucide-react';
 
 // --- Nav items per role ---
@@ -50,6 +52,48 @@ export const DashboardLayout: React.FC = () => {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showIdleModal, setShowIdleModal] = useState(false);
+  const [notifications, setNotifications] = useState<NotificationDto[]>([]);
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
+  const fetchNotifications = useCallback(async () => {
+    try {
+      const data = await notificationsApi.getAll();
+      setNotifications(data);
+    } catch (err) {
+      console.error('Failed to load notifications', err);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      fetchNotifications();
+      const interval = setInterval(fetchNotifications, 30000);
+      return () => clearInterval(interval);
+    }
+  }, [user, fetchNotifications]);
+
+  const unreadCount = notifications.filter((n) => !n.isRead).length;
+
+  const handleMarkAsRead = async (id: string) => {
+    try {
+      await notificationsApi.markAsRead(id);
+      setNotifications((prev) =>
+        prev.map((n) => (n.id === id ? { ...n, isRead: true } : n))
+      );
+    } catch (err) {
+      console.error('Failed to mark notification as read', err);
+    }
+  };
+
+  const handleMarkAllAsRead = async () => {
+    try {
+      const unread = notifications.filter((n) => !n.isRead);
+      await Promise.all(unread.map((n) => notificationsApi.markAsRead(n.id)));
+      setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })));
+    } catch (err) {
+      console.error('Failed to mark all as read', err);
+    }
+  };
 
   const navItems = user?.role === 'admin' ? adminNav : volunteerNav;
 
@@ -194,6 +238,77 @@ export const DashboardLayout: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-2">
+              {/* Notifications Bell */}
+              <div className="relative">
+                <button
+                  id="btn-notifications-toggle"
+                  onClick={() => setPopoverOpen(!popoverOpen)}
+                  className="p-2 rounded-lg border border-border hover:bg-muted/50 text-foreground transition-colors relative"
+                  title="Notificações"
+                >
+                  <Bell className="w-4 h-4" />
+                  {unreadCount > 0 && (
+                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white animate-pulse">
+                      {unreadCount}
+                    </span>
+                  )}
+                </button>
+
+                {popoverOpen && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-30"
+                      onClick={() => setPopoverOpen(false)}
+                    />
+                    <div className="absolute right-0 mt-2 w-80 bg-card rounded-xl border border-border shadow-xl z-40 max-h-96 overflow-y-auto">
+                      <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+                        <span className="font-semibold text-sm">Notificações</span>
+                        {unreadCount > 0 && (
+                          <button
+                            onClick={handleMarkAllAsRead}
+                            className="text-xs text-primary hover:underline font-medium"
+                          >
+                            Ler todas
+                          </button>
+                        )}
+                      </div>
+                      <div className="divide-y divide-border/50">
+                        {notifications.length === 0 ? (
+                          <div className="p-8 text-center text-sm text-muted-foreground">
+                            Nenhuma notificação por aqui.
+                          </div>
+                        ) : (
+                          notifications.map((n) => (
+                            <div
+                              key={n.id}
+                              onClick={() => handleMarkAsRead(n.id)}
+                              className={`p-4 transition-colors cursor-pointer hover:bg-muted/30 flex gap-3 ${
+                                !n.isRead ? 'bg-primary/5' : ''
+                              }`}
+                            >
+                              <div className="flex-1 min-w-0">
+                                <p className={`text-xs font-semibold ${!n.isRead ? 'text-foreground' : 'text-muted-foreground'}`}>
+                                  {n.title}
+                                </p>
+                                <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-3 leading-normal">
+                                  {n.message}
+                                </p>
+                                <p className="text-[9px] text-muted-foreground/60 mt-1">
+                                  {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                </p>
+                              </div>
+                              {!n.isRead && (
+                                <span className="h-2 w-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                              )}
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+
               {/* High contrast */}
               <button
                 id="btn-high-contrast"

@@ -47,6 +47,33 @@ const MOCK_USERS: MockUser[] = [
   },
 ];
 
+let mockNotifications = [
+  {
+    id: 'n1',
+    userId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // Carlos Gestor
+    title: 'Alerta de Limite de Faltas Próximo',
+    message: 'O estudante João Silva atingiu 2 faltas no curso Alfabetização. O limite máximo é de 3 faltas.',
+    isRead: false,
+    createdAt: new Date(Date.now() - 30 * 60000).toISOString(),
+  },
+  {
+    id: 'n2',
+    userId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // Carlos Gestor
+    title: 'Estudante Evadido por Faltas',
+    message: 'O estudante Lucas Medeiros atingiu o limite de 3 faltas no curso Alfabetização e foi marcado como evadido.',
+    isRead: false,
+    createdAt: new Date(Date.now() - 2 * 3600000).toISOString(),
+  },
+  {
+    id: 'n3',
+    userId: 'b2c3d4e5-f6a7-8901-bcde-f12345678901', // Maria Instrutora
+    title: 'Alerta de Limite de Faltas Próximo',
+    message: 'O estudante João Silva atingiu 2 faltas no curso Alfabetização. O limite máximo é de 3 faltas.',
+    isRead: false,
+    createdAt: new Date(Date.now() - 45 * 60000).toISOString(),
+  },
+];
+
 // Track the last successful login for /auth/me validation
 let currentLoggedUser: MockUser | null = null;
 
@@ -208,6 +235,48 @@ export function setupMockApi(): void {
             email: currentLoggedUser!.email,
             role: currentLoggedUser!.role,
           },
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+
+        return config;
+      }
+
+      // --- GET /notifications ---
+      if (url === '/notifications' && method === 'get') {
+        await delay(100);
+        const authHeader = config.headers?.Authorization as string | undefined;
+        if (!authHeader || !authHeader.startsWith('Bearer ') || !currentLoggedUser) {
+          throw createMockError(401, 'Token inválido ou expirado.', config);
+        }
+
+        const userNotifications = mockNotifications.filter((n) => n.userId === currentLoggedUser?.id);
+
+        config.adapter = async () => ({
+          data: userNotifications,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+
+        return config;
+      }
+
+      // --- PUT /notifications/:id/read ---
+      if (url.startsWith('/notifications/') && url.endsWith('/read') && method === 'put') {
+        await delay(100);
+        const parts = url.split('/');
+        const id = parts[2];
+        const notification = mockNotifications.find((n) => n.id === id);
+        if (notification) {
+          notification.isRead = true;
+        }
+
+        config.adapter = async () => ({
+          data: { success: true },
           status: 200,
           statusText: 'OK',
           headers: {},
