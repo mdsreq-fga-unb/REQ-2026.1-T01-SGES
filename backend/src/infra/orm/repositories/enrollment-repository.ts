@@ -37,6 +37,35 @@ export class EnrollmentTypeormRepository implements EnrollmentRepository {
     return { enrollments: entities.map((e) => this.toEnrollment(e)), total }
   }
 
+  async getFunnelData(classId?: string): Promise<{ entered: number; active: number; evaded: number; completed: number }> {
+    const repo = this.dataSource.getRepository(EnrollmentEntity)
+    const query = repo.createQueryBuilder('enrollment')
+      .select('enrollment.status', 'status')
+      .addSelect('COUNT(enrollment.id)', 'count')
+      .groupBy('enrollment.status')
+
+    if (classId) {
+      query.where('enrollment.class_id = :classId', { classId })
+    }
+
+    const results = await query.getRawMany()
+
+    let active = 0
+    let evaded = 0
+    let completed = 0
+
+    for (const row of results) {
+      const count = parseInt(row.count, 10)
+      if (row.status === EnrollmentStatus.ACTIVE) active = count
+      else if (row.status === EnrollmentStatus.EVADED) evaded = count
+      else if (row.status === EnrollmentStatus.COMPLETED) completed = count
+    }
+
+    const entered = active + evaded + completed
+
+    return { entered, active, evaded, completed }
+  }
+
   async save(data: Omit<Enrollment, keyof BaseDomain>): Promise<Enrollment> {
     const repo = this.dataSource.getRepository(EnrollmentEntity)
     const saved = await repo.save(repo.create(data))
