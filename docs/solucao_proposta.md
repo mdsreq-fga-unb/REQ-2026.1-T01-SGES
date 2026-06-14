@@ -154,7 +154,7 @@ Nem todos os impactos de uma intervenção social são pretendidos. Tendo isso e
 
 - **Dependência de voluntários para operar o sistema:**
 
-  A SEAS depende fortemente de trabalho voluntário, com alta rotatividade. Se o sistema exigir curva de aprendizagem longa ou processos burocráticos, há risco de abandono ou subutilização. Esse risco é abordado pelo **RNF01 (Facilidade de Aprendizado)** e justifica a priorização de usabilidade.
+  A SEAS depende fortemente de trabalho voluntário, com alta rotatividade. Se o sistema exigir curva de aprendizagem longa ou processos burocráticos, há risco de abandono ou subutilização. Esse risco é abordado pelo **RNF05 (Curva de Aprendizado)** e justifica a priorização de usabilidade.
 
 - **Mudança no papel dos instrutores:**
 
@@ -166,4 +166,4 @@ Nem todos os impactos de uma intervenção social são pretendidos. Tendo isso e
 
 - **Concentração de informação sensível:**
 
-  Ao centralizar dados de famílias em situação de vulnerabilidade, o SGES concentra informações sensíveis que, se mal gerenciadas, podem comprometer privacidade e segurança. Esse risco é reconhecido no **RNF02 (Segurança de Dados / LGPD)** e deve ser tratado como requisito de produto, não como detalhe de implementação.
+  Ao centralizar dados de famílias em situação de vulnerabilidade, o SGES concentra informações sensíveis que, se mal gerenciadas, podem comprometer privacidade e segurança. Esse risco é reconhecido nos **RNF01 (Criptografia Sensível)** e **RNF02 (Trilha de Auditoria)** e deve ser tratado como requisito de produto, não como detalhe de implementação.
