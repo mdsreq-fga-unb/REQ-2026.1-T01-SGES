@@ -6,6 +6,7 @@ import { ClassEntity } from './entity/class-entity'
 import { InstructorHistoryEntity } from './entity/instructor-history-entity'
 import { NotificationEntity } from './entity/notification-entity'
 import { FormEntity, FormResponseEntity } from './entity/form-entity'
+import { AttendanceEntity } from './entity/attendance-entity'
 import { CreateUsersTable1780757930000 } from './migrations/1780757930000-CreateUsersTable'
 import { AddResetCodeToUsers1780857930000 } from './migrations/1780857930000-AddResetCodeToUsers'
 import { FixResetCodeExpiresAtTimezone1780957930000 } from './migrations/1780957930000-FixResetCodeExpiresAtTimezone'
@@ -16,7 +17,7 @@ type Config = {
 
 const defaultConfig = {
   migrationsRun: true,
-  entities: [UserEntity, StudentEntity, ClassEntity, InstructorHistoryEntity, NotificationEntity, FormEntity, FormResponseEntity],
+  entities: [UserEntity, StudentEntity, ClassEntity, InstructorHistoryEntity, NotificationEntity, FormEntity, FormResponseEntity, AttendanceEntity],
   migrations: [
     CreateUsersTable1780757930000,
     AddResetCodeToUsers1780857930000,
