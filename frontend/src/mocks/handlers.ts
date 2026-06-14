@@ -431,6 +431,36 @@ export function setupMockApi(): void {
         return config;
       }
 
+      // --- GET /reports/funnel ---
+      if (url.startsWith('/reports/funnel') && method === 'get') {
+        await delay(150);
+        const params = new URLSearchParams(url.split('?')[1] || '');
+        const semester = params.get('semester') || '2026.1';
+
+        const data = semester === '2026.1'
+          ? {
+              entered: 120,
+              active: 80,
+              evaded: 15,
+              completed: 25,
+            }
+          : {
+              entered: 95,
+              active: 0,
+              evaded: 12,
+              completed: 83,
+            };
+
+        config.adapter = async () => ({
+          data,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
       // All other requests pass through normally
       return config;
     },
