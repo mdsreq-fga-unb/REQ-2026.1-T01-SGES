@@ -219,6 +219,19 @@ function createMockError(status: number, message: string, config: InternalAxiosR
   return error;
 }
 
+// Helper para obter o token de autenticação de forma resiliente
+function getAuthToken(config: InternalAxiosRequestConfig): string | null {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const localToken = window.localStorage.getItem('sges_token');
+    if (localToken) return localToken;
+  }
+  const authHeader = config.headers?.Authorization as string | undefined;
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    return authHeader.substring(7);
+  }
+  return null;
+}
+
 /**
  * Instala os interceptors de mock no apiClient.
  * O interceptor intercepta requisições ANTES de elas saírem pela rede,
@@ -230,6 +243,18 @@ export function setupMockApi(): void {
     async (config: InternalAxiosRequestConfig) => {
       const url = config.url || '';
       const method = (config.method || 'get').toLowerCase();
+
+      // Restaurar sessão do mock do localStorage ou padrão se houver token Bearer
+      const token = getAuthToken(config);
+      if (!currentLoggedUser && token) {
+        const savedUserId = typeof window !== 'undefined' ? window.localStorage.getItem('sges_mock_user_id') : null;
+        if (savedUserId) {
+          currentLoggedUser = MOCK_USERS.find((u) => u.id === savedUserId) || null;
+        }
+        if (!currentLoggedUser) {
+          currentLoggedUser = MOCK_USERS[0]; // Padrão: Admin
+        }
+      }
 
       // --- POST /auth/login ---
       if (url === '/auth/login' && method === 'post') {
@@ -264,6 +289,9 @@ export function setupMockApi(): void {
         // Success
         failedAttempts = 0;
         currentLoggedUser = user;
+        if (typeof window !== 'undefined' && window.localStorage) {
+          window.localStorage.setItem('sges_mock_user_id', user.id);
+        }
 
         // Return adapter response that skips the actual HTTP request
         config.adapter = async () => ({
@@ -324,6 +352,9 @@ export function setupMockApi(): void {
       if (url === '/auth/logout' && method === 'post') {
         await delay(100);
         currentLoggedUser = null;
+        if (typeof window !== 'undefined' && window.localStorage) {
+          window.localStorage.removeItem('sges_mock_user_id');
+        }
 
         config.adapter = async () => ({
           data: null,
@@ -340,8 +371,8 @@ export function setupMockApi(): void {
       if (url === '/auth/me' && method === 'get') {
         await delay(200);
 
-        const authHeader = config.headers?.Authorization as string | undefined;
-        if (!authHeader || !authHeader.startsWith('Bearer ') || !currentLoggedUser) {
+        const token = getAuthToken(config);
+        if (!token || !currentLoggedUser) {
           throw createMockError(401, 'Token inválido ou expirado.', config);
         }
 
@@ -364,8 +395,8 @@ export function setupMockApi(): void {
       // --- GET /notifications ---
       if (url === '/notifications' && method === 'get') {
         await delay(100);
-        const authHeader = config.headers?.Authorization as string | undefined;
-        if (!authHeader || !authHeader.startsWith('Bearer ') || !currentLoggedUser) {
+        const token = getAuthToken(config);
+        if (!token || !currentLoggedUser) {
           throw createMockError(401, 'Token inválido ou expirado.', config);
         }
 
