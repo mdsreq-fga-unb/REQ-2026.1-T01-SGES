@@ -1,125 +1,141 @@
 # 4. Engenharia de Requisitos
 
-## 4.1. Atividades e Técnicas da ER e ScrumXP
+## 4.1. Atividades e Técnicas da ER
 
-### Planejamento da Release
+## Processo de Engenharia de Requisitos
 
-#### Elicitação e Descoberta
+### Elicitação e Descoberta
 
-Entrevistas: Realizadas com a Vice-presidente e diretores da instituição para compreender os gargalos causados pela gestão manual em cadernos e planilhas, focando na necessidade de centralização de dados das famílias e alunos.
+A etapa de elicitação e descoberta tem como objetivo compreender o contexto da instituição, identificar problemas, necessidades, restrições e expectativas dos stakeholders.
 
-Brainstorming: Sessões e mensagens com a diretoria para discutir funcionalidades necessárias e o grau de prioridade.
+### Entrevistas
 
-#### Análise e Consenso
+Serão utilizadas entrevistas com gestores e voluntários da instituição para compreender os processos atuais, dificuldades operacionais e necessidades relacionadas ao gerenciamento das informações.
 
-Análise de Custo / Benefício: Avaliação da viabilidade financeira e a busca por tecnologias de baixo custo (como nuvem gratuita) para garantir que o sistema seja sustentável para a instituição a longo prazo.
+### Observação
 
-#### Declaração
-
-Temas, Épicos e User Stories: Organização dos requisitos em grandes blocos, como "Gestão de Alunos" e "Controle de Frequência", facilitando a visão macro do impacto social que o SGES trará.
-
-#### Verificação e Validação
-
-Prototipação de Baixa Fidelidade: Validar com a diretoria se a visão macro dos Épicos atende às expectativas de negócio antes de iniciar as sprints.
-
-#### Organização e Atualização
-
-Priorização MoSCoW: Utilizada para definir o MVP por exemplo: o cadastro de beneficiários e a chamada digital são fundamentais (Must have), enquanto dashboards avançados podem ser desenvolvidos em etapas posteriores (Should/Could have).
+A equipe realizará observação dos processos utilizados pela instituição, analisando como ocorre atualmente o registro de frequência, organização de turmas e acompanhamento dos alunos.
 
 ---
 
-### Planejamento da Sprint
+## Análise e Consenso
 
-Realizado pela Equipe de Desenvolvimento e o Cliente que define as prioridades.
+Essa etapa busca refinar os requisitos elicitados, reduzir ambiguidades e alinhar diferentes perspectivas dos stakeholders.
 
-#### Elicitação e Descoberta
+### Entrevistas de Refinamento
 
-Entrevistas: Conversas e mensagens com os professores voluntários para entender como eles realizam as atividades hoje e quais são as maiores dificuldades.
+Reuniões com os stakeholders serão realizadas para esclarecer dúvidas, validar necessidades e alinhar expectativas sobre a solução.
 
-Análise Documental: Revisão dos modelos de cadernos e planilhas atuais para garantir que todos os campos necessários sejam migrados para o digital.
+### Análise de Domínio
 
-#### Análise e Consenso
+Será utilizada para compreender regras de negócio, identificar inconsistências e estruturar melhor os requisitos do sistema.
 
-Discussões em Equipe: Reuniões técnicas para definir como centralizar dados dispersos em um único banco de dados sem perder a integridade das informações históricas.
+### Priorização de Requisitos
 
-Análise de Tarefas: Detalhamento das atividades necessárias para criar interfaces simples, focando na usabilidade para voluntários com pouca familiaridade tecnológica.
+Os requisitos serão analisados e priorizados conforme impacto, viabilidade e valor para a instituição.
 
-#### Declaração
+### Feedback Contínuo
 
-Critérios de Aceitação: Regras que determinam quando uma história está concluída.
-
-#### Verificação e Validação
-
-Definição de Preparado (DoR): Garante que o requisito está claro, testável e sem ambiguidades antes de entrar no desenvolvimento.
-
-#### Organização e Atualização
-
-Grooming do Backlog: Refinamento contínuo das prioridades junto à Vice-presidente para garantir que o desenvolvimento esteja alinhado às urgências da instituição.
+O feedback dos stakeholders será utilizado constantemente para validar decisões e ajustar requisitos ao longo do projeto.
 
 ---
 
-### Execução da Sprint
+## Declaração de Requisitos
 
-#### Representação
+A declaração de requisitos tem como objetivo documentar os requisitos de forma clara, organizada e rastreável.
 
-Protótipos e Wireframes: Criação de telas simples e intuitivas para a chamada digital, permitindo que a equipe visualize a facilidade de uso antes de implementar o código final.
+### Documento de Visão
 
-#### Verificação e Validação
+Será utilizado para consolidar os objetivos do projeto, stakeholders, oportunidades, desafios e visão geral da solução.
 
-Critérios de INVEST: Verificação se as histórias de usuário são valiosas e testáveis.
+### Backlog do Produto
 
-Revisão do Backlog (DEEP): Constante para garantir que o Backlog está detalhado, estimado, emergente e priorizado.
-
-#### Organização e Atualização
-
-Atualização do Quadro de Tarefas: Gestão do progresso dos requisitos durante a execução.
+Os requisitos serão organizados em um backlog priorizado, permitindo gerenciamento contínuo das funcionalidades.
 
 ---
 
-### Revisão da Sprint
+## Representação de Requisitos
 
-#### Verificação e Validação
+A representação auxilia na comunicação e validação das funcionalidades junto aos stakeholders.
 
-Coleta de Feedback: Demonstração das funcionalidades prontas para os diretores e professores, coletando percepções reais sobre a usabilidade do sistema no dia a dia.
+### Protótipos
 
-#### Análise e Consenso
+Serão utilizados protótipos de baixa e alta fidelidade para representar interfaces e validar funcionalidades antes da implementação.
 
-Negociação: Planejamento de mudanças baseadas no feedback.
+### Diagramas
 
-#### Declaração
+Diagramas de processos, arquitetura e modelagem auxiliarão na compreensão técnica e organizacional da solução.
 
-Ajuste das User Stories: Ajuste das User Stories com base no que foi testado pelos voluntários, priorizando correções que facilitem a adoção do sistema.
+### Fluxos de Navegação
+
+Representarão como os usuários irão interagir com o sistema.
 
 ---
 
-### Retrospectiva da Sprint
+# Verificação e Validação de Requisitos
 
-#### Verificação e Validação
+Essa etapa busca garantir que os requisitos estejam corretos, completos, consistentes e alinhados às necessidades da instituição.
 
-Feedback: Avaliação interna da equipe de desenvolvimento sobre o que funcionou na comunicação com a instituição filantrópica e onde houve falhas de entendimento.
+## Definition of Ready (DoR)
 
-## 4.2. ScrumXP e Tabela
+Um requisito será considerado pronto para desenvolvimento apenas quando estiver claramente descrito, possuir critérios de aceitação definidos e estiver alinhado aos objetivos do projeto.
 
-| Fases do Processo           | Atividades ER             | Prática                    | Técnica                                         | Resultado Esperado                                                                              |
-| :-------------------------- | :------------------------ | :------------------------- | :---------------------------------------------- | :---------------------------------------------------------------------------------------------- |
-| **Planejamento da Release** | Elicitação e Descoberta   | Levantamento de Requisitos | Entrevistas (VP e Diretores) e Brainstorming    | Identificação de gargalos (gestão manual) e necessidade de centralização de dados.              |
-|                             | Análise e Consenso        | Priorização e Viabilidade  | Priorização MoSCoW e Análise de Custo/Benefício | Definição do MVP e busca por tecnologias que garantam a sustentabilidade financeira do projeto. |
-|                             | Declaração                | Registro de Requisitos     | Temas, Épicos e User Stories                    | Organização do backlog em grandes blocos (ex: Gestão de Alunos).                                |
-|                             | Verificação e Validação   | Validação de Negócio       | Prototipação de Baixa Fidelidade                | Confirmação de que a visão macro dos Épicos atende às expectativas da diretoria.                |
-|                             | Organização e Atualização | Estruturação Temporal      | Mapa da Release                                 | Backlog da release visível, categorizado e cronograma estruturado.                              |
-| **Planejamento da Sprint**  | Elicitação e Descoberta   | Refinamento Operacional    | Entrevistas (Professores) e Análise Documental  | Mapeamento de campos dos cadernos/planilhas para migração digital.                              |
-|                             | Análise e Consenso        | Análise Técnica e de Uso   | Discussões em Equipe e Análise de Tarefas       | Definição da integridade do banco de dados e foco na usabilidade para voluntários.              |
-|                             | Declaração                | Definição de Regras        | Critérios de Aceitação                          | Regras claras para determinar quando uma história está concluída.                               |
-|                             | Verificação e Validação   | Garantia de Prontidão      | Definition of Ready (DoR)                       | Requisitos claros, testáveis e sem ambiguidades antes do desenvolvimento.                       |
-|                             | Organização e Atualização | Alinhamento de Urgências   | Refinamento Contínuo do Backlog                 | Backlog detalhado e priorizado conforme as necessidades imediatas da instituição.               |
-| **Execução da Sprint**      | Representação             | Modelagem de Interface     | Protótipos e Esboços Simples                    | Visualização da facilidade de uso da chamada digital através de desenhos simplificados.         |
-|                             | Verificação e Validação   | Qualidade dos Requisitos   | Critérios INVEST e Revisão DEEP                 | Garantia de que as histórias são valiosas, pequenas, estimadas e testáveis.                     |
-|                             | Organização e Atualização | Gestão de Progresso        | Atualização do Quadro de Tarefas                | Monitoramento em tempo real do progresso dos requisitos em execução.                            |
-| **Revisão da Sprint**       | Verificação e Validação   | Homologação com Usuário    | Coleta de Feedback e Demonstração               | Validação da usabilidade real com diretores e professores voluntários.                          |
-|                             | Declaração                | Refinamento Pós-Teste      | Ajuste de User Stories                          | Histórias corrigidas e priorizadas para facilitar a adoção do sistema.                          |
-| **Retrospectiva da Sprint** | Análise e Organização     | Avaliação Interna          | Discussões em Grupo                             | Identificação de falhas de comunicação e pontos positivos na interação.                         |
-|                             | Atualização do Processo   | Melhoria Contínua          | Atualização do Workflow                         | Ajuste no processo de trabalho para superar dificuldades técnicas.                              |
-| **Próxima Release**         | Elicitação e Descoberta   | Expansão de Escopo         | Análise de Domínio e Workshops                  | Identificação de novas necessidades (ex: relatórios para doadores).                             |
-|                             | Análise e Consenso        | Priorização Estratégica    | MoSCoW e Mapeamento de Valor                    | Definição de funcionalidades de alto impacto (ex: Dashboards analíticos).                       |
-|                             | Verificação e Validação   | Refinamento de Maturidade  | Critérios DEEP e INVEST                         | Garantia de que novos itens estão prontos para as futuras sprints.                              |
-|                             | Organização e Atualização | Manutenção de Ativos       | Roadmap e Estruturação de Diretórios            | Cronograma atualizado e documentação versionada (GitHub Pages).                                 |
+### Para um requisito ser considerado _Ready_:
+
+- Possui descrição clara?
+- Possui critérios de aceitação?
+- Está associado a um objetivo específico?
+- Foi compreendido pela equipe?
+- Possui prioridade definida?
+
+---
+
+## Definition of Done (DoD)
+
+Uma funcionalidade será considerada concluída apenas após implementação, testes e validação pelos membros da equipe e stakeholders.
+
+### Para um requisito ser considerado _Done_:
+
+- A funcionalidade foi implementada?
+- Os critérios de aceitação foram atendidos?
+- A funcionalidade foi validada pela equipe?
+- O requisito entrega valor ao usuário?
+- A documentação necessária foi atualizada?
+
+---
+
+## Práticas de Qualidade e Alinhamento
+
+### Revisão em Pares
+
+Os requisitos e implementações serão revisados entre os membros da equipe para garantir maior qualidade e consistência.
+
+### Feedback com Stakeholders
+
+As entregas serão apresentadas ao cliente ao final das sprints para validação contínua da solução.
+
+### Análise de Viabilidade
+
+Será realizada para garantir que os requisitos sejam compatíveis com a realidade técnica e operacional da instituição.
+
+---
+
+# Organização e Atualização dos Requisitos
+
+Essa etapa busca manter os requisitos organizados, atualizados e priorizados ao longo do projeto.
+
+
+### Backlog do Produto
+
+Será continuamente atualizado conforme feedbacks e evolução do projeto.
+
+---
+
+## 4.2. OpenUP e Tabela
+
+| Fases do Processo         | Atividades ER                                                                                                      | Prática                                                                                                                                                          | Técnica                                                                                           | Resultado Esperado                                                                                                                                                                                                                                                                 |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Concepção (Inception)** | • Elicitação e Descoberta<br>• Declaração                                                                          | • Reuniões com stakeholders e Observação dos processos atuais<br>• Definição do escopo inicial                                                                   | • Entrevistas e Observação<br>• Documento de Visão                                                | • Levantamento inicial das necessidades e problemas da instituição<br>• Definição dos objetivos e escopo                                                                                                                                                                           |
+| **Elaboração**            | • Análise e Consenso<br>• Elicitação de requisitos<br>• Representação de Requisitos<br>• Organização de Requisitos | • Refinamento de Requisitos<br>• Análise de Dependências<br>• Construção de protótipos<br>• Priorização do backlog                                               | • Análise de domínio<br>• Discussões em Equipe e Análise de Tarefas<br>• Prototipação<br>• MoSCoW | • Redução de ambiguidades e inconsistências, Requisitos mais consistentes<br>• Definição técnica da centralização dos dados e foco na usabilidade para voluntários.<br>• Validação inicial das funcionalidades e interfaces<br>• Definição das funcionalidades prioritárias do MVP |
+| **Construção**            | • Refinamento<br>• Verificação e Validação<br>• Organização e Atualização                                          | • Desenvolvimento incremental<br>• Revisão de requisitos implementados<br>• Atualização contínua do backlog e Ajuste dos requisitos conforme evolução do projeto | • User Stories<br>• Definition of Done (DoD)<br>• Feedback contínuo                               | • Implementação contínua das funcionalidades<br>• Funcionalidades validadas e prontas para entrega                                                                                                                                                                                 |
+| **Transição**             | • Validação final                                                                                                  | • Demonstração para stakeholders                                                                                                                                 | • Feedback                                                                                        | • Aprovação e validação da solução                                                                                                                                                                                                                                                 |

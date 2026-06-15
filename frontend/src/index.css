@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 204 100% 99%; /* Azul pastel extremamente claro, quase branco (paz e calma) */
+    --foreground: 210 80% 12%; /* Azul escuro suave para contraste de leitura */
+
+    --muted: 204 30% 96%; /* Cinza-azul suave para elementos de menor destaque */
+    --muted-foreground: 210 20% 45%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 80% 12%;
+
+    --card: 0 0% 100%; /* Fundo dos cards em branco puro */
+    --card-foreground: 210 80% 12%;
+
+    --border: 204 20% 90%; /* Bordas em azul claro acinzentado suave */
+    --input: 204 20% 90%;
+
+    --primary: 200 95% 42%; /* Azul médio calmo (tom céu/oceano) */
+    --primary-foreground: 210 40% 99%;
+
+    --secondary: 204 60% 94%; /* Azul claro suave para destaque secundário */
+    --secondary-foreground: 200 95% 25%;
+
+    --accent: 198 90% 92%; /* Azul claro brilhante e calmo para hovers e ativações */
+    --accent-foreground: 200 95% 20%;
+
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 200 95% 42%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 222.2 47.4% 11.2%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 217.2 91.2% 59.8%;
+  }
+
+  /* High Contrast Accessibility Class */
+  .high-contrast {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+
+    --primary: 240 100% 50%; /* pure blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 0 0% 0%;
+
+    --accent: 60 100% 50%; /* pure yellow */
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 100% 50%; /* pure red */
+    --destructive-foreground: 0 0% 100%;
+
+    --ring: 240 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom animations for toasts and modals */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+

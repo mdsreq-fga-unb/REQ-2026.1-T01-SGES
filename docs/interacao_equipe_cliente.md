@@ -1,6 +1,6 @@
-# 7. Interação Equipe e Cliente
+# 8. Interação Equipe e Cliente
 
-## 7.1. Composição da Equipe
+## 8.1. Composição da Equipe
 
 | Papel                  | Descrição                                                                                                                         | Responsável     | Participantes           |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------------- |
@@ -11,7 +11,7 @@
 | Prototipação           | Definições das interfaces que servem como base para o desenvolvimento e identificação dos problemas dos clientes de forma visual. | Matheus Eiki    | Guilherme               |
 | Analista de Requisitos | Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos                                    | Guilherme       | Gabriel P               |
 
-## 7.2. Comunicação e Reuniões
+## 8.2. Comunicação e Reuniões
 
 ### Ferramentas de Comunicação
 
@@ -41,7 +41,7 @@
 
 - **Planejamento da Sprint:** Após o planejamento de cada sprint, será enviado via email para o cliente, um informativo indicando um conjunto de funcionalidades que serão desenvolvidas ao longo da sprint seguinte, com o intuito de validar e alinhar expectativas.
 
-## 7.3. Processo de Validação
+## 8.3. Processo de Validação
 
 O processo de validação da solução será realizado em três etapas principais:
 
@@ -49,30 +49,4 @@ Para iniciar o desenvolvimento de uma funcionalidade, será utilizado o **Defini
 
 Durante o desenvolvimento, será aplicado o **Definition of Done (DoD)**, no qual a funcionalidade será considerada pronta apenas após passar por validações técnicas e funcionais, incluindo testes básicos, verificação de funcionamento e avaliação de usabilidade, garantindo que a solução seja adequada ao contexto dos usuários.
 
-Após a validação interna, o incremento será apresentado aos stakeholders ao final de cada sprint, para **validação por meio de feedback contínuo**. Nessa etapa, os usuários irão verificar se as funcionalidades atendem às suas necessidades, permitindo ajustes e refinamentos antes das próximas iterações.## 7.4. Lições Aprendidas
-
-Ao longo do desenvolvimento do projeto, a equipe identificou aprendizados importantes sobre processo, relacionamento com o cliente e organização da comunicação. Esses pontos ajudaram a ajustar a condução do trabalho e a reduzir riscos para as próximas entregas.
-
-## 1. Compreensão do processo de desenvolvimento
-
-**Desafio:** No início, houve dificuldade para definir a melhor abordagem de trabalho, especialmente porque não existe uma única solução ideal em Engenharia de Software.
-
-**Ação de melhoria:** A equipe passou a adotar uma postura mais flexível e adaptativa, aprofundando o estudo sobre processos, metodologias e impacto dos requisitos antes de tomar decisões.
-
-## 2. Definição e dependência do cliente
-
-**Desafio:** A definição tardia do cliente aumentou os riscos do projeto, dificultando o início da comunicação e podendo comprometer a continuidade caso houvesse necessidade de substituição.
-
-**Ação de melhoria:** A equipe passou a considerar múltiplos possíveis clientes e a manter alternativas viáveis, aumentando a segurança e a estabilidade do processo.
-
-## 3. Comunicação e disponibilidade do cliente
-
-**Desafio:** Houve demora nas respostas e dificuldade para alinhar horários de reunião. Em alguns momentos, as reuniões também ficaram pouco objetivas, com repetição de pontos já definidos.
-
-**Ação de melhoria:** A equipe passou a buscar encontros mais diretos e objetivos, além de propor canais de comunicação mais ágeis para acelerar o retorno e facilitar o alinhamento.
-
-## 4. Organização da troca de informações
-
-**Desafio:** A comunicação inicial com o cliente foi pouco eficiente, o que dificultou a circulação de informações e atrasou algumas definições.
-
-**Ação de melhoria:** Foi sugerida a criação de um canal de comunicação direto entre equipe e cliente, com o objetivo de agilizar o contato, facilitar esclarecimentos e apoiar o processo de validação.
+Após a validação interna, o incremento será apresentado aos stakeholders ao final de cada sprint, para **validação por meio de feedback contínuo**. Nessa etapa, os usuários irão verificar se as funcionalidades atendem às suas necessidades, permitindo ajustes e refinamentos antes das próximas iterações.

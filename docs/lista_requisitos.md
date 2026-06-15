@@ -1,71 +1,56 @@
-# 5. Lista de Requisitos
+# Documentação de Requisitos de Software
 
-| ID       | Nome do Requisito (Verbo Infinitivo \+ Objeto) |
-| :------- | :--------------------------------------------- |
-| **RF01** | Cadastrar aluno                                |
-| **RF02** | Editar aluno                                   |
-| **RF03** | Consultar aluno                                |
-| **RF04** | Excluir aluno                                  |
-| **RF05** | Cadastrar voluntário                           |
-| **RF06** | Editar voluntário                              |
-| **RF07** | Consultar voluntário                           |
-| **RF08** | Excluir voluntário                             |
-| **RF09** | Criar turma                                    |
-| **RF10** | Editar turma                                   |
-| **RF11** | Excluir turma                                  |
-| **RF12** | Vincular instrutor à turma                     |
-| **RF13** | Matricular aluno em turma                      |
-| **RF14** | Registrar presença de alunos na chamada        |
-| **RF15** | Gerar relatório de evasão de alunos            |
-| **RF16** | Exportar relatórios em PDF ou Excel            |
-| **RF17** | Visualizar indicadores no Dashboard            |
-| **RF18** | Emitir alertas de baixa frequência.            |
-| **RF19** | Autenticar usuário no Login                    |
-| **RF20** | Gerenciar permissões de acesso                 |
-| **RF21** | Emitir alerta de aniversariante                |
-| **RF22** | Remover matrícula de aluno                     |
-| **RF23** | Remover voluntário de uma turma                |
-| **RF24** | Consultar histórico de presença                |
+## 5.1. Características do Produto (CP)
 
-| ID        | Nome                               | Descrição                                                                                                                                                                                                                      | Classificação (FURPS+)   | Classificação (Sommerville)             |
-| :-------- | :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------- | :-------------------------------------- |
-| **RNF01** | **Facilidade de Aprendizado**      | Um usuário com perfil administrativo deve ser capaz de realizar o fluxo completo de "Matricular aluno em turma" (RF13) em **no máximo 10 minutos** na primeira tentativa, utilizando apenas o guia de ajuda rápida do sistema. | Usabilidade              | Requisito de Produto (Usabilidade)      |
-| **RNF02** | **Segurança de Dados**             | O sistema deve criptografar senhas e restringir acesso a dados sensíveis conforme a LGPD.                                                                                                                                      | Suportabilidade          | Requisito Externo (Segurança)           |
-| **RNF03** | **Tempo de Resposta**              | O carregamento de páginas e consultas deve ocorrer em no máximo 2 segundos.                                                                                                                                                    | Desempenho               | Requisito de Produto (Eficiência)       |
-| **RNF04** | **Responsividade**                 | A interface deve ser adaptável para uso em dispositivos móveis e tablets.                                                                                                                                                      | Usabilidade              | Requisito de Produto (Portabilidade)    |
-| **RNF05** | **Disponibilidade**                | O sistema deve estar operacional durante 99% do horário comercial.                                                                                                                                                             | Confiabilidade           | Requisito de Produto (Disponibilidade)  |
-| **RNF06** | **Baixo Custo**                    | A solução deve priorizar tecnologias de baixo custo para manter a viabilidade financeira.                                                                                                                                      | \+ (Restrição Econômica) | Requisito Organizacional                |
-| **RNF07** | **Manutenibilidade**               | O sistema deve ser desenvolvido de forma modular para facilitar correções e evolução futura.                                                                                                                                   | Suportabilidade          | Requisito de Produto (Manutenibilidade) |
-| **RNF08** | **Confiabilidade das Informações** | O sistema deve garantir integridade e consistência dos dados cadastrados e registrados.                                                                                                                                        | Reliability              | Requisito de Produto (Confiabilidade)   |
-| **RNF09** | **Escalabilidade**                 | O sistema deve suportar aumento gradual no número de usuários, turmas e registros sem perda significativa de desempenho.                                                                                                       | Performance              | Requisito de Produto (Escalabilidade)   |
+Para garantir a rastreabilidade estrutural do sistema, os requisitos funcionais e não funcionais foram mapeados de acordo com os seguintes módulos ou Características do Produto (CP):
 
-# Tabela nova com a rastreabilidade:
+- **CP1 - Segurança e Controle de Acessos:** Autenticação, perfis, logs e adequação à LGPD.
+- **CP2 - Gestão de Instrutores:** Cadastro e controle da equipe de instrução e trabalho da instituição.
+- **CP3 - Cadastro Sociodemográfico:** Informações demográficas de beneficiários.
+- **CP4 - Frequência e Engajamento:** Gestão de oficinas, matrículas e chamadas.
+- **CP5 - Monitoramento de Evasão:** Gatilhos, alertas e registro de intervenções sociais.
+- **CP6 - Relatórios e Transparência:** Extração de dados, impacto social e prestação de contas.
+- **CP7 - Arquitetura e Performance:** Requisitos de infraestrutura, usabilidade e disponibilidade.
 
-##
+---
 
-| ID   | Nome do Requisito (Verbo \+ Objeto)          | Rastreabilidade (Origem)            | Observações para Critérios de Aceite                                                                             | Valor | Complexidade |
-| :--- | :------------------------------------------- | :---------------------------------- | :--------------------------------------------------------------------------------------------------------------- | :---- | :----------- |
-| RF01 | Gerenciar perfis de alunos                   | CP1 \- Gestão de Cadastros          | Engloba as operações de criar, ler, atualizar e desativar cadastros de alunos. Inclui filtros por nome e status. | Alto  | Baixo        |
-| RF02 | Gerenciar perfis de voluntários              | CP1 \- Gestão de Cadastros          | Controle administrativo do corpo voluntário. Parâmetros de busca por área e disponibilidade.                     | Alto  | Baixo        |
-| RF03 | Gerenciar turmas de atividades               | CP2 \- Controle de Grupos           | Estruturação de cursos e oficinas. Permite definir horários e capacidades.                                       | Alto  | Baixo        |
-| RF04 | Gerenciar alocações em turmas                | CP2 \- Controle de Grupos           | Vinculação de instrutores às turmas e matrícula de alunos.                                                       | Alto  | Baixo        |
-| RF05 | Registrar frequência de alunos               | CP3 \- Monitoramento de Assiduidade | Lançamento diário de presença/falta realizado pelos instrutores no sistema.                                      | Alto  | Baixo        |
-| RF06 | Consultar histórico de assiduidade           | CP3 \- Monitoramento de Assiduidade | Acesso ao registro histórico. Filtros por aluno, turma ou intervalo de datas.                                    | Baixo | Baixo        |
-| RF07 | Emitir alertas de aniversariantes            | CP4 \- Módulo de Relacionamento     | Notificação automática para a equipe interna sobre aniversariantes (alunos) do dia ou mês.                       | Baixo | Baixo        |
-| RF08 | Visualizar painel de indicadores (Dashboard) | CP5 \- Visão Analítica              | Exibição de métricas de desempenho organizacional. Parâmetros de recortes temporais.                             | Alto  | Alto         |
-| RF09 | Importar base de dados legada                | CP6 \- Integração de Dados Legados  | Capacidade de carregar dados históricos de planilhas externas para o sistema.                                    | Alto  | Alto         |
-| RF10 | Consultar trajetória temporal do aluno       | CP7 \- Histórico de Trajetória      | Visualização cronológica consolidada de todas as participações e evoluções de um aluno na instituição.           | Baixo | Baixo        |
-| RF11 | Gerar relatórios gerenciais consolidados     | CP8 \- Consolidação de Informações  | Emissão de documentos para prestação de contas. Filtros por evasão, matrículas e frequência.                     | Alto  | Alto         |
-| RF12 | Detectar padrão de risco de evasão           | CP9 \- Identificação de Evasão      | Algoritmo que identifica automaticamente alunos com baixa frequência recorrente.                                 | Alto  | Alto         |
-| RF13 | Exportar lista de contatos para comunicados  | CP10 \- Comunicação Ativa           | Extração de dados de contato (e-mail/telefone) filtrados por grupos para comunicação externa.                    | Baixo | Alto         |
-| RF14 | Autenticar usuário no sistema                | CP11 \- Gestão de Permissões        | Segurança de acesso via login e senha para coordenadores e voluntários.                                          | Alto  | Baixo        |
-| RF15 | Gerar níveis de acesso                       | CP11 \- Gestão de Permissões        | Atribuição de papéis (roles) para restringir funcionalidades conforme o perfil administrativo.                   | Baixo | Baixo        |
-| RF16 | Exportar dados processados                   | CP12 \- Portabilidade de Dados      | Extração de informações em formatos abertos (CSV, Excel, PDF) para uso em ferramentas externas.                  | Alto  | Alto         |
+## 5.2. Requisitos Funcionais (RF)
 
-##
+| ID       | Requisito (Verbo + Objeto)          | Ator          | Descrição do Requisito                                                                                                                | Métrica de Validação (Critério de Aceite)                                                                                              | Característica do Produto (CP)        |
+| :------- | :---------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------ |
+| **RF01** | Autenticar usuário                  | Todos         | Validar credenciais para o controle de acesso primário ao sistema, bloqueando a conta após 5 tentativas falhas consecutivas.          |  • **CA01-01:** Login válido gera token de acesso.<br>• **CA01-02:** Após 5 tentativas inválidas, a conta é bloqueada e a tentativa é registrada no log de segurança.| CP1 - Segurança e Controle de Acessos |
+| **RF02** | Redefinir senha de acesso           | Todos         | Enviar link seguro com token temporário que expira em 15 minutos para recuperação de senha, garantindo autonomia.                     | • **CA02-01:** E-mail enviado em até 1 minuto.<br>• **CA02-02:** Token de redefinição expira após 15 minutos.<br>• **CA02-03:** Token expirado retorna erro no sistema.                                                                            | CP1 - Segurança e Controle de Acessos |
+| **RF03** | Encerrar sessão                     | Todos         | Invalidar o token JWT do usuário ativo para prevenir o uso não autorizado em terminais compartilhados.                                | • **CA03-01:** Token de sessão invalidado após o logout.<br>• **CA03-02:** Requisições com credenciais antigas retornam erro de não autorizado (401).                                                                                              | CP1 - Segurança e Controle de Acessos |
+| **RF04** | Cadastrar instrutor                 | Gestor        | Inserir os dados do membro da equipe para a gestão do corpo de instrutores, sendo obrigatória a definição do perfil de acesso (RBAC). | • **CA04-01:** Instrutor salvo com identificador único (ID).<br>• **CA04-02:** Perfil de acesso definido com base em papéis (RBAC).                                          | CP2 - Gestão de Instrutores           |
+| **RF05** | Editar perfil do instrutor          | Gestor        | Atualizar os dados cadastrais e as permissões do instrutor para manter a base de dados atualizada.                                    | • **CA05-01:** Alterações persistidas com sucesso no banco de dados.<br>• **CA05-02:** Novas permissões refletidas imediatamente no acesso.                                  | CP2 - Gestão de Instrutores           |
+| **RF06** | Inativar instrutor                  | Gestor        | Realizar a inativação lógica (_soft delete_) do instrutor para revogar acessos, mantendo a integridade referencial.                   | • **CA06-01:** Status do usuário alterado para "inativo".<br>• **CA06-02:** Autenticação bloqueada imediatamente para instrutores inativos. | CP2 - Gestão de Instrutores           |
+| **RF07** | Cadastrar beneficiário              | Gestor/Instr. | Registrar o indivíduo associando-o obrigatoriamente ao ID de uma família cadastrada.                                                  | • **CA07-01:** Beneficiário criado com sucesso no sistema.<br>• **CA07-02:** Obrigatória a associação do beneficiário a um núcleo familiar válido.                     | CP3 - Cadastro Sociodemográfico       |
+| **RF08** | Editar dados do beneficiário        | Gestor/Instr. | Atualizar o perfil individual do assistido para permitir um acompanhamento longitudinal adequado da sua situação.                     | • **CA08-01:** Alterações salvas com sucesso no banco de dados.<br>• **CA08-02:** Dados atualizados exibidos corretamente na interface de usuário.                                      | CP3 - Cadastro Sociodemográfico       |
+| **RF09** | Cadastrar Turma                     | Gestor        | Registrar uma nova atividade com cronograma contendo obrigatoriamente data de início e término, e limite de vagas.                    |• **CA09-01:** Turma criada com datas e horários válidos.<br>• **CA09-02:** Limite máximo de vagas definido no cadastro.<br>• **CA09-03:** Exibição correta da turma no catálogo institucional.                          | CP4 - Frequência e Engajamento        |
+| **RF10** | Matricular beneficiário             | Gestor/Instr. | Vincular um beneficiário ativo a uma oficina, validando automaticamente a disponibilidade de vagas.                                   | • **CA10-01:** Vínculo de matrícula criado com sucesso.<br>• **CA10-02:** Sistema bloqueia novas matrículas caso o limite de vagas seja excedido.                        | CP4 - Frequência e Engajamento        |
+| **RF11** | Registrar presença em lote          | Instrutor     | Lançar de forma massiva a presença ou falta dos matriculados exclusivamente na data da ocorrência da aula.                            | • **CA11-01:** Registro de presença/falta salvo simultaneamente para todos os alunos da lista.<br>• **CA11-02:** Lançamento permitido apenas na data em que a aula ocorre.                           | CP4 - Frequência e Engajamento        |
+| **RF12** | Alterar registro de frequência      | Gestor        | Permitir a correção de presenças retroativamente, com limite sistêmico de 72 horas após a aula.                                       | • **CA12-01:** Alteração de registros permitida em até 72 horas após a aula.<br>• **CA12-02:** Bloqueio automático de edições após o encerramento do prazo.<br>• **CA12-03:** Obrigatoriedade de preenchimento de justificativa de alteração.  | CP4 - Frequência e Engajamento        |
+| **RF13** | Registrar falta justificada         | Instrutor     | Lançar faltas abonadas (ex: atestados) para garantir a precisão estatística.                                                          | • **CA13-01:** Status da falta registrado como "justificada".<br>• **CA13-02:** Ausência justificada não contabiliza negativamente para os indicadores de evasão.                                | CP4 - Frequência e Engajamento        |
+| **RF14** | Emitir alerta de evasão             | Sistema       | Sinalizar automaticamente no painel de controle os beneficiários em risco por faltas.                                                 | • **CA14-01:** Identificação automática de 3 faltas consecutivas.<br>• **CA14-02:** Identificação automática de 5 faltas alternadas dentro do período.<br>• **CA14-03:** Alerta visual gerado e exibido nos painéis do sistema.         | CP5 - Monitoramento de Evasão         |
+| **RF15** | Consultar histórico do beneficiário | Todos         | Exibir a linha do tempo centralizada de presenças, alertas recebidos e oficinas vinculadas ao indivíduo.                              | • **CA15-01:** Exibição clara e consolidada de todas as presenças.<br>• **CA15-02:** Histórico de alertas de risco emitidos.<br>• **CA15-03:** Matrículas anteriores e atuais listadas em ordem cronológica.                 | CP5 - Monitoramento de Evasão         |
+| **RF16** | Gerar relatório de frequência       | Gestor        | Consolidar e exportar em formato CSV os percentuais de engajamento segmentados por oficina ou mês.                                    |  • **CA16-01:** Exportação de dados estruturada em formato CSV.<br>• **CA16-02:** Dados do arquivo gerado correspondem estritamente aos filtros aplicados.<br>• **CA16-03:** Colunas e delimitadores formatados adequadamente para leitura externa.          | CP6 - Relatórios e Transparência      |
 
-# Matriz de Valor x Complexidade dos Requisitos
+---
 
-Com base nos valores e complexidades avaliados em relação aos requisitos escritos de forma abstraida, foi montado uma matriz de valor e complexidade para guiar o desenvolvimento.
+## 5.3. Requisitos Não Funcionais (RNF)
 
-![alt text](images/image4.png)
+Os requisitos não funcionais definem os atributos de qualidade e restrições da solução. Eles foram desenhados para mitigar riscos técnicos diretamente ligados aos módulos de negócio (Características do Produto), garantindo que a infraestrutura atenda à realidade operacional da instituição.
+
+| ID        | Nome do Requisito           | Descrição Técnica e Métrica de Validação                                                                                                                                                                                              | Categoria (FURPS+) | Característica do Produto (CP)            |
+| :-------- | :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------- | :---------------------------------------- |
+| **RNF01** | Criptografia Sensível       | Os dados de vulnerabilidade social (renda, laudos, endereço) devem usar criptografia AES-256 no banco de dados. **Métrica:** 100% de cobertura nas tabelas do esquema de famílias.                                                    | Segurança          | **CP3 - Cadastro Sociodemográfico**       |
+| **RNF02** | Trilha de Auditoria         | O sistema deve gravar logs inalteráveis de quem acessou ou editou perfis vulneráveis. **Métrica:** Registros de _timestamp_, ID do usuário e IP em 100% dos métodos POST/PUT/DELETE.                                                  | Segurança          | **CP1 - Segurança e Controle de Acessos** |
+| **RNF03** | Anonimização em Exportações | O sistema não pode expor Identificadores Pessoais (PII) em planilhas externas. **Métrica:** Algoritmo de mascaramento ativo em 100% das gerações de relatórios gerenciais e de impacto.                                               | Segurança          | **CP6 - Relatórios e Transparência**      |
+| **RNF04** | Operação Offline (Chamada)  | O aplicativo web deve permitir o registro de chamadas mesmo sem internet na sala. **Métrica:** Persistência via _IndexedDB_ no navegador com sincronização automática (Background Sync) em até 2s após reconexão.                     | Confiabilidade     | **CP4 - Frequência e Engajamento**        |
+| **RNF05** | Curva de Aprendizado        | A interface de gestão de voluntários deve ser intuitiva para usuários sem letramento digital avançado. **Métrica:** Um novo instrutor deve conseguir registrar uma chamada em menos de 2 minutos sem treinamento prévio (UAT).        | Usabilidade        | **CP2 - Gestão de Instrutores**           |
+| **RNF06** | Processamento de Gatilhos   | O cálculo noturno que varre a base de dados em busca de padrões de faltas para gerar alertas não pode onerar o banco. **Métrica:** O _job_ assíncrono deve processar 1.000 beneficiários em menos de 3 minutos.                       | Desempenho         | **CP5 - Monitoramento de Evasão**         |
+| **RNF07** | Desempenho Analítico        | O motor de relatórios não deve travar a sessão do Gestor durante agregações complexas de dados semestrais. **Métrica:** A geração do relatório de impacto social deve ocorrer em _background_, ou processada em menos de 10 segundos. | Desempenho         | **CP6 - Relatórios e Transparência**      |
+| **RNF08** | Carga Limite de Formulários | As telas de cadastro de núcleo familiar, por serem extensas, devem suportar interrupções e navegação fluida em conexões 3G. **Métrica:** _First Contentful Paint_ (FCP) da página de cadastro < 2.5s.                                 | Desempenho         | **CP3 - Cadastro Sociodemográfico**       |
+| **RNF09** | Concorrência de Matrículas  | O módulo de turmas deve suportar o pico de acessos durante os períodos de abertura de novas oficinas. **Métrica:** Suportar até 50 operações de _insert_ simultâneas por segundo sem apresentar _Deadlock_ no banco de dados.         | Desempenho         | **CP4 - Frequência e Engajamento**        |
+| **RNF10** | Prevenção de Inatividade    | Sessões esquecidas abertas em computadores da instituição devem ser derrubadas automaticamente. **Métrica:** Invalidação obrigatória do token JWT após 15 minutos sem requisições do _client-side_.                                   | Segurança          | **CP1 - Segurança e Controle de Acessos** |
+| **RNF11** | Extensibilidade da API      | O código desenvolvido pela equipe atual deve ser de fácil manutenção para futuras turmas de voluntários de TI. **Métrica:** Cobertura de documentação OpenAPI (Swagger) em 100% das rotas ativas.                                     | Manutenibilidade   | **CP7 - Arquitetura e Performance**       |

@@ -36,6 +36,7 @@ nav:
       - "8. Interação Equipe e Cliente": "interacao_equipe_cliente.md"
   - "Atas e Gravações das Sprints":
       - "Vídeo da Unidade 1": unidade_1_video.md
+      - "Vídeo da Unidade 2": unidade_2_video.md
 
 markdown_extensions:
   - admonition
@@ -45,7 +46,11 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_css:
   - stylesheets/extra.css

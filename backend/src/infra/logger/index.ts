@@ -17,7 +17,7 @@ export class Logger {
 
   constructor() {
     this.logger = pino({
-      name: 'bcodex-social-arrangement',
+      name: 'sges',
       transport:
         env.NODE_ENV === 'prod' ? { target: 'pino-pretty' } : { target: 'pino-pretty' },
     });
@@ -25,8 +25,14 @@ export class Logger {
     this.loggersChildrens = this.createChildrens();
   }
 
-  public info(message: string | object): void {
-    this.logger.info(message);
+  public info(context: object, message: string): void
+  public info(message: string): void
+  public info(contextOrMessage: object | string, message?: string): void {
+    if (message !== undefined) {
+      this.logger.info(contextOrMessage as object, message);
+    } else {
+      this.logger.info(contextOrMessage as string);
+    }
   }
 
   public infoHTTP(message: object): void {
@@ -41,9 +47,14 @@ export class Logger {
     this.logger.fatal(error, message);
   }
 
-  public debug(message: string | object): void {
-    if (env.DEBUG) {
-      this.logger.debug(message);
+  public debug(context: object, message: string): void
+  public debug(message: string): void
+  public debug(contextOrMessage: object | string, message?: string): void {
+    if (!env.DEBUG) return
+    if (message !== undefined) {
+      this.logger.debug(contextOrMessage as object, message);
+    } else {
+      this.logger.debug(contextOrMessage as string);
     }
   }
 

@@ -1,0 +1,9 @@
+import type { BaseDomain, Attendance } from '@/domain'
+
+export interface AttendanceRepository {
+  findById(id: string): Promise<Attendance | null>
+  findByStudentClassAndDate(studentId: string, classId: string, date: Date): Promise<Attendance | null>
+  findStudentAttendances(studentId: string, classId: string): Promise<Attendance[]>
+  save(data: Omit<Attendance, keyof BaseDomain>): Promise<Attendance>
+  deleteById(id: string): Promise<void>
+}

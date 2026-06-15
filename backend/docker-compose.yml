@@ -1,16 +1,25 @@
 services:
   postgres:
     container_name: req.sges.pg
-    image: postgres
+    image: postgres:16
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: req-sges
-    volumes:
-      - ./postgres/data/db:/var/lib/postgresql/data
-      - ./postgres/dump:/docker-entrypoint-initdb.d
+    # volumes:
+    #   - ./postgres/data/db:/var/lib/postgresql/data
+    #   - ./postgres/dump:/docker-entrypoint-initdb.d
     ports:
-      - '5432:5432'
+      - '5433:5432'
+
+  redis:
+    image: redis:7-alpine
+    container_name: heartlink.redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - hl-redis:/data
 
 volumes:
   sges-db:
+  hl-redis:

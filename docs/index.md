@@ -18,7 +18,7 @@ Esta documentação organiza os principais artefatos de engenharia do projeto SG
 	</div>
 	<div class="sges-card">
 		<h3>Planejamento</h3>
-		<p>Entregas, cronograma e interação com stakeholders ao longo dos sprints.</p>
+		<p>Entregas, cronograma e interação com stakeholders ao longo das iterações.</p>
 	</div>
 	<div class="sges-card">
 		<h3>Rigor de Qualidade</h3>

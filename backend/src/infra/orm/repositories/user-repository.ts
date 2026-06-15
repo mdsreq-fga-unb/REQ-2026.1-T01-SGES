@@ -1,0 +1,75 @@
+import type { DataSource } from 'typeorm'
+import type { UserRepository } from '@/application/services/user-repository'
+import type { BaseDomain, User } from '@/domain'
+import { UserEntity } from '../entity/user-entity'
+
+export class UserTypeormRepository implements UserRepository {
+  constructor(private readonly dataSource: DataSource) {}
+
+  async findByEmail(email: string): Promise<User | null> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    const entity = await repo.findOne({ where: { email } })
+    if (!entity) return null
+    return this.toUser(entity)
+  }
+
+  async findById(id: string): Promise<User | null> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    const entity = await repo.findOne({ where: { id } })
+    if (!entity) return null
+    return this.toUser(entity)
+  }
+
+  async findAll(page: number, limit: number): Promise<{ users: User[]; total: number }> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    const [entities, total] = await repo.findAndCount({
+      skip: (page - 1) * limit,
+      take: limit,
+      order: { createdAt: 'DESC' },
+    })
+    return { users: entities.map((e) => this.toUser(e)), total }
+  }
+
+  async findAdmins(): Promise<User[]> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    const entities = await repo.find({ where: { role: 'ADMIN' as any } })
+    return entities.map((e) => this.toUser(e))
+  }
+
+  async save(data: Omit<User, keyof BaseDomain>): Promise<User> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    const saved = await repo.save(repo.create(data))
+    return this.toUser(saved)
+  }
+
+  async updateResetCode(email: string, code: string | null, expiresAt: Date | null): Promise<void> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    await repo.update({ email }, { resetCode: code, resetCodeExpiresAt: expiresAt })
+  }
+
+  async updatePassword(email: string, hashedPassword: string): Promise<void> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    await repo.update({ email }, { password: hashedPassword })
+  }
+
+  async deleteById(id: string): Promise<void> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    await repo.delete({ id })
+  }
+
+  private toUser(entity: UserEntity): User {
+    return {
+      id: entity.id,
+      registerCode: entity.registerCode,
+      name: entity.name,
+      email: entity.email,
+      password: entity.password,
+      role: entity.role,
+      resetCode: entity.resetCode,
+      resetCodeExpiresAt: entity.resetCodeExpiresAt,
+      createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
+      deletedAt: entity.deletedAt,
+    }
+  }
+}
