@@ -14,7 +14,7 @@ Esta documentação organiza os principais artefatos de engenharia do projeto SG
 	</div>
 	<div class="sges-card">
 		<h3>Estratégia Técnica</h3>
-		<p>Abordagem de engenharia, priorização de backlog e decisões de desenvolvimento.</p>
+		<p>Abordagem de engenharia, priorização de Itens de Trabalho e decisões de desenvolvimento.</p>
 	</div>
 	<div class="sges-card">
 		<h3>Planejamento</h3>

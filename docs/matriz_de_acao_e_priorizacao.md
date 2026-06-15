@@ -1,6 +1,6 @@
 # Especificação de Histórias de Usuário e Requisitos (SGES)
 
-Este documento apresenta o mapeamento completo do Backlog do Produto, estabelecendo a rastreabilidade direta entre as Características de Produto (Épicos), Histórias de Usuário (US), Critérios de Aceitação (CA), Requisitos Funcionais (RF) e Requisitos Não Funcionais (RNF).
+Este documento apresenta o mapeamento completo dos Itens de Trabalho, estabelecendo a rastreabilidade direta entre as Características de Produto (Épicos), Histórias de Usuário (US), Critérios de Aceitação (CA), Requisitos Funcionais (RF) e Requisitos Não Funcionais (RNF).
 
 ---
 
@@ -77,7 +77,7 @@ Esta seção consolida a avaliação de todos os requisitos mapeados, cruzando o
 
 ---
 
-## 6.3 Priorização do Backlog e MVP
+## 6.3 Priorização dos Itens de Trabalho e MVP
 
 | US-ID | RF   | RNF Relacionado | Prioridade | Quadrante    | MVP |
 | ----- | ---- | --------------- | ---------- | ------------ | --- |
