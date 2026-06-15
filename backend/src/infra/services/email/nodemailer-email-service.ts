@@ -70,4 +70,40 @@ export class NodemailerEmailService implements IEmailService {
       throw err
     }
   }
+
+  async sendAbsenceAlert(email: string, data: { studentName: string; courseName: string; absencesCount: number; limitReached: boolean }): Promise<void> {
+    logger.debug({ to: email }, '[NodemailerEmail] Enviando alerta de faltas')
+    const subject = data.limitReached
+      ? `Limite de faltas excedido no curso ${data.courseName} — SGES`
+      : `Alerta de faltas no curso ${data.courseName} — SGES`
+
+    const messageHtml = data.limitReached
+      ? `
+        <h2>Limite de Faltas Excedido</h2>
+        <p>Olá, <strong>${data.studentName}</strong>,</p>
+        <p>Informamos que você atingiu <strong>${data.absencesCount} faltas</strong> no curso <strong>${data.courseName}</strong>.</p>
+        <p style="color: red; font-weight: bold;">Por ter excedido o limite máximo de 3 faltas permitidas em um ciclo de 14 aulas, você precisará refazer o curso.</p>
+        <p>Se houver alguma justificativa de trabalho (FT) ainda não entregue, procure seu instrutor ou gestor.</p>
+      `
+      : `
+        <h2>Alerta de Frequência</h2>
+        <p>Olá, <strong>${data.studentName}</strong>,</p>
+        <p>Informamos que você registrou <strong>${data.absencesCount} faltas</strong> no curso <strong>${data.courseName}</strong>.</p>
+        <p style="color: orange; font-weight: bold;">Atenção: O limite máximo é de 3 faltas. Caso atinja a 3ª falta, você precisará refazer o curso.</p>
+        <p>Evite novas faltas e bons estudos!</p>
+      `
+
+    try {
+      const info = await this.transporter.sendMail({
+        from: this.config.from,
+        to: email,
+        subject,
+        html: messageHtml,
+      })
+      logger.info({ to: email, messageId: info.messageId }, '[NodemailerEmail] Alerta de faltas enviado com sucesso')
+    } catch (err) {
+      logger.error(err, '[NodemailerEmail] Falha ao enviar alerta de faltas', 'MSG')
+      throw err
+    }
+  }
 }

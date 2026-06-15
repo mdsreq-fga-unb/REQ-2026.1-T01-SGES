@@ -33,7 +33,7 @@ interface MockUser {
 const MOCK_USERS: MockUser[] = [
   {
     id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-    name: 'Carlos Gestor',
+    name: 'Nayla Nobre',
     email: 'admin@sges.com',
     role: 'admin',
     password: 'Senha123!',
@@ -44,6 +44,177 @@ const MOCK_USERS: MockUser[] = [
     email: 'volunteer@sges.com',
     role: 'volunteer',
     password: 'Senha123!',
+  },
+];
+
+let mockNotifications = [
+  {
+    id: 'n1',
+    userId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // Nayla Nobre
+    title: 'Alerta de Limite de Faltas Próximo',
+    message: 'O estudante João Silva atingiu 2 faltas no curso Alfabetização. O limite máximo é de 3 faltas.',
+    isRead: false,
+    createdAt: new Date(Date.now() - 30 * 60000).toISOString(),
+  },
+  {
+    id: 'n2',
+    userId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // Nayla Nobre
+    title: 'Estudante Evadido por Faltas',
+    message: 'O estudante Lucas Medeiros atingiu o limite de 3 faltas no curso Alfabetização e foi marcado como evadido.',
+    isRead: false,
+    createdAt: new Date(Date.now() - 2 * 3600000).toISOString(),
+  },
+  {
+    id: 'n3',
+    userId: 'b2c3d4e5-f6a7-8901-bcde-f12345678901', // Maria Instrutora
+    title: 'Alerta de Limite de Faltas Próximo',
+    message: 'O estudante João Silva atingiu 2 faltas no curso Alfabetização. O limite máximo é de 3 faltas.',
+    isRead: false,
+    createdAt: new Date(Date.now() - 45 * 60000).toISOString(),
+  },
+];
+
+let mockStudents = [
+  {
+    id: 's1',
+    codigo_matricula: 'MAT-000001',
+    name: 'João Silva',
+    email: 'joao.silva@email.com',
+    profissao: 'Carpinteiro',
+    foto_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 's2',
+    codigo_matricula: 'MAT-000002',
+    name: 'Maria Santos',
+    email: 'maria.santos@email.com',
+    profissao: 'Professora',
+    foto_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
+    createdAt: new Date().toISOString(),
+  },
+];
+
+let mockClasses = [
+  {
+    id: 'c1',
+    nomeCurso: 'Alfabetização - Turma A',
+    livrosEstudados: 'Apostila de Alfabetização Vol 1',
+    horario: '19:00 - 21:00',
+    diaSemana: 'Sábado',
+    vagasLimite: 50,
+    semester: '2026.1',
+    instructors: [
+      {
+        id: 'b2c3d4e5-f6a7-8901-bcde-f12345678901',
+        name: 'Maria Instrutora',
+        email: 'volunteer@sges.com',
+        role: 'volunteer',
+      }
+    ],
+  },
+  {
+    id: 'c2',
+    nomeCurso: 'Corte e Costura - Turma B',
+    livrosEstudados: 'Manual do Costureiro Iniciante',
+    horario: '14:00 - 16:30',
+    diaSemana: 'Quarta-feira',
+    vagasLimite: 30,
+    semester: '2026.1',
+    instructors: [
+      {
+        id: 'b2c3d4e5-f6a7-8901-bcde-f12345678901',
+        name: 'Maria Instrutora',
+        email: 'volunteer@sges.com',
+        role: 'volunteer',
+      }
+    ],
+  },
+];
+
+let mockEnrollments: Record<string, string[]> = {
+  'c1': ['s1', 's2'],
+  'c2': ['s2'],
+};
+
+let mockForms = [
+  {
+    id: 'f1',
+    title: 'Pesquisa de Perfil Socioeconômico',
+    description: 'Coleta de dados sobre renda e moradia dos beneficiários da SEAS.',
+    fields: [
+      { id: 'q1', type: 'text', label: 'Possui acesso a computador com internet em casa?', required: true },
+      { id: 'q2', type: 'select', label: 'Renda Familiar aproximada', options: ['Até 1 salário mínimo', '1 a 2 salários mínimos', 'Mais de 2 salários mínimos'], required: true },
+    ],
+    createdAt: new Date().toISOString(),
+  },
+];
+
+let mockFormResponses = [
+  {
+    id: 'r1',
+    formId: 'f1',
+    studentId: 's1',
+    studentName: 'João Silva',
+    answers: {
+      q1: 'Sim, computador compartilhado com a família.',
+      q2: 'Até 1 salário mínimo',
+    },
+    createdAt: new Date().toISOString(),
+  },
+];
+
+let mockHistoryClasses = [
+  {
+    id: 'hc1',
+    name: 'Alfabetização Inicial',
+    semester: '2025.2',
+    teacherName: 'Maria Silva',
+    enrolledCount: 45,
+    evadedCount: 4,
+    completedCount: 41,
+  },
+  {
+    id: 'hc2',
+    name: 'Corte e Costura Básico',
+    semester: '2025.2',
+    teacherName: 'Roberto Santos',
+    enrolledCount: 30,
+    evadedCount: 3,
+    completedCount: 27,
+  },
+  {
+    id: 'hc3',
+    name: 'Informática para Adultos',
+    semester: '2025.1',
+    teacherName: 'Lucas Lima',
+    enrolledCount: 48,
+    evadedCount: 6,
+    completedCount: 42,
+  },
+];
+
+let mockHistoryInstructors = [
+  {
+    id: 'hi1',
+    teacherName: 'Maria Silva',
+    className: 'Alfabetização Inicial',
+    semester: '2025.2',
+    hoursCount: 60,
+  },
+  {
+    id: 'hi2',
+    teacherName: 'Roberto Santos',
+    className: 'Corte e Costura Básico',
+    semester: '2025.2',
+    hoursCount: 45,
+  },
+  {
+    id: 'hi3',
+    teacherName: 'Lucas Lima',
+    className: 'Informática para Adultos',
+    semester: '2025.1',
+    hoursCount: 60,
   },
 ];
 
@@ -75,6 +246,19 @@ function createMockError(status: number, message: string, config: InternalAxiosR
   return error;
 }
 
+// Helper para obter o token de autenticação de forma resiliente
+function getAuthToken(config: InternalAxiosRequestConfig): string | null {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const localToken = window.localStorage.getItem('sges_token');
+    if (localToken) return localToken;
+  }
+  const authHeader = config.headers?.Authorization as string | undefined;
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    return authHeader.substring(7);
+  }
+  return null;
+}
+
 /**
  * Instala os interceptors de mock no apiClient.
  * O interceptor intercepta requisições ANTES de elas saírem pela rede,
@@ -86,6 +270,18 @@ export function setupMockApi(): void {
     async (config: InternalAxiosRequestConfig) => {
       const url = config.url || '';
       const method = (config.method || 'get').toLowerCase();
+
+      // Restaurar sessão do mock do localStorage ou padrão se houver token Bearer
+      const token = getAuthToken(config);
+      if (!currentLoggedUser && token) {
+        const savedUserId = typeof window !== 'undefined' ? window.localStorage.getItem('sges_mock_user_id') : null;
+        if (savedUserId) {
+          currentLoggedUser = MOCK_USERS.find((u) => u.id === savedUserId) || null;
+        }
+        if (!currentLoggedUser) {
+          currentLoggedUser = MOCK_USERS[0]; // Padrão: Admin
+        }
+      }
 
       // --- POST /auth/login ---
       if (url === '/auth/login' && method === 'post') {
@@ -120,6 +316,9 @@ export function setupMockApi(): void {
         // Success
         failedAttempts = 0;
         currentLoggedUser = user;
+        if (typeof window !== 'undefined' && window.localStorage) {
+          window.localStorage.setItem('sges_mock_user_id', user.id);
+        }
 
         // Return adapter response that skips the actual HTTP request
         config.adapter = async () => ({
@@ -180,6 +379,9 @@ export function setupMockApi(): void {
       if (url === '/auth/logout' && method === 'post') {
         await delay(100);
         currentLoggedUser = null;
+        if (typeof window !== 'undefined' && window.localStorage) {
+          window.localStorage.removeItem('sges_mock_user_id');
+        }
 
         config.adapter = async () => ({
           data: null,
@@ -196,8 +398,8 @@ export function setupMockApi(): void {
       if (url === '/auth/me' && method === 'get') {
         await delay(200);
 
-        const authHeader = config.headers?.Authorization as string | undefined;
-        if (!authHeader || !authHeader.startsWith('Bearer ') || !currentLoggedUser) {
+        const token = getAuthToken(config);
+        if (!token || !currentLoggedUser) {
           throw createMockError(401, 'Token inválido ou expirado.', config);
         }
 
@@ -214,6 +416,539 @@ export function setupMockApi(): void {
           config,
         });
 
+        return config;
+      }
+
+      // --- GET /notifications ---
+      if (url === '/notifications' && method === 'get') {
+        await delay(100);
+        const token = getAuthToken(config);
+        if (!token || !currentLoggedUser) {
+          throw createMockError(401, 'Token inválido ou expirado.', config);
+        }
+
+        const userNotifications = mockNotifications.filter((n) => n.userId === currentLoggedUser?.id);
+
+        config.adapter = async () => ({
+          data: userNotifications,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+
+        return config;
+      }
+
+      // --- PUT /notifications/:id/read ---
+      if (url.startsWith('/notifications/') && url.endsWith('/read') && method === 'put') {
+        await delay(100);
+        const parts = url.split('/');
+        const id = parts[2];
+        const notification = mockNotifications.find((n) => n.id === id);
+        if (notification) {
+          notification.isRead = true;
+        }
+
+        config.adapter = async () => ({
+          data: { success: true },
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+
+        return config;
+      }
+
+      // --- GET /students ---
+      if (url === '/students' && method === 'get') {
+        await delay(100);
+        config.adapter = async () => ({
+          data: mockStudents,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- POST /students ---
+      if (url === '/students' && method === 'post') {
+        await delay(200);
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+        const newStudent = {
+          id: `s${mockStudents.length + 1}`,
+          codigo_matricula: `MAT-${String(mockStudents.length + 1).padStart(6, '0')}`,
+          name: body.name,
+          email: body.email,
+          profissao: body.profissao,
+          foto_url: body.foto_url || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150',
+          createdAt: new Date().toISOString(),
+        };
+        mockStudents.unshift(newStudent);
+
+        config.adapter = async () => ({
+          data: newStudent,
+          status: 201,
+          statusText: 'Created',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- PUT /students/:id ---
+      if (url.startsWith('/students/') && method === 'put') {
+        await delay(200);
+        const parts = url.split('/');
+        const id = parts[2];
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+        const studentIndex = mockStudents.findIndex((s) => s.id === id);
+        if (studentIndex === -1) {
+          throw createMockError(404, 'Estudante não encontrado.', config);
+        }
+
+        mockStudents[studentIndex] = {
+          ...mockStudents[studentIndex],
+          name: body.name,
+          email: body.email,
+          profissao: body.profissao,
+          foto_url: body.foto_url || mockStudents[studentIndex].foto_url,
+        };
+
+        config.adapter = async () => ({
+          data: mockStudents[studentIndex],
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /users ---
+      if (url.startsWith('/users') && method === 'get' && !url.includes('/users/')) {
+        await delay(100);
+        config.adapter = async () => ({
+          data: {
+            users: MOCK_USERS.map((u) => ({
+              id: u.id,
+              name: u.name,
+              email: u.email,
+              role: u.role,
+            })),
+            total: MOCK_USERS.length,
+            totalPages: 1,
+            page: 1,
+          },
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- POST /users (Criar Usuário/Instrutor) ---
+      if (url === '/users' && method === 'post') {
+        await delay(200);
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+
+        if (MOCK_USERS.some(u => u.email.toLowerCase() === body.email.toLowerCase())) {
+          throw createMockError(400, 'Já existe um usuário cadastrado com este e-mail.', config);
+        }
+
+        const newUser = {
+          id: `u${MOCK_USERS.length + 1}`,
+          name: body.name,
+          email: body.email,
+          role: body.role || 'volunteer',
+          password: 'Senha123!',
+        };
+
+        MOCK_USERS.push(newUser);
+
+        config.adapter = async () => ({
+          data: newUser,
+          status: 201,
+          statusText: 'Created',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- DELETE /users/:id (Excluir Usuário/Instrutor) ---
+      if (url.startsWith('/users/') && method === 'delete') {
+        await delay(150);
+        const parts = url.split('/');
+        const userId = parts[2];
+
+        if (userId === 'a1b2c3d4-e5f6-7890-abcd-ef1234567890') {
+          throw createMockError(400, 'Não é possível excluir o administrador principal.', config);
+        }
+
+        const index = MOCK_USERS.findIndex((u) => u.id === userId);
+        if (index !== -1) {
+          MOCK_USERS.splice(index, 1);
+        }
+
+        config.adapter = async () => ({
+          data: { success: true },
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /classes ---
+      if (url === '/classes' && method === 'get') {
+        await delay(100);
+        const classesWithCount = mockClasses.map((c) => ({
+          ...c,
+          studentsCount: (mockEnrollments[c.id] || []).length,
+        }));
+        config.adapter = async () => ({
+          data: classesWithCount,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- POST /classes (Criar Turma) ---
+      if (url === '/classes' && method === 'post') {
+        await delay(200);
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+
+        const instructorIds = body.instructorIds || [];
+        if (instructorIds.length > 2) {
+          throw createMockError(400, 'Uma turma pode ter no máximo 2 instrutores.', config);
+        }
+
+        const newId = `c${mockClasses.length + 1}`;
+        const newClass = {
+          id: newId,
+          nomeCurso: body.nomeCurso,
+          livrosEstudados: body.livrosEstudados || '',
+          horario: body.horario,
+          diaSemana: body.diaSemana,
+          vagasLimite: body.vagasLimite ? Number(body.vagasLimite) : 50,
+          instructors: MOCK_USERS.filter(u => instructorIds.includes(u.id)).map(u => ({
+            id: u.id,
+            name: u.name,
+            email: u.email,
+            role: u.role
+          })),
+          semester: '2026.1',
+        };
+
+        mockClasses.push(newClass);
+        mockEnrollments[newId] = [];
+
+        config.adapter = async () => ({
+          data: newClass,
+          status: 201,
+          statusText: 'Created',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- PUT /classes/:classId (Editar/Atualizar Turma) ---
+      if (url.startsWith('/classes/') && url.split('/').length === 3 && method === 'put') {
+        await delay(200);
+        const parts = url.split('/');
+        const classId = parts[2];
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+
+        const instructorIds = body.instructorIds || [];
+        if (instructorIds.length > 2) {
+          throw createMockError(400, 'Uma turma pode ter no máximo 2 instrutores.', config);
+        }
+
+        const classIndex = mockClasses.findIndex(c => c.id === classId);
+        if (classIndex === -1) {
+          throw createMockError(404, 'Turma não encontrada.', config);
+        }
+
+        const updatedClass = {
+          ...mockClasses[classIndex],
+          nomeCurso: body.nomeCurso,
+          livrosEstudados: body.livrosEstudados || '',
+          horario: body.horario,
+          diaSemana: body.diaSemana,
+          vagasLimite: body.vagasLimite ? Number(body.vagasLimite) : 50,
+          instructors: MOCK_USERS.filter(u => instructorIds.includes(u.id)).map(u => ({
+            id: u.id,
+            name: u.name,
+            email: u.email,
+            role: u.role
+          })),
+        };
+
+        mockClasses[classIndex] = updatedClass;
+
+        config.adapter = async () => ({
+          data: updatedClass,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- DELETE /classes/:classId (Excluir Turma) ---
+      if (url.startsWith('/classes/') && url.split('/').length === 3 && method === 'delete') {
+        await delay(150);
+        const parts = url.split('/');
+        const classId = parts[2];
+
+        mockClasses = mockClasses.filter((c) => c.id !== classId);
+        delete mockEnrollments[classId];
+
+        config.adapter = async () => ({
+          data: { success: true },
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /classes/:classId/students ---
+      if (url.startsWith('/classes/') && url.endsWith('/students') && method === 'get') {
+        await delay(150);
+        const parts = url.split('/');
+        const classId = parts[2];
+        const studentIds = mockEnrollments[classId] || [];
+        const enrolledStudents = mockStudents.filter((s) => studentIds.includes(s.id));
+        config.adapter = async () => ({
+          data: enrolledStudents,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- POST /classes/:classId/students (Matricular Aluno) ---
+      if (url.startsWith('/classes/') && url.endsWith('/students') && method === 'post') {
+        await delay(150);
+        const parts = url.split('/');
+        const classId = parts[2];
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+        const studentId = body.studentId;
+
+        if (!mockEnrollments[classId]) {
+          mockEnrollments[classId] = [];
+        }
+
+        if (mockEnrollments[classId].includes(studentId)) {
+          throw createMockError(400, 'Aluno já está matriculado nesta turma.', config);
+        }
+
+        const currentClass = mockClasses.find(c => c.id === classId);
+        const limit = currentClass?.vagasLimite || 50;
+        if (mockEnrollments[classId].length >= limit) {
+          throw createMockError(400, `Esta turma atingiu o limite de ${limit} vagas.`, config);
+        }
+
+        mockEnrollments[classId].push(studentId);
+
+        config.adapter = async () => ({
+          data: { success: true },
+          status: 201,
+          statusText: 'Created',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- DELETE /classes/:classId/students/:studentId (Desmatricular Aluno) ---
+      if (url.startsWith('/classes/') && url.includes('/students/') && method === 'delete') {
+        await delay(150);
+        const parts = url.split('/');
+        const classId = parts[2];
+        const studentId = parts[4];
+
+        if (mockEnrollments[classId]) {
+          mockEnrollments[classId] = mockEnrollments[classId].filter(id => id !== studentId);
+        }
+
+        config.adapter = async () => ({
+          data: { success: true },
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- POST /classes/:classId/attendances ---
+      if (url.startsWith('/classes/') && url.endsWith('/attendances') && method === 'post') {
+        await delay(200);
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+        console.log('[SGES Mock API] Presenças salvas:', body);
+
+        config.adapter = async () => ({
+          data: { success: true, count: body.length },
+          status: 201,
+          statusText: 'Created',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /reports/funnel ---
+      if (url.startsWith('/reports/funnel') && method === 'get') {
+        await delay(150);
+        const params = new URLSearchParams(url.split('?')[1] || '');
+        const semester = params.get('semester') || '2026.1';
+
+        const data = semester === '2026.1'
+          ? {
+              entered: 120,
+              active: 80,
+              evaded: 15,
+              completed: 25,
+            }
+          : {
+              entered: 95,
+              active: 0,
+              evaded: 12,
+              completed: 83,
+            };
+
+        config.adapter = async () => ({
+          data,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /forms ---
+      if (url === '/forms' && method === 'get') {
+        await delay(100);
+        config.adapter = async () => ({
+          data: mockForms,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- POST /forms ---
+      if (url === '/forms' && method === 'post') {
+        await delay(200);
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+        const newForm = {
+          id: `f${mockForms.length + 1}`,
+          title: body.title,
+          description: body.description,
+          fields: body.fields || [],
+          createdAt: new Date().toISOString(),
+        };
+        mockForms.push(newForm);
+
+        config.adapter = async () => ({
+          data: newForm,
+          status: 201,
+          statusText: 'Created',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /forms/:id/responses ---
+      if (url.startsWith('/forms/') && url.endsWith('/responses') && method === 'get') {
+        await delay(150);
+        const parts = url.split('/');
+        const formId = parts[2];
+        const responses = mockFormResponses.filter((r) => r.formId === formId);
+
+        config.adapter = async () => ({
+          data: responses,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- POST /forms/:id/responses ---
+      if (url.startsWith('/forms/') && url.endsWith('/responses') && method === 'post') {
+        await delay(200);
+        const parts = url.split('/');
+        const formId = parts[2];
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+
+        // Find student name from mockStudents
+        const student = mockStudents.find((s) => s.id === body.studentId);
+
+        const newResponse = {
+          id: `r${mockFormResponses.length + 1}`,
+          formId,
+          studentId: body.studentId,
+          studentName: student ? student.name : 'Aluno Desconhecido',
+          answers: body.answers || {},
+          createdAt: new Date().toISOString(),
+        };
+        mockFormResponses.push(newResponse);
+
+        config.adapter = async () => ({
+          data: newResponse,
+          status: 201,
+          statusText: 'Created',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /history/classes ---
+      if (url === '/history/classes' && method === 'get') {
+        await delay(100);
+        config.adapter = async () => ({
+          data: mockHistoryClasses,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
+      // --- GET /history/instructors ---
+      if (url === '/history/instructors' && method === 'get') {
+        await delay(100);
+        config.adapter = async () => ({
+          data: mockHistoryInstructors,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
         return config;
       }
 

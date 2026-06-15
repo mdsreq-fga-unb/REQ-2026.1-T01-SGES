@@ -19,7 +19,7 @@ async function seed() {
     const hashedPassword = await bcrypt.hash('Senha123!', 10)
     const admin = userRepository.create({
       registerCode: '000001',
-      name: 'Carlos Gestor',
+      name: 'Nayla Nobre',
       email: adminEmail,
       password: hashedPassword,
       role: UserRole.ADMIN,
@@ -27,7 +27,9 @@ async function seed() {
     await userRepository.save(admin)
     console.log(`Usuário admin criado: ${adminEmail}`)
   } else {
-    console.log(`Usuário admin já existe: ${adminEmail}`)
+    existingAdmin.name = 'Nayla Nobre'
+    await userRepository.save(existingAdmin)
+    console.log(`Usuário admin já existe. Nome atualizado para Nayla Nobre.`)
   }
 
   // Seed Volunteer / Teacher

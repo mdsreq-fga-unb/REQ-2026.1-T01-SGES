@@ -30,6 +30,12 @@ export class UserTypeormRepository implements UserRepository {
     return { users: entities.map((e) => this.toUser(e)), total }
   }
 
+  async findAdmins(): Promise<User[]> {
+    const repo = this.dataSource.getRepository(UserEntity)
+    const entities = await repo.find({ where: { role: 'ADMIN' as any } })
+    return entities.map((e) => this.toUser(e))
+  }
+
   async save(data: Omit<User, keyof BaseDomain>): Promise<User> {
     const repo = this.dataSource.getRepository(UserEntity)
     const saved = await repo.save(repo.create(data))
