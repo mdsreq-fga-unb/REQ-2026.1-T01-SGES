@@ -31,11 +31,18 @@ nav:
       - "3. Estratégias de Eng. de Software": "estrategias_eng_software.md"
       - "4. Engenharia de Requisitos": "engenharia_requisitos.md"
       - "5. Lista de Requisitos": "lista_requisitos.md"
-      - "6. Backlog e priorização": "matriz_de_acao_e_priorizacao.md"
+      - "6. Itens de Trabalho e priorização": "matriz_de_acao_e_priorizacao.md"
       - "7. Cronograma e Entregas": "cronograma_e_entregas.md"
       - "8. Interação Equipe e Cliente": "interacao_equipe_cliente.md"
-  - "Atas e Gravações das Sprints":
+      - "9. DoR e DoD": "DoR_e_DoD.md"
+      - "10. Lições Aprendidas": "interacao/licoes_aprendidas.md"
+      - "11. Arquitetura do Produto": "arquitetura_do_produto.md"
+  - "Marcos de interações":
+      - "Ata da Reunião de Validação do Escopo e Objetivos": reuniao_de_alinhamento.md
+      - "Ata da Reunião de Validação de Requisitos": reuniao_de_requisitos.md
+  - "Gravações":
       - "Vídeo da Unidade 1": unidade_1_video.md
+      - "Vídeo da Unidade 2": unidade_2_video.md
 
 markdown_extensions:
   - admonition
@@ -46,6 +53,12 @@ markdown_extensions:
       permalink: true
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
   - stylesheets/extra.css

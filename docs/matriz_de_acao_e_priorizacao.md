@@ -37,21 +37,21 @@ Esta seção consolida a avaliação de todas as Histórias de Usuário (US) map
 
 Para a priorização do backlog, foram utilizados os seguintes critérios:
 
-*   **VB = Valor de Negócio (1 a 5):** Mede a importância da funcionalidade para o negócio e para os usuários finais da instituição.
-*   **CX = Complexidade Técnica (1 a 5):** Mede a dificuldade técnica esperada na implementação da funcionalidade.
-*   **ES = Esforço de Implementação (1 a 5):** Mede o tempo e recursos estimados para desenvolver a funcionalidade.
+*   **VN = Valor de Negócio (1 a 5):** Mede a importância da funcionalidade para o negócio e para os usuários finais da instituição.
+*   **CT = Complexidade Técnica (1 a 5):** Mede a dificuldade técnica esperada na implementação da funcionalidade.
+*   **EF = Esforço de Implementação (1 a 5):** Mede o tempo e recursos estimados para desenvolver a funcionalidade.
 
 ### 1. Pontuação Técnica (PT)
 Para representar o "custo técnico" da US, calcula-se a média aritmética entre a complexidade e o esforço de implementação:
 
-$$PT = \frac{CX + ES}{2}$$
+$$PT = \frac{CT + EF}{2}$$
 
 Dessa forma, a pontuação técnica continua na mesma escala de 1 a 5.
 
 ### 2. Índice de Prioridade (IP)
 Para comparar de forma objetiva o valor de negócio contra o custo técnico, calcula-se o Índice de Prioridade:
 
-$$IP = \frac{VB}{PT}$$
+$$IP = \frac{VN}{PT}$$
 
 Quanto maior o IP, maior a prioridade da História de Usuário.
 
@@ -63,36 +63,36 @@ Quanto maior o IP, maior a prioridade da História de Usuário.
 
 ## 6.2 Matriz de Priorização
 
-A partir do cruzamento entre Valor de Negócio (VB) e Pontuação Técnica (PT), as USs são classificadas em quatro quadrantes de decisão:
+A partir do cruzamento entre Valor de Negócio (VN) e Pontuação Técnica (PT), as USs são classificadas em quatro quadrantes de decisão:
 
-*   **Q1 – Alto valor / Baixa carga técnica:** USs com alto valor de negócio (VB ≥ 4) e baixo custo técnico (PT ≤ 2,5). Devem ser desenvolvidas primeiro (Prioridade 1) e compõem o escopo básico do **MVP**.
-*   **Q2 – Alto valor / Alta carga técnica:** USs com alto valor de negócio (VB ≥ 4) e alto custo técnico (PT ≥ 3). Exigem planejamento cuidadoso (Prioridade 2).
-*   **Q3 – Baixo valor / Baixa carga técnica:** USs com baixo valor de negócio (VB ≤ 3) e baixo custo técnico (PT ≤ 2,5). São secundárias e podem ser feitas após as prioritárias (Prioridade 3).
-*   **Q4 – Baixo valor / Alta carga técnica:** USs com baixo valor de negócio (VB ≤ 3) e alto custo técnico (PT ≥ 3). Devem ser reconsideradas ou postergadas.
+*   **Q1 – Alto valor / Baixa carga técnica:** USs com alto valor de negócio (VN ≥ 4) e baixo custo técnico (PT ≤ 2,5). Devem ser desenvolvidas primeiro (Prioridade 1) e compõem o escopo básico do **MVP**.
+*   **Q2 – Alto valor / Alta carga técnica:** USs com alto valor de negócio (VN ≥ 4) e alto custo técnico (PT ≥ 3). Exigem planejamento cuidadoso (Prioridade 2).
+*   **Q3 – Baixo valor / Baixa carga técnica:** USs com baixo valor de negócio (VN ≤ 3) e baixo custo técnico (PT ≤ 2,5). São secundárias e podem ser feitas após as prioritárias (Prioridade 3).
+*   **Q4 – Baixo valor / Alta carga técnica:** USs com baixo valor de negócio (VN ≤ 3) e alto custo técnico (PT ≥ 3). Devem ser reconsideradas ou postergadas.
 
 ---
 
 ## 6.3 Priorização do Backlog e MVP
 
-A tabela a seguir apresenta todas as Histórias de Usuário priorizadas com base nos critérios estabelecidos, ordenada de forma decrescente pela Prioridade Sugerida e pelo Índice de Prioridade (IP):
+A tabela a seguir apresenta todas as Histórias de Usuário priorizadas com base nos critérios estabelecidos, ordenada pelo identificador da História de Usuário (US):
 
-| US | Descrição | VB | CX | ES | PT | IP | Quadrante | Prioridade sugerida |
+| US | Descrição | VN | CT | EF | PT | IP | Quadrante | Prioridade sugerida |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :--- | :--- |
-| **US03** | Encerrar sessão | 5 | 1 | 1 | 1 | 5 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
 | **US01** | Autenticar usuário | 5 | 2 | 2 | 2 | 2,5 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
+| **US02** | Redefinir senha de acesso | 4 | 2 | 2 | 2 | 2 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
+| **US03** | Encerrar sessão | 5 | 1 | 1 | 1 | 5 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
 | **US04** | Cadastrar instrutor | 5 | 2 | 2 | 2 | 2,5 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
+| **US05** | Editar perfil do instrutor | 4 | 2 | 2 | 2 | 2 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
+| **US06** | Inativar instrutor | 3 | 1 | 2 | 1,5 | 2 | Q3 Baixo valor / Baixa carga técnica | Prioridade 3 |
 | **US07** | Cadastrar beneficiário | 5 | 2 | 2 | 2 | 2,5 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
+| **US08** | Editar dados do beneficiário | 4 | 2 | 2 | 2 | 2 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
 | **US09** | Cadastrar Turma | 5 | 2 | 2 | 2 | 2,5 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
 | **US10** | Matricular beneficiário | 5 | 2 | 2 | 2 | 2,5 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
-| **US02** | Redefinir senha de acesso | 4 | 2 | 2 | 2 | 2 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
-| **US05** | Editar perfil do instrutor | 4 | 2 | 2 | 2 | 2 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
-| **US08** | Editar dados do beneficiário | 4 | 2 | 2 | 2 | 2 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
+| **US11** | Registrar presença em lote | 5 | 3 | 3 | 3 | 1,67 | Q2 Alto valor / Alta carga técnica | Prioridade 2 |
 | **US12** | Alterar registro de frequência | 4 | 2 | 2 | 2 | 2 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
 | **US13** | Registrar falta justificada | 4 | 2 | 2 | 2 | 2 | Q1 Alto valor / Baixa carga técnica | Prioridade 1 |
-| **US11** | Registrar presença em lote | 5 | 3 | 3 | 3 | 1,67 | Q2 Alto valor / Alta carga técnica | Prioridade 2 |
+| **US14** | Emitir alerta de evasão | 5 | 4 | 4 | 4 | 1,25 | Q2 Alto valor / Alta carga técnica | Prioridade 2 |
 | **US15** | Consultar histórico do beneficiário | 4 | 3 | 3 | 3 | 1,33 | Q2 Alto valor / Alta carga técnica | Prioridade 2 |
 | **US16** | Gerar relatório de frequência | 4 | 3 | 3 | 3 | 1,33 | Q2 Alto valor / Alta carga técnica | Prioridade 2 |
-| **US14** | Emitir alerta de evasão | 5 | 4 | 4 | 4 | 1,25 | Q2 Alto valor / Alta carga técnica | Prioridade 2 |
-| **US06** | Inativar instrutor | 3 | 1 | 2 | 1,5 | 2 | Q3 Baixo valor / Baixa carga técnica | Prioridade 3 |
 
 > **Nota:** Definimos como escopo do **MVP (Produto Mínimo Viável)** todas as Histórias de Usuário classificadas como **Prioridade 1** (Q1), garantindo a entrega do core funcional do sistema com menor complexidade de desenvolvimento. As demais funcionalidades (Prioridade 2 e 3) serão implementadas em sprints subsequentes.
