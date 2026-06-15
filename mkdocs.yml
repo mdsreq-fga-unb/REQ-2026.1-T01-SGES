@@ -36,13 +36,10 @@ nav:
       - "8. Interação Equipe e Cliente": "interacao_equipe_cliente.md"
       - "9. DoR e DoD": "DoR_e_DoD.md"
       - "10. Lições Aprendidas": "interacao/licoes_aprendidas.md"
-<<<<<<< Updated upstream
-  - "Marcos de interacao":
-      - "Ata da Reunião de Validação do Escopo e Objetivos": Reuniao_de_Alinhamento.md
-      - "Ata da Reunião de Validação de Requisitos": Reuniao_de_Requisitos.md
-=======
       - "11. Arquitetura do Produto": "arquitetura_do_produto.md"
->>>>>>> Stashed changes
+  - "Marcos de interações":
+      - "Ata da Reunião de Validação do Escopo e Objetivos": reuniao_de_alinhamento.md
+      - "Ata da Reunião de Validação de Requisitos": reuniao_de_requisitos.md
   - "Gravações":
       - "Vídeo da Unidade 1": unidade_1_video.md
       - "Vídeo da Unidade 2": unidade_2_video.md

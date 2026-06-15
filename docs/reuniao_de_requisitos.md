@@ -1,3 +1,6 @@
+# **ATA DA REUNIÃO DE VALIDAÇÃO DE REQUISITOS – SISTEMA SGES**
+
+>  **Rastreabilidade:** Esta reunião valida a etapa de **Elaboração** do projeto. Marco correspondente na [Tabela de Planejamento de Fases e Iterações](cronograma_e_entregas.md#tabela-de-planejamento-de-fases-e-iteracoes).
 
 **Data:** 29 de maio de 2026  
 **Local:** *Reunião Online*  
@@ -57,8 +60,8 @@ Ficou definido que a ficha de cadastro padrão exigirá obrigatoriamente:
 * A interface gráfica do sistema utilizará uma paleta de cores composta por **Azul, Azul Claro e Branco**.  
 * As telas devem ser limpas, transmitindo sensações de paz e calma, além de garantir usabilidade simples para usuários com pouca familiaridade com computadores.
 
-### **3\.Validação e Aceite dos Requisitos**
-*Após a apresentação da especificação de requisitos a coordenadora Nayla homologou e validou formalmente autorizando o início do desenvolvimento técnico correspondente à fase de Construção.
+### **3\. Validação e Aceite dos Requisitos**
+*Após a apresentação da especificação de requisitos a coordenadora Nayla homologou e validou formalmente autorizando o início do desenvolvimento técnico correspondente à fase de Construção.*
 
-### **imagem dos dados solicitados durante a reunião para a comprovação da reunião**
+### **Imagem dos dados solicitados durante a reunião para a comprovação da reunião**
 ![alt text](images/img_reuniao2.png){width="300px"}
