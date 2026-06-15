@@ -36,9 +36,13 @@ nav:
       - "8. Interação Equipe e Cliente": "interacao_equipe_cliente.md"
       - "9. DoR e DoD": "DoR_e_DoD.md"
       - "10. Lições Aprendidas": "interacao/licoes_aprendidas.md"
+<<<<<<< Updated upstream
   - "Marcos de interacao":
       - "Ata da Reunião de Validação do Escopo e Objetivos": Reuniao_de_Alinhamento.md
       - "Ata da Reunião de Validação de Requisitos": Reuniao_de_Requisitos.md
+=======
+      - "11. Arquitetura do Produto": "arquitetura_do_produto.md"
+>>>>>>> Stashed changes
   - "Gravações":
       - "Vídeo da Unidade 1": unidade_1_video.md
       - "Vídeo da Unidade 2": unidade_2_video.md
@@ -51,7 +55,11 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_css:
   - stylesheets/extra.css
