@@ -10,7 +10,7 @@ O documento serve de referência para a fase de Elaboração, onde a validação
 
 ## 2. Visão Geral da Arquitetura
 
-O SGES adota o padrão **Arquitetura Hexagonal (Ports & Adapters)**, que isola o núcleo de regras de negócio de todos os mecanismos externos (banco de dados, HTTP, logs). Isso garante alta testabilidade, manutenibilidade e extensibilidade — qualidades essenciais em um sistema mantido por equipes voluntárias rotativas (ver RNF11).
+O SGES adota o padrão **Arquitetura Hexagonal (Ports & Adapters)**, que isola o núcleo de regras de negócio de todos os mecanismos externos (banco de dados, HTTP, logs). Isso garante alta testabilidade, manutenibilidade e extensibilidade — qualidades essenciais em um sistema mantido por equipes voluntárias rotativas (ver RNF07).
 
 ### 2.1 Diagrama de Camadas
 
@@ -53,11 +53,10 @@ Os objetivos arquiteturais derivam diretamente dos Requisitos Não Funcionais e 
 
 | Objetivo                    | Descrição                                                                             | RNF Associado |
 |-----------------------------|---------------------------------------------------------------------------------------|---------------|
-| **Extensibilidade**         | Novos módulos devem ser adicionados sem alterar o núcleo de negócio                  | RNF11         |
+| **Extensibilidade**         | Novos módulos devem ser adicionados sem alterar o núcleo de negócio                  | RNF07         |
 | **Segurança de Dados e Privacidade (LGPD)**      | Dados sensíveis criptografados (HMAC-256); trilha de auditoria em 100% das mutações; nenhum dado exposto em exportações; mascaramento ativo em relatórios  | RNF01, RNF02, RNF03  |
-| **Desempenho sob Carga**    | Suportar 50 registros simultâneos sem apresentar inconsistências no banco de dados; relatórios assíncronos para não travar a aplicação durante a geração                    | RNF07, RNF09  |
-| **Usabilidade**             | Interface intuitiva para voluntários sem letramento digital avançado                | RNF05         |
-| **Processamento Diário (Cron Job)**   | Job de detecção de evasão processa 1.000 beneficiários em < 3 minutos              | RNF06         |
+| **Processamento Assíncrono**| Execução de jobs de alertas e relatórios em segundo plano para não onerar o servidor principal | RNF05         |
+| **Processamento Diário (Cron Job)**   | Job de detecção de evasão configurado em segundo plano e rodando de forma independente | RNF05         |
 
 ---
 
@@ -65,9 +64,9 @@ Os objetivos arquiteturais derivam diretamente dos Requisitos Não Funcionais e 
 
 | Restrição                         | Impacto nas Decisões                                                              |
 |-----------------------------------|-----------------------------------------------------------------------------------|
-| Ambiente de rede limitado (3G)    | FCP das telas de cadastro < 2,5s; suporte a modo offline via IndexedDB (RNF04, RNF08) |
-| Voluntários sem perfil técnico    | UI deve ser simples e autoexplicativa; nova instrução em < 2 min (RNF05)        |
-| Equipes de TI rotativas           | Código deve ser documentado e seguir convenções rigorosas (RNF11)  |
+| Ambiente de rede limitado (3G)    | Suporte a modo offline via IndexedDB/LocalStorage (RNF04)                         |
+| Voluntários sem perfil técnico    | Interface intuitiva e de fácil usabilidade                                        |
+| Equipes de TI rotativas           | Código deve ser documentado e seguir convenções rigorosas (RNF07)                 |
 | Conformidade com LGPD             | Dados de vulnerabilidade social criptografados; exportações anonimizadas         |
 | Infraestrutura limitada           | Solução containerizada (Docker) para facilitar deploy por voluntários            |
 
@@ -218,13 +217,13 @@ Esta seção demonstra como cada Característica do Produto (CP) e seus requisit
 
 | Característica do Produto | Requisitos Funcionais | Requisitos Não Funcionais | Camada / Componente Responsável |
 |---|---|---|---|
-| **CP1 — Segurança e Controle de Acessos** | RF01, RF02, RF03 | RNF02, RNF10 | `application` (authenticate, reset-password, logout use cases) + `infra` (JWT, bcrypt, audit log via Pino) |
-| **CP2 — Gestão de Instrutores** | RF04, RF05, RF06 | RNF05 | `domain` (entidade `Teacher`) + `application` (register, edit, deactivate use cases) + `api` (routes/instructors) |
-| **CP3 — Cadastro Sociodemográfico** | RF07, RF08 | RNF01, RNF08 | `domain` (entidade `Student`) + `infra/orm/entity/StudentEntity` (colunas HMAC-256) |
-| **CP4 — Frequência e Engajamento** | RF09, RF10, RF11, RF12, RF13 | RNF04, RNF09 | `domain` (entidades `Class`, `Enrollment`, `Attendance`) + `application` (bulk-register, edit use cases) + `api` (routes/attendance) + *frontend* (IndexedDB para modo offline) |
-| **CP5 — Monitoramento de Evasão** | RF14, RF15 | RNF06 | `application` (dropout-detection use case, port `IAlertRepository`) + `infra/services/DropoutJob` (job assíncrono noturno) |
-| **CP6 — Relatórios e Transparência** | RF16 | RNF03, RNF07 | `application` (frequency-report use case, port `IReportExporter`) + `infra/services/ReportExporter` (CSV + mascaramento PII) |
-| **CP7 — Arquitetura e Performance** | — | RNF11 | Todas as camadas — padrão Hexagonal garante extensibilidade; documentação OpenAPI cobre 100% das rotas ativas |
+| **CP1 — Segurança e Controle de Acessos** | RF01, RF02, RF03 | RNF02, RNF06 | `application` (authenticate, reset-password, logout use cases) + `infra` (JWT, bcrypt, audit log via Pino) |
+| **CP2 — Gestão de Instrutores** | RF04, RF05, RF06 | — | `domain` (entidade `Teacher`) + `application` (register, edit, deactivate use cases) + `api` (routes/instructors) |
+| **CP3 — Cadastro Sociodemográfico** | RF07, RF08 | RNF01 | `domain` (entidade `Student`) + `infra/orm/entity/StudentEntity` (colunas HMAC-256) |
+| **CP4 — Frequência e Engajamento** | RF09, RF10, RF11, RF12, RF13 | RNF04 | `domain` (entidades `Class`, `Enrollment`, `Attendance`) + `application` (bulk-register, edit use cases) + `api` (routes/attendance) + *frontend* (IndexedDB para modo offline) |
+| **CP5 — Monitoramento de Evasão** | RF14, RF15 | RNF05 | `application` (dropout-detection use case, port `IAlertRepository`) + `infra/services/DropoutJob` (job assíncrono noturno) |
+| **CP6 — Relatórios e Transparência** | RF16 | RNF03 | `application` (frequency-report use case, port `IReportExporter`) + `infra/services/ReportExporter` (CSV + mascaramento PII) |
+| **CP7 — Arquitetura e Performance** | — | RNF07 | Todas as camadas — padrão Hexagonal garante extensibilidade; documentação OpenAPI cobre 100% das rotas ativas |
 
 ---
 
@@ -232,12 +231,11 @@ Esta seção demonstra como cada Característica do Produto (CP) e seus requisit
 
 | Risco | Probabilidade | Impacto | Mitigação |
 |---|---|---|---|
-| **Operação offline sem sincronização** | Alta (rede limitada no cliente) | Alto | RNF04: IndexedDB + Background Sync API no browser; sync automático em até 2s após reconexão |
-| **Exposição de dados PII em exportações** | Média | Alto (LGPD) | RNF03: algoritmo de mascaramento ativo em 100% das exportações; revisão obrigatória no code review |
-| **Criptografia inconsistente em dados sensíveis** | Baixa | Alto | RNF01: colunas de vulnerabilidade social com HMAC-256 no TypeORM; testes de integração validam cobertura |
-| **Deadlock sob pico de matrículas** | Média | Médio | RNF09: transações com controle de concorrência no PostgreSQL; limite de 50 inserts/s testado em carga |
-| **Job noturno sobrecarrega o banco** | Baixa | Médio | RNF06: processamento em batch com pausas entre lotes; monitoramento de query time |
-| **Acúmulo de dívida técnica por equipes rotativas** | Alta | Médio | RNF11: Hexagonal + TypeScript strict + OpenAPI (documentação) |
+| **Operação offline sem sincronização** | Alta (rede limitada no cliente) | Alto | RNF04: Salvamento local no IndexedDB/LocalStorage e sincronização automática |
+| **Exposição de dados PII em exportações** | Média | Alto (LGPD) | RNF03: Algoritmo de mascaramento ativo em 100% das exportações; revisão obrigatória no code review |
+| **Criptografia inconsistente em dados sensíveis** | Baixa | Alto | RNF01: Armazenamento ilegível de dados e senhas com verificação via Query/DBeaver |
+| **Job noturno sobrecarrega o banco** | Baixa | Médio | RNF05: Job em segundo plano configurado independentemente do servidor principal |
+| **Acúmulo de dívida técnica por equipes rotativas** | Alta | Médio | RNF07: Hexagonal + TypeScript strict + Swagger/OpenAPI ativa para documentação |
 
 ## Histórico de Versões
 

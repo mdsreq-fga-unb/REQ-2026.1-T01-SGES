@@ -21,7 +21,7 @@
 
 - **Email:** Será utilizado como canal formal de comunicação com o cliente para registrar decisões, alinhamentos, aprovações e histórico de discussões do projeto. Sempre que houver definições relevantes ou encaminhamentos que precisem de rastreabilidade, o registro será consolidado por e-mail.
 
-- **Jira:** Será a ferramenta central de gerenciamento do backlog, controle de tarefas e acompanhamento do progresso de cada sprint. Através do Jira, tanto a equipe quanto o cliente poderão visualizar em tempo real o andamento do projeto, participar ativamente do processo de priorização das funcionalidades e garantir que as entregas estejam alinhadas com os objetivos definidos em cada ciclo.
+- **Jira:** Será a ferramenta central de gerenciamento do backlog, controle de tarefas e acompanhamento do progresso de cada iteração. Através do Jira, tanto a equipe quanto o cliente poderão visualizar em tempo real o andamento do projeto, participar ativamente do processo de priorização das funcionalidades e garantir que as entregas estejam alinhadas com os objetivos definidos em cada ciclo.
 
 - **TLDraw:** Será utilizado como quadro colaborativo para diagramações e planejamento visual de funcionalidades. A ferramenta possibilitará a criação de fluxos, protótipos de interface, mapas de arquitetura e demais documentações visuais necessárias durante as etapas de planejamento e refinamento do projeto, facilitando o alinhamento visual entre os membros da equipe.
 
@@ -57,4 +57,4 @@ Para iniciar o desenvolvimento de uma funcionalidade, será utilizado o **Defini
 
 Durante o desenvolvimento, será aplicado o **Definition of Done (DoD)**, no qual a funcionalidade será considerada pronta apenas após passar por validações técnicas e funcionais, incluindo testes básicos, verificação de funcionamento e avaliação de usabilidade, garantindo que a solução seja adequada ao contexto dos usuários.
 
-Após a validação interna, o incremento será apresentado aos stakeholders ao final de cada sprint, para **validação por meio de feedback contínuo**. Nessa etapa, os usuários irão verificar se as funcionalidades atendem às suas necessidades, permitindo ajustes e refinamentos antes das próximas iterações.
+Após a validação interna, o incremento será apresentado aos stakeholders ao final de cada iteração, para **validação por meio de feedback contínuo**. Nessa etapa, os usuários irão verificar se as funcionalidades atendem às suas necessidades, permitindo ajustes e refinamentos antes das próximas iterações.
