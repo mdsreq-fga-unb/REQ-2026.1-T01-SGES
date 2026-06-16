@@ -37,7 +37,7 @@ nav:
       - "9. DoR e DoD": "DoR_e_DoD.md"
       - "10. Lições Aprendidas": "interacao/licoes_aprendidas.md"
       - "11. Arquitetura do Produto": "arquitetura_do_produto.md"
-  - "Marcos de interações":
+  - "Marcos de iterações":
       - "Ata da Reunião de Validação do Escopo e Objetivos": reuniao_de_alinhamento.md
       - "Ata da Reunião de Validação de Requisitos": reuniao_de_requisitos.md
   - "Gravações":

@@ -169,7 +169,7 @@ O wiring de todas as dependências é feito em `server.ts` usando a biblioteca `
 
 | Decisão                          | Justificativa                                                                              |
 |----------------------------------|--------------------------------------------------------------------------------------------|
-| **Arquitetura Hexagonal**        | Isola regras de negócio; facilita testes unitários sem banco; suporta equipes rotativas (RNF11) |
+| **Arquitetura Hexagonal**        | Isola regras de negócio; facilita testes unitários sem banco; suporta equipes rotativas (RNF07) |
 | **TypeScript strict**            | Previne erros de runtime em produção; documenta contratos via tipos                        |
 | **Express v5**                   | Maturidade, ecossistema amplo e suporte a async/await nativo                               |
 | **TypeORM + PostgreSQL**         | Banco relacional com ACID garante integridade referencial; suporte a replicação e pool    |
