@@ -37,6 +37,57 @@ nav:
       - "9. DoR e DoD": "DoR_e_DoD.md"
       - "10. Lições Aprendidas": "interacao/licoes_aprendidas.md"
       - "11. Arquitetura do Produto": "arquitetura_do_produto.md"
+
+  - "Lista de itens de Trabalho":
+      - "CSU01":
+        - "fluxo": ./lista_trabalhos/csu01/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu01/DoR_DoD.md
+      - "CSU02":
+        - "fluxo": ./lista_trabalhos/csu02/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu02/DoR_DoD.md
+      - "CSU03":
+        - "fluxo": ./lista_trabalhos/csu03/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu03/DoR_DoD.md
+      - "CSU04":
+        - "fluxo": ./lista_trabalhos/csu04/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu04/DoR_DoD.md
+      - "CSU05":
+        - "fluxo": ./lista_trabalhos/csu05/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu05/DoR_DoD.md
+      - "CSU06":
+        - "fluxo": ./lista_trabalhos/csu06/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu06/DoR_DoD.md
+      - "CSU07":
+        - "fluxo": ./lista_trabalhos/csu07/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu07/DoR_DoD.md
+      - "CSU08":
+        - "fluxo": ./lista_trabalhos/csu08/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu08/DoR_DoD.md
+      - "CSU09":
+        - "fluxo": ./lista_trabalhos/csu09/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu09/DoR_DoD.md
+      - "CSU10":
+        - "fluxo": ./lista_trabalhos/csu10/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu10/DoR_DoD.md
+      - "CSU11":
+        - "fluxo": ./lista_trabalhos/csu11/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu11/DoR_DoD.md
+      - "CSU12":
+        - "fluxo": ./lista_trabalhos/csu12/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu12/DoR_DoD.md
+      - "CSU13":
+        - "fluxo": ./lista_trabalhos/csu13/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu13/DoR_DoD.md
+      - "CSU14":
+        - "fluxo": ./lista_trabalhos/csu14/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu14/DoR_DoD.md
+      - "CSU15":
+        - "fluxo": ./lista_trabalhos/csu15/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu15/DoR_DoD.md
+      - "CSU16":
+        - "fluxo": ./lista_trabalhos/csu16/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu16/DoR_DoD.md
+
   - "Marcos de iterações":
       - "Ata da Reunião de Validação do Escopo e Objetivos": reuniao_de_alinhamento.md
       - "Ata da Reunião de Validação de Requisitos": reuniao_de_requisitos.md
@@ -45,8 +96,7 @@ nav:
   - "Gravações":
       - "Vídeo da Unidade 1": unidade_1_video.md
       - "Vídeo da Unidade 2": unidade_2_video.md
-      - "Vídeo da Unidade 3": unidade_3_video.md
-
+      - "Vídeo da Unidade 3": unidade_3_video.md      
 markdown_extensions:
   - admonition
   - attr_list

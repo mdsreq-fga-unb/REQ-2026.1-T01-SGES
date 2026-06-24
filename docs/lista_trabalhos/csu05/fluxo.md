@@ -1,0 +1,53 @@
+# SGES
+## Especificação de Caso de Uso: CSU05 (RF05) - Editar perfil do instrutor
+
+---
+
+### 1. Breve Descrição
+Permitir a edição das informações de contato e a atualização das permissões de acesso associadas ao instrutor.
+
+---
+
+### 2. Fluxo Básico de Eventos
+1. O Gestor acessa a lista de instrutores e seleciona o instrutor que deseja editar.
+2. O sistema exibe os dados atuais do instrutor no formulário.
+3. O Gestor edita os campos necessários (como dados cadastrais ou permissões) e clica em 'Salvar Alterações'.
+4. O sistema valida a conformidade dos dados e a unicidade do CPF/E-mail (se alterados).
+5. O sistema salva as atualizações no banco de dados.
+6. O sistema exibe uma mensagem de sucesso e atualiza imediatamente as permissões ativas do instrutor.
+
+---
+
+### 3. Fluxos Alternativos
+Não há fluxos alternativos identificados.
+
+---
+
+### 4. Fluxos de Exceção
+#### FE1 - Dados de Alteração Inválidos
+No passo 4, se os dados inseridos violarem as regras de formato ou entrarem em conflito com registros existentes (ex: e-mail já em uso por outro usuário), o sistema exibe mensagens de erro e mantém as informações anteriores.
+
+---
+
+### 5. Pré-Condições
+* O Gestor está autenticado e o instrutor a ser editado já existe no sistema.
+
+---
+
+### 6. Pós-Condições
+* As alterações cadastrais e as novas permissões do instrutor são salvas no banco de dados e entram em vigor imediatamente.
+
+---
+
+### 7. Pontos de Extensão
+Nenhum ponto de extensão identificado.
+
+---
+
+### 8. Requisitos Especiais
+* RNF02 - Trilha de Auditoria: Modificações de dados de perfis de instrutores devem ser registradas na tabela de logs para fins de auditoria.
+
+---
+
+### 9. Informações Adicionais
+Não há informações adicionais neste momento.
