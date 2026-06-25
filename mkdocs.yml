@@ -41,7 +41,6 @@ nav:
       - "Visão do Projeto": "visao_projeto.md"
       - "Cenário Atual e Negócio": "cenario_atual_e_negocio.md"
       - "Solução Proposta": "solucao_proposta.md"
-      - "DoR e DoD": "DoR_e_DoD.md"
       
   - "Engenharia de Software":
       - "Estratégias de Eng. de Software": "estrategias_eng_software.md"

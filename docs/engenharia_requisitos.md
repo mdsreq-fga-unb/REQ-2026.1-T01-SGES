@@ -76,31 +76,66 @@ Representarão como os usuários irão interagir com o sistema.
 
 Essa etapa busca garantir que os requisitos estejam corretos, completos, consistentes e alinhados às necessidades da instituição.
 
+
 ## Definition of Ready (DoR)
 
-Um requisito será considerado pronto para desenvolvimento apenas quando estiver claramente descrito, possuir critérios de aceitação definidos e estiver alinhado aos objetivos do projeto.
+O DoR delimita quando um requisito está preparado para ser trabalhado, permitindo que a equipe avalie o trabalho antes do início do desenvolvimento.
 
-### Para um requisito ser considerado _Ready_:
+Para que um requisito seja considerado **Ready**, os seguintes critérios devem ser atendidos:
 
-- Possui descrição clara?
-- Possui critérios de aceitação?
-- Está associado a um objetivo específico?
-- Foi compreendido pela equipe?
-- Possui prioridade definida?
+* O requisito está representado por um **Caso de Uso**?
 
----
+* O requisito possui **Critérios de Aceitação** definidos?
+
+* O requisito está no mesmo grau de abstração dos demais requisitos?
+
+* O requisito foi estimado (uso de valores objetivos)?
+
+* O requisito agrega valor e está associado a algum dos objetivos específicos da solução?
+
+* As dependências do requisito estão devidamente mapeadas(caso existam)?
 
 ## Definition of Done (DoD)
 
-Uma funcionalidade será considerada concluída apenas após implementação, testes e validação pelos membros da equipe e stakeholders.
+O DoD define os critérios necessários para que uma funcionalidade seja considerada completa, demonstrando a **qualidade do requisito produzido**.
 
-### Para um requisito ser considerado _Done_:
+Para que uma tarefa ou **Caso de Uso** seja considerado **Done**, todas as perguntas a seguir devem ser respondidas afirmativamente.
 
-- A funcionalidade foi implementada?
-- Os critérios de aceitação foram atendidos?
-- A funcionalidade foi validada pela equipe?
-- O requisito entrega valor ao usuário?
-- A documentação necessária foi atualizada?
+### Entrega de Valor
+
+* O trabalho realizado entrega um incremento funcional e observável ao produto?
+
+* A entrega está claramente rastreada à sua origem, contendo referência ao Caso de Uso, requisito ou objetivo específico correspondente?
+
+### Cobertura dos Requisitos
+
+* Todos os cenários descritos nos critérios de aceite foram implementados e podem ser demonstrados?
+
+* Os cenários contemplam fluxos de sucesso, falha e alternativas de execução?
+
+### Qualidade de Testes
+
+* Foram criados os testes unitários necessários para a funcionalidade desenvolvida?
+
+* Os fluxos principais foram validados **manualmente** em um ambiente de teste, confirmando o comportamento esperado?
+
+### Revisão por Pares (Code Review)
+
+* O Pull Request (PR) foi revisado e aprovado por pelo menos um outro integrante da equipe?
+
+* A revisão de código validou os seguintes critérios essenciais:
+
+    * **Conformidade:** o código segue os padrões estabelecidos pela equipe?
+
+    * **Lógica:** a implementação atende corretamente aos requisitos definidos?
+
+    * **Legibilidade:** o código está claro, bem nomeado e de fácil manutenção?
+
+    * **Segurança:** não há exposição de dados sensíveis, como senhas ou tokens?
+
+### Documentação
+
+* A **documentação técnica** foi atualizada de acordo com as alterações realizadas no sistema.
 
 ---
 
