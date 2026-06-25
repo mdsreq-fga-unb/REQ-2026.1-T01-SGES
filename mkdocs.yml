@@ -39,82 +39,90 @@ nav:
   - "Início": index.md
   - "Visão do Produto e Projeto":
       - "Visão do Projeto": "visao_projeto.md"
-      - "1. Cenário Atual e Negócio": "cenario_atual_e_negocio.md"
-      - "2. Solução Proposta": "solucao_proposta.md"
-      - "3. Estratégias de Eng. de Software": "estrategias_eng_software.md"
-      - "4. Engenharia de Requisitos": "engenharia_requisitos.md"
-      - "5. Lista de Requisitos": "lista_requisitos.md"
-      - "6. Itens de Trabalho e priorização": "matriz_de_acao_e_priorizacao.md"
-      - "7. Cronograma e Entregas": "cronograma_e_entregas.md"
-      - "8. Interação Equipe e Cliente": "interacao_equipe_cliente.md"
-      - "9. DoR e DoD": "DoR_e_DoD.md"
-      - "10. Lições Aprendidas": "interacao/licoes_aprendidas.md"
-      - "11. Arquitetura do Produto": "arquitetura_do_produto.md"
+      - "Cenário Atual e Negócio": "cenario_atual_e_negocio.md"
+      - "Solução Proposta": "solucao_proposta.md"
+      - "DoR e DoD": "DoR_e_DoD.md"
+      
+  - "Engenharia de Software":
+      - "Estratégias de Eng. de Software": "estrategias_eng_software.md"
+      - "Interação Equipe e Cliente": "interacao_equipe_cliente.md"
+      - "Engenharia de Requisitos": "engenharia_requisitos.md"
 
-  - "Lista de itens de Trabalho":
-      - Andamento: ./lista_trabalhos/andamento.md
-      - "CSU01":
-        - "fluxo": ./lista_trabalhos/csu01/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu01/DoR_DoD.md
-      - "CSU02":
-        - "fluxo": ./lista_trabalhos/csu02/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu02/DoR_DoD.md
-      - "CSU03":
-        - "fluxo": ./lista_trabalhos/csu03/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu03/DoR_DoD.md
-      - "CSU04":
-        - "fluxo": ./lista_trabalhos/csu04/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu04/DoR_DoD.md
-      - "CSU05":
-        - "fluxo": ./lista_trabalhos/csu05/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu05/DoR_DoD.md
-      - "CSU06":
-        - "fluxo": ./lista_trabalhos/csu06/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu06/DoR_DoD.md
-      - "CSU07":
-        - "fluxo": ./lista_trabalhos/csu07/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu07/DoR_DoD.md
-      - "CSU08":
-        - "fluxo": ./lista_trabalhos/csu08/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu08/DoR_DoD.md
-      - "CSU09":
-        - "fluxo": ./lista_trabalhos/csu09/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu09/DoR_DoD.md
-      - "CSU10":
-        - "fluxo": ./lista_trabalhos/csu10/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu10/DoR_DoD.md
-      - "CSU11":
-        - "fluxo": ./lista_trabalhos/csu11/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu11/DoR_DoD.md
-      - "CSU12":
-        - "fluxo": ./lista_trabalhos/csu12/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu12/DoR_DoD.md
-      - "CSU13":
-        - "fluxo": ./lista_trabalhos/csu13/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu13/DoR_DoD.md
-      - "CSU14":
-        - "fluxo": ./lista_trabalhos/csu14/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu14/DoR_DoD.md
-      - "CSU15":
-        - "fluxo": ./lista_trabalhos/csu15/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu15/DoR_DoD.md
-      - "CSU16":
-        - "fluxo": ./lista_trabalhos/csu16/fluxo.md
-        - "DoR & DoD": ./lista_trabalhos/csu16/DoR_DoD.md
+  - "Gestão de Produto":
+      - "Lista de Requisitos": "lista_requisitos.md"
+      - "Itens de Trabalho e priorização": "matriz_de_acao_e_priorizacao.md"
+      - "Arquitetura do Produto": "arquitetura_do_produto.md"
+      - "Casos de Uso":
+          - Andamento: ./lista_trabalhos/andamento.md
+          - "CSU01":
+            - "fluxo": ./lista_trabalhos/csu01/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu01/DoR_DoD.md
+          - "CSU02":
+            - "fluxo": ./lista_trabalhos/csu02/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu02/DoR_DoD.md
+          - "CSU03":
+            - "fluxo": ./lista_trabalhos/csu03/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu03/DoR_DoD.md
+          - "CSU04":
+            - "fluxo": ./lista_trabalhos/csu04/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu04/DoR_DoD.md
+          - "CSU05":
+            - "fluxo": ./lista_trabalhos/csu05/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu05/DoR_DoD.md
+          - "CSU06":
+            - "fluxo": ./lista_trabalhos/csu06/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu06/DoR_DoD.md
+          - "CSU07":
+            - "fluxo": ./lista_trabalhos/csu07/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu07/DoR_DoD.md
+          - "CSU08":
+            - "fluxo": ./lista_trabalhos/csu08/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu08/DoR_DoD.md
+          - "CSU09":
+            - "fluxo": ./lista_trabalhos/csu09/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu09/DoR_DoD.md
+          - "CSU10":
+            - "fluxo": ./lista_trabalhos/csu10/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu10/DoR_DoD.md
+          - "CSU11":
+            - "fluxo": ./lista_trabalhos/csu11/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu11/DoR_DoD.md
+          - "CSU12":
+            - "fluxo": ./lista_trabalhos/csu12/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu12/DoR_DoD.md
+          - "CSU13":
+            - "fluxo": ./lista_trabalhos/csu13/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu13/DoR_DoD.md
+          - "CSU14":
+            - "fluxo": ./lista_trabalhos/csu14/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu14/DoR_DoD.md
+          - "CSU15":
+            - "fluxo": ./lista_trabalhos/csu15/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu15/DoR_DoD.md
+          - "CSU16":
+            - "fluxo": ./lista_trabalhos/csu16/fluxo.md
+            - "DoR & DoD": ./lista_trabalhos/csu16/DoR_DoD.md
 
-  - "Marcos de iterações":
-      - "1. Reunião com a cliente":
+  - "Acompanhamento do Projeto":
+      - "Cronograma e Entregas": "cronograma_e_entregas.md"
+      - "Gravações das unidades":
+          - "Vídeo da Unidade 1": unidade_1_video.md
+          - "Vídeo da Unidade 2": unidade_2_video.md
+          - "Vídeo da Unidade 3": unidade_3_video.md 
+      - "Reunião com a cliente":
         - "Ata da Reunião de Validação do Escopo e Objetivos": reuniao_de_alinhamento.md
         - "Ata da Reunião de Validação de Requisitos": reuniao_de_requisitos.md
         - "Vídeo de Apresentação do MVP": validacao_unidade_3.md
-      - "2. Engenharia de Requisitos":
+      - "Evidências de ER e EW":
+        - "1. Concepção": paginas_de_evidencia/evidencias_concepcao.md
+        - "2. Elaboração": paginas_de_evidencia/evidencias_elaboracao.md  
+        - "3. Construção 1": paginas_de_evidencia/evidencias_construcao_iteracao1.md  
+        - "4. Construção 2": paginas_de_evidencia/evidencias_construcao_iteracao2.md
+        - "5. Transição": paginas_de_evidencia/evidencias_transicao.md
         - "Áudio referente a Reunião - 1 Iteração": audio_reuniao.md
-      - "3. Engenharia de Software":
-        - "a": a.md
-  - "Gravações":
-      - "Vídeo da Unidade 1": unidade_1_video.md
-      - "Vídeo da Unidade 2": unidade_2_video.md
-      - "Vídeo da Unidade 3": unidade_3_video.md      
+      - "Lições Aprendidas": "iteracao/licoes_aprendidas.md"
+
+
 markdown_extensions:
   - admonition
   - attr_list

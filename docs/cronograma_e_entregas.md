@@ -16,12 +16,11 @@ Este cronograma reflete o ciclo de vida iterativo e incremental do framework **O
 
 | Fase / Iteração | Período | Escopo (Casos de Uso / Entregas) | Engenharia de Requisitos | Status |
 | :--- | :---: | :--- | :--- | :---: |
-| **Concepção**<br>Iteração 1 *(Unidade 1)* | 17/03 a 16/04 | • [Documento de Visão preliminar](link)<br>• [Contexto e Cenário Atual](link) | [Técnicas Utilizadas](link) | Concluída |
-| **Elaboração**<br>Iteração 1 *(Unidade 2)* | 17/04 a 19/05 | • [Itens de Trabalho Priorizados](link)<br>• [Critérios de Qualidade e Aceitação](link) | [Técnicas Utilizadas](link) | Concluída |
-| **Construção**<br>Iteração 1 *(Unidade 3)* | 20/05 a 11/06 | • [Mecanismo de Acesso Seguro](link)<br>• [Painel de Dados de Voluntários](link) | [Técnicas Utilizadas](link) | Concluída |
-| **Construção**<br>Iteração 2 *(Unidade 4)* | 12/06 a 01/07 | • [Módulo de Relatórios de Frequência](link)<br>• [Painel de Sinalização de Risco](link) | [Técnicas Utilizadas](link) | Em andamento |
-| **Transição**<br>Iteração 1 *(Unidade 4 - Final)* | 02/07 a 09/07 | • [Sistema Implantado em Produção](link)<br>• [Guias e Manuais de Utilização](link)<br>• [Documentação Revisada do Projeto](link) | [Técnicas Utilizadas](link) | Não iniciado |
-
+| **Concepção**<br>Iteração 1 *(Unidade 1)* | 17/03 a 16/04 | • [Documento de Visão preliminar](link)<br>• [Contexto e Cenário Atual](link) | [Técnicas Utilizadas](paginas_de_evidencia/evidencias_concepcao.md) | Concluída |
+| **Elaboração**<br>Iteração 1 *(Unidade 2)* | 17/04 a 19/05 | • [Itens de Trabalho Priorizados](link)<br>• [Critérios de Qualidade e Aceitação](link) | [Técnicas Utilizadas](paginas_de_evidencia/evidencias_elaboracao.md) | Concluída |
+| **Construção**<br>Iteração 1 *(Unidade 3)* | 20/05 a 11/06 | • [Mecanismo de Acesso Seguro](link)<br>• [Painel de Dados de Voluntários](link) | [Técnicas Utilizadas](paginas_de_evidencia/evidencias_construcao_iteracao1.md) | Concluída |
+| **Construção**<br>Iteração 2 *(Unidade 4)* | 12/06 a 01/07 | • [Módulo de Relatórios de Frequência](link)<br>• [Painel de Sinalização de Risco](link) | [Técnicas Utilizadas](paginas_de_evidencia/evidencias_construcao_iteracao2.md) | Em andamento |
+| **Transição**<br>Iteração 1 *(Unidade 4 - Final)* | 02/07 a 09/07 | • [Sistema Implantado em Produção](link)<br>• [Guias e Manuais de Utilização](link)<br>• [Documentação Revisada do Projeto](link) | [Técnicas Utilizadas](paginas_de_evidencia/evidencias_transicao.md) | Não iniciado |
 ---
 
 ## Plano de Iteração — Construção Iteração 2 *(Unidade 4 — Parte 1)*
