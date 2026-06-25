@@ -6,9 +6,9 @@ O DoR delimita quando um requisito está preparado para ser trabalhado, permitin
 
 Para que um requisito seja considerado **Ready**, os seguintes critérios devem ser atendidos:
 
-* O requisito está representado por uma **História de Usuário**?
+* O requisito está representado por um **Caso de Uso**?
 
-* O requisito possui **Critérios de Aceitação** orientados por **Behavior Driven Development (BDD)** e testes?
+* O requisito possui **Critérios de Aceitação** definidos?
 
 * O requisito está no mesmo grau de abstração dos demais requisitos?
 
@@ -22,13 +22,13 @@ Para que um requisito seja considerado **Ready**, os seguintes critérios devem 
 
 O DoD define os critérios necessários para que uma funcionalidade seja considerada completa, demonstrando a **qualidade do requisito produzido**.
 
-Para que uma tarefa ou **User Story** seja considerada **Done**, todas as perguntas a seguir devem ser respondidas afirmativamente.
+Para que uma tarefa ou **Caso de Uso** seja considerado **Done**, todas as perguntas a seguir devem ser respondidas afirmativamente.
 
 ### 1. Entrega de Valor
 
 * O trabalho realizado entrega um incremento funcional e observável ao produto?
 
-* A entrega está claramente rastreada à sua origem, contendo referência à User Story, requisito ou objetivo específico correspondente?
+* A entrega está claramente rastreada à sua origem, contendo referência ao Caso de Uso, requisito ou objetivo específico correspondente?
 
 ### 2. Cobertura dos Requisitos
 

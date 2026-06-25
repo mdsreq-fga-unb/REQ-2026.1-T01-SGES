@@ -41,3 +41,17 @@
 1. **Realização Antecipada das Atividades de Engenharia de Requisitos**
     - **Desafio:** A equipe enfrentou dificuldades ao ter que realizar atividades de Engenharia de Requisitos no projeto antes de ter aprendido formalmente os conceitos, práticas e técnicas na disciplina. Isso gerou incerteza na execução das tarefas, dúvidas sobre como estruturar os artefatos corretamente e risco de produzir entregas com baixo nível de qualidade ou desalinhadas com as expectativas acadêmicas.
     - **Como foi superado:** A equipe buscou estudar de forma paralela os conceitos de Engenharia de Requisitos por meio de materiais complementares. Além disso, adotou uma abordagem iterativa, revisando e refinando continuamente os artefatos produzidos à medida que novos conteúdos eram aprendidos na disciplina, permitindo evolução gradual na qualidade das entregas e maior alinhamento com as boas práticas.
+
+## 10.3. Unidade 3
+
+### Lições Aprendidas e Melhorias para o Processo
+
+1. **Adequação ao Framework OpenUP**
+    - **Desafio:** Grande dificuldade de adaptação aos conceitos e rituais do OpenUP. Compreender a dinâmica de funcionamento das iterações, o ciclo de micro-incrementos e, principalmente, implementar essa sistemática na prática levando em consideração a rotina e a disponibilidade dos membros da equipe foi um desafio complexo.
+    - **Ação de Melhoria:** A equipe realizou um estudo aprofundado das documentações oficiais e diretrizes do OpenUP. A partir disso, substituiu-se o modelo mental do Scrum tradicional por uma governança baseada em Planos de Iteração e acompanhamento centralizado por meio de uma Lista de Itens de Trabalho (*Work Item List*).
+
+### Dificuldades e Ações para Superá-las
+
+1. **Eliminação de Resquícios de Metodologias Anteriores e Refatoração de Processos**
+    - **Desafio:** A transição metodológica exigiu um volume significativo de retrabalho. O projeto apresentava diversos resquícios e nomenclaturas exclusivas do Scrum (como *Sprints*, *Cards* e *Story Points*), e desvincular a equipe desse modelo consolidado para migrar para a semântica e fluxo do OpenUP foi uma tarefa árdua.
+    - **Como foi superado:** A equipe realizou uma varredura crítica em toda a documentação, reestruturando as tabelas de requisitos em Casos de Uso funcionais e vinculando-os diretamente ao cronograma de fases do projeto. Além disso, o grupo focou em gerar e adicionar evidências claras da execução das atividades de engenharia e, com o processo alinhado, conseguiu engrenar uma esteira de desenvolvimento produtiva, resultando em uma evolução sólida e segura das funcionalidades do SGES.

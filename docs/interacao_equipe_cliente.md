@@ -4,11 +4,10 @@
 
 | Papel                  | Descrição                                                                                                                         | Responsável     | Participantes           |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------------- |
-| Gerente de Projeto     | Responsável pelo planejamento estratégico das entregas e alinhar expectativas entre os times                                      | Gabriel Pereira | Matheus Eiki            |
+| Gerente de Projeto     | Responsável pelo planejamento estratégico das entregas e alinhar expectativas entre os times                                      | Gabriel Pereira | Vinicius            |
 | Desenvolvedor Backend  | Responsável pelo desenvolvimento da lógica e integrações com serviços e provedores                                                | Gabriel Magioli | Vinicius, Gabriel P     |
-| Desenvolvedor Frontend | Responsável pelo desenvolvimento de telas e integrações com o backend                                                             | Lucca Medeiros  | Matheus Eiki, Gabriel P |
-| Analista de QA         | Responsável por validar as regras de negócio e assegurar o correto funcionamento da aplicação                                     | Matheus Eiki    | Guilherme               |
-| Prototipação           | Definições das interfaces que servem como base para o desenvolvimento e identificação dos problemas dos clientes de forma visual. | Matheus Eiki    | Guilherme               |
+| Desenvolvedor Frontend | Responsável pelo desenvolvimento de telas e integrações com o backend                                                             | Lucca Medeiros  | Gabriel P |
+| Analista de QA         | Responsável por validar as regras de negócio e assegurar o correto funcionamento da aplicação                                     | Guilherme     | Lucca Medeiros |
 | Analista de Requisitos | Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos                                    | Guilherme       | Gabriel P               |
 
 ## 8.2. Comunicação e Reuniões
@@ -21,25 +20,29 @@
 
 - **Email:** Será utilizado como canal formal de comunicação com o cliente para registrar decisões, alinhamentos, aprovações e histórico de discussões do projeto. Sempre que houver definições relevantes ou encaminhamentos que precisem de rastreabilidade, o registro será consolidado por e-mail.
 
-- **Jira:** Será a ferramenta central de gerenciamento do backlog, controle de tarefas e acompanhamento do progresso de cada sprint. Através do Jira, tanto a equipe quanto o cliente poderão visualizar em tempo real o andamento do projeto, participar ativamente do processo de priorização das funcionalidades e garantir que as entregas estejam alinhadas com os objetivos definidos em cada ciclo.
+### Métodos e Frequência de Reuniões (Abordagem OpenUP)
 
-- **TLDraw:** Será utilizado como quadro colaborativo para diagramações e planejamento visual de funcionalidades. A ferramenta possibilitará a criação de fluxos, protótipos de interface, mapas de arquitetura e demais documentações visuais necessárias durante as etapas de planejamento e refinamento do projeto, facilitando o alinhamento visual entre os membros da equipe.
+#### Reuniões Diárias de Status
+A equipe de desenvolvimento realizará comunicação assíncrona semanalmente para alinhar o andamento dos micro-incrementos técnicos e sincronizar o progresso individual. Conduzidas de forma objetiva via WhatsApp, essas mensagens servem para atualizar a Lista de Itens de Trabalho (Work Item List), identificar impedimentos com agilidade e, se necessário, ajustar o horário para acomodar a rotina de todos os membros (como pendências de horários).
 
-### Métodos e Frequência de Reuniões
+#### Avaliação de Fim de Iteração
+Ao final de cada iteração, a equipe realizará uma reunião formal de avaliação de resultados. Nesse momento, as funcionalidades desenvolvidas no ciclo são analisadas para verificar se cumprem os critérios de aceite estabelecidos. O resultado dessa avaliação mede o progresso real em relação aos objetivos de alto nível da fase e ajuda a calibrar o escopo para a iteração seguinte.
 
-- **Reuniões Diárias (Daily Scrum):** A equipe de desenvolvimento realizará reuniões diárias de curta duração para discutir o progresso de cada membro, os obstáculos encontrados e as prioridades do dia. Conduzidas de forma objetiva via Discord, essas reuniões garantirão que todos estejam cientes do andamento do projeto e que eventuais impedimentos sejam identificados e resolvidos com agilidade.
+#### Planejamento de Iteração
+No início de cada novo ciclo, a equipe se reúne para estruturar o próximo Plano de Iteração. Nessa etapa, o escopo macro definido no Plano de Projeto é revisado e os Casos de Uso prioritários da Lista de Itens de Trabalho são subdivididos em tarefas de desenvolvimento menores e distribuídos entre os membros da equipe de acordo com suas capacidades e estimativas de esforço.
 
-- **Reunião de Revisão de Sprint (Review):** Ao final de cada sprint, a equipe realizará uma reunião de revisão com o cliente. Nesse momento, as funcionalidades desenvolvidas serão apresentadas e demonstradas, permitindo que o cliente as valide, teste e forneça feedback direto. As informações coletadas nessa reunião serão utilizadas para ajustar o backlog e orientar as prioridades do próximo ciclo de desenvolvimento.
+#### Retrospectiva e Lições Aprendidas
+Também integrada ao encerramento da iteração, a equipe realiza uma sessão de retrospectiva com o objetivo de refletir sobre o processo de Engenharia de Software adotado. São identificados os pontos fortes, os gargalos técnicos e organizacionais e os desvios de planejamento. Os aprendizados são registrados diretamente como Lições Aprendidas no Plano de Projeto para garantir a evolução contínua da qualidade e dos processos da equipe.
 
-- **Reunião de Planejamento de Sprint:** Após a reunião de revisão, a equipe e o cliente se reunirão para planejar o próximo sprint. Nessa etapa, o backlog será revisado em conjunto e as funcionalidades serão priorizadas de acordo com o feedback recebido, assegurando que o desenvolvimento permaneça alinhado às expectativas e necessidades do cliente.
-
-- **Reunião de Retrospectiva:** Também ao final de cada sprint, a equipe realizará uma reunião interna de retrospectiva. O objetivo é refletir sobre o ciclo encerrado, identificando o que funcionou bem, os pontos de melhoria e as lições aprendidas. Essa prática garante a melhoria contínua dos processos, da comunicação e da qualidade das entregas ao longo de todo o projeto.
+---
 
 ### Frequência de Interações com o Cliente
 
-- **Revisões de Sprint:** Pelo menos um representante da organização estará diretamente envolvido nas revisões de sprint, realizadas ao término de cada ciclo de desenvolvimento, onde cada um desses ciclos possui a duração de 10 dias úteis. Nessas reuniões, poderá validar as entregas, testar as funcionalidades implementadas e fornecer feedback para orientar os próximos passos do projeto.
+#### Demonstração de Resultados e Checkpoints
+Pelo menos um representante da organização cliente (Stakeholder) estará diretamente envolvido nos checkpoints de encerramento de cada iteração, realizados ao término de cada ciclo de desenvolvimento. Nessas sessões, o cliente poderá validar os micro-incrementos entregues, testar as capacidades funcionais dos Casos de Uso implementados e fornecer o feedback necessário para orientar a priorização das próximas iterações.
 
-- **Planejamento da Sprint:** Após o planejamento de cada sprint, será enviado via email para o cliente, um informativo indicando um conjunto de funcionalidades que serão desenvolvidas ao longo da sprint seguinte, com o intuito de validar e alinhar expectativas.
+#### Alinhamento de Escopo e Informativos
+Após a consolidação do planejamento de cada ciclo, a gerência de projeto enviará via WhatsApp para o cliente um informativo detalhado contendo o conjunto de Casos de Uso e capacidades técnicas que serão abordados ao longo da iteração seguinte. Essa prática garante a transparência contínua e o alinhamento estrito de expectativas entre a equipe de desenvolvimento e as necessidades do negócio do cliente.
 
 ## 8.3. Processo de Validação
 
@@ -49,4 +52,4 @@ Para iniciar o desenvolvimento de uma funcionalidade, será utilizado o **Defini
 
 Durante o desenvolvimento, será aplicado o **Definition of Done (DoD)**, no qual a funcionalidade será considerada pronta apenas após passar por validações técnicas e funcionais, incluindo testes básicos, verificação de funcionamento e avaliação de usabilidade, garantindo que a solução seja adequada ao contexto dos usuários.
 
-Após a validação interna, o incremento será apresentado aos stakeholders ao final de cada sprint, para **validação por meio de feedback contínuo**. Nessa etapa, os usuários irão verificar se as funcionalidades atendem às suas necessidades, permitindo ajustes e refinamentos antes das próximas iterações.
+Após a validação interna, o incremento será apresentado aos stakeholders ao final de cada iteração, para **validação por meio de feedback contínuo**. Nessa etapa, os usuários irão verificar se as funcionalidades atendem às suas necessidades, permitindo ajustes e refinamentos antes das próximas iterações.

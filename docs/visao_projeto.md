@@ -4,7 +4,7 @@
 
 # Visão do Produto e Projeto
 
-**Versão 1.1**
+**Versão 1.5**
 
 **Histórico de versões**
 
@@ -15,3 +15,4 @@
 | 10/04/2026 | 1.2 | Versão Final com as seções 1 a 5 e 10.1 | Grupo Todo |
 | 05/05/2026 | 1.3 | Versão com as correções da entrega da unidade 1 | Grupo Todo |
 | 18/05/2026 | 1.4 | Versão final da unidade 2 | Grupo Todo |
+| 15/06/2026 | 1.5 | Versão final da unidade 3 | Grupo Todo |

@@ -73,7 +73,7 @@ A seguir, é apresentado um quadro resumo dos stakeholders.
 | Vice-Presidente _(Rep: Jussara Cordeiro Limeira)_                                   | Cliente real, usuário final e mediador.                                                                                                                 | Buscar oportunidades de gerir beneficiários da organização.              | Alta       |
 | _Diretores_                                                                         | Cliente real, usuário final e mediadores em caso de ausência da presidência                                                                             | Suporte em tomadas de decisão, gerência de beneficiários da organização. | Média      |
 | _Professores_                                                                       | Cliente real, usuário final da aplicação.                                                                                                               | Controle dos beneficiários                                               | Média      |
-| _Desenvolvedores (Rep: Gabriel M, Gabriel, Vinicius, Matheus, Medeiros, Guilherme)_ | Desenvolvedores da solução, junto aos stakeholders, são responsáveis por mapear a solução e desenvolvê-la atendendo as necessidades de todas as partes. | Mapear as necessidades e desenvolver a solução                           | Alta       |
+| _Desenvolvedores (Rep: Gabriel M, Gabriel, Vinicius, Medeiros, Guilherme)_ | Desenvolvedores da solução, junto aos stakeholders, são responsáveis por mapear a solução e desenvolvê-la atendendo as necessidades de todas as partes. | Mapear as necessidades e desenvolver a solução                           | Alta       |
 
 ## 1.4. Segmentação de Clientes
 

@@ -7,9 +7,21 @@ theme:
   name: material
   language: pt-BR
   palette:
+    # Ativa o Tema Claro por padrão
+    - scheme: default
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para tema escuro
+    # Ativa o Tema Escuro
     - scheme: slate
       primary: blue
       accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para tema claro
+
   font:
     text: Source Sans 3
     code: JetBrains Mono
@@ -22,6 +34,7 @@ theme:
     - content.code.copy
     - content.tabs.link
 
+
 nav:
   - "Início": index.md
   - "Visão do Produto e Projeto":
@@ -31,15 +44,77 @@ nav:
       - "3. Estratégias de Eng. de Software": "estrategias_eng_software.md"
       - "4. Engenharia de Requisitos": "engenharia_requisitos.md"
       - "5. Lista de Requisitos": "lista_requisitos.md"
-      - "6. Backlog e priorização": "matriz_de_acao_e_priorizacao.md"
+      - "6. Itens de Trabalho e priorização": "matriz_de_acao_e_priorizacao.md"
       - "7. Cronograma e Entregas": "cronograma_e_entregas.md"
       - "8. Interação Equipe e Cliente": "interacao_equipe_cliente.md"
       - "9. DoR e DoD": "DoR_e_DoD.md"
       - "10. Lições Aprendidas": "interacao/licoes_aprendidas.md"
+      - "11. Arquitetura do Produto": "arquitetura_do_produto.md"
+
+  - "Lista de itens de Trabalho":
+      - Andamento: ./lista_trabalhos/andamento.md
+      - "CSU01":
+        - "fluxo": ./lista_trabalhos/csu01/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu01/DoR_DoD.md
+      - "CSU02":
+        - "fluxo": ./lista_trabalhos/csu02/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu02/DoR_DoD.md
+      - "CSU03":
+        - "fluxo": ./lista_trabalhos/csu03/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu03/DoR_DoD.md
+      - "CSU04":
+        - "fluxo": ./lista_trabalhos/csu04/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu04/DoR_DoD.md
+      - "CSU05":
+        - "fluxo": ./lista_trabalhos/csu05/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu05/DoR_DoD.md
+      - "CSU06":
+        - "fluxo": ./lista_trabalhos/csu06/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu06/DoR_DoD.md
+      - "CSU07":
+        - "fluxo": ./lista_trabalhos/csu07/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu07/DoR_DoD.md
+      - "CSU08":
+        - "fluxo": ./lista_trabalhos/csu08/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu08/DoR_DoD.md
+      - "CSU09":
+        - "fluxo": ./lista_trabalhos/csu09/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu09/DoR_DoD.md
+      - "CSU10":
+        - "fluxo": ./lista_trabalhos/csu10/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu10/DoR_DoD.md
+      - "CSU11":
+        - "fluxo": ./lista_trabalhos/csu11/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu11/DoR_DoD.md
+      - "CSU12":
+        - "fluxo": ./lista_trabalhos/csu12/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu12/DoR_DoD.md
+      - "CSU13":
+        - "fluxo": ./lista_trabalhos/csu13/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu13/DoR_DoD.md
+      - "CSU14":
+        - "fluxo": ./lista_trabalhos/csu14/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu14/DoR_DoD.md
+      - "CSU15":
+        - "fluxo": ./lista_trabalhos/csu15/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu15/DoR_DoD.md
+      - "CSU16":
+        - "fluxo": ./lista_trabalhos/csu16/fluxo.md
+        - "DoR & DoD": ./lista_trabalhos/csu16/DoR_DoD.md
+
+  - "Marcos de iterações":
+      - "1. Reunião com a cliente":
+        - "Ata da Reunião de Validação do Escopo e Objetivos": reuniao_de_alinhamento.md
+        - "Ata da Reunião de Validação de Requisitos": reuniao_de_requisitos.md
+        - "Vídeo de Apresentação do MVP": validacao_unidade_3.md
+      - "2. Engenharia de Requisitos":
+        - "Áudio referente a Reunião - 1 Iteração": audio_reuniao.md
+      - "3. Engenharia de Software":
+        - "a": a.md
   - "Gravações":
       - "Vídeo da Unidade 1": unidade_1_video.md
       - "Vídeo da Unidade 2": unidade_2_video.md
-
+      - "Vídeo da Unidade 3": unidade_3_video.md      
 markdown_extensions:
   - admonition
   - attr_list
@@ -48,7 +123,17 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
   - stylesheets/extra.css

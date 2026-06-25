@@ -48,9 +48,9 @@ A declaração de requisitos tem como objetivo documentar os requisitos de forma
 
 Será utilizado para consolidar os objetivos do projeto, stakeholders, oportunidades, desafios e visão geral da solução.
 
-### Backlog do Produto
+### Itens de Trabalho
 
-Os requisitos serão organizados em um backlog priorizado, permitindo gerenciamento contínuo das funcionalidades.
+Os requisitos serão organizados em Itens de Trabalho priorizados, permitindo gerenciamento contínuo das funcionalidades.
 
 ---
 
@@ -58,9 +58,9 @@ Os requisitos serão organizados em um backlog priorizado, permitindo gerenciame
 
 A representação auxilia na comunicação e validação das funcionalidades junto aos stakeholders.
 
-### Protótipos
+### Interfaces da Aplicação (MVP)
 
-Serão utilizados protótipos de baixa e alta fidelidade para representar interfaces e validar funcionalidades antes da implementação.
+A validação de layout, usabilidade e fluxos de navegação foi realizada diretamente por meio de demonstrações das telas da própria aplicação (MVP) em reuniões de alinhamento com os stakeholders. Os requisitos visuais (como a paleta de cores e o estilo simplificado) foram definidos em reuniões de requisitos e validados diretamente com o software em funcionamento.
 
 ### Diagramas
 
@@ -112,7 +112,7 @@ Os requisitos e implementações serão revisados entre os membros da equipe par
 
 ### Feedback com Stakeholders
 
-As entregas serão apresentadas ao cliente ao final das sprints para validação contínua da solução.
+As entregas serão apresentadas ao cliente ao final das iterações para validação contínua da solução.
 
 ### Análise de Viabilidade
 
@@ -125,7 +125,7 @@ Será realizada para garantir que os requisitos sejam compatíveis com a realida
 Essa etapa busca manter os requisitos organizados, atualizados e priorizados ao longo do projeto.
 
 
-### Backlog do Produto
+### Itens de Trabalho
 
 Será continuamente atualizado conforme feedbacks e evolução do projeto.
 
@@ -136,6 +136,6 @@ Será continuamente atualizado conforme feedbacks e evolução do projeto.
 | Fases do Processo         | Atividades ER                                                                                                      | Prática                                                                                                                                                          | Técnica                                                                                           | Resultado Esperado                                                                                                                                                                                                                                                                 |
 | :------------------------ | :----------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Concepção (Inception)** | • Elicitação e Descoberta<br>• Declaração                                                                          | • Reuniões com stakeholders e Observação dos processos atuais<br>• Definição do escopo inicial                                                                   | • Entrevistas e Observação<br>• Documento de Visão                                                | • Levantamento inicial das necessidades e problemas da instituição<br>• Definição dos objetivos e escopo                                                                                                                                                                           |
-| **Elaboração**            | • Análise e Consenso<br>• Elicitação de requisitos<br>• Representação de Requisitos<br>• Organização de Requisitos | • Refinamento de Requisitos<br>• Análise de Dependências<br>• Construção de protótipos<br>• Priorização do backlog                                               | • Análise de domínio<br>• Discussões em Equipe e Análise de Tarefas<br>• Prototipação<br>• MoSCoW | • Redução de ambiguidades e inconsistências, Requisitos mais consistentes<br>• Definição técnica da centralização dos dados e foco na usabilidade para voluntários.<br>• Validação inicial das funcionalidades e interfaces<br>• Definição das funcionalidades prioritárias do MVP |
-| **Construção**            | • Refinamento<br>• Verificação e Validação<br>• Organização e Atualização                                          | • Desenvolvimento incremental<br>• Revisão de requisitos implementados<br>• Atualização contínua do backlog e Ajuste dos requisitos conforme evolução do projeto | • User Stories<br>• Definition of Done (DoD)<br>• Feedback contínuo                               | • Implementação contínua das funcionalidades<br>• Funcionalidades validadas e prontas para entrega                                                                                                                                                                                 |
+| **Elaboração**            | • Análise e Consenso<br>• Elicitação de requisitos<br>• Representação de Requisitos<br>• Organização de Requisitos | • Refinamento de Requisitos<br>• Análise de Dependências<br>• Modelagem de Casos de Uso<br>• Priorização dos Itens de Trabalho                                               | • Análise de domínio<br>• Discussões em Equipe e Análise de Tarefas<br>• Detalhamento de Requisitos<br>• MoSCoW | • Redução de ambiguidades e inconsistências, Requisitos mais consistentes<br>• Definição técnica da centralização dos dados e foco na usabilidade para voluntários.<br>• Validação conceitual das funcionalidades e regras de negócio do MVP<br>• Definição das funcionalidades prioritárias do MVP |
+| **Construção**            | • Refinamento<br>• Verificação e Validação<br>• Organização e Atualização                                          | • Desenvolvimento incremental<br>• Revisão de requisitos implementados<br>• Atualização contínua dos Itens de Trabalho e Ajuste dos requisitos conforme evolução do projeto | • Definition of Done (DoD)<br>• Feedback contínuo                               | • Implementação contínua das funcionalidades<br>• Funcionalidades validadas e prontas para entrega                                                                                                                                                                                 |
 | **Transição**             | • Validação final                                                                                                  | • Demonstração para stakeholders                                                                                                                                 | • Feedback                                                                                        | • Aprovação e validação da solução                                                                                                                                                                                                                                                 |
