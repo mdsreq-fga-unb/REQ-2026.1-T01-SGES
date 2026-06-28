@@ -1,8 +1,9 @@
 # SGES
 ## Especificação de Caso de Uso: CSU15 (RF16) - Gerar relatório de frequência
 
-[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br> 
-[Andamento](../andamento.md)
+[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
+[Andamento](../andamento.md) <br>
+[Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
 ---
 
@@ -15,7 +16,7 @@ Exportar em formato CSV dados consolidados de presença e engajamento dos benefi
 1. O Gestor acessa a seção de relatórios e seleciona a opção 'Relatório de Frequência'.
 2. O Gestor escolhe os parâmetros de filtragem (ex: Oficina, Turma, Período Letivo).
 3. O Gestor clica no botão 'Gerar Relatório CSV'.
-4. O sistema consulta os registros de frequência e matrículas com base nos filtros selecionados.
+4. O sistema consulta os registros de frequência e matrículas com base nos filtros selecionados. [[FE-4-A](#fe-4-a-sem-registros-correspondentes)]
 5. O sistema consolida e formata os dados em um arquivo de planilha eletrônica formatado em padrão CSV.
 6. O sistema inicia automaticamente o download do arquivo gerado no navegador do usuário.
 
@@ -27,7 +28,7 @@ Não há fluxos alternativos identificados.
 ---
 
 ### 4. Fluxos de Exceção
-#### FE1 - Sem Registros Correspondentes
+#### FE-4-A - Sem Registros Correspondentes
 No passo 4, se a consulta retornar vazia com os filtros aplicados, o sistema cancela a exportação do arquivo e exibe a mensagem 'Não existem dados de frequência correspondentes aos filtros selecionados'.
 
 ---

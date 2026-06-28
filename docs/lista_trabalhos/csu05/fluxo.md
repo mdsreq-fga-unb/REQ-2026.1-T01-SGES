@@ -1,8 +1,9 @@
 # SGES
 ## Especificação de Caso de Uso: CSU05 (RF05) - Editar perfil do instrutor
 
-[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br> 
-[Andamento](../andamento.md)
+[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
+[Andamento](../andamento.md) <br>
+[Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
 ---
 
@@ -15,7 +16,7 @@ Permitir a edição das informações de contato e a atualização das permissõ
 1. O Gestor acessa a lista de instrutores e seleciona o instrutor que deseja editar.
 2. O sistema exibe os dados atuais do instrutor no formulário.
 3. O Gestor edita os campos necessários (como dados cadastrais ou permissões) e clica em 'Salvar Alterações'.
-4. O sistema valida a conformidade dos dados e a unicidade do CPF/E-mail (se alterados).
+4. O sistema valida a conformidade dos dados e a unicidade do CPF/E-mail (se alterados). [[FE-4-A](#fe-4-a-dados-de-alteracao-invalidos)]
 5. O sistema salva as atualizações no banco de dados.
 6. O sistema exibe uma mensagem de sucesso e atualiza imediatamente as permissões ativas do instrutor.
 
@@ -27,7 +28,7 @@ Não há fluxos alternativos identificados.
 ---
 
 ### 4. Fluxos de Exceção
-#### FE1 - Dados de Alteração Inválidos
+#### FE-4-A - Dados de Alteração Inválidos
 No passo 4, se os dados inseridos violarem as regras de formato ou entrarem em conflito com registros existentes (ex: e-mail já em uso por outro usuário), o sistema exibe mensagens de erro e mantém as informações anteriores.
 
 ---
