@@ -171,7 +171,7 @@ export const FormsPage: React.FC = () => {
               <h3 className="font-bold text-base text-foreground">{form.title}</h3>
               <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{form.description}</p>
               <p className="text-[10px] text-muted-foreground/60 mt-3">
-                {form.fields.length} perguntas • Criado em {new Date(form.createdAt).toLocaleDateString()}
+                {form.fields.length} perguntas • Criado em {new Date(form.createdAt).toLocaleDateString('pt-BR')}
               </p>
             </div>
 

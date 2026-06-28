@@ -20,12 +20,20 @@ export interface ClassDto {
   studentsCount?: number;
 }
 
-export type AttendanceStatus = 'PRESENT' | 'ABSENT' | 'FT';
+export type AttendanceStatus = 'PRESENT' | 'ABSENT' | 'JUSTIFIED' | 'FT';
 
 export interface AttendanceInput {
   studentId: string;
   status: AttendanceStatus;
   justification?: string;
+}
+
+export interface AttendanceEntryDto {
+  studentId: string;
+  studentName: string;
+  status: AttendanceStatus | null;
+  observacao: string | null;
+  justificativaDetalhes: string | null;
 }
 
 export const classesApi = {
@@ -36,6 +44,13 @@ export const classesApi = {
 
   async getStudents(classId: string): Promise<StudentDto[]> {
     const { data } = await apiClient.get<StudentDto[]>(`/classes/${classId}/students`);
+    return data;
+  },
+
+  async getAttendance(classId: string, date: string): Promise<AttendanceEntryDto[]> {
+    const { data } = await apiClient.get<AttendanceEntryDto[]>('/attendance', {
+      params: { classId, date },
+    });
     return data;
   },
 
@@ -85,13 +100,24 @@ export const classesApi = {
 
 export const usersApi = {
   async getAll(): Promise<{ users: UserDto[] }> {
-    const { data } = await apiClient.get<{ users: UserDto[] }>('/users');
-    return data;
+    const { data } = await apiClient.get<any>('/users');
+    const usersList = (data.users || data.data || []).map((u: any) => ({
+      ...u,
+      role: u.role?.toLowerCase() === 'admin' ? 'admin' : 'volunteer',
+    }));
+    return { users: usersList };
   },
 
   async create(input: { name: string; email: string; role: 'admin' | 'volunteer' }): Promise<UserDto> {
-    const { data } = await apiClient.post<UserDto>('/users', input);
-    return data;
+    const backendRole = input.role === 'admin' ? 'ADMIN' : 'TEACHER';
+    const { data } = await apiClient.post<any>('/users', {
+      ...input,
+      role: backendRole,
+    });
+    return {
+      ...data,
+      role: data.role?.toLowerCase() === 'admin' ? 'admin' : 'volunteer',
+    };
   },
 
   async delete(id: string): Promise<void> {

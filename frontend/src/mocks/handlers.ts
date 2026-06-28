@@ -137,6 +137,18 @@ let mockEnrollments: Record<string, string[]> = {
   'c2': ['s2'],
 };
 
+interface MockAttendance {
+  classId: string;
+  studentId: string;
+  date: string; // YYYY-MM-DD
+  status: 'PRESENT' | 'ABSENT' | 'JUSTIFIED' | 'FT';
+  observacao: string | null;
+  justificativaDetalhes: string | null;
+}
+
+let mockAttendances: MockAttendance[] = [];
+
+
 let mockForms = [
   {
     id: 'f1',
@@ -797,16 +809,66 @@ export function setupMockApi(): void {
         return config;
       }
 
+      // --- GET /attendance ---
+      if (url.startsWith('/attendance') && method === 'get') {
+        await delay(150);
+        const params = new URLSearchParams(url.split('?')[1] || '');
+        const classId = params.get('classId') || '';
+        const date = params.get('date') || '';
+
+        const studentIds = mockEnrollments[classId] || [];
+        const enrolledStudents = mockStudents.filter((s) => studentIds.includes(s.id));
+
+        const result = enrolledStudents.map((student) => {
+          const attendance = mockAttendances.find(
+            (a) => a.classId === classId && a.studentId === student.id && a.date === date
+          );
+          return {
+            studentId: student.id,
+            studentName: student.name,
+            status: attendance ? attendance.status : null,
+            observacao: attendance ? attendance.observacao : null,
+            justificativaDetalhes: attendance ? attendance.justificativaDetalhes : null,
+          };
+        });
+
+        config.adapter = async () => ({
+          data: result,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
       // --- POST /classes/:classId/attendances ---
       if (url.startsWith('/classes/') && url.endsWith('/attendances') && method === 'post') {
         await delay(200);
+        const parts = url.split('/');
+        const classId = parts[2];
         const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
-        console.log('[SGES Mock API] Presenças salvas:', body);
+        const { date, attendances } = body;
+
+        attendances.forEach((att: any) => {
+          mockAttendances = mockAttendances.filter(
+            (a) => !(a.classId === classId && a.studentId === att.studentId && a.date === date)
+          );
+
+          mockAttendances.push({
+            classId,
+            studentId: att.studentId,
+            date,
+            status: att.status,
+            observacao: att.justification || null,
+            justificativaDetalhes: null,
+          });
+        });
 
         config.adapter = async () => ({
-          data: { success: true, count: body.length },
-          status: 201,
-          statusText: 'Created',
+          data: { success: true, count: attendances.length },
+          status: 200,
+          statusText: 'OK',
           headers: {},
           config,
         });

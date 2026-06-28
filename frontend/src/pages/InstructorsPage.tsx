@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Search, X, Shield, Mail, User, Trash2, AlertTriangle } from 'lucide-react';
+import { Plus, Search, X, Mail, User, Trash2, AlertTriangle } from 'lucide-react';
 import { usersApi, type UserDto } from '@/shared/api/classes';
 import { useAuth } from '@/app/providers/AuthProvider';
 import { useToast } from '@/shared/components/Toast';

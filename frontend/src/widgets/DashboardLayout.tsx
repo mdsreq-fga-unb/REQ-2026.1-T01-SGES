@@ -8,9 +8,7 @@ import { notificationsApi, type NotificationDto } from '@/shared/api/notificatio
 import {
   Layers,
   LayoutDashboard,
-  Users,
   ClipboardList,
-  BarChart3,
   BookOpen,
   CalendarCheck,
   LogOut,
@@ -300,7 +298,7 @@ export const DashboardLayout: React.FC = () => {
                                   {n.message}
                                 </p>
                                 <p className="text-[9px] text-muted-foreground/60 mt-1">
-                                  {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                  {new Date(n.createdAt).toLocaleDateString('pt-BR')} às {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                 </p>
                               </div>
                               {!n.isRead && (

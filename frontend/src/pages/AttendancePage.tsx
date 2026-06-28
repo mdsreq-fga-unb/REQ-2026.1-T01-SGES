@@ -10,6 +10,14 @@ interface AttendanceState {
   };
 }
 
+const formatDate = (dateStr: string) => {
+  if (!dateStr) return '';
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  const [year, month, day] = parts;
+  return `${day}/${month}/${year}`;
+};
+
 export const AttendancePage: React.FC = () => {
   const [classes, setClasses] = useState<ClassDto[]>([]);
   const [selectedClassId, setSelectedClassId] = useState('');
@@ -37,24 +45,35 @@ export const AttendancePage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!selectedClassId) return;
+    if (!selectedClassId || !date) return;
 
-    const loadStudents = async () => {
+    const loadStudentsAndAttendance = async () => {
+      setLoading(true);
+      setError('');
       try {
-        const data = await classesApi.getStudents(selectedClassId);
-        setStudents(data);
+        const classStudents = await classesApi.getStudents(selectedClassId);
+        setStudents(classStudents);
+
+        const attendanceList = await classesApi.getAttendance(selectedClassId, date);
 
         const initial: AttendanceState = {};
-        data.forEach((s) => {
-          initial[s.id] = { status: 'PRESENT', justification: '' };
+        classStudents.forEach((s) => {
+          const record = attendanceList.find((r) => r.studentId === s.id);
+          initial[s.id] = {
+            status: record?.status || 'PRESENT',
+            justification: record?.observacao || '',
+          };
         });
         setAttendances(initial);
       } catch (err) {
-        console.error('Failed to load class students', err);
+        console.error('Failed to load class students and attendance', err);
+        setError('Erro ao carregar os dados dos alunos ou chamada anterior.');
+      } finally {
+        setLoading(false);
       }
     };
-    loadStudents();
-  }, [selectedClassId]);
+    loadStudentsAndAttendance();
+  }, [selectedClassId, date]);
 
   const handleStatusChange = (studentId: string, status: AttendanceStatus) => {
     setAttendances((prev) => ({
@@ -138,7 +157,7 @@ export const AttendancePage: React.FC = () => {
             >
               {classes.map((c) => (
                 <option key={c.id} value={c.id}>
-                  {c.name} ({c.semester})
+                  {c.nomeCurso} ({c.semester})
                 </option>
               ))}
             </select>
@@ -158,6 +177,9 @@ export const AttendancePage: React.FC = () => {
               className="bg-transparent border-0 outline-none w-full text-sm text-foreground"
             />
           </div>
+          <p className="text-[10px] text-muted-foreground/80 mt-1">
+            Data selecionada: <span className="font-bold text-foreground">{formatDate(date)}</span>
+          </p>
         </div>
       </div>
 
@@ -217,6 +239,19 @@ export const AttendancePage: React.FC = () => {
 
                       <button
                         type="button"
+                        onClick={() => handleStatusChange(student.id, 'JUSTIFIED')}
+                        className={`flex-1 text-center py-2 rounded-lg text-xs font-bold transition-all ${
+                          attendance.status === 'JUSTIFIED'
+                            ? 'bg-amber-500 text-white shadow-sm'
+                            : 'text-muted-foreground hover:text-foreground'
+                        }`}
+                        title="Falta Justificada"
+                      >
+                        FJ
+                      </button>
+
+                      <button
+                        type="button"
                         onClick={() => handleStatusChange(student.id, 'FT')}
                         className={`flex-1 text-center py-2 rounded-lg text-xs font-bold transition-all ${
                           attendance.status === 'FT'
@@ -236,11 +271,13 @@ export const AttendancePage: React.FC = () => {
                       placeholder={
                         attendance.status === 'FT'
                           ? 'Descreva a justificativa de trabalho...'
+                          : attendance.status === 'JUSTIFIED'
+                          ? 'Descreva a justificativa da falta...'
                           : 'Adicione observações para faltas ou ausências...'
                       }
                       value={attendance.justification}
                       onChange={(e) => handleJustificationChange(student.id, e.target.value)}
-                      required={attendance.status === 'FT'}
+                      required={attendance.status === 'FT' || attendance.status === 'JUSTIFIED'}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-border bg-muted/10 text-foreground placeholder-muted-foreground outline-none focus:border-primary transition-colors"
                     />
                   </div>
