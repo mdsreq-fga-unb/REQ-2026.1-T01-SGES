@@ -27,6 +27,18 @@ export class AttendanceTypeormRepository implements AttendanceRepository {
     return this.toAttendance(entity)
   }
 
+  async findByClassAndDate(classId: string, date: Date): Promise<Attendance[]> {
+    const repo = this.dataSource.getRepository(AttendanceEntity)
+    const formattedDate = date instanceof Date ? date.toISOString().split('T')[0] : date
+    const entities = await repo
+      .createQueryBuilder('attendance')
+      .where('attendance.class_id = :classId', { classId })
+      .andWhere('attendance.date = :formattedDate', { formattedDate })
+      .orderBy('attendance.student_id', 'ASC')
+      .getMany()
+    return entities.map((e) => this.toAttendance(e))
+  }
+
   async findStudentAttendances(studentId: string, classId: string): Promise<Attendance[]> {
     const repo = this.dataSource.getRepository(AttendanceEntity)
     const entities = await repo.find({
