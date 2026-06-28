@@ -1,7 +1,7 @@
 # SGES
 ## Checklist de DoR e DoD: CSU15 (RF16) - Gerar relatório de frequência
 
-Este checklist serve como instrumento para guiar e validar a evolução deste caso de uso através do ciclo de desenvolvimento, em conformidade com o documento geral de [DoR e DoD](../../DoR_e_DoD.md) do projeto.
+Este checklist serve como instrumento para guiar e validar a evolução deste caso de uso através do ciclo de desenvolvimento, em conformidade com o documento geral de [DoR e DoD](../../engenharia_requisitos.md) do projeto.
 
 ---
 

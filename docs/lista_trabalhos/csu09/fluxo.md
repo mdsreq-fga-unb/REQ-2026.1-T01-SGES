@@ -2,7 +2,8 @@
 ## Especificação de Caso de Uso: CSU09 (RF10) - Matricular beneficiário
 
 [Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
-[Andamento](../andamento.md)
+[Andamento](../andamento.md) <br>
+[Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
 ---
 
@@ -15,7 +16,7 @@ Vincular um beneficiário cadastrado e ativo a uma turma específica, realizando
 1. O usuário seleciona a turma desejada e clica na opção 'Matricular Aluno'.
 2. O sistema apresenta um campo de busca para selecionar o beneficiário.
 3. O usuário localiza o beneficiário ativo e clica em 'Confirmar Matrícula'.
-4. O sistema valida se o beneficiário já possui matrícula na turma e se a turma possui vagas em aberto.
+4. O sistema valida se o beneficiário já possui matrícula na turma e se a turma possui vagas em aberto. [[FE-4-A](#fe-4-a-limite-de-vagas-excedido), [FE-4-B](#fe-4-b-beneficiario-ja-matriculado)]
 5. O sistema cria o registro de vínculo da matrícula e subtrai uma vaga disponível no limite da turma.
 6. O sistema exibe mensagem de confirmação de matrícula efetuada com sucesso.
 
@@ -27,10 +28,10 @@ Não há fluxos alternativos identificados.
 ---
 
 ### 4. Fluxos de Exceção
-#### FE1 - Limite de Vagas Excedido
+#### FE-4-A - Limite de Vagas Excedido
 No passo 4, se a turma não possuir vagas livres, o sistema bloqueia novas matrículas e emite um alerta informando que a turma está lotada.
 
-#### FE2 - Beneficiário já Matriculado
+#### FE-4-B - Beneficiário já Matriculado
 No passo 4, se o beneficiário selecionado já possuir matrícula ativa na turma escolhida, o sistema cancela a operação e informa a duplicidade.
 
 ---

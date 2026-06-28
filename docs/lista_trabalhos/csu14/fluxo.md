@@ -1,8 +1,9 @@
 # SGES
 ## Especificação de Caso de Uso: CSU14 (RF15) - Consultar histórico do beneficiário
 
-[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br> 
-[Andamento](../andamento.md)
+[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
+[Andamento](../andamento.md) <br>
+[Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
 ---
 
@@ -13,7 +14,7 @@ Visualizar a ficha cadastral do beneficiário com a linha do tempo consolidada c
 
 ### 2. Fluxo Básico de Eventos
 1. O usuário pesquisa um beneficiário por nome ou CPF no sistema.
-2. O sistema apresenta a lista de beneficiários correspondentes à pesquisa.
+2. O sistema apresenta a lista de beneficiários correspondentes à pesquisa. [[FE-2-A](#fe-2-a-beneficiario-nao-encontrado)]
 3. O usuário seleciona o beneficiário correspondente.
 4. O sistema consolida e exibe a ficha completa do beneficiário organizada em linha do tempo:
 5.   - Relação de oficinas atuais e turmas concluídas.
@@ -29,7 +30,7 @@ Não há fluxos alternativos identificados.
 ---
 
 ### 4. Fluxos de Exceção
-#### FE1 - Beneficiário não Encontrado
+#### FE-2-A - Beneficiário não Encontrado
 No passo 2, se não existirem registros compatíveis com os termos pesquisados, o sistema exibe a mensagem 'Nenhum beneficiário encontrado com estes dados' e permite refazer a busca.
 
 ---

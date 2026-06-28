@@ -1,8 +1,9 @@
 # SGES
 ## Especificação de Caso de Uso: CSU06 (RF07) - Cadastrar beneficiário
 
-[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br> 
-[Andamento](../andamento.md)
+[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
+[Andamento](../andamento.md) <br>
+[Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
 ---
 
@@ -15,7 +16,7 @@ Registrar um novo beneficiário informando seus dados sociodemográficos de form
 1. O usuário acessa o menu de beneficiários e clica em 'Cadastrar Beneficiário'.
 2. O sistema apresenta o formulário sociodemográfico solicitando dados obrigatórios (Nome, Data de Nascimento, Renda Familiar, Escolaridade) e opcionais (CPF, E-mail, Contato Responsável).
 3. O usuário insere as informações requeridas e clica em 'Salvar'.
-4. O sistema valida o formato dos dados preenchidos e a unicidade do CPF (se fornecido).
+4. O sistema valida o formato dos dados preenchidos e a unicidade do CPF (se fornecido). [[FE-4-A](#fe-4-a-dados-sociodemograficos-invalidos), [FE-4-B](#fe-4-b-cpf-de-beneficiario-ja-cadastrado)]
 5. O sistema armazena o cadastro com o status de beneficiário ativo e gera um identificador único (ID).
 6. O sistema exibe uma mensagem de confirmação de cadastro bem-sucedido.
 
@@ -27,10 +28,10 @@ Não há fluxos alternativos identificados.
 ---
 
 ### 4. Fluxos de Exceção
-#### FE1 - Dados Sociodemográficos Inválidos
+#### FE-4-A - Dados Sociodemográficos Inválidos
 No passo 4, se os dados obrigatórios não forem preenchidos ou o CPF fornecido estiver no formato incorreto, o sistema cancela a operação, indica os erros na tela e solicita a correção.
 
-#### FE2 - CPF de Beneficiário já Cadastrado
+#### FE-4-B - CPF de Beneficiário já Cadastrado
 No passo 4, se o CPF digitado já estiver cadastrado para outro beneficiário, o sistema bloqueia o registro e apresenta um aviso informando a duplicidade.
 
 ---

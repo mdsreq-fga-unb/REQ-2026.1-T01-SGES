@@ -12,19 +12,19 @@ Nesta iteração, aplicamos técnicas de Engenharia de Requisitos para compreend
 ### [Técnica 1: Ex: Elicitação via Entrevistas / Brainstorming / Análise de Documentos]
 * **Descrição:** Breve explicação de como a técnica foi aplicada com o cliente ou partes interessadas.
 * **Evidências:**
-    * Link ou referência para a [Ata de Reunião](caminho/para/arquivo.md) ou transcrição onde a técnica ocorreu.
+    * Link ou referência para a [Ata de Reunião](../reuniao_de_requisitos.md) ou transcrição onde a técnica ocorreu.
     * Print ou link de boards (ex: Miro/Trello) utilizados durante a dinâmica.
 
 ### [Técnica 2: Ex: Modelagem de Casos de Uso / Especificação de Requisitos]
 * **Descrição:** Como os dados coletados foram traduzidos em especificações técnicas de requisitos.
 * **Evidências:**
-    * Links para os fluxos mapeados: [CSU01](caminho/fluxo.md), [CSU02](caminho/fluxo.md).
-    * Referência direta na [Lista de Requisitos](caminho/lista_requisitos.md).
+    * Links para os fluxos mapeados: [CSU01](../lista_trabalhos/csu01/fluxo.md), [CSU02](../lista_trabalhos/csu02/fluxo.md).
+    * Referência direta na [Lista de Requisitos](../lista_requisitos.md).
 
 ### [Técnica 3: Ex: Validação e Priorização (Matriz de Priorização / MoSCoW)]
 * **Descrição:** Processo de aprovação dos requisitos e definição do que entraria no escopo imediato.
 * **Evidências:**
-    * Link para a [Matriz de Ação e Priorização](caminho/matriz_de_acao_e_priorizacao.md).
+    * Link para a [Matriz de Ação e Priorização](../matriz_de_acao_e_priorizacao.md).
 
 ---
 
@@ -35,7 +35,7 @@ Seguindo o processo ágil e unificado do **OpenUP**, detalhamos abaixo as cerim�
 ### Planejamento da Iteração (Plan Iteration)
 * **Execução:** Definição dos objetivos da iteração, atribuição de tarefas e avaliação dos riscos mapeados.
 * **Evidências:**
-    * Link para os [Itens de Trabalho Priorizados](caminho/matriz_de_acao_e_priorizacao.md) mapeados para esta janela de tempo.
+    * Link para os [Itens de Trabalho Priorizados](../matriz_de_acao_e_priorizacao.md) mapeados para esta janela de tempo.
     * *[Opcional]* Print ou link do quadro de tarefas (Jira/Trello) no início da iteração.
 
 ### Alinhamento Assíncrono e Interações Frequentes
@@ -47,5 +47,5 @@ Seguindo o processo ágil e unificado do **OpenUP**, detalhamos abaixo as cerim�
 ### Avaliação e Revisão da Iteração (Assess Iteration)
 * **Execução:** Demonstração dos resultados alcançados (funcionalidades prontas ou documentos validados) e análise do cumprimento dos critérios de aceitação.
 * **Evidências:**
-    * Link para o [Vídeo de Apresentação / Demonstração](caminho/video.md) correspondente à Unidade.
-    * Link para as [Lições Aprendidas](caminho/licoes_aprendidas.md) colhidas no encerramento deste ciclo.
+    * Link para o [Vídeo de Apresentação / Demonstração](../unidade_2_video.md) correspondente à Unidade.
+    * Link para as [Lições Aprendidas](../iteracao/licoes_aprendidas.md) colhidas no encerramento deste ciclo.

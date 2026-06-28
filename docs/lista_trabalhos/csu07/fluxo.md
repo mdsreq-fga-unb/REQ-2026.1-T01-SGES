@@ -1,8 +1,9 @@
 # SGES
 ## Especificação de Caso de Uso: CSU07 (RF08) - Editar dados do beneficiário
 
-[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br> 
-[Andamento](../andamento.md)
+[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
+[Andamento](../andamento.md) <br>
+[Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
 ---
 
@@ -15,7 +16,7 @@ Atualizar os dados cadastrais e as informações sociodemográficas do benefici�
 1. O usuário busca pelo beneficiário desejado no sistema e abre sua ficha cadastral.
 2. O usuário edita os campos sociodemográficos necessários no formulário.
 3. O usuário clica em 'Salvar'.
-4. O sistema valida a conformidade das informações atualizadas.
+4. O sistema valida a conformidade das informações atualizadas. [[FE-4-A](#fe-4-a-validacao-de-dados-invalidos)]
 5. O sistema persiste os novos dados na base de dados.
 6. O sistema exibe mensagem de sucesso e atualiza a exibição com os dados modificados.
 
@@ -27,7 +28,7 @@ Não há fluxos alternativos identificados.
 ---
 
 ### 4. Fluxos de Exceção
-#### FE1 - Validação de Dados Inválidos
+#### FE-4-A - Validação de Dados Inválidos
 No passo 4, se alguma informação obrigatória for removida ou se forem adicionados dados em formatos incorretos, o sistema impede o salvamento e solicita correções.
 
 ---

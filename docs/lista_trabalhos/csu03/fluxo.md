@@ -1,8 +1,9 @@
 # SGES
 ## Especificação de Caso de Uso: CSU03 (RF03) - Encerrar sessão
 
-[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br> 
-[Andamento](../andamento.md)
+[Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
+[Andamento](../andamento.md) <br>
+[Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
 ---
 
@@ -12,7 +13,7 @@ Invalidar o token JWT do usuário ativo, finalizando de forma segura a sua sess�
 ---
 
 ### 2. Fluxo Básico de Eventos
-1. O usuário clica na opção 'Sair' ou 'Logout' no menu do sistema.
+1. O usuário clica na opção 'Sair' ou 'Logout' no menu do sistema. [[FE-1-A](#fe-1-a-sessao-expirada-por-inatividade)]
 2. O sistema recebe a requisição de finalização de sessão.
 3. O sistema remove o token JWT armazenado localmente no navegador (LocalStorage/Cookies).
 4. O sistema invalida o token no servidor, se aplicável, e encerra a sessão ativa do usuário.
@@ -26,7 +27,7 @@ Não há fluxos alternativos identificados.
 ---
 
 ### 4. Fluxos de Exceção
-#### FE1 - Sessão Expirada por Inatividade
+#### FE-1-A - Sessão Expirada por Inatividade
 Se o token JWT expirar no navegador por inatividade (após 15 minutos), o sistema realiza o fluxo de logout automaticamente, limpando os dados locais e exigindo nova autenticação no próximo clique do usuário.
 
 ---
