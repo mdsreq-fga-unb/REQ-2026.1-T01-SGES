@@ -1,5 +1,6 @@
 import { EnrollmentStatus } from '@/domain'
 import type { Enrollment } from '@/domain'
+import { AppError, ConflictError, NotFoundError } from '@/application/infra/errors'
 import type { EnrollmentRepository } from '../services/enrollment-repository'
 import type { ClassRepository } from '../services/class-repository'
 import type { StudentRepository } from '../services/student-repository'
@@ -18,24 +19,18 @@ export class EnrollStudentUseCase {
 
   async execute(input: EnrollStudentInput): Promise<Enrollment> {
     const student = await this.studentRepository.findById(input.studentId)
-    if (!student) {
-      throw new Error('Student not found')
-    }
+    if (!student) throw new NotFoundError('Student not found')
 
     const classRoom = await this.classRepository.findById(input.classId)
-    if (!classRoom) {
-      throw new Error('Class not found')
-    }
+    if (!classRoom) throw new NotFoundError('Class not found')
 
     const existing = await this.enrollmentRepository.findByStudentAndClass(input.studentId, input.classId)
-    if (existing) {
-      throw new Error('Student is already enrolled in this class')
-    }
+    if (existing) throw new ConflictError('Student is already enrolled in this class')
 
     const activeCount = await this.enrollmentRepository.countActiveEnrollmentsByClass(input.classId)
     const limit = classRoom.vagasLimite ?? 50
     if (activeCount >= limit) {
-      throw new Error(`Class is full. Maximum limit of ${limit} vacancies reached.`)
+      throw new AppError(422, `Class is full. Maximum limit of ${limit} vacancies reached.`)
     }
 
     return this.enrollmentRepository.save({
