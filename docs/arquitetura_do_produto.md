@@ -103,7 +103,7 @@ Os objetivos arquiteturais derivam diretamente dos Requisitos Não Funcionais e 
 | `instructor-register-usecase`     | Cadastrar instrutor com perfil RBAC                            |
 | `instructor-edit-usecase`         | Atualizar dados e permissões                                   |
 | `instructor-deactivate-usecase`   | Soft delete com bloqueio imediato de acesso                    |
-| `student-register-usecase`        | Registrar aluno com dados sociodemográficos                    |
+| `student-register-usecase`        | Registrar beneficiário                                         |
 | `student-edit-usecase`            | Atualizar perfil e dados cadastrais do aluno                   |
 | `class-create-usecase`            | Criar turma com datas, vagas e horário                         |
 | `enrollment-usecase`              | Matricular aluno validando disponibilidade de vagas            |
@@ -219,7 +219,7 @@ Esta seção demonstra como cada Característica do Produto (CP) e seus requisit
 |---|---|---|---|
 | **CP1 — Segurança e Controle de Acessos** | RF01, RF02, RF03 | RNF02, RNF06 | `application` (authenticate, reset-password, logout use cases) + `infra` (JWT, bcrypt, audit log via Pino) |
 | **CP2 — Gestão de Instrutores** | RF04, RF05, RF06 | — | `domain` (entidade `Teacher`) + `application` (register, edit, deactivate use cases) + `api` (routes/instructors) |
-| **CP3 — Cadastro Sociodemográfico** | RF07, RF08 | RNF01 | `domain` (entidade `Student`) + `infra/orm/entity/StudentEntity` (colunas HMAC-256) |
+| **CP3 — Cadastro de Beneficiários** | RF07, RF08 | RNF01 | `domain` (entidade `Student`) + `infra/orm/entity/StudentEntity` (colunas HMAC-256) |
 | **CP4 — Frequência e Engajamento** | RF09, RF10, RF11, RF12, RF13 | RNF04 | `domain` (entidades `Class`, `Enrollment`, `Attendance`) + `application` (bulk-register, edit use cases) + `api` (routes/attendance) + *frontend* (IndexedDB para modo offline) |
 | **CP5 — Monitoramento de Evasão** | RF14, RF15 | RNF05 | `application` (dropout-detection use case, port `IAlertRepository`) + `infra/services/DropoutJob` (job assíncrono noturno) |
 | **CP6 — Relatórios e Transparência** | RF16 | RNF03 | `application` (frequency-report use case, port `IReportExporter`) + `infra/services/ReportExporter` (CSV + mascaramento PII) |

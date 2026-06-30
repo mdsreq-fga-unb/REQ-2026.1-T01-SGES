@@ -17,8 +17,8 @@ Seguindo as diretrizes metodológicas do framework OpenUP, o escopo funcional do
 | **CSU03** | Encerrar Sessão (Logout) | Usuário do Sistema | Segurança e Controle de Acessos | [Ver Fluxo](./lista_trabalhos/csu03/fluxo.md) | **X** |
 | **CSU04** | Cadastrar Instrutor | Gestor | Gestão de Instrutores | [Ver Fluxo](./lista_trabalhos/csu04/fluxo.md) | **X** |
 | **CSU05** | Editar Perfil do Instrutor | Gestor | Gestão de Instrutores | [Ver Fluxo](./lista_trabalhos/csu05/fluxo.md) | **X** |
-| **CSU06** | Cadastrar Beneficiário | Gestor ou Instrutor | Cadastro Sociodemográfico | [Ver Fluxo](./lista_trabalhos/csu06/fluxo.md) | **X** |
-| **CSU07** | Editar Dados do Beneficiário | Gestor ou Instrutor | Cadastro Sociodemográfico | [Ver Fluxo](./lista_trabalhos/csu07/fluxo.md) | **X** |
+| **CSU06** | Cadastrar Beneficiário | Gestor ou Instrutor | Cadastro de Beneficiários | [Ver Fluxo](./lista_trabalhos/csu06/fluxo.md) | **X** |
+| **CSU07** | Editar Dados do Beneficiário | Gestor ou Instrutor | Cadastro de Beneficiários | [Ver Fluxo](./lista_trabalhos/csu07/fluxo.md) | **X** |
 | **CSU08** | Cadastrar Turma | Gestor | Frequência e Engajamento | [Ver Fluxo](./lista_trabalhos/csu08/fluxo.md) | **X** |
 | **CSU09** | Matricular Beneficiário | Gestor ou Instrutor | Frequência e Engajamento | [Ver Fluxo](./lista_trabalhos/csu09/fluxo.md) | **X** |
 | **CSU10** | Alterar Registro de Frequência | Gestor | Frequência e Engajamento | [Ver Fluxo](./lista_trabalhos/csu10/fluxo.md) | **X** |

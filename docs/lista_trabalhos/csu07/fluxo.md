@@ -8,15 +8,15 @@
 ---
 
 ### 1. Breve Descrição
-Atualizar os dados cadastrais e as informações sociodemográficas do beneficiário no sistema.
+Atualizar os dados cadastrais e as informações de contato do beneficiário no sistema.
 
 ---
 
 ### 2. Fluxo Básico de Eventos
 1. O usuário busca pelo beneficiário desejado no sistema e abre sua ficha cadastral.
-2. O usuário edita os campos sociodemográficos necessários no formulário.
+2. O usuário edita os campos necessários no formulário (Foto, Nome Completo, Telefone, E-mail, Endereço, Profissão, Contato de Emergência [Nome e Telefone], CPF, Contato Responsável).
 3. O usuário clica em 'Salvar'.
-4. O sistema valida a conformidade das informações atualizadas. [[FE-4-A](#fe-4-a-validacao-de-dados-invalidos)]
+4. O sistema valida a conformidade das informações atualizadas. [[FE-4-A](#fe-4-a-remocao-de-informacao-obrigatoria), [FE-4-B](#fe-4-b-formato-de-dados-incorreto)]
 5. O sistema persiste os novos dados na base de dados.
 6. O sistema exibe mensagem de sucesso e atualiza a exibição com os dados modificados.
 
@@ -28,8 +28,11 @@ Não há fluxos alternativos identificados.
 ---
 
 ### 4. Fluxos de Exceção
-#### FE-4-A - Validação de Dados Inválidos
-No passo 4, se alguma informação obrigatória for removida ou se forem adicionados dados em formatos incorretos, o sistema impede o salvamento e solicita correções.
+#### FE-4-A - Remoção de Informação Obrigatória
+No passo 4, se alguma informação obrigatória for removida deixando o campo em branco, o sistema impede o salvamento e solicita o preenchimento.
+
+#### FE-4-B - Formato de Dados Incorreto
+No passo 4, se forem adicionados dados em formatos incorretos, o sistema impede o salvamento e solicita a correção.
 
 ---
 
@@ -39,7 +42,7 @@ No passo 4, se alguma informação obrigatória for removida ou se forem adicion
 ---
 
 ### 6. Pós-Condições
-* Os novos dados cadastrais e sociodemográficos do beneficiário são consolidados e atualizados na base de dados.
+* Os novos dados cadastrais e de contato do beneficiário são consolidados e atualizados na base de dados.
 
 ---
 

@@ -16,7 +16,7 @@ Validar as credenciais para o controle de acesso primário ao sistema, bloqueand
 1. O usuário acessa a página de login do SGES.
 2. O sistema solicita o e-mail e a senha do usuário.
 3. O usuário insere suas credenciais e clica em 'Entrar'.
-4. O sistema valida as credenciais informadas no banco de dados. [[FE-4-A](#fe-4-a-credenciais-invalidas), [FE-4-B](#fe-4-b-bloqueio-de-conta)]
+4. O sistema valida as credenciais informadas no banco de dados. [[FE-4-A](#fe-4-a-e-mail-invalido), [FE-4-B](#fe-4-b-senha-invalida), [FE-4-C](#fe-4-c-bloqueio-de-conta)]
 5. O sistema gera um token JWT válido e inicia a sessão do usuário.
 6. O sistema redireciona o usuário para a página inicial (Dashboard) correspondente ao seu perfil de acesso.
 
@@ -28,10 +28,13 @@ Não há fluxos alternativos identificados.
 ---
 
 ### 4. Fluxos de Exceção
-#### FE-4-A - Credenciais Inválidas
-No passo 4, se as credenciais (e-mail ou senha) estiverem incorretas, o sistema incrementa o contador de tentativas de login falhas do usuário, exibe uma mensagem de erro indicando login inválido e solicita novas credenciais.
+#### FE-4-A - E-mail Inválido
+No passo 4, se o e-mail informado estiver incorreto ou não constar na base de dados, o sistema exibe uma mensagem de erro indicando login inválido e solicita novas credenciais.
 
-#### FE-4-B - Bloqueio de Conta
+#### FE-4-B - Senha Inválida
+No passo 4, se a senha informada estiver incorreta, o sistema incrementa o contador de tentativas de login falhas do usuário, exibe uma mensagem de erro indicando login inválido e solicita novas credenciais.
+
+#### FE-4-C - Bloqueio de Conta
 No passo 4, se o número de tentativas consecutivas falhas atingir 5, o sistema altera o status da conta para 'Bloqueada', registra a ocorrência na trilha de auditoria (segurança) e exibe uma mensagem informando que a conta foi temporariamente bloqueada por segurança.
 
 ---

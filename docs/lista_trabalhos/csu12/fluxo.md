@@ -14,11 +14,12 @@ Lançar a frequência (presenças ou faltas) de todos os beneficiários matricul
 
 ### 2. Fluxo Básico de Eventos
 1. O Instrutor seleciona a turma e a data atual de ocorrência da aula.
-2. O sistema gera a listagem de beneficiários matriculados e exibe opções de marcação de presença e falta.
-3. O Instrutor realiza a chamada, selecionando a opção correspondente para cada beneficiário da lista.
+2. O sistema gera a listagem de beneficiários matriculados, exibe opções de marcação de chamada com a legenda correspondente (P - Presente, FT - Falta Trabalho, F - Falta, D - Desistência) e disponibiliza um campo de observações ao final da chamada. (Nota: A Falta Trabalho [FT] é contabilizada como presença).
+3. O Instrutor realiza a chamada, selecionando a opção correspondente (P, FT, F, D) para cada beneficiário da lista e insere observações sobre a aula (opcional) no campo ao final da chamada.
 4. O Instrutor clica em 'Salvar Presenças'. [[FA-4-A](#fa-4-a-registro-em-modo-offline)]
-5. O sistema valida se a data da chamada corresponde à data atual do servidor. [[FE-5-A](#fe-5-a-data-retroativa-ou-futura)]
-6. O sistema grava em lote as presenças e faltas da turma e exibe mensagem de sucesso.
+5. O sistema valida se a data da chamada corresponde à data atual do servidor. [[FE-5-A](#fe-5-a-data-retroativa), [FE-5-B](#fe-5-b-data-futura)]
+6. O sistema grava em lote a chamada da turma, registra a observação (se fornecida) e envia um e-mail de aviso automático para cada aluno com falta (F) registrada (sem enviar e-mail se o status for Desistência [D] ou Falta Trabalho [FT]).
+7. O sistema exibe mensagem de sucesso.
 
 ---
 
@@ -29,8 +30,11 @@ No passo 4, se o dispositivo do instrutor estiver sem conexão com a internet, o
 ---
 
 ### 4. Fluxos de Exceção
-#### FE-5-A - Data Retroativa ou Futura
-No passo 5, se o Instrutor tentar registrar uma chamada para uma data que não seja a atual (data de hoje), o sistema impede o lançamento direto e apresenta um erro, orientando a solicitar modificações retroativas a um Gestor (que possui perfil para correções via outro caso de uso).
+#### FE-5-A - Data Retroativa
+No passo 5, se o Instrutor tentar registrar uma chamada para uma data retroativa (passada), o sistema impede o lançamento direto e apresenta um erro, orientando a solicitar modificações retroativas a um Gestor (que possui perfil para correções via outro caso de uso).
+
+#### FE-5-B - Data Futura
+No passo 5, se o Instrutor tentar registrar uma chamada para uma data futura, o sistema impede o lançamento direto e apresenta um erro, orientando a realizar o registro na data correta.
 
 ---
 
