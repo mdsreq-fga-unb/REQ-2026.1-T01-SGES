@@ -21,6 +21,10 @@ import { BulkEnrollStudentsUseCase } from '../../application/usecases/bulk-enrol
 import { TeacherRegisterPresenceUseCase } from '../../application/usecases/teacher-register-presence-usecase'
 import { ListAttendanceByDateUseCase } from '../../application/usecases/list-attendance-by-date-usecase'
 import { GetEnrollmentAbsencesUseCase } from '../../application/usecases/get-enrollment-absences-usecase'
+import { UpdateAttendanceUseCase } from '../../application/usecases/update-attendance-usecase'
+import { GetStudentHistoryUseCase } from '../../application/usecases/get-student-history-usecase'
+import { GetFrequencyReportUseCase } from '../../application/usecases/get-frequency-report-usecase'
+import { GetFunnelReportUseCase } from '../../application/usecases/get-funnel-report-usecase'
 import { env } from '../../env'
 import { UserTypeormRepository } from '../orm/repositories/user-repository'
 import { StudentTypeormRepository } from '../orm/repositories/student-repository'
@@ -28,6 +32,7 @@ import { ClassTypeormRepository } from '../orm/repositories/class-repository'
 import { EnrollmentTypeormRepository } from '../orm/repositories/enrollment-repository'
 import { AttendanceTypeormRepository } from '../orm/repositories/attendance-repository'
 import { NotificationTypeormRepository } from '../orm/repositories/notification-repository'
+import { SecurityLogTypeormRepository } from '../orm/repositories/security-log-repository'
 import { JwtTokenService } from '../services/token-service'
 import { dataSource } from '../orm/datasource'
 import { BullMQProducer } from '../queue/bullmq-producer'
@@ -85,6 +90,7 @@ export function buildContainer() {
     .add('EnrollmentRepository', () => new EnrollmentTypeormRepository(dataSource))
     .add('AttendanceRepository', () => new AttendanceTypeormRepository(dataSource))
     .add('NotificationRepository', () => new NotificationTypeormRepository(dataSource))
+    .add('SecurityLogRepository', () => new SecurityLogTypeormRepository(dataSource))
     // Services
     .add('TokenService', () => new JwtTokenService(env.JWT_SECRET))
     // Auth use cases
@@ -94,8 +100,8 @@ export function buildContainer() {
     .add('CreateUserUsecase', ({ UserRepository }) =>
       new CreateUserUseCase(UserRepository, new CreateUserUsecaseZodValidator(), queueProducer),
     )
-    .add('DeleteUserUsecase', ({ UserRepository }) =>
-      new DeleteUserUseCase(UserRepository, new DeleteUserUsecaseZodValidator()),
+    .add('DeleteUserUsecase', ({ UserRepository, SecurityLogRepository }) =>
+      new DeleteUserUseCase(UserRepository, new DeleteUserUsecaseZodValidator(), SecurityLogRepository),
     )
     .add('ListUsersUsecase', ({ UserRepository }) =>
       new ListUsersUseCase(UserRepository, new ListUsersUsecaseZodValidator()),
@@ -147,6 +153,55 @@ export function buildContainer() {
       AttendanceRepository,
     }) =>
       new ListAttendanceByDateUseCase(ClassRepository, EnrollmentRepository, StudentRepository, AttendanceRepository),
+    )
+    .add('UpdateAttendanceUsecase', ({
+      ClassRepository,
+      StudentRepository,
+      EnrollmentRepository,
+      AttendanceRepository,
+      SecurityLogRepository,
+      UserRepository,
+      NotificationRepository,
+    }) =>
+      new UpdateAttendanceUseCase(
+        ClassRepository,
+        StudentRepository,
+        EnrollmentRepository,
+        AttendanceRepository,
+        SecurityLogRepository,
+        UserRepository,
+        NotificationRepository,
+        emailService,
+      ),
+    )
+    .add('GetStudentHistoryUsecase', ({
+      StudentRepository,
+      EnrollmentRepository,
+      ClassRepository,
+      AttendanceRepository,
+    }) =>
+      new GetStudentHistoryUseCase(
+        StudentRepository,
+        EnrollmentRepository,
+        ClassRepository,
+        AttendanceRepository,
+      ),
+    )
+    .add('GetFrequencyReportUsecase', ({
+      StudentRepository,
+      EnrollmentRepository,
+      ClassRepository,
+      AttendanceRepository,
+    }) =>
+      new GetFrequencyReportUseCase(
+        StudentRepository,
+        EnrollmentRepository,
+        ClassRepository,
+        AttendanceRepository,
+      ),
+    )
+    .add('GetFunnelReportUsecase', ({ EnrollmentRepository }) =>
+      new GetFunnelReportUseCase(EnrollmentRepository),
     )
 }
 
