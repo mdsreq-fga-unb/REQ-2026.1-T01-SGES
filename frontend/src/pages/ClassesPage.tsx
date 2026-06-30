@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Search, X, BookOpen, Calendar, Clock, Users, Trash2, UserPlus, UserCheck, AlertTriangle, Pencil } from 'lucide-react';
+import { Plus, Search, X, BookOpen, Calendar, Clock, Users, Trash2, UserPlus, UserCheck, AlertTriangle, Pencil, User } from 'lucide-react';
 import { classesApi, type ClassDto, type UserDto } from '@/shared/api/classes';
 import { studentsApi, type StudentDto } from '@/shared/api/students';
 import { useAuth } from '@/app/providers/AuthProvider';
@@ -729,11 +729,9 @@ export const ClassesPage: React.FC = () => {
                   {classStudents.map((student) => (
                     <div key={student.id} className="flex items-center justify-between p-3.5 hover:bg-muted/30 transition-colors">
                       <div className="flex items-center gap-3">
-                        <img
-                          src={student.foto_url || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150'}
-                          alt={student.name}
-                          className="w-9 h-9 rounded-full object-cover border border-border"
-                        />
+                        <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center border border-border text-primary flex-shrink-0">
+                          <User className="w-4 h-4" />
+                        </div>
                         <div>
                           <p className="font-bold text-foreground text-sm">{student.name}</p>
                           <p className="text-[10px] text-muted-foreground">{student.codigo_matricula}</p>

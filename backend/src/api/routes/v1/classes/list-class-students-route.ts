@@ -19,7 +19,6 @@ export default async function (req: Request, res: Response) {
       name: s!.name,
       email: s!.email ?? '',
       profissao: s!.profissao ?? '',
-      foto_url: s!.fotoUrl,
       createdAt: s!.createdAt,
     }))
 

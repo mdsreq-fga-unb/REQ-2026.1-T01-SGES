@@ -6,7 +6,6 @@ export interface StudentDto {
   name: string;
   email: string;
   profissao: string;
-  foto_url?: string;
   createdAt: string;
 }
 
@@ -14,7 +13,6 @@ export interface CreateStudentInput {
   name: string;
   email: string;
   profissao: string;
-  foto_url?: string;
 }
 
 export const studentsApi = {

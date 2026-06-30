@@ -17,9 +17,6 @@ export class StudentEntity {
   @Column({ type: 'varchar', nullable: true })
   profissao?: string | null
 
-  @Column({ name: 'foto_url', type: 'varchar', nullable: true })
-  fotoUrl?: string | null
-
   @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   createdAt!: Date
 

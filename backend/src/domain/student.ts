@@ -5,7 +5,6 @@ export type Student = BaseDomain & {
   name: string
   email?: string | null
   profissao?: string | null
-  fotoUrl?: string | null
 }
 
 export function generateStudentMatriculaCode(): string {

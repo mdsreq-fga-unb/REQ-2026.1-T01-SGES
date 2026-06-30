@@ -12,7 +12,6 @@ function toStudentDto(student: any) {
     name: student.name,
     email: student.email,
     profissao: student.profissao,
-    foto_url: student.fotoUrl,
     createdAt: student.createdAt,
   }
 }
@@ -30,14 +29,13 @@ router.get('/', authMiddleware([UserRole.ADMIN, UserRole.TEACHER]), async (req, 
 router.post('/', authMiddleware([UserRole.ADMIN]), async (req, res, next) => {
   try {
     const studentRepo = container.StudentRepository
-    const { name, email, profissao, foto_url } = req.body
+    const { name, email, profissao } = req.body
 
     const student = await studentRepo.save({
       codigoMatricula: generateStudentMatriculaCode(),
       name,
       email: email || null,
       profissao: profissao || null,
-      fotoUrl: foto_url || null,
     })
 
     return res.status(201).json(toStudentDto(student))
@@ -50,7 +48,7 @@ router.put('/:id', authMiddleware([UserRole.ADMIN]), async (req, res, next) => {
   try {
     const studentRepo = container.StudentRepository
     const { id } = req.params
-    const { name, email, profissao, foto_url } = req.body
+    const { name, email, profissao } = req.body
 
     const existingStudent = await studentRepo.findById(id)
     if (!existingStudent) {
@@ -63,7 +61,6 @@ router.put('/:id', authMiddleware([UserRole.ADMIN]), async (req, res, next) => {
       name: name !== undefined ? name : existingStudent.name,
       email: email !== undefined ? (email || null) : existingStudent.email,
       profissao: profissao !== undefined ? (profissao || null) : existingStudent.profissao,
-      fotoUrl: foto_url !== undefined ? (foto_url || null) : existingStudent.fotoUrl,
     } as any)
 
     return res.status(200).json(toStudentDto(updated))

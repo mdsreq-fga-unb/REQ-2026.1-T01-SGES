@@ -25,7 +25,6 @@ const makeStudent = (id: string) => ({
   name: `Aluno ${id}`,
   email: null,
   profissao: null,
-  fotoUrl: null,
   createdAt: new Date(),
   updatedAt: new Date(),
 })

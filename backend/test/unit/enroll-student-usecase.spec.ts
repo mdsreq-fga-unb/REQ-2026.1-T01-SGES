@@ -14,7 +14,6 @@ const makeStudent = () => ({
   name: 'Ana Souza',
   email: 'ana@test.com',
   profissao: null,
-  fotoUrl: null,
   createdAt: new Date(),
   updatedAt: new Date(),
 })

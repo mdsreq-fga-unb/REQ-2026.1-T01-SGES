@@ -81,7 +81,6 @@ let mockStudents = [
     name: 'João Silva',
     email: 'joao.silva@email.com',
     profissao: 'Carpinteiro',
-    foto_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
     createdAt: new Date().toISOString(),
   },
   {
@@ -90,7 +89,6 @@ let mockStudents = [
     name: 'Maria Santos',
     email: 'maria.santos@email.com',
     profissao: 'Professora',
-    foto_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
     createdAt: new Date().toISOString(),
   },
 ];
@@ -496,7 +494,6 @@ export function setupMockApi(): void {
           name: body.name,
           email: body.email,
           profissao: body.profissao,
-          foto_url: body.foto_url || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150',
           createdAt: new Date().toISOString(),
         };
         mockStudents.unshift(newStudent);
@@ -527,7 +524,6 @@ export function setupMockApi(): void {
           name: body.name,
           email: body.email,
           profissao: body.profissao,
-          foto_url: body.foto_url || mockStudents[studentIndex].foto_url,
         };
 
         config.adapter = async () => ({

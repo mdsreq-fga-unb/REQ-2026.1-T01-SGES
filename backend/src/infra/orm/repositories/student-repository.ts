@@ -48,7 +48,6 @@ export class StudentTypeormRepository implements StudentRepository {
       name: entity.name,
       email: entity.email,
       profissao: entity.profissao,
-      fotoUrl: entity.fotoUrl,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
       deletedAt: entity.deletedAt,

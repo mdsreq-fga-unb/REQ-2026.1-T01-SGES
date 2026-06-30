@@ -2,12 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Search, Edit2, User, Mail, Briefcase, X } from 'lucide-react';
 import { studentsApi, type StudentDto } from '@/shared/api/students';
 
-const AVATAR_PRESETS = [
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
-  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150',
-  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150',
-];
+
 
 export const StudentsPage: React.FC = () => {
   const [students, setStudents] = useState<StudentDto[]>([]);
@@ -18,7 +13,6 @@ export const StudentsPage: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [profissao, setProfissao] = useState('');
-  const [fotoUrl, setFotoUrl] = useState(AVATAR_PRESETS[0]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -40,7 +34,6 @@ export const StudentsPage: React.FC = () => {
     setName('');
     setEmail('');
     setProfissao('');
-    setFotoUrl(AVATAR_PRESETS[0]);
     setError('');
     setIsModalOpen(true);
   };
@@ -50,7 +43,6 @@ export const StudentsPage: React.FC = () => {
     setName(student.name);
     setEmail(student.email);
     setProfissao(student.profissao);
-    setFotoUrl(student.foto_url || AVATAR_PRESETS[0]);
     setError('');
     setIsModalOpen(true);
   };
@@ -67,9 +59,9 @@ export const StudentsPage: React.FC = () => {
 
     try {
       if (editingStudent) {
-        await studentsApi.update(editingStudent.id, { name, email, profissao, foto_url: fotoUrl });
+        await studentsApi.update(editingStudent.id, { name, email, profissao });
       } else {
-        await studentsApi.create({ name, email, profissao, foto_url: fotoUrl });
+        await studentsApi.create({ name, email, profissao });
       }
       await fetchStudents();
       setIsModalOpen(false);
@@ -122,11 +114,9 @@ export const StudentsPage: React.FC = () => {
             key={student.id}
             className="bg-card border border-border/40 hover:border-primary/30 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex items-start gap-4 relative group"
           >
-            <img
-              src={student.foto_url || AVATAR_PRESETS[0]}
-              alt={student.name}
-              className="w-16 h-16 rounded-full object-cover border border-border/80"
-            />
+            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center border border-border/80 text-primary flex-shrink-0">
+              <User className="w-8 h-8" />
+            </div>
             <div className="flex-1 min-w-0">
               <span className="inline-block text-[10px] bg-primary/10 text-primary font-bold px-2 py-0.5 rounded-full mb-1">
                 {student.codigo_matricula}
@@ -180,41 +170,7 @@ export const StudentsPage: React.FC = () => {
                 </div>
               )}
 
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider block">
-                  Foto de Perfil
-                </label>
-                <div className="flex items-center gap-4">
-                  <img
-                    src={fotoUrl}
-                    alt="Preview"
-                    className="w-16 h-16 rounded-full object-cover border-2 border-primary/20 shadow-sm"
-                  />
-                  <div className="flex-1 space-y-2">
-                    <div className="flex gap-2">
-                      {AVATAR_PRESETS.map((p, idx) => (
-                        <button
-                          key={p}
-                          type="button"
-                          onClick={() => setFotoUrl(p)}
-                          className={`w-9 h-9 rounded-full overflow-hidden border-2 transition-all ${
-                            fotoUrl === p ? 'border-primary ring-2 ring-primary/20' : 'border-transparent'
-                          }`}
-                        >
-                          <img src={p} alt={`Preset ${idx}`} className="w-full h-full object-cover" />
-                        </button>
-                      ))}
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Ou cole a URL da imagem..."
-                      value={fotoUrl}
-                      onChange={(e) => setFotoUrl(e.target.value)}
-                      className="w-full px-3 py-1.5 rounded-lg border border-border bg-transparent text-xs text-foreground placeholder-muted-foreground outline-none focus:border-primary transition-colors"
-                    />
-                  </div>
-                </div>
-              </div>
+
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider block">

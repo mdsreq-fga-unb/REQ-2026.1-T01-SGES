@@ -31,7 +31,6 @@ const makeStudent = () => ({
   email: 'student@test.com',
   codigo_matricula: '12345678',
   profissao: 'Estudante',
-  fotoUrl: null,
 })
 
 const makeEnrollment = () => ({

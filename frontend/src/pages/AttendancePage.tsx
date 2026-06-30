@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle2, AlertCircle, Calendar, Users, ClipboardCheck } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Calendar, Users, ClipboardCheck, User } from 'lucide-react';
 import { classesApi, type ClassDto, type AttendanceStatus } from '@/shared/api/classes';
 import type { StudentDto } from '@/shared/api/students';
 
@@ -200,11 +200,9 @@ export const AttendancePage: React.FC = () => {
                   className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center px-6 py-4 hover:bg-muted/5 transition-colors"
                 >
                   <div className="col-span-1 lg:col-span-4 flex items-center gap-3">
-                    <img
-                      src={student.foto_url || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150'}
-                      alt={student.name}
-                      className="w-10 h-10 rounded-full object-cover border border-border"
-                    />
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-border text-primary flex-shrink-0">
+                      <User className="w-5 h-5" />
+                    </div>
                     <div className="min-w-0">
                       <h4 className="font-semibold text-foreground text-sm truncate">{student.name}</h4>
                       <p className="text-[10px] text-muted-foreground mt-0.5">{student.codigo_matricula}</p>

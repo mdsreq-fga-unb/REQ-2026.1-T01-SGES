@@ -15,7 +15,7 @@ vi.mock('./client', () => {
 describe('studentsApi', () => {
   it('should fetch all students successfully', async () => {
     const mockStudents = [
-      { id: 's1', name: 'John Doe', email: 'john@test.com', codigo_matricula: '111', profissao: 'Eng', fotoUrl: null },
+      { id: 's1', name: 'John Doe', email: 'john@test.com', codigo_matricula: '111', profissao: 'Eng' },
     ];
     vi.mocked(apiClient.get).mockResolvedValue({ data: mockStudents });
 
@@ -26,7 +26,7 @@ describe('studentsApi', () => {
   });
 
   it('should register a new student successfully', async () => {
-    const newStudent = { name: 'John Doe', email: 'john@test.com', codigo_matricula: '111', profissao: 'Eng', fotoUrl: 'http://photo.com' };
+    const newStudent = { name: 'John Doe', email: 'john@test.com', codigo_matricula: '111', profissao: 'Eng' };
     vi.mocked(apiClient.post).mockResolvedValue({ data: { id: 's2', ...newStudent } });
 
     const result = await studentsApi.create(newStudent);
@@ -36,7 +36,7 @@ describe('studentsApi', () => {
   });
 
   it('should update an existing student successfully', async () => {
-    const updateData = { name: 'John Doe Edit', email: 'john@test.com', codigo_matricula: '111', profissao: 'Designer', fotoUrl: null };
+    const updateData = { name: 'John Doe Edit', email: 'john@test.com', codigo_matricula: '111', profissao: 'Designer' };
     vi.mocked(apiClient.put).mockResolvedValue({ data: { id: 's1', ...updateData } });
 
     const result = await studentsApi.update('s1', updateData);
