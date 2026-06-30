@@ -13,6 +13,8 @@ import { GetEnrollmentAbsencesZodValidator } from '../../application/infra/servi
 import { AuthUseCase } from '../../application/usecases/auth-usecase'
 import { CreateUserUseCase } from '../../application/usecases/create-user-usecase'
 import { DeleteUserUseCase } from '../../application/usecases/delete-user-usecase'
+import { UpdateUserUseCase } from '../../application/usecases/update-user-usecase'
+import { UpdateUserUsecaseZodValidator } from '../../application/infra/services/shared/zod/update-user-usecase-zod-validator'
 import { ForgotPasswordUseCase } from '../../application/usecases/forgot-password-usecase'
 import { ListUsersUseCase } from '../../application/usecases/list-users-usecase'
 import { ResetPasswordUseCase } from '../../application/usecases/reset-password-usecase'
@@ -102,6 +104,9 @@ export function buildContainer() {
     )
     .add('DeleteUserUsecase', ({ UserRepository, SecurityLogRepository }) =>
       new DeleteUserUseCase(UserRepository, new DeleteUserUsecaseZodValidator(), SecurityLogRepository),
+    )
+    .add('UpdateUserUsecase', ({ UserRepository, SecurityLogRepository }) =>
+      new UpdateUserUseCase(UserRepository, new UpdateUserUsecaseZodValidator(), SecurityLogRepository),
     )
     .add('ListUsersUsecase', ({ UserRepository }) =>
       new ListUsersUseCase(UserRepository, new ListUsersUsecaseZodValidator()),

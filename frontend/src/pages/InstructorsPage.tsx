@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Search, X, Mail, User, Trash2, AlertTriangle } from 'lucide-react';
+import { Plus, Search, X, Mail, User, Trash2, AlertTriangle, Edit } from 'lucide-react';
 import { usersApi, type UserDto } from '@/shared/api/classes';
 import { useAuth } from '@/app/providers/AuthProvider';
 import { useToast } from '@/shared/components/Toast';
@@ -12,6 +12,7 @@ export const InstructorsPage: React.FC = () => {
   const [users, setUsers] = useState<UserDto[]>([]);
   const [search, setSearch] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingUser, setEditingUser] = useState<UserDto | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -36,9 +37,19 @@ export const InstructorsPage: React.FC = () => {
   }, [isAdmin]);
 
   const handleOpenCreateModal = () => {
+    setEditingUser(null);
     setName('');
     setEmail('');
     setRole('volunteer');
+    setError('');
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEditModal = (user: UserDto) => {
+    setEditingUser(user);
+    setName(user.name);
+    setEmail(user.email);
+    setRole(user.role);
     setError('');
     setIsModalOpen(true);
   };
@@ -54,12 +65,18 @@ export const InstructorsPage: React.FC = () => {
     setError('');
 
     try {
-      await usersApi.create({ name, email, role });
-      addToast('success', 'Instrutor cadastrado com sucesso!');
+      if (editingUser) {
+        await usersApi.update(editingUser.id, { name, email, role });
+        addToast('success', 'Cadastro do instrutor atualizado com sucesso!');
+      } else {
+        await usersApi.create({ name, email, role });
+        addToast('success', 'Instrutor cadastrado com sucesso!');
+      }
       setIsModalOpen(false);
       await fetchUsers();
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Erro ao cadastrar o instrutor.');
+    } catch (err) {
+      const errorMsg = (err as { response?: { data?: { message?: string } } }).response?.data?.message || 'Erro ao salvar o instrutor.';
+      setError(errorMsg);
     } finally {
       setLoading(false);
     }
@@ -79,8 +96,9 @@ export const InstructorsPage: React.FC = () => {
       await usersApi.delete(userId);
       addToast('success', 'Cadastro removido com sucesso.');
       await fetchUsers();
-    } catch (err: any) {
-      addToast('error', err.response?.data?.message || 'Falha ao remover o cadastro.');
+    } catch (err) {
+      const errorMsg = (err as { response?: { data?: { message?: string } } }).response?.data?.message || 'Falha ao remover o cadastro.';
+      addToast('error', errorMsg);
     }
   };
 
@@ -159,13 +177,22 @@ export const InstructorsPage: React.FC = () => {
             </div>
 
             {u.id !== loggedUser?.id && u.id !== 'a1b2c3d4-e5f6-7890-abcd-ef1234567890' && (
-              <button
-                onClick={() => handleDeleteUser(u.id, u.name)}
-                className="p-1.5 rounded-lg border border-border/60 hover:border-destructive/40 hover:bg-destructive/5 text-muted-foreground hover:text-destructive transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
-                title="Excluir cadastro"
-              >
-                <Trash2 className="w-3.5 h-3.5" />
-              </button>
+              <div className="flex gap-1.5 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-all">
+                <button
+                  onClick={() => handleOpenEditModal(u)}
+                  className="p-1.5 rounded-lg border border-border/60 hover:border-primary/45 hover:bg-primary/5 text-muted-foreground hover:text-primary transition-all"
+                  title="Editar cadastro"
+                >
+                  <Edit className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => handleDeleteUser(u.id, u.name)}
+                  className="p-1.5 rounded-lg border border-border/60 hover:border-destructive/40 hover:bg-destructive/5 text-muted-foreground hover:text-destructive transition-all"
+                  title="Excluir cadastro"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                </button>
+              </div>
             )}
           </div>
         ))}
@@ -181,7 +208,9 @@ export const InstructorsPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/30 backdrop-blur-sm">
           <div className="bg-card border border-border shadow-2xl rounded-2xl max-w-md w-full overflow-hidden animate-in scale-in duration-200">
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-              <h3 className="font-bold text-lg text-foreground">Cadastrar Novo Instrutor</h3>
+              <h3 className="font-bold text-lg text-foreground">
+                {editingUser ? 'Editar Instrutor' : 'Cadastrar Novo Instrutor'}
+              </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="p-1 rounded-lg hover:bg-muted text-muted-foreground"
@@ -261,12 +290,14 @@ export const InstructorsPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-3 bg-blue-500/5 text-primary border border-primary/20 rounded-xl text-[11px]">
-                <p className="font-semibold">Nota sobre a senha:</p>
-                <p className="mt-0.5 text-muted-foreground">
-                  A senha padrão de primeiro acesso para novos cadastros é <strong className="text-foreground font-bold">Senha123!</strong>. O instrutor poderá alterá-la após o login.
-                </p>
-              </div>
+              {!editingUser && (
+                <div className="p-3 bg-blue-500/5 text-primary border border-primary/20 rounded-xl text-[11px]">
+                  <p className="font-semibold">Nota sobre a senha:</p>
+                  <p className="mt-0.5 text-muted-foreground">
+                    A senha padrão de primeiro acesso para novos cadastros é <strong className="text-foreground font-bold">Senha123!</strong>. O instrutor poderá alterá-la após o login.
+                  </p>
+                </div>
+              )}
 
               <div className="flex justify-end gap-3 pt-4 border-t border-border mt-6">
                 <button
@@ -281,7 +312,7 @@ export const InstructorsPage: React.FC = () => {
                   disabled={loading}
                   className="bg-primary text-white hover:bg-primary/90 transition-colors px-4 py-2 rounded-xl text-sm font-medium disabled:opacity-50"
                 >
-                  {loading ? 'Cadastrando...' : 'Cadastrar'}
+                  {loading ? 'Salvando...' : editingUser ? 'Salvar Alterações' : 'Cadastrar'}
                 </button>
               </div>
             </form>

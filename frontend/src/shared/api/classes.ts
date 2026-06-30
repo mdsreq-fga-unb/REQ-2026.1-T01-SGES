@@ -136,4 +136,18 @@ export const usersApi = {
   async delete(id: string): Promise<void> {
     await apiClient.delete(`/users/${id}`);
   },
+
+  async update(id: string, input: { name: string; email: string; role: 'admin' | 'volunteer' }): Promise<UserDto> {
+    const backendRole = input.role === 'admin' ? 'ADMIN' : 'TEACHER';
+    const { data } = await apiClient.put<{ id: string; name: string; email: string; role: string }>(`/users/${id}`, {
+      ...input,
+      role: backendRole,
+    });
+    return {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      role: data.role?.toLowerCase() === 'admin' ? 'admin' : 'volunteer',
+    };
+  },
 };

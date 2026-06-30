@@ -601,6 +601,45 @@ export function setupMockApi(): void {
         return config;
       }
 
+      // --- PUT /users/:id (Editar Usuário/Instrutor) ---
+      if (url.startsWith('/users/') && method === 'put') {
+        await delay(150);
+        const parts = url.split('/');
+        const userId = parts[2];
+        const body = typeof config.data === 'string' ? JSON.parse(config.data) : config.data;
+
+        const userIndex = MOCK_USERS.findIndex((u) => u.id === userId);
+        if (userIndex === -1) {
+          throw createMockError(404, 'Usuário não encontrado.', config);
+        }
+
+        if (
+          MOCK_USERS.some(
+            (u) => u.id !== userId && u.email.toLowerCase() === body.email.toLowerCase()
+          )
+        ) {
+          throw createMockError(400, 'Já existe outro usuário cadastrado com este e-mail.', config);
+        }
+
+        const updatedUser = {
+          ...MOCK_USERS[userIndex],
+          name: body.name,
+          email: body.email,
+          role: body.role || MOCK_USERS[userIndex].role,
+        };
+
+        MOCK_USERS[userIndex] = updatedUser;
+
+        config.adapter = async () => ({
+          data: updatedUser,
+          status: 200,
+          statusText: 'OK',
+          headers: {},
+          config,
+        });
+        return config;
+      }
+
       // --- DELETE /users/:id (Excluir Usuário/Instrutor) ---
       if (url.startsWith('/users/') && method === 'delete') {
         await delay(150);
