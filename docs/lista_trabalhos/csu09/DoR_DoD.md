@@ -25,12 +25,12 @@ Para que o requisito correspondente a este caso de uso seja considerado **Ready*
 Para que este caso de uso seja considerado **Done** (Concluído) e sua entrega seja aceita, todas as condições abaixo devem ser atendidas e marcadas:
 
 #### 2.1. Entrega de Valor
-- [ ] O trabalho realizado entrega um incremento funcional e observável no produto de software?
-- [ ] A entrega está devidamente rastreada e referenciada ao caso de uso `CSU09` no sistema de controle de versão (ex: nos commits/PRs)?
+- [x] O trabalho realizado entrega um incremento funcional e observável no produto de software?
+- [x] A entrega está devidamente rastreada e referenciada ao caso de uso `CSU09` no sistema de controle de versão (ex: nos commits/PRs)?
 
 #### 2.2. Cobertura dos Requisitos
-- [ ] Todos os cenários descritos nos critérios de aceitação (fluxo básico, alternativos e exceções) foram implementados e testados?
-- [ ] O comportamento do sistema em situações normais e de falha foi validado?
+- [x] Todos os cenários descritos nos critérios de aceitação (fluxo básico, alternativos e exceções) foram implementados e testados?
+- [x] O comportamento do sistema em situações normais e de falha foi validado?
 
 #### 2.3. Qualidade de Testes
 - [x] Foram implementados testes unitários para cobrir as regras de negócio deste caso de uso?
@@ -41,11 +41,11 @@ Para que este caso de uso seja considerado **Done** (Concluído) e sua entrega s
       ```
     * **Evidência de Execução:**
       ![Evidência de Execução](evidencia.png)
-- [ ] Os fluxos principais foram validados manualmente em ambiente de testes pela equipe ou QA?
+- [x] Os fluxos principais foram validados manualmente em ambiente de testes pela equipe ou QA?
 
 #### 2.4. Revisão por Pares (Code Review)
-- [ ] O Pull Request (PR) foi revisado e aprovado por pelo menos mais um integrante da equipe?
-- [ ] O código passou nas validações de conformidade de estilo, legibilidade, robustez lógica e de segurança (sem vazamento de credenciais ou dados sensíveis)?
+- [x] O Pull Request (PR) foi revisado e aprovado por pelo menos mais um integrante da equipe?
+- [x] O código passou nas validações de conformidade de estilo, legibilidade, robustez lógica e de segurança (sem vazamento de credenciais ou dados sensíveis)?
 
 #### 2.5. Documentação
-- [ ] A documentação técnica, de APIs (Swagger/OpenAPI) e este próprio repositório de requisitos foram atualizados com as alterações finais?
+- [x] A documentação técnica, de APIs (Swagger/OpenAPI) e este próprio repositório de requisitos foram atualizados com as alterações finais?
