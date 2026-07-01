@@ -76,3 +76,7 @@ A nova senha cadastrada deve ser hasheada utilizando algoritmos seguros antes de
 
 ### Pós-condições:
 A senha do usuário é atualizada de forma segura no banco de dados e o código temporário utilizado é invalidado.
+
+#### Protótipo de Tela (DoR)
+
+![Protótipo - CSU02](CSU02.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}

@@ -46,3 +46,7 @@ O acesso só é concedido mediante a correspondência exata do e-mail cadastrado
 
 ### Pós-condições:
 O usuário obtém acesso às funcionalidades do sistema correspondentes ao seu perfil de acesso através de uma sessão ativa e segura.
+
+#### Protótipo de Tela (DoR)
+
+![Protótipo - CSU01](CSU01.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
