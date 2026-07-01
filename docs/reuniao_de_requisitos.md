@@ -1,6 +1,6 @@
 # **ATA DA REUNIÃO DE VALIDAÇÃO DE REQUISITOS – SISTEMA SGES**
 
->  **Rastreabilidade:** Esta reunião valida a etapa de **Elaboração** do projeto. Marco correspondente na [Tabela de Planejamento de Fases e Iterações](cronograma_e_entregas.md#tabela-de-planejamento-de-fases-e-iteracoes).
+>  **Rastreabilidade:** Esta reunião valida a etapa de **Elaboração** do projeto. Marco correspondente na [Tabela de Planejamento de Fases e Iterações](planejamento_organizacao/cronograma_e_entregas.md#tabela-de-planejamento-de-fases-e-iteracoes).
 
 **Data:** 29 de maio de 2026  
 **Local:** *Reunião Online*  

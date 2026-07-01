@@ -1,6 +1,6 @@
 # **VÍDEO DE APRESENTAÇÃO DO MVP – CONSTRUÇÃO ITERAÇÃO 1**
 
-> **Rastreabilidade:** Esta validação comprova o marco da **Construção - Iteração 1** do projeto. Marco correspondente na [Tabela de Planejamento de Fases e Iterações](cronograma_e_entregas.md#tabela-de-planejamento-de-fases-e-iteracoes).
+> **Rastreabilidade:** Esta validação comprova o marco da **Construção - Iteração 1** do projeto. Marco correspondente na [Tabela de Planejamento de Fases e Iterações](planejamento_organizacao/cronograma_e_entregas.md#tabela-de-planejamento-de-fases-e-iteracoes).
 
 ---
 

@@ -1,6 +1,6 @@
 # **ATA DA REUNIÃO DE VALIDAÇÃO DO ESCOPO – SISTEMA SGES**
 
-> **Rastreabilidade:** Esta reunião valida a etapa de **Concepção** do projeto. Marco correspondente na [Tabela de Planejamento de Fases e Iterações](cronograma_e_entregas.md#tabela-de-planejamento-de-fases-e-iteracoes).
+> **Rastreabilidade:** Esta reunião valida a etapa de **Concepção** do projeto. Marco correspondente na [Tabela de Planejamento de Fases e Iterações](planejamento_organizacao/cronograma_e_entregas.md#tabela-de-planejamento-de-fases-e-iteracoes).
 
 **Data:** 9 de abril de 2026  
 **Local:** *Ligação*  

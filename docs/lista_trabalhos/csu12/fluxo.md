@@ -3,7 +3,7 @@
 
 [Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
 [Andamento](../andamento.md) <br>
-[Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
+[Cronograma e Planejamento](../../planejamento_organizacao/cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
 
 ---
