@@ -63,6 +63,6 @@ Nenhum ponto de extensão identificado.
 
 #### Protótipo de Tela (DoR)
 
-![Protótipo - CSU05 - Tela 1](../../images/DoR/CSU05-1.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem; margin-bottom: 1rem;"}
+![Protótipo - CSU05 - Tela 1](CSU05-1.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem; margin-bottom: 1rem;"}
 
-![Protótipo - CSU05 - Tela 2](../../images/DoR/CSU05-2.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
+![Protótipo - CSU05 - Tela 2](CSU05-2.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}

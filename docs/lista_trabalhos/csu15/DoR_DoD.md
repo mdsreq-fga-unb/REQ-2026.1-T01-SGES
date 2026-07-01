@@ -17,9 +17,9 @@ Para que o requisito correspondente a este caso de uso seja considerado **Ready*
 
 #### Interface do Usuário (DoR)
 
-![Protótipo - CSU15 - Tela 1](../../images/DoR/CSU15-1.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem; margin-bottom: 1rem;"}
+![Protótipo - CSU15 - Tela 1](CSU15-1.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem; margin-bottom: 1rem;"}
 
-![Protótipo - CSU15 - Tela 2](../../images/DoR/CSU15.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
+![Protótipo - CSU15 - Tela 2](CSU15.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
 
 ---
 

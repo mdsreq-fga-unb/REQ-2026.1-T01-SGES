@@ -60,4 +60,4 @@ Nenhum ponto de extensão identificado.
 
 #### Protótipo de Tela (DoR)
 
-![Protótipo - CSU09](../../images/DoR/CSU09.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
+![Protótipo - CSU09](CSU09.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}

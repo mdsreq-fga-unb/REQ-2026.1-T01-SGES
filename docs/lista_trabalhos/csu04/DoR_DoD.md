@@ -17,7 +17,7 @@ Para que o requisito correspondente a este caso de uso seja considerado **Ready*
 
 #### Interface do Usuário (DoR)
 
-![Protótipo - CSU04](../../images/DoR/CSU04.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
+![Protótipo - CSU04](CSU04.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
 
 ---
 
