@@ -103,15 +103,29 @@ nav:
             - "DoR & DoD": ./lista_trabalhos/csu16/DoR_DoD.md
 
   - "Acompanhamento do Projeto":
-      - "Cronograma e Entregas": "cronograma_e_entregas.md"
+      - "Planejamento e Organização":
+        - "Planejamento": planejamento_organizacao/cronograma_e_entregas.md
+        - "Rastreabilidade": planejamento_organizacao/rastreabilidade.md
+        - "Qaudro MVP": planejamento_organizacao/quadro_mvp.md
+
       - "Gravações das unidades":
           - "Vídeo da Unidade 1": unidade_1_video.md
           - "Vídeo da Unidade 2": unidade_2_video.md
-          - "Vídeo da Unidade 3": unidade_3_video.md 
+          - "Vídeo da Unidade 3": unidade_3_video.md
+          
       - "Reunião com a cliente":
         - "Ata da Reunião de Validação do Escopo e Objetivos": reuniao_de_alinhamento.md
         - "Ata da Reunião de Validação de Requisitos": reuniao_de_requisitos.md
         - "Vídeo de Apresentação do MVP": validacao_unidade_3.md
+
+      - "Atas":
+        - "Atas de Planos de Iteração":
+          - "Ata de plano de iteração da concepção": atas/atas_planos_iteracao/ata_plano_iteracao_concepcao.md
+          - "Ata de plano de iteração da elaboração": atas/atas_planos_iteracao/ata_plano_iteracao_elaboracao.md
+          - "Ata de plano de iteração da construção 1": atas/atas_planos_iteracao/ata_plano_iteracao_construcao1.md
+          - "Ata de plano de iteração da construção 2": atas/atas_planos_iteracao/ata_plano_iteracao_construcao2.md
+          - "Ata de plano de iteração da transição": atas/atas_planos_iteracao/ata_plano_iteracao_transicao.md
+
       - "Evidências de ER e EW":
         - "1. Concepção": paginas_de_evidencia/evidencias_concepcao.md
         - "2. Elaboração": paginas_de_evidencia/evidencias_elaboracao.md  

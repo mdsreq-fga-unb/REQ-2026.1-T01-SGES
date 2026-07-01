@@ -1,5 +1,7 @@
 # Evidências da Fase de Construção - Iteração 2
 
+[Voltar para Cronograma e Planejamento](../planejamento_organizacao/cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
+
 ## 1. Contexto Breve da Fase
 *Insira aqui um breve resumo de como foi o andamento desta iteração específica. Explique o foco principal do período (ex: alinhamento de visão, elicitação inicial de regras, desenvolvimento do core ou estabilização do código) e qual era o objetivo geral da equipe para estas semanas.*
 
