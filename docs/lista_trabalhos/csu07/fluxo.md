@@ -57,4 +57,9 @@ Nenhum ponto de extensão identificado.
 ---
 
 ### 9. Informações Adicionais
-Não há informações adicionais neste momento.
+
+#### Protótipo de Tela (DoR)
+
+![Protótipo - CSU07 - Tela 1](CSU07-1.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem; margin-bottom: 1rem;"}
+
+![Protótipo - CSU07 - Tela 2](CSU07-2.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}

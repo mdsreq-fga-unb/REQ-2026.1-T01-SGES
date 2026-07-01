@@ -47,24 +47,36 @@ const config: Config = {
       url: env.POSTGRES_URL,
       ssl: false,
     }),
-  prod: () =>
-    new DataSource({
+  prod: () => {
+    const baseConfig = {
       ...defaultConfig,
-      type: 'postgres',
+      type: 'postgres' as const,
       poolSize: env.DATA_SOURCE_POOL_SIZE,
       ssl: true,
       extra: { ssl: { rejectUnauthorized: false } },
-      replication: {
-        master: {
-          url: env.POSTGRES_URL,
-        },
-        slaves: [
-          {
-            url: env.SLAVE_POSTGRES_URL,
+    }
+
+    if (env.SLAVE_POSTGRES_URL) {
+      return new DataSource({
+        ...baseConfig,
+        replication: {
+          master: {
+            url: env.POSTGRES_URL,
           },
-        ],
-      },
-    }),
+          slaves: [
+            {
+              url: env.SLAVE_POSTGRES_URL,
+            },
+          ],
+        },
+      })
+    }
+
+    return new DataSource({
+      ...baseConfig,
+      url: env.POSTGRES_URL,
+    })
+  },
 }
 
 export const dataSource = config[env.NODE_ENV]()
