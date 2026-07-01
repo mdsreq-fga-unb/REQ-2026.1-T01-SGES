@@ -1,5 +1,14 @@
 # MVP e Quadrantes
 
+!!! info "Guia de Nomenclatura"
+    Para garantir a rastreabilidade e rigor acadêmico, os Casos de Uso (CSUs) utilizam a seguinte padronização de nomenclatura:
+    
+    * **RF (Requisito Funcional):** Identifica o requisito funcional correspondente (ex: `RF01`).
+    * **RN (Regra de Negócio):** Segue o formato **`RN[caso_de_uso]-[sequencial]`** (ex: `RN02-01` é a primeira regra do CSU02). As regras definem as políticas operacionais do negócio e são especificadas localmente em sua respectiva seção em cada caso de uso.
+    * **RNF (Requisito Não Funcional):** Segue o formato global do projeto **`RNF[sequencial]`** (ex: `RNF01`, `RNF02`). São mapeados e referenciados nos fluxos de eventos para rastrear restrições técnicas (segurança, confiabilidade, performance).
+    * **FE (Fluxo de Exceção):** Indica desvios e erros no formato **`FE-[passo]-[identificador]`** (ex: `FE-4-A` trata o erro ocorrido no passo 4).
+    * **FA (Fluxo Alternativo):** Indica alternativas de fluxo no formato **`FA-[passo]-[identificador]`** (ex: `FA-2-A`).
+
 ## MVP
 
 | CSU | Descrição | Já feito | Iteração |

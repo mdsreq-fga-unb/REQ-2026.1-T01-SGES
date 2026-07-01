@@ -1,64 +1,48 @@
 # SGES
-## Especificação de Caso de Uso: CSU01 (RF01) - Autenticar usuário
+## CSU01 (RF01) — Autenticar usuário
 
 [Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
 [Andamento](../andamento.md) <br>
 [Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
----
-
-### 1. Breve Descrição
-Validar as credenciais para o controle de acesso primário ao sistema, bloqueando a conta temporariamente após 5 tentativas de login incorretas consecutivas.
 
 ---
 
-### 2. Fluxo Básico de Eventos
+### Objetivo:
+Validar as credenciais para o controle de acesso ao sistema.
+
+### Ator principal:
+Usuário (Qualquer perfil cadastrado)
+
+### Atores secundários:
+Nenhum
+
+### Pré-condições:
+O usuário deve possuir uma conta cadastrada e ativa no sistema.
+
+### Fluxo principal:
 1. O usuário acessa a página de login do SGES.
 2. O sistema solicita o e-mail e a senha do usuário.
-3. O usuário insere suas credenciais e clica em 'Entrar'.
-4. O sistema valida as credenciais informadas no banco de dados. [[FE-4-A](#fe-4-a-e-mail-invalido), [FE-4-B](#fe-4-b-senha-invalida), [FE-4-C](#fe-4-c-bloqueio-de-conta)]
-5. O sistema gera um token JWT válido e inicia a sessão do usuário.
+3. O usuário insere suas credenciais e confirma a operação.
+4. O sistema valida as credenciais informadas no banco de dados. (RN01-01; FE-4-A; FE-4-B)
+5. O sistema estabelece uma sessão de acesso segura.
 6. O sistema redireciona o usuário para a página inicial (Dashboard) correspondente ao seu perfil de acesso.
 
----
-
-### 3. Fluxos Alternativos
+### Fluxos alternativos:
 Não há fluxos alternativos identificados.
 
----
+### Fluxos de exceção:
+#### FE-4-A — E-mail Inválido
 
-### 4. Fluxos de Exceção
-#### FE-4-A - E-mail Inválido
-No passo 4, se o e-mail informado estiver incorreto ou não constar na base de dados, o sistema exibe uma mensagem de erro indicando login inválido e solicita novas credenciais.
+Este fluxo inicia no passo 4 do fluxo principal. Se o e-mail informado estiver incorreto ou não constar na base de dados, o sistema exibe uma mensagem de erro indicando credenciais inválidas. O fluxo retorna ao passo 2 do fluxo principal.
 
-#### FE-4-B - Senha Inválida
-No passo 4, se a senha informada estiver incorreta, o sistema incrementa o contador de tentativas de login falhas do usuário, exibe uma mensagem de erro indicando login inválido e solicita novas credenciais.
+#### FE-4-B — Senha Inválida
 
-#### FE-4-C - Bloqueio de Conta
-No passo 4, se o número de tentativas consecutivas falhas atingir 5, o sistema altera o status da conta para 'Bloqueada', registra a ocorrência na trilha de auditoria (segurança) e exibe uma mensagem informando que a conta foi temporariamente bloqueada por segurança.
+Este fluxo inicia no passo 4 do fluxo principal. Se a senha informada estiver incorreta, o sistema exibe uma mensagem de erro indicando credenciais inválidas e solicita novas credenciais. O fluxo retorna ao passo 2 do fluxo principal.
 
----
+### Regras de negócio:
+#### RN01-01 — Validação de Credenciais
+O acesso só é concedido mediante a correspondência exata do e-mail cadastrado e da senha criptografada.
 
-### 5. Pré-Condições
-* O usuário deve possuir uma conta cadastrada e ativa no sistema.
-
----
-
-### 6. Pós-Condições
-* O usuário obtém acesso às funcionalidades do sistema correspondentes ao seu perfil de acesso através de um token JWT válido.
-
----
-
-### 7. Pontos de Extensão
-Nenhum ponto de extensão identificado.
-
----
-
-### 8. Requisitos Especiais
-* RNF06 - Prevenção de Inatividade: O token de sessão expira automaticamente após 15 minutos de inatividade, exigindo novo login.
-* RNF02 - Trilha de Auditoria: Tentativas de acesso malsucedidas devem registrar logs contendo timestamp, e-mail e endereço IP.
-
----
-
-### 9. Informações Adicionais
-Não há informações adicionais neste momento.
+### Pós-condições:
+O usuário obtém acesso às funcionalidades do sistema correspondentes ao seu perfil de acesso através de uma sessão ativa e segura.

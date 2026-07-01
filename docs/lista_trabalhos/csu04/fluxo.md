@@ -1,64 +1,68 @@
 # SGES
-## Especificação de Caso de Uso: CSU04 (RF04) - Cadastrar instrutor
+## CSU04 (RF04) — Cadastrar instrutor
 
 [Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
 [Andamento](../andamento.md) <br>
 [Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
----
-
-### 1. Breve Descrição
-Permitir o cadastro de novos instrutores vinculando obrigatoriamente um perfil de acesso baseado em papéis (RBAC).
 
 ---
 
-### 2. Fluxo Básico de Eventos
-1. O Gestor acessa o painel de administração e seleciona 'Cadastrar Instrutor'.
-2. O sistema exibe o formulário de cadastro solicitando: Foto de identificação, Nome Completo, CPF, E-mail, Telefone, Endereço, Profissão, Perfil de Acesso, Contato de Emergência (Nome e Telefone) e Atividades de semestres anteriores.
-3. O Gestor preenche as informações e seleciona o perfil de acesso apropriado.
-4. O Gestor clica em 'Salvar'.
-5. O sistema valida a unicidade do CPF e do E-mail, além de garantir o preenchimento de todos os dados obrigatórios. [[FE-5-A](#fe-5-a-campos-obrigatorios-ausentes), [FE-5-B](#fe-5-b-e-mail-ja-cadastrado), [FE-5-C](#fe-5-c-cpf-ja-cadastrado)]
-6. O sistema salva o instrutor, gera um identificador único (ID) para ele e o envia à base de dados.
+### Objetivo:
+Permitir o cadastro de novos instrutores.
+
+### Ator principal:
+Gestor
+
+### Atores secundários:
+Nenhum
+
+### Pré-condições:
+O Gestor deve estar autenticado e possuir perfil de acesso administrador.
+
+### Fluxo principal:
+1. O Gestor acessa o painel de administração e solicita o cadastro de um novo instrutor. (FE-1-A)
+2. O sistema exibe o formulário de cadastro solicitando: Nome Completo e E-mail.
+3. O Gestor preenche as informações e seleciona o perfil de acesso apropriado. (RN04-02)
+4. O Gestor confirma a operação.
+5. O sistema valida a unicidade do E-mail, além de garantir o preenchimento de todos os dados obrigatórios. (RN04-01; RN04-02; FE-5-A; FE-5-B; FE-5-C)
+6. O sistema salva o instrutor, envia à base de dados e gera o registro na trilha de auditoria. (RNF02; FE-6-A)
 7. O sistema exibe uma mensagem confirmando o cadastro com sucesso.
 
----
-
-### 3. Fluxos Alternativos
+### Fluxos alternativos:
 Não há fluxos alternativos identificados.
 
----
+### Fluxos de exceção:
+#### FE-1-A — Permissão Insuficiente
 
-### 4. Fluxos de Exceção
-#### FE-5-A - Campos Obrigatórios Ausentes
-No passo 5, se algum campo obrigatório estiver em branco, o sistema impede a gravação, exibe uma mensagem de alerta e destaca os campos que precisam ser preenchidos.
+Este fluxo inicia no passo 1 do fluxo principal. Se o usuário autenticado não possuir o perfil de Gestor/Administrador, o sistema bloqueia o acesso, impede a operação e exibe uma mensagem de acesso negado. O caso de uso é encerrado.
 
-#### FE-5-B - E-mail já Cadastrado
-No passo 5, se o e-mail informado já constar na base de dados de outro instrutor, o sistema bloqueia a gravação e apresenta um alerta informando a duplicidade do e-mail.
+#### FE-5-A — Campos Obrigatórios Ausentes
 
-#### FE-5-C - CPF já Cadastrado
-No passo 5, se o CPF informado já constar na base de dados de outro instrutor, o sistema bloqueia a gravação e apresenta um alerta informando a duplicidade do CPF.
+Este fluxo inicia no passo 5 do fluxo principal. Se algum campo obrigatório estiver em branco, o sistema impede a gravação, exibe uma mensagem de alerta e destaca os campos que precisam ser preenchidos. O fluxo retorna ao passo 3 do fluxo principal.
 
----
+#### FE-5-B — E-mail já Cadastrado
 
-### 5. Pré-Condições
-* O Gestor deve estar autenticado e possuir perfil de acesso administrador.
+Este fluxo inicia no passo 5 do fluxo principal. Se o e-mail informado já constar na base de dados de outro instrutor, o sistema bloqueia a gravação e apresenta um alerta informando a duplicidade do e-mail. O fluxo retorna ao passo 3 do fluxo principal.
 
----
+#### FE-5-C — Dados Inválidos
 
-### 6. Pós-Condições
-* O novo instrutor é persistido na base de dados com um identificador exclusivo e o perfil de acesso adequado.
+Este fluxo inicia no passo 5 do fluxo principal. Se algum dado fornecido estiver em formato incorreto (ex: e-mail inválido), o sistema impede a gravação e solicita a correção. O fluxo retorna ao passo 3 do fluxo principal.
 
----
+#### FE-6-A — Falha de Persistência
 
-### 7. Pontos de Extensão
-Nenhum ponto de extensão identificado.
+Este fluxo inicia no passo 6 do fluxo principal. Se ocorrer uma falha ao tentar salvar o instrutor no banco de dados, o sistema aborta a transação, exibe uma mensagem de erro e não altera o estado do sistema. O caso de uso é encerrado.
 
----
+### Regras de negócio:
+#### RN04-01 — Unicidade de E-mail
+O e-mail do instrutor deve ser único na base de dados, impedindo duplicidades.
 
-### 8. Requisitos Especiais
-* RNF02 - Trilha de Auditoria: O cadastro de um novo perfil deve registrar logs automáticos contendo ID do Gestor, ação realizada e timestamp.
+#### RN04-02 — Campos Obrigatórios
+É obrigatório o preenchimento de Nome Completo e E-mail, além da definição do Perfil de Acesso (RBAC).
 
----
+### Requisitos não funcionais:
+#### RNF02 — Trilha de Auditoria
+A criação de perfis de instrutor deve registrar um log automático contendo o ID do Gestor, ação realizada e timestamp.
 
-### 9. Informações Adicionais
-Não há informações adicionais neste momento.
+### Pós-condições:
+O novo instrutor é persistido na base de dados com um identificador exclusivo e o perfil de acesso adequado.

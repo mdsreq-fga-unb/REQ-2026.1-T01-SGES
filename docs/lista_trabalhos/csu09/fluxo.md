@@ -1,60 +1,67 @@
 # SGES
-## Especificação de Caso de Uso: CSU09 (RF10) - Matricular beneficiário
+## CSU09 (RF10) — Matricular beneficiário
 
 [Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
 [Andamento](../andamento.md) <br>
 [Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
+
 ---
 
-### 1. Breve Descrição
+### Objetivo:
 Vincular um beneficiário cadastrado e ativo a uma turma específica, realizando o abatimento das vagas disponíveis.
 
----
+### Ator principal:
+Gestor / Instrutor
 
-### 2. Fluxo Básico de Eventos
-1. O usuário seleciona a turma desejada e clica na opção 'Matricular Aluno'.
+### Atores secundários:
+Nenhum
+
+### Pré-condições:
+O usuário deve estar autenticado; a turma e o beneficiário devem estar ativos.
+
+### Fluxo principal:
+1. O usuário seleciona a turma desejada e solicita a realização de matrícula. (FE-1-A)
 2. O sistema apresenta um campo de busca para selecionar o beneficiário.
-3. O usuário localiza o beneficiário ativo e clica em 'Confirmar Matrícula'.
-4. O sistema valida se o beneficiário já possui matrícula na turma e se a turma possui vagas em aberto. [[FE-4-A](#fe-4-a-limite-de-vagas-excedido), [FE-4-B](#fe-4-b-beneficiario-ja-matriculado)]
-5. O sistema cria o registro de vínculo da matrícula e subtrai uma vaga disponível no limite da turma.
+3. O usuário localiza o beneficiário ativo e confirma a operação.
+4. O sistema valida se o beneficiário já possui matrícula na turma e se a turma possui vagas em aberto. (RN09-01; RN09-02; RN09-03; FE-4-A; FE-4-B; FE-4-C) 
+5. O sistema cria o registro de vínculo da matrícula e subtrai uma vaga disponível no limite da turma. (FE-5-A)
 6. O sistema exibe mensagem de confirmação de matrícula efetuada com sucesso.
 
----
-
-### 3. Fluxos Alternativos
+### Fluxos alternativos:
 Não há fluxos alternativos identificados.
 
----
+### Fluxos de exceção:
 
-### 4. Fluxos de Exceção
-#### FE-4-A - Limite de Vagas Excedido
-No passo 4, se a turma não possuir vagas livres, o sistema bloqueia novas matrículas e emite um alerta informando que a turma está lotada.
+#### FE-1-A — Item Inexistente (Turma)
 
-#### FE-4-B - Beneficiário já Matriculado
-No passo 4, se o beneficiário selecionado já possuir matrícula ativa na turma escolhida, o sistema cancela a operação e informa a duplicidade.
+Este fluxo inicia no passo 1 do fluxo principal. Se a turma selecionada para matrícula não constar mais no sistema (ex: removida por outro gestor), a tela é recarregada mostrando mensagem de erro. O caso de uso é encerrado.
 
----
+#### FE-4-A — Item Inexistente (Beneficiário)
 
-### 5. Pré-Condições
-* O usuário deve estar autenticado; a turma e o beneficiário devem estar ativos.
+Este fluxo inicia no passo 4 do fluxo principal. Se o beneficiário selecionado não for encontrado na base de dados, a matrícula é cancelada exibindo erro. O fluxo retorna ao passo 2 do fluxo principal.
 
----
+#### FE-4-B — Limite de Vagas Excedido
 
-### 6. Pós-Condições
-* O vínculo de matrícula é criado no banco de dados e o saldo de vagas da turma é atualizado.
+Este fluxo inicia no passo 4 do fluxo principal. Se a turma não possuir vagas livres, o sistema bloqueia novas matrículas e emite um alerta informando que a turma está lotada. O caso de uso é encerrado.
 
----
+#### FE-4-C — Beneficiário já Matriculado
 
-### 7. Pontos de Extensão
-Nenhum ponto de extensão identificado.
+Este fluxo inicia no passo 4 do fluxo principal. Se o beneficiário selecionado já possuir matrícula ativa na turma escolhida, o sistema cancela a operação e informa a duplicidade. O caso de uso é encerrado.
 
----
+#### FE-5-A — Falha de Persistência
 
-### 8. Requisitos Especiais
-* Atualização atômica do saldo de vagas para evitar problemas de concorrência caso dois usuários tentem matricular simultaneamente na última vaga.
+Este fluxo inicia no passo 5 do fluxo principal. Se ocorrer uma falha ao persistir a matrícula no banco de dados, o sistema impede a gravação e restaura o saldo de vagas anterior da turma. O caso de uso é encerrado.
 
----
+### Regras de negócio:
+#### RN09-01 — Respeito ao Limite de Vagas
+O sistema deve impedir a matrícula se a quantidade de vagas disponíveis na turma for zero.
 
-### 9. Informações Adicionais
-Não há informações adicionais neste momento.
+#### RN09-02 — Status dos Envolvidos
+Beneficiário e Turma devem estar com status ativo para a realização da matrícula.
+
+#### RN09-03 — Unicidade de Matrícula
+O beneficiário não pode ser matriculado mais de uma vez na mesma turma.
+
+### Pós-condições:
+O vínculo de matrícula é criado no banco de dados e o saldo de vagas da turma é atualizado.

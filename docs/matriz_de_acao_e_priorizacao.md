@@ -1,33 +1,27 @@
 # Engenharia de Requisitos: Especificação de Casos de Uso e Rastreabilidade
 
-Seguindo as diretrizes metodológicas do framework OpenUP, o escopo funcional do SGES foi completamente modelado por meio de **Casos de Uso (CSU)**. A matriz abaixo estabelece a rastreabilidade estrita entre os blocos de entrega, os atores, o gerenciamento de prioridades Quadrantes de Valor e o detalhamento dos fluxos de eventos.
+Seguindo as diretrizes metodológicas do framework OpenUP, o escopo funcional do SGES foi completamente modelado por meio de **Casos de Uso (CSU)**. A matriz abaixo estabelece a rastreabilidade estrita entre as capacidades do sistema, os atores principais, os módulos correspondentes e o detalhamento dos fluxos de eventos, exceções e validações do cliente.
 
-# Tabela Geral de Especificação de Casos de Uso e Rastreabilidade (OpenUP)
+## Tabela Geral de Rastreabilidade de Casos de Uso (OpenUP)
 
-## Engenharia de Requisitos: Especificação de Casos de Uso e Rastreabilidade
-
-Seguindo as diretrizes metodológicas do framework OpenUP, o escopo funcional do SGES foi completamente modelado por meio de **Casos de Uso (CSU)**. A matriz abaixo estabelece a rastreabilidade estrita entre as capacidades do sistema, os atores principais, os módulos correspondentes e o detalhamento dos fluxos de eventos e exceções.
-
-## Tabela Geral de Especificação de Casos de Uso e Rastreabilidade (OpenUP)
-
-| ID (CSU) | Caso de Uso | Ator Principal | Módulo do Sistema (Característica do Produto) | Fluxo | MVP? |
-| :--- | :--- | :--- | :--- | :--- | :---: |
-| **CSU01** | Autenticar Usuário | Usuário do Sistema | Segurança e Controle de Acessos | [Ver Fluxo](./lista_trabalhos/csu01/fluxo.md) | **X** |
-| **CSU02** | Redefinir Senha de Acesso | Usuário do Sistema | Segurança e Controle de Acessos | [Ver Fluxo](./lista_trabalhos/csu02/fluxo.md) | **X** |
-| **CSU03** | Encerrar Sessão (Logout) | Usuário do Sistema | Segurança e Controle de Acessos | [Ver Fluxo](./lista_trabalhos/csu03/fluxo.md) | **X** |
-| **CSU04** | Cadastrar Instrutor | Gestor | Gestão de Instrutores | [Ver Fluxo](./lista_trabalhos/csu04/fluxo.md) | **X** |
-| **CSU05** | Editar Perfil do Instrutor | Gestor | Gestão de Instrutores | [Ver Fluxo](./lista_trabalhos/csu05/fluxo.md) | **X** |
-| **CSU06** | Cadastrar Beneficiário | Gestor ou Instrutor | Cadastro de Beneficiários | [Ver Fluxo](./lista_trabalhos/csu06/fluxo.md) | **X** |
-| **CSU07** | Editar Dados do Beneficiário | Gestor ou Instrutor | Cadastro de Beneficiários | [Ver Fluxo](./lista_trabalhos/csu07/fluxo.md) | **X** |
-| **CSU08** | Cadastrar Turma | Gestor | Frequência e Engajamento | [Ver Fluxo](./lista_trabalhos/csu08/fluxo.md) | **X** |
-| **CSU09** | Matricular Beneficiário | Gestor ou Instrutor | Frequência e Engajamento | [Ver Fluxo](./lista_trabalhos/csu09/fluxo.md) | **X** |
-| **CSU10** | Alterar Registro de Frequência | Gestor | Frequência e Engajamento | [Ver Fluxo](./lista_trabalhos/csu10/fluxo.md) | **X** |
-| **CSU11** | Registrar Falta Justificada | Instrutor | Frequência e Engajamento | [Ver Fluxo](./lista_trabalhos/csu11/fluxo.md) | **X** |
-| **CSU12** | Registrar Presença em Lote | Instrutor | Frequência e Engajamento | [Ver Fluxo](./lista_trabalhos/csu12/fluxo.md) | |
-| **CSU13** | Emitir Alertas de Evasão | Sistema (Automático) | Monitoramento de Evasão | [Ver Fluxo](./lista_trabalhos/csu13/fluxo.md) | |
-| **CSU14** | Consultar Histórico do Beneficiário | Usuário do Sistema | Monitoramento de Evasão | [Ver Fluxo](./lista_trabalhos/csu14/fluxo.md) | |
-| **CSU15** | Gerar Relatório de Frequência | Gestor | Relatórios e Transparência | [Ver Fluxo](./lista_trabalhos/csu15/fluxo.md) | |
-| **CSU16** | Inativar Instrutor | Gestor | Gestão de Instrutores | [Ver Fluxo](./lista_trabalhos/csu16/fluxo.md) | |
+| CSU | Caso de Uso | RF | CP | OE | RNF | Prioridade | MVP? | Status | Evidência | PR / Teste | Validação |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :---: | :--- | :--- | :--- | :--- |
+| **CSU01** | [Autenticar Usuário](./lista_trabalhos/csu01/fluxo.md) | RF01 | CP1 | OE1, OE3 | RNF02, RNF06 | Prioridade 1 (Q1) | **Sim** | Implementado | [Vídeo](./validacao_unidade_3.md) | [Testes](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-SGES/pull/71) | Homologado |
+| **CSU02** | [Redefinir Senha de Acesso](./lista_trabalhos/csu02/fluxo.md) | RF02 | CP1 | OE1 | RNF01 | Prioridade 1 (Q1) | **Sim** | Implementado | [Vídeo](./validacao_unidade_3.md) | [Testes](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-SGES/pull/71) | Homologado |
+| **CSU03** | [Encerrar Sessão (Logout)](./lista_trabalhos/csu03/fluxo.md) | RF03 | CP1 | OE1 | RNF06 | Prioridade 1 (Q1) | **Sim** | Implementado | [Vídeo](./validacao_unidade_3.md) | [Testes](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-SGES/pull/71) | Homologado |
+| **CSU04** | [Cadastrar Instrutor](./lista_trabalhos/csu04/fluxo.md) | RF04 | CP2 | OE1, OE2 | RNF02 | Prioridade 1 (Q1) | **Sim** | Implementado | [Vídeo](./validacao_unidade_3.md) | [Testes](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-SGES/pull/71) | Homologado |
+| **CSU05** | [Editar Perfil do Instrutor](./lista_trabalhos/csu05/fluxo.md) | RF05 | CP2 | OE1 | RNF02 | Prioridade 1 (Q1) | **Sim** | Em progresso | Pendente | Pendente | Pendente |
+| **CSU06** | [Cadastrar Beneficiário](./lista_trabalhos/csu06/fluxo.md) | RF07 | CP3 | OE1, OE4 | RNF01 | Prioridade 1 (Q1) | **Sim** | Implementado | [Vídeo](./validacao_unidade_3.md) | [PR #70](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-SGES/pull/70) | Homologado |
+| **CSU07** | [Editar Dados do Beneficiário](./lista_trabalhos/csu07/fluxo.md) | RF08 | CP3 | OE1 | RNF01 | Prioridade 1 (Q1) | **Sim** | Implementado | [Vídeo](./validacao_unidade_3.md) | [PR #70](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-SGES/pull/70) | Homologado |
+| **CSU08** | [Cadastrar Turma](./lista_trabalhos/csu08/fluxo.md) | RF09 | CP4 | OE2, OE4 | - | Prioridade 1 (Q1) | **Sim** | Implementado | [Vídeo](./validacao_unidade_3.md) | [PR #70](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-SGES/pull/70) | Homologado |
+| **CSU09** | [Matricular Beneficiário](./lista_trabalhos/csu09/fluxo.md) | RF10 | CP4 | OE2, OE4 | - | Prioridade 1 (Q1) | **Sim** | Implementado | [Vídeo](./validacao_unidade_3.md) | [PR #69](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-SGES/pull/69) | Homologado |
+| **CSU10** | [Alterar Registro de Frequência](./lista_trabalhos/csu10/fluxo.md) | RF12 | CP4 | OE2 | - | Prioridade 1 (Q1) | **Sim** | Em progresso | Pendente | Pendente | Pendente |
+| **CSU11** | [Registrar Falta Justificada](./lista_trabalhos/csu11/fluxo.md) | RF13 | CP4 | OE2 | - | Prioridade 1 (Q1) | **Sim** | Em progresso | Pendente | Pendente | Pendente |
+| **CSU12** | [Registrar Presença em Lote](./lista_trabalhos/csu12/fluxo.md) | RF11 | CP4 | OE2 | RNF04 | Prioridade 2 (Q2) | Não | Em progresso | Pendente | Pendente | Pendente |
+| **CSU13** | [Emitir Alertas de Evasão](./lista_trabalhos/csu13/fluxo.md) | RF14 | CP5 | OE2, OE4 | RNF05 | Prioridade 2 (Q2) | Não | Em progresso | Pendente | Pendente | Pendente |
+| **CSU14** | [Consultar Histórico do Beneficiário](./lista_trabalhos/csu14/fluxo.md) | RF15 | CP5 | OE2, OE4 | - | Prioridade 2 (Q2) | Não | Em progresso | Pendente | Pendente | Pendente |
+| **CSU15** | [Gerar Relatório de Frequência](./lista_trabalhos/csu15/fluxo.md) | RF16 | CP6 | OE3 | RNF03 | Prioridade 2 (Q2) | Não | Em progresso | Pendente | Pendente | Pendente |
+| **CSU16** | [Inativar Instrutor](./lista_trabalhos/csu16/fluxo.md) | RF06 | CP2 | OE1 | RNF02 | Prioridade 3 (Q3) | Não | Em progresso | Pendente | Pendente | Pendente |
 
 ---
 

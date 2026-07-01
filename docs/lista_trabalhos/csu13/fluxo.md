@@ -1,56 +1,46 @@
 # SGES
-## Especificação de Caso de Uso: CSU13 (RF14) - Emitir alerta de evasão
+## CSU13 (RF14) — Emitir alerta de evasão
 
 [Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
 [Andamento](../andamento.md) <br>
 [Cronograma e Planejamento](../../cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
+
 ---
 
-### 1. Breve Descrição
+### Objetivo:
 Monitorar de forma autônoma a frequência dos alunos e sinalizar no painel os beneficiários que apresentam risco de evasão escolar/social.
 
----
+### Ator principal:
+Sistema
 
-### 2. Fluxo Básico de Eventos
-1. O Sistema dispara um job programado de verificação de faltas (processamento em segundo plano).
-2. O Sistema analisa o diário de frequência de todas as turmas ativas buscando por:
-3.   - Caso A: Beneficiários com 3 faltas consecutivas não justificadas na mesma oficina.
-4.   - Caso B: Beneficiários com 5 faltas alternadas não justificadas na mesma oficina dentro do mês corrente.
-5. O Sistema cria um Alerta de Evasão na base de dados vinculando o beneficiário em risco.
-6. O Sistema atualiza os Dashboards de Gestores e Instrutores, exibindo alertas visuais de risco para esses beneficiários.
+### Atores secundários:
+Nenhum
 
----
+### Pré-condições:
+O sistema deve possuir registros de chamadas anteriores processados.
 
-### 3. Fluxos Alternativos
+### Fluxo principal:
+1. O Sistema executa a verificação de faltas.
+2. O Sistema analisa o histórico de faltas do beneficiário na turma buscando por ocorrências de 2 ou mais faltas não justificadas. (RN13-01; RN13-02)
+3. O Sistema cria/atualiza os Alertas de Evasão correspondentes na base de dados vinculando o beneficiário. (RN13-01; RN13-02; FE-3-A)
+4. O Sistema exibe os alertas visuais de risco nos Dashboards de Gestores e Instrutores, e envia notificações automáticas.
+
+### Fluxos alternativos:
 Não há fluxos alternativos identificados.
 
----
+### Fluxos de exceção:
+#### FE-3-A — Falha de Persistência
 
-### 4. Fluxos de Exceção
-Não há fluxos de exceção identificados.
+Este fluxo inicia no passo 3 do fluxo principal. Se ocorrer erro de persistência ao registrar o alerta de evasão ou ao atualizar o status de matrícula no banco de dados, a transação é abortada e a falha é registrada nos logs de sistema para verificação da administração. O caso de uso é encerrado.
 
----
+### Regras de negócio:
+#### RN13-01 — Alerta de Atenção por Faltas
+O sistema emite um alerta de atenção automático no painel do gestor e do instrutor caso o beneficiário atinja 2 faltas não justificadas na mesma turma.
 
-### 5. Pré-Condições
-* O sistema deve possuir registros de chamadas anteriores processados.
+#### RN13-02 — Bloqueio e Evasão por Faltas
+O sistema altera automaticamente o status do aluno para 'Evadido' (bloqueio/necessidade de refazer o curso) ao atingir 3 ou mais faltas não justificadas na mesma turma.
 
----
 
-### 6. Pós-Condições
-* O alerta de evasão é gerado de forma ativa e as notificações correspondentes são exibidas nos painéis de controle do sistema.
-
----
-
-### 7. Pontos de Extensão
-Nenhum ponto de extensão identificado.
-
----
-
-### 8. Requisitos Especiais
-* RNF05 - Processamento Assíncrono: O cálculo de padrões de evasão e geração de alertas deve rodar em segundo plano, evitando bloquear as requisições principais de uso dos usuários do sistema.
-
----
-
-### 9. Informações Adicionais
-Não há informações adicionais neste momento.
+### Pós-condições:
+O alerta de evasão é gerado de forma ativa e as notificações correspondentes são exibidas nos painéis de controle do sistema.

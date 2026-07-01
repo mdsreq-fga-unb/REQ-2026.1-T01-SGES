@@ -121,7 +121,6 @@ nav:
         - "Áudio referente a Reunião - 1 Iteração": audio_reuniao.md
       - "Lições Aprendidas": "iteracao/licoes_aprendidas.md"
 
-
 markdown_extensions:
   - admonition
   - attr_list

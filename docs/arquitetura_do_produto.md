@@ -111,7 +111,7 @@ Os objetivos arquiteturais derivam diretamente dos Requisitos Não Funcionais e 
 | `attendance-edit-usecase`         | Corrigir registro em até 72h com justificativa obrigatória     |
 | `dropout-detection-usecase`       | Calcular alertas por 3 faltas consecutivas ou 5 alternadas    |
 | `attendance-history-usecase`      | Consolidar histórico de presenças, alertas e matrículas        |
-| `frequency-report-usecase`        | Gerar e exportar relatório CSV segmentado por oficina/mês     |
+| `frequency-report-usecase`        | Gerar e exportar relatório CSV segmentado por turmas/mês     |
 | `IUserRepository`                 | Port: contrato de persistência de usuários                     |
 | `IAttendanceRepository`           | Port: contrato de persistência de presenças                    |
 | `IEmailService`                   | Port: contrato de envio de e-mails                             |

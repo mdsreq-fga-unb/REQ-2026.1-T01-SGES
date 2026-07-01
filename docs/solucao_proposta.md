@@ -7,7 +7,7 @@ Minimizar a descentralização e o espalhamento das informações dos participan
 ## 2.2. Objetivos Específicos do Produto
 
 - **OE1**: Centralizar e estruturar os dados cadastrais de alunos, voluntários (instrutores) e diretoria.
-- **OE2**: Monitorar a assiduidade e gerenciar a taxa de evasão dos alunos nos cursos e oficinas, permitindo intervenções rápidas.
+- **OE2**: Monitorar a assiduidade e gerenciar a taxa de evasão dos alunos nos cursos, permitindo intervenções rápidas.
 - **OE3**: Apoiar a tomada de decisão estratégica da diretoria por meio de dados consolidados das ações da instituição.
 - **OE4**: Fortalecer os vínculos institucionais, humanizando o relacionamento e o atendimento.
 
@@ -18,7 +18,7 @@ Esta seção descreve as capacidades estruturais do sistema SGES focadas no valo
 | OE Principal | Contribuição Secundária | ID  | Característica                      | Descrição Resumida                                                                                                                    | Valor de Negócio Principal                                                                                     |
 | :----------- | :---------------------- | :-- | :---------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------- |
 | **OE1**      | OE3                     | CP1 | **Segurança e Controle de Acessos** | Controlar os níveis de permissão de uso conforme o perfil do usuário e resguardar a privacidade das informações gravadas.             | Proteção de dados das famílias atendidas e governança sobre quem visualiza ou altera as informações.           |
-| **OE1**      | OE2                     | CP2 | **Gestão de Instrutores**           | Cadastrar, atualizar e acompanhar as informações da equipe de instrução e dos voluntários.                                            | Organização da oferta de oficinas e controle das atribuições da equipe técnica.                                |
+| **OE1**      | OE2                     | CP2 | **Gestão de Instrutores**           | Cadastrar, atualizar e acompanhar as informações da equipe de instrução e dos voluntários.                                            | Organização da oferta de turmas e controle das atribuições da equipe técnica.                                |
 | **OE1**      | OE4                     | CP3 | **Cadastro de Beneficiários**       | Centralizar, atualizar e consultar as informações cadastrais e de contato dos beneficiários.                                          | Centralização e confiabilidade do histórico dos beneficiários.                                                 |
 | **OE2**      | OE4                     | CP4 | **Frequência e Engajamento**        | Registrar de forma ágil a assiduidade diária e gerenciar a abertura de turmas, matrículas e limites de vagas.                         | Acompanhamento contínuo da participação dos alunos e otimização do aproveitamento das vagas abertas.           |
 | **OE2**      | OE4                     | CP5 | **Monitoramento de Evasão**         | Identificar de forma automática padrões de ausência crônica e documentar os atendimentos de apoio realizados com as famílias.         | Atuação preventiva para redução da evasão social e fortalecimento do vínculo protetivo com a comunidade.       |
