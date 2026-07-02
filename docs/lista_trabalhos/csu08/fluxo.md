@@ -38,6 +38,8 @@ Este fluxo inicia no passo 1 do fluxo principal. Se o usuário logado não for u
 #### FE-4-A — Limite de Vagas Inválido
 Este fluxo inicia no passo 4 do fluxo principal. Se o limite de vagas informado não for um número inteiro positivo, o sistema emite um erro e impede o cadastro. O fluxo retorna ao passo 3 do fluxo principal.
 
+![Evidência de Exceção - Limite de Vagas Inválido](class_negative_slots_validation.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
+
 #### FE-4-B — Instrutor Inativo
 Este fluxo inicia no passo 4 do fluxo principal. Se o instrutor escolhido não estiver ativo, o sistema emite um alerta e solicita a escolha de outro profissional. O fluxo retorna ao passo 3 do fluxo principal.
 
