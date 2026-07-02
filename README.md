@@ -3,10 +3,22 @@
 [![Documentação](https://img.shields.io/badge/docs-GitHub%20Pages-blue.svg)](https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-SGES/)
 [![React](https://img.shields.io/badge/frontend-React%20%2B%20Vite-blue)](./frontend)
 [![Node.js](https://img.shields.io/badge/backend-Express%20%2B%20TS-green)](./backend)
+[![Plataforma](https://img.shields.io/badge/plataforma-Vercel-orange.svg)](https://requisitos-2026-1-sges-equipev.vercel.app)
 
 Repositório de desenvolvimento do **SGES (Sistema de Gestão Educacional e Social)**, desenvolvido no contexto da disciplina de Engenharia de Requisitos 1 (REQ-T1) da Universidade de Brasília (FGA-UnB) para o semestre de 2026.1.
 
 O SGES tem como objetivo prover uma solução robusta e integrada para o gerenciamento de turmas, alunos, frequências, agendamentos e atividades com impacto educacional e social.
+
+---
+
+## 🌐 Link da Plataforma & Credenciais de Teste
+
+A aplicação está publicada e pode ser acessada pelo link:
+*   **Plataforma (Vercel):** [https://requisitos-2026-1-sges-equipev.vercel.app](https://requisitos-2026-1-sges-equipev.vercel.app)
+
+Para acessar o painel administrativo da plataforma com o perfil de **Professor**, utilize as seguintes credenciais de teste:
+*   **E-mail:** `adminsges@gmail.com`
+*   **Senha:** `sges@2026`
 
 ---
 
