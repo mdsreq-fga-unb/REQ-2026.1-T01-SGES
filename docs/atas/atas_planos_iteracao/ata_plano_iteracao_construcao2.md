@@ -42,9 +42,7 @@ Os itens de trabalho cobrem o fechamento do escopo dos Casos de Uso finais (CSU1
 
 ### **4. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (Marco de Conclusão de Funcionalidades)**
 Para que esta iteração seja encerrada em 01/07 e o sistema avance pronto para a fase de Transição, os seguintes critérios são obrigatórios:<br/>
-* [ ] 100% dos requisitos funcionais previstos implementados, integrados e testados pela equipe.<br/>
+* [X] 100% dos requisitos funcionais previstos implementados, integrados e testados pela equipe.<br/>
 * [ ] Ambiente de simulação operacional validado internamente com instrutores fictícios.<br/>
-* [ ] Todos os links dos casos de uso (CSU01 a CSU16) totalmente funcionais e operando sem erros 404 na tabela de cronograma.
+* [X] Todos os links dos casos de uso (CSU01 a CSU16) totalmente funcionais e operando sem erros 404 na tabela de cronograma.
 
-### **Evidência Visual do Quadro de Tarefas / Sprint Backlog Final**
-![Quadro de Tarefas da Construção 2](images/img_plano_construcao2.png){width="500px"}

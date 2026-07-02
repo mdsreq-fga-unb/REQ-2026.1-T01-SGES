@@ -39,9 +39,6 @@ Os micro-incrementos e tarefas necessários para atingir o objetivo foram priori
 
 ### **4. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (DoD Preliminar)**
 Para que esta iteração seja considerada concluída e avaliada com sucesso (*Assess Iteration*), os seguintes critérios devem ser atendidos:
-* [ ] Todos os documentos Markdown criados revisados e sem links quebrados (erros 404).
-* [ ] Pipeline de deploy do Git Pages executando com sucesso em ambiente de produção.
-* [ ] Escopo macro aceito de forma inequívoca pela cliente em ata de validação.
-
-### **Evidência Visual do Quadro de Tarefas / Alinhamento**
-![Quadro de Tarefas Inicial da Iteração](images/img_plano_iteracao1.png){width="500px"}
+* [X] Todos os documentos Markdown criados revisados e sem links quebrados
+* [X] Pipeline de deploy do Git Pages executando com sucesso em ambiente de produção.
+* [X] Escopo macro aceito de forma inequívoca pela cliente em ata de validação.
