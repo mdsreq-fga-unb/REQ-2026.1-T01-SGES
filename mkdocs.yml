@@ -27,7 +27,7 @@ theme:
     code: JetBrains Mono
   icon:
     repo: fontawesome/brands/github
-  features:
+  features:Print ou link de boards (ex: Miro/Trello) utilizados durante a dinâmica.
     - navigation.instant
     - navigation.top
     - navigation.indexes
@@ -106,7 +106,7 @@ nav:
       - "Planejamento e Organização":
         - "Planejamento": planejamento_organizacao/cronograma_e_entregas.md
         - "Rastreabilidade": planejamento_organizacao/rastreabilidade.md
-        - "Qaudro MVP": planejamento_organizacao/quadro_mvp.md
+        - "Quadro MVP": planejamento_organizacao/quadro_mvp.md
 
       - "Gravações das unidades":
           - "Vídeo da Unidade 1": unidade_1_video.md

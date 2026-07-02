@@ -11,7 +11,7 @@
 A equipe avaliou o encerramento da fase de Concepção e estabeleceu as metas cruciais para a consolidação técnica do projeto na Elaboração:</br>
 1. **Definição e Alinhamento do MVP:** Elicitar e detalhar as regras de negócio indispensáveis para a primeira entrega funcional do sistema SGES.
 </br>
-2. **Representação e Organização de Requisitos:** Estruturar a modelagem de Casos de Uso e priorizar o *Backlog* (Itens de Trabalho).
+2. **Representação e Organização de Requisitos:** Estruturar a modelagem de Casos de Uso e priorizar os Itens de Trabalho.
 </br>
 3. **Modelagem de Domínio e Arquitetura:** Mapear a análise de domínio para garantir a centralização segura dos dados e usabilidade voltada para voluntários.
 
@@ -21,7 +21,7 @@ A equipe avaliou o encerramento da fase de Concepção e estabeleceu as metas cr
 Com base na transição de fase, o gerenciamento de riscos do OpenUP foi atualizado com foco em aspectos técnicos e de requisitos:
 
 * **Risco 03: Ambiguidade ou inconsistência nas regras de negócio da instituição.**
-    * *Ação de Mitigação:* Aplicar a técnica **MoSCoW** de priorização junto aos stakeholders para congelar o escopo do MVP e reduzir o retrabalho na Construção.
+    * *Ação de Mitigação:* Aplicar a técnica de matriz Valor x Esforço de priorização junto aos stakeholders para congelar o escopo do MVP e reduzir o retrabalho na Construção.
 * **Risco 04: Falha na usabilidade e acessibilidade das telas pelos voluntários.**
     * *Ação de Mitigação:* Realizar discussões internas em equipe focadas em análise de tarefas, refinando a complexidade dos fluxos antes da codificação.
 
