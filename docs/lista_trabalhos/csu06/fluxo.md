@@ -38,6 +38,8 @@ Este fluxo inicia no passo 1 do fluxo principal. Se o perfil do usuário logado 
 #### FE-4-A — Dados Obrigatórios Ausentes
 Este fluxo inicia no passo 4 do fluxo principal. Se o Nome Completo não for preenchido, o sistema cancela a operação, indica o erro na tela e solicita a correção. O fluxo retorna ao passo 3 do fluxo principal.
 
+![Evidência de Exceção - Dados Obrigatórios Ausentes](beneficiary_empty_validation.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
+
 #### FE-4-B — E-mail já Cadastrado
 Este fluxo inicia no passo 4 do fluxo principal. Se o e-mail informado já estiver cadastrado para outro beneficiário, o sistema bloqueia o registro, exibe mensagem de duplicidade de e-mail e solicita a correção. O fluxo retorna ao passo 3 do fluxo principal.
 

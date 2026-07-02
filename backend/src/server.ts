@@ -1,3 +1,4 @@
+import './infra/zod-error-map'
 import { api } from './api'
 import { env } from './env'
 import logger from './infra/logger'

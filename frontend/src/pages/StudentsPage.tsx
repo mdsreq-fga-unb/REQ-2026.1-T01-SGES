@@ -254,6 +254,15 @@ export const StudentsPage: React.FC = () => {
                     placeholder="Ex: João da Silva"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    onInvalid={(e) => {
+                      const target = e.target as HTMLInputElement;
+                      if (target.validity.valueMissing) {
+                        target.setCustomValidity('Por favor, preencha este campo.');
+                      } else {
+                        target.setCustomValidity('');
+                      }
+                    }}
+                    onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                     className="bg-transparent border-0 outline-none w-full text-sm text-foreground placeholder-muted-foreground"
                   />
                 </div>
@@ -271,6 +280,17 @@ export const StudentsPage: React.FC = () => {
                     placeholder="Ex: joao@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onInvalid={(e) => {
+                      const target = e.target as HTMLInputElement;
+                      if (target.validity.valueMissing) {
+                        target.setCustomValidity('Por favor, preencha este campo.');
+                      } else if (target.validity.typeMismatch) {
+                        target.setCustomValidity('Por favor, insira um e-mail válido.');
+                      } else {
+                        target.setCustomValidity('');
+                      }
+                    }}
+                    onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                     className="bg-transparent border-0 outline-none w-full text-sm text-foreground placeholder-muted-foreground"
                   />
                 </div>
@@ -288,6 +308,15 @@ export const StudentsPage: React.FC = () => {
                     placeholder="Ex: Carpinteiro, Costureira"
                     value={profissao}
                     onChange={(e) => setProfissao(e.target.value)}
+                    onInvalid={(e) => {
+                      const target = e.target as HTMLInputElement;
+                      if (target.validity.valueMissing) {
+                        target.setCustomValidity('Por favor, preencha este campo.');
+                      } else {
+                        target.setCustomValidity('');
+                      }
+                    }}
+                    onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                     className="bg-transparent border-0 outline-none w-full text-sm text-foreground placeholder-muted-foreground"
                   />
                 </div>

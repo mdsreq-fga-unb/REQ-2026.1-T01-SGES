@@ -320,9 +320,18 @@ export const AttendancePage: React.FC = () => {
                           ? 'Descreva a justificativa da falta...'
                           : 'Adicione observações para faltas ou ausências...'
                       }
-                      value={attendance.justification}
+                       value={attendance.justification}
                       onChange={(e) => handleJustificationChange(student.id, e.target.value)}
                       required={(attendance.status === 'FT' || attendance.status === 'JUSTIFIED') && !isExpired}
+                      onInvalid={(e) => {
+                        const target = e.target as HTMLInputElement;
+                        if (target.validity.valueMissing) {
+                          target.setCustomValidity('Preencha a justificativa da falta ou trabalho.');
+                        } else {
+                          target.setCustomValidity('');
+                        }
+                      }}
+                      onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                       className="w-full px-3 py-2 text-xs rounded-xl border border-border bg-muted/10 text-foreground placeholder-muted-foreground outline-none focus:border-primary transition-colors disabled:opacity-50"
                     />
                   </div>
@@ -349,6 +358,15 @@ export const AttendancePage: React.FC = () => {
               placeholder="Digite detalhadamente a justificativa para auditoria desta chamada..."
               value={justificativaAlteracao}
               onChange={(e) => setJustificativaAlteracao(e.target.value)}
+              onInvalid={(e) => {
+                const target = e.target as HTMLTextAreaElement;
+                if (target.validity.valueMissing) {
+                  target.setCustomValidity('A justificativa da alteração retroativa é obrigatória.');
+                } else {
+                  target.setCustomValidity('');
+                }
+              }}
+              onInput={(e) => (e.target as HTMLTextAreaElement).setCustomValidity('')}
               className="w-full px-4 py-3 text-sm rounded-xl border border-border bg-muted/10 text-foreground placeholder-muted-foreground outline-none focus:border-primary transition-colors disabled:opacity-50"
               required={!isExpired}
             />

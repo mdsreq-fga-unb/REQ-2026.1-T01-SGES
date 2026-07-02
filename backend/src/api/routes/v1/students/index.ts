@@ -2,6 +2,7 @@ import { Router } from 'express'
 import { authMiddleware } from '@/api/middleware/auth-middleware'
 import { UserRole, generateStudentMatriculaCode } from '@/domain'
 import { container } from '@/infra/container/container'
+import { ConflictError, AppError } from '@/application/infra/errors'
 
 import getStudentHistoryRoute from './get-student-history-route'
 
@@ -33,6 +34,17 @@ router.post('/', authMiddleware([UserRole.ADMIN]), async (req, res, next) => {
     const studentRepo = container.StudentRepository
     const { name, email, profissao } = req.body
 
+    if (!name || name.trim() === '') {
+      throw new AppError(400, 'Nome é obrigatório.')
+    }
+
+    if (email) {
+      const existing = await studentRepo.findByEmail(email)
+      if (existing) {
+        throw new ConflictError('E-mail já cadastrado para outro beneficiário.')
+      }
+    }
+
     const student = await studentRepo.save({
       codigoMatricula: generateStudentMatriculaCode(),
       name,
@@ -55,6 +67,17 @@ router.put('/:id', authMiddleware([UserRole.ADMIN]), async (req, res, next) => {
     const existingStudent = await studentRepo.findById(id as string)
     if (!existingStudent) {
       return res.status(404).json({ message: 'Student not found' })
+    }
+
+    if (name !== undefined && name.trim() === '') {
+      throw new AppError(400, 'Nome não pode ser vazio.')
+    }
+
+    if (email && email !== existingStudent.email) {
+      const existing = await studentRepo.findByEmail(email)
+      if (existing && existing.id !== id) {
+        throw new ConflictError('E-mail já cadastrado para outro beneficiário.')
+      }
     }
 
     const updated = await studentRepo.save({
