@@ -460,6 +460,15 @@ export const ClassesPage: React.FC = () => {
                   placeholder="Ex: Alfabetização - Turma C"
                   value={nomeCurso}
                   onChange={(e) => setNomeCurso(e.target.value)}
+                  onInvalid={(e) => {
+                    const target = e.target as HTMLInputElement;
+                    if (target.validity.valueMissing) {
+                      target.setCustomValidity('Por favor, preencha este campo.');
+                    } else {
+                      target.setCustomValidity('');
+                    }
+                  }}
+                  onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                   className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground"
                 />
               </div>
@@ -506,6 +515,15 @@ export const ClassesPage: React.FC = () => {
                     placeholder="Ex: 19:00 - 21:00"
                     value={horario}
                     onChange={(e) => setHorario(e.target.value)}
+                    onInvalid={(e) => {
+                      const target = e.target as HTMLInputElement;
+                      if (target.validity.valueMissing) {
+                        target.setCustomValidity('Por favor, preencha este campo.');
+                      } else {
+                        target.setCustomValidity('');
+                      }
+                    }}
+                    onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                     className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground"
                   />
                 </div>
@@ -520,6 +538,8 @@ export const ClassesPage: React.FC = () => {
                     placeholder="Ex: 50"
                     value={vagasLimite}
                     onChange={(e) => setVagasLimite(e.target.value)}
+                    onInvalid={(e) => (e.target as HTMLInputElement).setCustomValidity('O valor deve ser maior ou igual a 1.')}
+                    onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                     className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground"
                   />
                 </div>
@@ -700,6 +720,15 @@ export const ClassesPage: React.FC = () => {
                     required
                     value={selectedStudentId}
                     onChange={(e) => setSelectedStudentId(e.target.value)}
+                    onInvalid={(e) => {
+                      const target = e.target as HTMLSelectElement;
+                      if (target.validity.valueMissing) {
+                        target.setCustomValidity('Por favor, selecione um item da lista.');
+                      } else {
+                        target.setCustomValidity('');
+                      }
+                    }}
+                    onInput={(e) => (e.target as HTMLSelectElement).setCustomValidity('')}
                     className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground"
                   >
                     <option value="">Selecione um aluno...</option>
