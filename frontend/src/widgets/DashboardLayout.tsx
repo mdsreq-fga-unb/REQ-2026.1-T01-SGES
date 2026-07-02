@@ -34,7 +34,7 @@ interface NavItem {
 
 const adminNav: NavItem[] = [
   { label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard', active: true },
-  { label: 'Formulários', icon: FileText, to: '/forms', active: true },
+  // { label: 'Formulários', icon: FileText, to: '/forms', active: true }, // INATIVADO TEMPORARIAMENTE
   { label: 'Cadastros', icon: ClipboardList, to: '/students', active: true },
   { label: 'Turmas', icon: BookOpen, to: '/classes', active: true },
   { label: 'Registro de Presença', icon: CalendarCheck, to: '/attendance', active: true },
@@ -45,7 +45,7 @@ const adminNav: NavItem[] = [
 
 const volunteerNav: NavItem[] = [
   { label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard', active: true },
-  { label: 'Formulários', icon: FileText, to: '/forms', active: true },
+  // { label: 'Formulários', icon: FileText, to: '/forms', active: true }, // INATIVADO TEMPORARIAMENTE
   { label: 'Registro de Presença', icon: CalendarCheck, to: '/attendance', active: true },
   { label: 'Turmas', icon: BookOpen, to: '/classes', active: true },
   { label: 'Histórico', icon: History, to: '/history', active: true },
@@ -65,8 +65,8 @@ export const DashboardLayout: React.FC = () => {
     try {
       const data = await notificationsApi.getAll();
       setNotifications(data);
-    } catch (err) {
-      console.error('Failed to load notifications', err);
+    } catch {
+      // API de notificações ainda não implementada no backend — exibe estado vazio
     }
   }, []);
 
@@ -86,8 +86,8 @@ export const DashboardLayout: React.FC = () => {
       setNotifications((prev) =>
         prev.map((n) => (n.id === id ? { ...n, isRead: true } : n))
       );
-    } catch (err) {
-      console.error('Failed to mark notification as read', err);
+    } catch {
+      // API de notificações ainda não implementada
     }
   };
 
@@ -96,8 +96,8 @@ export const DashboardLayout: React.FC = () => {
       const unread = notifications.filter((n) => !n.isRead);
       await Promise.all(unread.map((n) => notificationsApi.markAsRead(n.id)));
       setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })));
-    } catch (err) {
-      console.error('Failed to mark all as read', err);
+    } catch {
+      // API de notificações ainda não implementada
     }
   };
 
