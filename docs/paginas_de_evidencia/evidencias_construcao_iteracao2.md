@@ -1,53 +1,42 @@
 # Evidências da Fase de Construção - Iteração 2
 
-[Voltar para Cronograma e Planejamento](../planejamento_organizacao/cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
+[Voltar para Cronograma e Planejamento](../cronograma_e_entregas.md)
 
 ## 1. Contexto Breve da Fase
-*Insira aqui um breve resumo de como foi o andamento desta iteração específica. Explique o foco principal do período (ex: alinhamento de visão, elicitação inicial de regras, desenvolvimento do core ou estabilização do código) e qual era o objetivo geral da equipe para estas semanas.*
+Nesta segunda iteração da fase de Construção, o foco macro da equipe esteve centrado no desenvolvimento das regras operacionais complexas, inteligência de negócio e sustentabilidade do sistema SGES. O objetivo principal deste ciclo unificado foi concluir todas as funcionalidades previstas para o MVP, estruturando os fluxos de matrículas, mapeando as exceções e tratativas de faltas diárias, e implementando mecanismos automatizados de sinalização visual para alertar sobre participantes em situação de risco de evasão.
 
 ---
 
 ## 2. Engenharia de Requisitos: Técnicas, Etapas e Evidências
 
-Nesta iteração, aplicamos técnicas de Engenharia de Requisitos para compreender, especificar e validar as necessidades do sistema.
+Nesta iteração, aplicamos técnicas de Engenharia de Requisitos com foco nas macroatividades de **Refinamento, Verificação, Validação e Atualização Contínua** para assegurar a integridade e evolução do produto.
 
-### [Técnica 1: Ex: Elicitação via Entrevistas / Brainstorming / Análise de Documentos]
-* **Descrição:** Breve explicação de como a técnica foi aplicada com o cliente ou partes interessadas.
+### Detalhamento e Especificação de Requisitos (Fluxos Operacionais)
+* **Descrição:** Traduzimos os dados brutos colhidos sobre as regras de frequência e matrículas da instituição em especificações formais de casos de uso, mapeando os fluxos completos, cenários alternativos e as tratativas de exceção para controle de faltas.
 * **Evidências:**
-    * Link ou referência para a [Ata de Reunião](../reuniao_de_requisitos.md) ou transcrição onde a técnica ocorreu.
-    * Print ou link de boards (ex: Miro/Trello) utilizados durante a dinâmica.
+    * Links para o mapeamento e fluxos específicos: de [CSU12](../lista_trabalhos/csu12/fluxo.md) até [CSU16](../lista_trabalhos/csu16/fluxo.md).
+    * Registro técnico consolidado e atualizado na [Lista de Requisitos](../lista_requisitos.md).
 
-### [Técnica 2: Ex: Modelagem de Casos de Uso / Especificação de Requisitos]
-* **Descrição:** Como os dados coletados foram traduzidos em especificações técnicas de requisitos.
+### Verificação de Requisitos via Definition of Done (DoD) e Inspeção
+* **Descrição:** Executamos rodadas de inspeção interna no código e nos documentos de requisitos para garantir que os painéis gerenciais e os alertas visuais automáticos seguissem com precisão as regras de negócio estipuladas.
 * **Evidências:**
-    * Links para os fluxos mapeados: [CSU01](../lista_trabalhos/csu01/fluxo.md), [CSU02](../lista_trabalhos/csu02/fluxo.md).
-    * Referência direta na [Lista de Requisitos](../lista_requisitos.md).
+    * Critérios técnicos de aceitação documentados em [DoR e DoD](../engenharia_requisitos.md#Verificação-e-Validação-de-Requisitos).
 
-### [Técnica 3: Ex: Validação e Priorização (Matriz de Priorização / MoSCoW)]
-* **Descrição:** Processo de aprovação dos requisitos e definição do que entraria no escopo imediato.
-* **Evidências:**
-    * Link para a [Matriz de Ação e Priorização](../matriz_de_acao_e_priorizacao.md).
-
----
+### Homologação Prática em Ambiente de Simulação
+* **Descrição:** Devido o adiantamento do prazo para entrega da unidade 4, não conseguimos colher a tempo a validação final da cliente do software em produção. Entretanto, faremos a apresentação antes do início da fase de transição.
 
 ## 3. Engenharia de Software: Processo OpenUP e Cerimônias
 
 Seguindo o processo ágil e unificado do **OpenUP**, detalhamos abaixo as cerimônias e práticas de gestão executadas para governar a iteração.
 
 ### Planejamento da Iteração (Plan Iteration)
-* **Execução:** Definição dos objetivos da iteração, atribuição de tarefas e avaliação dos riscos mapeados.
+* **Execução:** No início do ciclo, realizamos o planejamento unificado da Unidade 4, mapeando os riscos relacionados ao prazo de encerramento do desenvolvimento e priorizando os itens de trabalho dos blocos de relatórios.
 * **Evidências:**
-    * Link para os [Itens de Trabalho Priorizados](../matriz_de_acao_e_priorizacao.md) mapeados para esta janela de tempo.
-    * *[Opcional]* Print ou link do quadro de tarefas (Jira/Trello) no início da iteração.
-
-### Alinhamento Assíncrono e Interações Frequentes
-* **Execução:** Como a equipe manteve a comunicação diária ou assíncrona para resolver impedimentos e atualizar o status das tarefas, dada a dinâmica distribuída do grupo.
-* **Evidências:**
-    * Prints de alinhamentos no canal de comunicação da equipe (Discord/WhatsApp/Teams).
-    * Histórico de discussões em *Issues* ou *Pull Requests* do GitHub.
+    * Link para a [Ata do plano de iteração da construção 2](../atas/atas_planos_iteracao/ata_plano_iteracao_construcao2.md).
+    * Distribuição e acompanhamento dos blocos em [Itens de Trabalho e priorização](../matriz_de_acao_e_priorizacao.md).
 
 ### Avaliação e Revisão da Iteração (Assess Iteration)
-* **Execução:** Demonstração dos resultados alcançados (funcionalidades prontas ou documentos validados) e análise do cumprimento dos critérios de aceitação.
+* **Execução:** Ao término da iteração, realizamos uma inspeção de software interna completa. Com todas as funcionalidades codificadas e testadas, o sistema foi considerado pronto para avançar para a homologação em produção com o cliente.
 * **Evidências:**
-    * Link para o [Vídeo de Apresentação / Demonstração](#) correspondente à Unidade.
-    * Link para as [Lições Aprendidas](../iteracao/licoes_aprendidas.md) colhidas no encerramento deste ciclo.
+    * Link para o [Vídeo da Unidade 4 / Demonstração do Módulo Final](../unidade_3_video.md)
+    * Autoavaliação do ciclo registrada em [Lições Aprendidas](../iteracao/licoes_aprendidas.md).

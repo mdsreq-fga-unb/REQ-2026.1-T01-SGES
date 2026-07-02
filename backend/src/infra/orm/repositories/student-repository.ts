@@ -20,6 +20,13 @@ export class StudentTypeormRepository implements StudentRepository {
     return this.toStudent(entity)
   }
 
+  async findByEmail(email: string): Promise<Student | null> {
+    const repo = this.dataSource.getRepository(StudentEntity)
+    const entity = await repo.findOne({ where: { email } })
+    if (!entity) return null
+    return this.toStudent(entity)
+  }
+
   async findAll(page: number, limit: number): Promise<{ students: Student[]; total: number }> {
     const repo = this.dataSource.getRepository(StudentEntity)
     const [entities, total] = await repo.findAndCount({

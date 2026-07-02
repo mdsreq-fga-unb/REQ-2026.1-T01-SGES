@@ -49,6 +49,8 @@ Este fluxo inicia no passo 3 do fluxo principal. Se o beneficiário cuja frequê
 #### FE-6-A — Justificativa Não Informada
 Este fluxo inicia no passo 6 do fluxo principal. Se o Gestor tentar salvar a modificação sem preencher a justificativa da alteração, o sistema impede a gravação e exige o preenchimento do campo. O fluxo retorna ao passo 4 do fluxo principal.
 
+![Evidência de Exceção - Justificativa Não Informada](attendance_justification_required.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
+
 #### FE-6-B — Falha de Persistência
 Este fluxo inicia no passo 6 do fluxo principal. Se houver falha de banco de dados ao salvar a retificação, o sistema cancela a atualização e mantém o diário de classe original. O caso de uso é encerrado.
 

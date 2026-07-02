@@ -43,6 +43,8 @@ Este fluxo inicia no passo 4 do fluxo principal. Se o e-mail não estiver cadast
 #### FE-4-B — Dados Inválidos (E-mail)
 Este fluxo inicia no passo 4 do fluxo principal. Se o formato do e-mail fornecido for inválido, o sistema bloqueia o envio, exibe um alerta de validação de formato e solicita a correção. O fluxo retorna ao passo 2 do fluxo principal.
 
+![Evidência de Exceção - Formato de E-mail Inválido](forgot_password_validation.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
+
 #### FE-4-C — Falha de Persistência (Envio)
 Este fluxo inicia no passo 4 do fluxo principal. Se houver falha de rede/comunicação com a base de dados ou com o servidor de envio de e-mails, o sistema impede a operação e exibe um alerta de indisponibilidade de serviço. O caso de uso é encerrado.
 

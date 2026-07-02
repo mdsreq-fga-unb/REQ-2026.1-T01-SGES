@@ -31,6 +31,30 @@ export class ClassTypeormRepository implements ClassRepository {
     return this.toClass(loaded!)
   }
 
+  async findByDetails(nomeCurso: string, diaSemana: string, horario: string, excludeId?: string): Promise<Class | null> {
+    const repo = this.dataSource.getRepository(ClassEntity)
+    const qb = repo.createQueryBuilder('c')
+      .leftJoinAndSelect('c.instructors', 'instructor')
+      .where('c.nomeCurso = :nomeCurso', { nomeCurso })
+      .andWhere('c.diaSemana = :diaSemana', { diaSemana })
+      .andWhere('c.horario = :horario', { horario })
+    if (excludeId) {
+      qb.andWhere('c.id != :excludeId', { excludeId })
+    }
+    const entity = await qb.getOne()
+    if (!entity) return null
+    return this.toClass(entity)
+  }
+
+  async findInstructorClasses(instructorId: string): Promise<Class[]> {
+    const repo = this.dataSource.getRepository(ClassEntity)
+    const entities = await repo.createQueryBuilder('c')
+      .leftJoinAndSelect('c.instructors', 'instructor')
+      .where('instructor.id = :instructorId', { instructorId })
+      .getMany()
+    return entities.map((e) => this.toClass(e))
+  }
+
   async deleteById(id: string): Promise<void> {
     const repo = this.dataSource.getRepository(ClassEntity)
     await repo.delete({ id })

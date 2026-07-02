@@ -42,6 +42,14 @@ export class TeacherRegisterPresenceUseCase {
       throw new NotFoundError('Class not found')
     }
 
+    // FE-5-B: Block future dates
+    const classDate = new Date(validatedInput.date)
+    const today = new Date()
+    today.setHours(23, 59, 59, 999)
+    if (classDate > today) {
+      throw new AppError(400, 'Não é possível registrar chamada para datas futuras.')
+    }
+
     const savedRecords: Attendance[] = []
     const threshold = validatedInput.alertThreshold ?? 2
 

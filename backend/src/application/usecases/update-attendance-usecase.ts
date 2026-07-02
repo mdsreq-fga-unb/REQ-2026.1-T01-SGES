@@ -51,6 +51,14 @@ export class UpdateAttendanceUseCase {
       throw new NotFoundError('Class not found')
     }
 
+    // FE-5-B: Block future dates
+    const classDate = new Date(input.date)
+    const today = new Date()
+    today.setHours(23, 59, 59, 999)
+    if (classDate > today) {
+      throw new AppError(400, 'Não é possível registrar chamada para datas futuras.')
+    }
+
     // 72 hours check
     const classTime = new Date(input.date).getTime()
     const nowTime = Date.now()

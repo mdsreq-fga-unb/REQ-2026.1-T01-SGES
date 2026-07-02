@@ -36,8 +36,8 @@ Seguindo o processo ágil e unificado do **OpenUP**, detalhamos abaixo as cerim�
 ### Planejamento da Iteração (Plan Iteration)
 * **Execução:** No início do ciclo de Elaboração, a equipe reuniu-se para planejar os objetivos da iteração e atribuir os itens de trabalho voltados à modelagem, documentação de requisitos e definição da arquitetura do produto.
 * **Evidências:**
-    * Link para o [Plano de Iteração - Elaboração](../atas/atas_planos_iteracao/ata_plano_iteracao_elaboracao.md).
-    * Cronograma geral documentado em [Cronograma e Entregas](../planejamento_organizacao/cronograma_e_entregas.md).
+    * Link para os [Itens de Trabalho Priorizados](../matriz_de_acao_e_priorizacao.md) mapeados para esta janela de tempo.
+    * Link ou referência para a [Ata do plano de iteração](../atas/atas_planos_iteracao/ata_plano_iteracao_elaboracao.md), onde os principais pontos foram discutidos.
 
 ### Avaliação e Revisão da Iteração (Assess Iteration)
 * **Execução:** Ao término da iteração de Elaboração, a equipe avaliou o cumprimento do objetivo geral de consolidar os requisitos refinados e aprovar a modelagem com a cliente. Os artefatos foram revisados, e a validação conceitual foi apresentada aos stakeholders.

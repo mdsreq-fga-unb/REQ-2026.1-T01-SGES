@@ -42,6 +42,8 @@ Este fluxo inicia no passo 5 do fluxo principal. Se algum campo obrigatório est
 #### FE-5-B — E-mail já Cadastrado
 Este fluxo inicia no passo 5 do fluxo principal. Se o e-mail informado já constar na base de dados de outro instrutor, o sistema bloqueia a gravação e apresenta um alerta informando a duplicidade do e-mail. O fluxo retorna ao passo 3 do fluxo principal.
 
+![Evidência de Exceção - E-mail já Cadastrado](instructor_validation.png){: style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 100%; border: 1px solid var(--sges-card-border); margin-top: 1rem;"}
+
 #### FE-5-C — Dados Inválidos
 Este fluxo inicia no passo 5 do fluxo principal. Se algum dado fornecido estiver em formato incorreto (ex: e-mail inválido), o sistema impede a gravação e solicita a correção. O fluxo retorna ao passo 3 do fluxo principal.
 
