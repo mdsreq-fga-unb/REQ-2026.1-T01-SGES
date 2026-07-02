@@ -2,7 +2,7 @@
 ## CSU14 (RF15) — Consultar histórico do beneficiário
 
 [Matriz de Priorização](../../matriz_de_acao_e_priorizacao.md) <br>
-[Andamento](../andamento.md) <br>
+[Quadro MVP](../../planejamento_organizacao/quadro_mvp.md) <br>
 [Cronograma e Planejamento](../../planejamento_organizacao/cronograma_e_entregas.md#tabela-de-cronograma-e-planejamento)
 
 

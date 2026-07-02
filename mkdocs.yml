@@ -52,7 +52,6 @@ nav:
       - "Itens de Trabalho e priorização": "matriz_de_acao_e_priorizacao.md"
       - "Arquitetura do Produto": "arquitetura_do_produto.md"
       - "Casos de Uso":
-          - Andamento: ./lista_trabalhos/andamento.md
           - "CSU01":
             - "fluxo": ./lista_trabalhos/csu01/fluxo.md
             - "DoR & DoD": ./lista_trabalhos/csu01/DoR_DoD.md
