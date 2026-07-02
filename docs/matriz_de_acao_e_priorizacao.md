@@ -27,6 +27,8 @@ Seguindo as diretrizes metodológicas do framework OpenUP, o escopo funcional do
 
 # Matriz de Ação e Priorização
 
+![alt text](images/quadrantes.jpg)
+
 Esta seção consolida a avaliação de todos os Casos de Uso (CSU) mapeados no escopo funcional do SGES, cruzando o **Valor de Negócio** com o **Custo Técnico** para definir a ordem de priorização e o escopo do MVP (Produto Mínimo Viável).
 
 ---
