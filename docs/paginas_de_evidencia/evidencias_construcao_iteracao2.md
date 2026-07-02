@@ -38,5 +38,5 @@ Seguindo o processo ágil e unificado do **OpenUP**, detalhamos abaixo as cerim�
 ### Avaliação e Revisão da Iteração (Assess Iteration)
 * **Execução:** Ao término da iteração, realizamos uma inspeção de software interna completa. Com todas as funcionalidades codificadas e testadas, o sistema foi considerado pronto para avançar para a homologação em produção com o cliente.
 * **Evidências:**
-    * Link para o [Vídeo da Unidade 4 / Demonstração do Módulo Final](../unidade_3_video.md)
+    * Link para o [Vídeo da Unidade 4 / Demonstração do Módulo Final](../unidade_4_video.md)
     * Autoavaliação do ciclo registrada em [Lições Aprendidas](../iteracao/licoes_aprendidas.md).
