@@ -28,19 +28,7 @@ Com a proximidade da entrega final e do período de homologação, o mapeamento 
 
 ---
 
-### **3. DISTRIBUIÇÃO DOS ITENS DE TRABALHO (WORK ITEMS)**
-Os itens de trabalho cobrem o fechamento do escopo dos Casos de Uso finais (CSU12 a CSU16):
-
-| Item de Trabalho (Tarefa) | Responsável Principal | Artefato Gerado / Destino |
-| :--- | :--- | :--- |
-| Desenvolvimento do módulo de matrícula e tratamento de exceções | Equipe V | Repositório de Código / Fluxos do Sistema |
-| Implementação do painel visual de alertas de risco de evasão | Vinícius | Painéis de BI / Interface de Gestão |
-| Detalhamento e documentação dos fluxos de Casos de Uso (CSU12 a CSU16) | Vinícius | Pastas específicas em `docs/lista_trabalhos/` |
-| Revisão interna completa de requisitos implementados (DoD) | Equipe V | Inspeção de Software / Linha de Base Final |
-
----
-
-### **4. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (Marco de Conclusão de Funcionalidades)**
+### **3. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (Marco de Conclusão de Funcionalidades)**
 Para que esta iteração seja encerrada em 01/07 e o sistema avance pronto para a fase de Transição, os seguintes critérios são obrigatórios:<br/>
 * [X] 100% dos requisitos funcionais previstos implementados, integrados e testados pela equipe.<br/>
 * [ ] Ambiente de simulação operacional validado internamente com instrutores fictícios.<br/>

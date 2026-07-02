@@ -1,6 +1,6 @@
 # Evidências da Fase de Construção - Iteração 2
 
-[Voltar para Cronograma e Planejamento](../cronograma_e_entregas.md)
+[Voltar para Cronograma e Planejamento](../planejamento_organizacao/cronograma_e_entregas.md)
 
 ## 1. Contexto Breve da Fase
 Nesta segunda iteração da fase de Construção, o foco macro da equipe esteve centrado no desenvolvimento das regras operacionais complexas, inteligência de negócio e sustentabilidade do sistema SGES. O objetivo principal deste ciclo unificado foi concluir todas as funcionalidades previstas para o MVP, estruturando os fluxos de matrículas, mapeando as exceções e tratativas de faltas diárias, e implementando mecanismos automatizados de sinalização visual para alertar sobre participantes em situação de risco de evasão.

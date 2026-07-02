@@ -1,6 +1,6 @@
 # Evidências da Fase de Construção - Iteração 1
 
-[Voltar para Cronograma e Planejamento](../cronograma_e_entregas.md)
+[Voltar para Cronograma e Planejamento](../planejamento_organizacao/cronograma_e_entregas.md)
 
 ## 1. Contexto Breve da Fase
 Nesta primeira iteração da fase de Construção, o foco principal da equipe esteve voltado ao início do desenvolvimento incremental do software e à validação contínua do núcleo funcional (*core*) do sistema SGES. O objetivo geral deste ciclo foi materializar os requisitos refinados na fase de Elaboração através da implementação física do mecanismo de acesso seguro (controle de perfis de acesso) e do painel operacional para gerenciamento de dados de voluntários, assegurando as metas de privacidade de dados dos utilizadores estipuladas com a diretoria.

@@ -55,3 +55,28 @@
 1. **Eliminação de Resquícios de Metodologias Anteriores e Refatoração de Processos**
     - **Desafio:** A transição metodológica exigiu um volume significativo de retrabalho. O projeto apresentava diversos resquícios e nomenclaturas exclusivas do Scrum (como *Sprints*, *Cards* e *Story Points*), e desvincular a equipe desse modelo consolidado para migrar para a semântica e fluxo do OpenUP foi uma tarefa árdua.
     - **Como foi superado:** A equipe realizou uma varredura crítica em toda a documentação, reestruturando as tabelas de requisitos em Casos de Uso funcionais e vinculando-os diretamente ao cronograma de fases do projeto. Além disso, o grupo focou em gerar e adicionar evidências claras da execução das atividades de engenharia e, com o processo alinhado, conseguiu engrenar uma esteira de desenvolvimento produtiva, resultando em uma evolução sólida e segura das funcionalidades do SGES.
+
+
+---
+
+## 10.4. Unidade 4
+
+### Lições Aprendidas e Melhorias para o Processo
+
+1. **Aprendizado em gestão e organização de horários**
+    - **Desafio:** Lidar com alta carga das disciplinas da universidade e com demandas externas foi um grande desafio, dado que este momento de final de semestre é extremamente complexo.
+    - **Ação de Melhoria:** A equipe se organizou por meio de ferramentas de organização como Notion e Google agendas para se adaptar a sobrecarga e alta quantidade de demandas.
+
+2. **Validação Técnica de Usabilidade (Homologação Prática)**
+    - **Desafio:** Garantir que ferramentas, como relatórios gerenciais consolidados e chamadas diárias, fossem fáceis e ágeis o suficiente para serem utilizadas na rotina real de instrutores voluntários.
+    - **Ação de Melhoria:** O grupo compreendeu a necessidade de não focar apenas no código funcional, mas também na experiência de uso. Passou-se a adotar simulações operacionais internas em ambientes controlados com usuários fictícios antes da entrega de cada Caso de Uso final, garantindo clareza e agilidade na validação das interfaces.
+
+### Dificuldades e Ações para Superá-las
+
+1. **Unificação de Iterações e Gestão de Prazos no Fim do Ciclo de Construção**
+    - **Desafio:** A fusão das antigas iterações 2 e 3 da Construção em uma única janela unificada gerou um volume concentrado de entregas funcionais (CSU12 a CSU16). Conciliar o fechamento de múltiplos Casos de Uso com os prazos finais da disciplina e a necessidade de estabilizar o produto trouxe uma sobrecarga de esforço ao grupo.
+    - **Como foi superada:** A equipe aplicou a gerência focada em micro-incrementos do OpenUP. Centralizou-se o monitoramento diário da Lista de Itens de Trabalho (*Work Item List*), dividindo as frentes de codificação e de documentação de forma paralela. Com o uso constante de revisões técnicas cruzadas (*Pull Requests*) e testes de integração contínua, o grupo garantiu que todas as funcionalidades fossem entregues com qualidade, sem gerar inconsistências ou quebras de caminhos no Git Pages.
+
+2. **Impacto do Adiantamento da Entrega Final**
+    - **Desafio:** A antecipação da data de entrega final do projeto gerou um encurtamento do tempo hábil para a conclusão da fase de Construção (Iteração 2) e para o polimento dos artefatos da fase de Transição. Isso causou uma sobrecarga repentina na equipe e ameaçou a estabilidade do sistema, exigindo uma reorganização emergencial do cronograma para garantir que todos os Casos de Uso finais fossem codificados, testados e documentados a tempo.
+    - **Como foi superado:** A equipe precisou demonstrar alta capacidade de adaptação e gestão de crise. Para mitigar o impacto do prazo curto, intensificamos drasticamente as interações assíncronas e realizamos "mutirões" de desenvolvimento com revisões pareadas. Além disso, aplicamos de forma rigorosa os critérios de *Definition of Done* (DoD) para fechar o escopo estritamente no necessário para o MVP, evitando qualquer perfeccionismo desnecessário que pudesse atrasar a entrega da versão funcional.
