@@ -48,6 +48,3 @@ Para que a fase de Elaboração seja homologada com sucesso na Unidade 2, a equi
 * [x] Proposta conceitual do MVP aprovada internamente e metas do produto estabilizadas.
 </br>
 * [x] Estrutura de navegação dos Casos de Uso mapeada no `mkdocs.yml` (pronta para receber os fluxos na fase de Construção).
-
-### **Evidência Visual do Quadro de Tarefas / Alinhamento Técnico**
-![Quadro de Tarefas da Elaboração](images/img_plano_elaboracao.png){width="500px"}

@@ -44,11 +44,8 @@ Os itens de trabalho foram priorizados para cobrir o primeiro bloco de Casos de 
 ### **4. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (Marco de Capacidade Operacional Inicial)**
 Para concluir este ciclo da Unidade 3 com sucesso, o incremento deve atender às seguintes metas:
 <br/>
-* [ ] Mecanismo de acesso seguro operando com separação clara de papéis (Diretoria vs. Voluntários).
+* [X] Mecanismo de acesso seguro operando com separação clara de papéis (Diretoria vs. Voluntários).
 <br/>
-* [ ] Painel operacional de gerenciamento de dados testado internamente e estável.
+* [x] Painel operacional de gerenciamento de dados testado internamente e estável.
 <br/>
-* [ ] Documentação de Engenharia de Requisitos dos fluxos iniciais revisada e publicada no Git Pages.
-
-### **Evidência Visual do Quadro de Desenvolvimento / Sprint Backlog**
-![Quadro de Tarefas da Construção 1](images/img_plano_construcao1.png){width="500px"}
+* [x] Documentação de Engenharia de Requisitos dos fluxos iniciais revisada e publicada no Git Pages.
