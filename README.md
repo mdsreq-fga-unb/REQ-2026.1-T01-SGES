@@ -16,7 +16,7 @@ O SGES tem como objetivo prover uma solução robusta e integrada para o gerenci
 A aplicação está publicada e pode ser acessada pelo link:
 *   **Plataforma (Vercel):** [https://autadesouza-sigma.vercel.app/](https://autadesouza-sigma.vercel.app/)
 
-Para acessar o painel administrativo da plataforma com o perfil de **Professor**, utilize as seguintes credenciais de teste:
+Para acessar o painel administrativo da plataforma com o perfil de **Gestor**, utilize as seguintes credenciais de teste:
 *   **E-mail:** `adminsges@gmail.com`
 *   **Senha:** `sges@2026`
 
