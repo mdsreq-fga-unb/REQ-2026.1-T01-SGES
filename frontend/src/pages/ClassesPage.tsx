@@ -1,29 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { Plus, Search, X, BookOpen, Calendar, Clock, Users, Trash2, UserPlus, UserCheck, AlertTriangle, Pencil, User } from 'lucide-react';
-import { classesApi, type ClassDto, type UserDto } from '@/shared/api/classes';
-import { studentsApi, type StudentDto } from '@/shared/api/students';
-import { useAuth } from '@/app/providers/AuthProvider';
-import { useToast } from '@/shared/components/Toast';
+import React, { useState, useEffect } from "react";
+import {
+  Plus,
+  Search,
+  X,
+  BookOpen,
+  Calendar,
+  Clock,
+  Users,
+  Trash2,
+  UserPlus,
+  UserCheck,
+  AlertTriangle,
+  Pencil,
+  User,
+} from "lucide-react";
+import { classesApi, type ClassDto, type UserDto } from "@/shared/api/classes";
+import { studentsApi, type StudentDto } from "@/shared/api/students";
+import { useAuth } from "@/app/providers/AuthProvider";
+import { useToast } from "@/shared/components/Toast";
 
 const DAYS_OF_WEEK = [
-  'Segunda-feira',
-  'Terça-feira',
-  'Quarta-feira',
-  'Quinta-feira',
-  'Sexta-feira',
-  'Sábado',
-  'Domingo',
+  "Segunda-feira",
+  "Terça-feira",
+  "Quarta-feira",
+  "Quinta-feira",
+  "Sexta-feira",
+  "Sábado",
+  "Domingo",
 ];
 
 export const ClassesPage: React.FC = () => {
   const { user: loggedUser } = useAuth();
   const { addToast } = useToast();
-  const isAdmin = loggedUser?.role === 'admin';
+  const isAdmin = loggedUser?.role === "admin";
 
   const [classes, setClasses] = useState<ClassDto[]>([]);
   const [students, setStudents] = useState<StudentDto[]>([]);
   const [users, setUsers] = useState<UserDto[]>([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   // Modais e Estados de Edição
   const [isCreateOpen, setIsCreateOpen] = useState(false);
@@ -33,24 +47,27 @@ export const ClassesPage: React.FC = () => {
   const [classStudents, setClassStudents] = useState<StudentDto[]>([]);
 
   // Formulário Criar/Editar Turma
-  const [nomeCurso, setNomeCurso] = useState('');
-  const [livrosEstudados, setLivrosEstudados] = useState('');
-  const [horario, setHorario] = useState('');
+  const [nomeCurso, setNomeCurso] = useState("");
+  const [livrosEstudados, setLivrosEstudados] = useState("");
+  const [horario, setHorario] = useState("");
   const [selectedDays, setSelectedDays] = useState<string[]>([DAYS_OF_WEEK[5]]); // Sábado por padrão
-  const [vagasLimite, setVagasLimite] = useState('50');
+  const [vagasLimite, setVagasLimite] = useState("50");
+  const [semestre, setSemestre] = useState("2026.1");
   const [selectedInstructors, setSelectedInstructors] = useState<string[]>([]);
 
   // Cadastro Rápido de Instrutor
   const [isQuickInstructorOpen, setIsQuickInstructorOpen] = useState(false);
-  const [quickInstructorName, setQuickInstructorName] = useState('');
-  const [quickInstructorEmail, setQuickInstructorEmail] = useState('');
-  const [quickInstructorRole, setQuickInstructorRole] = useState<'admin' | 'volunteer'>('volunteer');
-  const [quickError, setQuickError] = useState('');
+  const [quickInstructorName, setQuickInstructorName] = useState("");
+  const [quickInstructorEmail, setQuickInstructorEmail] = useState("");
+  const [quickInstructorRole, setQuickInstructorRole] = useState<
+    "admin" | "volunteer"
+  >("volunteer");
+  const [quickError, setQuickError] = useState("");
 
   // Formulário Matrícula Aluno
-  const [selectedStudentId, setSelectedStudentId] = useState('');
+  const [selectedStudentId, setSelectedStudentId] = useState("");
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const loadAllData = async () => {
@@ -61,11 +78,11 @@ export const ClassesPage: React.FC = () => {
       const dataStudents = await studentsApi.getAll();
       setStudents(dataStudents);
 
-      const { usersApi } = await import('@/shared/api/classes');
+      const { usersApi } = await import("@/shared/api/classes");
       const res = await usersApi.getAll();
       setUsers(res.users);
     } catch (err) {
-      console.error('Erro ao carregar dados de turmas/alunos:', err);
+      console.error("Erro ao carregar dados de turmas/alunos:", err);
     }
   };
 
@@ -75,74 +92,79 @@ export const ClassesPage: React.FC = () => {
 
   const handleOpenCreateModal = () => {
     setEditingClassId(null);
-    setNomeCurso('');
-    setLivrosEstudados('');
-    setHorario('');
+    setNomeCurso("");
+    setLivrosEstudados("");
+    setHorario("");
     setSelectedDays([DAYS_OF_WEEK[5]]);
-    setVagasLimite('50');
+    setVagasLimite("50");
+    setSemestre("2026.1");
     setSelectedInstructors([]);
-    setError('');
+    setError("");
     setIsQuickInstructorOpen(false);
-    setQuickInstructorName('');
-    setQuickInstructorEmail('');
-    setQuickInstructorRole('volunteer');
-    setQuickError('');
+    setQuickInstructorName("");
+    setQuickInstructorEmail("");
+    setQuickInstructorRole("volunteer");
+    setQuickError("");
     setIsCreateOpen(true);
   };
 
   const handleOpenEditModal = (cls: ClassDto) => {
     setEditingClassId(cls.id);
     setNomeCurso(cls.nomeCurso);
-    setLivrosEstudados(cls.livrosEstudados || '');
+    setLivrosEstudados(cls.livrosEstudados || "");
     setHorario(cls.horario);
-    setSelectedDays(cls.diaSemana ? cls.diaSemana.split(', ') : []);
+    setSelectedDays(cls.diaSemana ? cls.diaSemana.split(", ") : []);
     setVagasLimite(String(cls.vagasLimite || 50));
+    setSemestre(cls.semester || "2026.1");
     setSelectedInstructors(cls.instructors?.map((i) => i.id) || []);
-    setError('');
+    setError("");
     setIsQuickInstructorOpen(false);
-    setQuickInstructorName('');
-    setQuickInstructorEmail('');
-    setQuickInstructorRole('volunteer');
-    setQuickError('');
+    setQuickInstructorName("");
+    setQuickInstructorEmail("");
+    setQuickInstructorRole("volunteer");
+    setQuickError("");
     setIsCreateOpen(true);
   };
 
   const handleSaveClass = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!nomeCurso || !horario || selectedDays.length === 0) {
-      setError('Por favor, preencha todos os campos obrigatórios e selecione pelo menos um dia da semana.');
+      setError(
+        "Por favor, preencha todos os campos obrigatórios e selecione pelo menos um dia da semana.",
+      );
       return;
     }
 
     if (selectedInstructors.length > 2) {
-      setError('Uma turma pode ter no máximo 2 instrutores (dupla).');
+      setError("Uma turma pode ter no máximo 2 instrutores (dupla).");
       return;
     }
 
     setLoading(true);
-    setError('');
+    setError("");
 
     const payload = {
       nomeCurso,
       livrosEstudados: livrosEstudados || null,
       horario,
-      diaSemana: selectedDays.join(', '),
+      diaSemana: selectedDays.join(", "),
       vagasLimite: vagasLimite ? Number(vagasLimite) : null,
+      semestre: semestre || "2026.1",
       instructorIds: selectedInstructors,
     };
 
     try {
       if (editingClassId) {
         await classesApi.update(editingClassId, payload);
-        addToast('success', 'Turma atualizada com sucesso!');
+        addToast("success", "Turma atualizada com sucesso!");
       } else {
         await classesApi.create(payload);
-        addToast('success', 'Turma criada com sucesso!');
+        addToast("success", "Turma criada com sucesso!");
       }
       setIsCreateOpen(false);
       await loadAllData();
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Erro ao salvar a turma.');
+      setError(err.response?.data?.message || "Erro ao salvar a turma.");
     } finally {
       setLoading(false);
     }
@@ -151,15 +173,15 @@ export const ClassesPage: React.FC = () => {
   const handleQuickCreateInstructor = async (e: React.MouseEvent) => {
     e.preventDefault();
     if (!quickInstructorName || !quickInstructorEmail) {
-      setQuickError('Preencha o nome e o e-mail do instrutor.');
+      setQuickError("Preencha o nome e o e-mail do instrutor.");
       return;
     }
 
     setLoading(true);
-    setQuickError('');
+    setQuickError("");
 
     try {
-      const { usersApi } = await import('@/shared/api/classes');
+      const { usersApi } = await import("@/shared/api/classes");
       const newUser = await usersApi.create({
         name: quickInstructorName,
         email: quickInstructorEmail,
@@ -173,46 +195,58 @@ export const ClassesPage: React.FC = () => {
       setSelectedInstructors((prev) => {
         if (prev.includes(newUser.id)) return prev;
         if (prev.length >= 2) {
-          addToast('warning', 'Instrutor cadastrado, mas limite de 2 instrutores na turma já atingido.');
+          addToast(
+            "warning",
+            "Instrutor cadastrado, mas limite de 2 instrutores na turma já atingido.",
+          );
           return prev;
         }
         return [...prev, newUser.id];
       });
 
-      addToast('success', 'Instrutor criado e selecionado com sucesso!');
-      setQuickInstructorName('');
-      setQuickInstructorEmail('');
+      addToast("success", "Instrutor criado e selecionado com sucesso!");
+      setQuickInstructorName("");
+      setQuickInstructorEmail("");
       setIsQuickInstructorOpen(false);
     } catch (err: any) {
-      setQuickError(err.response?.data?.message || 'Erro ao cadastrar instrutor.');
+      setQuickError(
+        err.response?.data?.message || "Erro ao cadastrar instrutor.",
+      );
     } finally {
       setLoading(false);
     }
   };
 
   const handleDeleteClass = async (classId: string) => {
-    if (!window.confirm('Tem certeza de que deseja excluir esta turma permanentemente?')) {
+    if (
+      !window.confirm(
+        "Tem certeza de que deseja excluir esta turma permanentemente?",
+      )
+    ) {
       return;
     }
     try {
       await classesApi.delete(classId);
-      addToast('success', 'Turma excluída com sucesso.');
+      addToast("success", "Turma excluída com sucesso.");
       await loadAllData();
     } catch (err: any) {
-      addToast('error', err.response?.data?.message || 'Falha ao excluir a turma.');
+      addToast(
+        "error",
+        err.response?.data?.message || "Falha ao excluir a turma.",
+      );
     }
   };
 
   const handleOpenStudentsModal = async (cls: ClassDto) => {
     setSelectedClass(cls);
-    setSelectedStudentId('');
-    setError('');
+    setSelectedStudentId("");
+    setError("");
     setIsStudentsOpen(true);
     try {
       const data = await classesApi.getStudents(cls.id);
       setClassStudents(data);
     } catch (err) {
-      console.error('Erro ao carregar estudantes da turma:', err);
+      console.error("Erro ao carregar estudantes da turma:", err);
     }
   };
 
@@ -223,23 +257,26 @@ export const ClassesPage: React.FC = () => {
     // Verificar limite de vagas antes
     const limit = selectedClass.vagasLimite || 50;
     if (classStudents.length >= limit) {
-      addToast('error', `A turma já atingiu a capacidade máxima de ${limit} vagas.`);
+      addToast(
+        "error",
+        `A turma já atingiu a capacidade máxima de ${limit} vagas.`,
+      );
       return;
     }
 
     setLoading(true);
-    setError('');
+    setError("");
 
     try {
       await classesApi.enrollStudent(selectedClass.id, selectedStudentId);
-      addToast('success', 'Aluno matriculado com sucesso!');
-      setSelectedStudentId('');
+      addToast("success", "Aluno matriculado com sucesso!");
+      setSelectedStudentId("");
       // Recarregar alunos da turma e estatísticas gerais
       const data = await classesApi.getStudents(selectedClass.id);
       setClassStudents(data);
       await loadAllData();
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Erro ao matricular o aluno.');
+      setError(err.response?.data?.message || "Erro ao matricular o aluno.");
     } finally {
       setLoading(false);
     }
@@ -247,26 +284,31 @@ export const ClassesPage: React.FC = () => {
 
   const handleUnenrollStudent = async (studentId: string) => {
     if (!selectedClass) return;
-    if (!window.confirm('Deseja desvincular este aluno desta turma?')) return;
+    if (!window.confirm("Deseja desvincular este aluno desta turma?")) return;
 
     try {
       await classesApi.unenrollStudent(selectedClass.id, studentId);
-      addToast('success', 'Aluno desvinculado com sucesso.');
+      addToast("success", "Aluno desvinculado com sucesso.");
       // Recarregar
       const data = await classesApi.getStudents(selectedClass.id);
       setClassStudents(data);
       await loadAllData();
     } catch (err: any) {
-      addToast('error', err.response?.data?.message || 'Falha ao desvincular o aluno.');
+      addToast(
+        "error",
+        err.response?.data?.message || "Falha ao desvincular o aluno.",
+      );
     }
   };
 
   const toggleInstructor = (id: string) => {
     if (selectedInstructors.includes(id)) {
-      setSelectedInstructors(selectedInstructors.filter((insId) => insId !== id));
+      setSelectedInstructors(
+        selectedInstructors.filter((insId) => insId !== id),
+      );
     } else {
       if (selectedInstructors.length >= 2) {
-        addToast('warning', 'O limite é de no máximo 2 instrutores.');
+        addToast("warning", "O limite é de no máximo 2 instrutores.");
         return;
       }
       setSelectedInstructors([...selectedInstructors, id]);
@@ -275,20 +317,23 @@ export const ClassesPage: React.FC = () => {
 
   // Filtrar alunos não matriculados para exibição no dropdown
   const availableStudents = students.filter(
-    (s) => !classStudents.some((cs) => cs.id === s.id)
+    (s) => !classStudents.some((cs) => cs.id === s.id),
   );
 
   const filteredClasses = classes.filter((c) =>
-    c.nomeCurso.toLowerCase().includes(search.toLowerCase())
+    c.nomeCurso.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-foreground">Gestão de Turmas</h2>
+          <h2 className="text-xl font-bold text-foreground">
+            Gestão de Turmas
+          </h2>
           <p className="text-sm text-muted-foreground mt-1">
-            Cadastre novas turmas, configure instrutores e gerencie a lista de alunos matriculados.
+            Cadastre novas turmas, configure instrutores e gerencie a lista de
+            alunos matriculados.
           </p>
         </div>
         {isAdmin && (
@@ -331,7 +376,9 @@ export const ClassesPage: React.FC = () => {
                     <span className="inline-block text-[10px] bg-primary/10 text-primary font-bold px-2 py-0.5 rounded-full">
                       {cls.semester}
                     </span>
-                    <h3 className="font-bold text-foreground text-lg">{cls.nomeCurso}</h3>
+                    <h3 className="font-bold text-foreground text-lg">
+                      {cls.nomeCurso}
+                    </h3>
                   </div>
                   {isAdmin && (
                     <div className="flex gap-1.5">
@@ -365,7 +412,9 @@ export const ClassesPage: React.FC = () => {
                   {cls.livrosEstudados && (
                     <div className="flex items-center gap-2">
                       <BookOpen className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span className="truncate">Livro: {cls.livrosEstudados}</span>
+                      <span className="truncate">
+                        Livro: {cls.livrosEstudados}
+                      </span>
                     </div>
                   )}
                   <div className="flex items-center gap-2 pt-2 border-t border-border/40">
@@ -432,7 +481,7 @@ export const ClassesPage: React.FC = () => {
           <div className="bg-card border border-border shadow-2xl rounded-2xl max-w-lg w-full overflow-hidden animate-in scale-in duration-200">
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
               <h3 className="font-bold text-lg text-foreground">
-                {editingClassId ? 'Editar Turma' : 'Cadastrar Nova Turma'}
+                {editingClassId ? "Editar Turma" : "Cadastrar Nova Turma"}
               </h3>
               <button
                 onClick={() => setIsCreateOpen(false)}
@@ -442,7 +491,10 @@ export const ClassesPage: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSaveClass} className="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+            <form
+              onSubmit={handleSaveClass}
+              className="p-6 space-y-4 max-h-[80vh] overflow-y-auto"
+            >
               {error && (
                 <div className="p-3 bg-destructive/10 text-destructive rounded-xl text-xs font-medium flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 flex-shrink-0" />
@@ -463,12 +515,16 @@ export const ClassesPage: React.FC = () => {
                   onInvalid={(e) => {
                     const target = e.target as HTMLInputElement;
                     if (target.validity.valueMissing) {
-                      target.setCustomValidity('Por favor, preencha este campo.');
+                      target.setCustomValidity(
+                        "Por favor, preencha este campo.",
+                      );
                     } else {
-                      target.setCustomValidity('');
+                      target.setCustomValidity("");
                     }
                   }}
-                  onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
+                  onInput={(e) =>
+                    (e.target as HTMLInputElement).setCustomValidity("")
+                  }
                   className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground"
                 />
               </div>
@@ -486,15 +542,17 @@ export const ClassesPage: React.FC = () => {
                         type="button"
                         onClick={() => {
                           if (selected) {
-                            setSelectedDays(selectedDays.filter((d) => d !== day));
+                            setSelectedDays(
+                              selectedDays.filter((d) => d !== day),
+                            );
                           } else {
                             setSelectedDays([...selectedDays, day]);
                           }
                         }}
                         className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                           selected
-                            ? 'bg-primary/10 border-primary text-primary'
-                            : 'bg-background border-border hover:bg-muted text-foreground'
+                            ? "bg-primary/10 border-primary text-primary"
+                            : "bg-background border-border hover:bg-muted text-foreground"
                         }`}
                       >
                         {day}
@@ -518,12 +576,16 @@ export const ClassesPage: React.FC = () => {
                     onInvalid={(e) => {
                       const target = e.target as HTMLInputElement;
                       if (target.validity.valueMissing) {
-                        target.setCustomValidity('Por favor, preencha este campo.');
+                        target.setCustomValidity(
+                          "Por favor, preencha este campo.",
+                        );
                       } else {
-                        target.setCustomValidity('');
+                        target.setCustomValidity("");
                       }
                     }}
-                    onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
+                    onInput={(e) =>
+                      (e.target as HTMLInputElement).setCustomValidity("")
+                    }
                     className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground"
                   />
                 </div>
@@ -538,8 +600,14 @@ export const ClassesPage: React.FC = () => {
                     placeholder="Ex: 50"
                     value={vagasLimite}
                     onChange={(e) => setVagasLimite(e.target.value)}
-                    onInvalid={(e) => (e.target as HTMLInputElement).setCustomValidity('O valor deve ser maior ou igual a 1.')}
-                    onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
+                    onInvalid={(e) =>
+                      (e.target as HTMLInputElement).setCustomValidity(
+                        "O valor deve ser maior ou igual a 1.",
+                      )
+                    }
+                    onInput={(e) =>
+                      (e.target as HTMLInputElement).setCustomValidity("")
+                    }
                     className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground"
                   />
                 </div>
@@ -558,6 +626,24 @@ export const ClassesPage: React.FC = () => {
                 </div>
               </div>
 
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider block">
+                  Semestre
+                </label>
+                <select
+                  value={semestre}
+                  onChange={(e) => setSemestre(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground"
+                >
+                  <option value="2025.1">2025.1</option>
+                  <option value="2025.2">2025.2</option>
+                  <option value="2026.1">2026.1</option>
+                  <option value="2026.2">2026.2</option>
+                  <option value="2027.1">2027.1</option>
+                  <option value="2027.2">2027.2</option>
+                </select>
+              </div>
+
               <div className="space-y-2 pt-2">
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider block">
@@ -567,19 +653,25 @@ export const ClassesPage: React.FC = () => {
                     type="button"
                     onClick={() => {
                       setIsQuickInstructorOpen(!isQuickInstructorOpen);
-                      setQuickError('');
+                      setQuickError("");
                     }}
                     className="text-xs text-primary font-bold hover:underline flex items-center gap-1"
                   >
-                    {isQuickInstructorOpen ? 'Fechar Cadastro Rápido' : '+ Cadastrar Novo Instrutor'}
+                    {isQuickInstructorOpen
+                      ? "Fechar Cadastro Rápido"
+                      : "+ Cadastrar Novo Instrutor"}
                   </button>
                 </div>
 
                 {isQuickInstructorOpen && (
                   <div className="border border-border rounded-xl p-4 bg-muted/20 space-y-3 animate-in fade-in duration-200">
-                    <h4 className="text-xs font-bold text-foreground">Cadastro Rápido de Instrutor</h4>
+                    <h4 className="text-xs font-bold text-foreground">
+                      Cadastro Rápido de Instrutor
+                    </h4>
                     {quickError && (
-                      <p className="text-[10px] text-destructive bg-destructive/10 p-2 rounded-lg font-medium">{quickError}</p>
+                      <p className="text-[10px] text-destructive bg-destructive/10 p-2 rounded-lg font-medium">
+                        {quickError}
+                      </p>
                     )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <input
@@ -593,7 +685,9 @@ export const ClassesPage: React.FC = () => {
                         type="email"
                         placeholder="E-mail"
                         value={quickInstructorEmail}
-                        onChange={(e) => setQuickInstructorEmail(e.target.value)}
+                        onChange={(e) =>
+                          setQuickInstructorEmail(e.target.value)
+                        }
                         className="w-full px-3 py-2 rounded-lg border border-border bg-background text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20"
                       />
                     </div>
@@ -601,22 +695,22 @@ export const ClassesPage: React.FC = () => {
                       <div className="flex gap-2">
                         <button
                           type="button"
-                          onClick={() => setQuickInstructorRole('volunteer')}
+                          onClick={() => setQuickInstructorRole("volunteer")}
                           className={`px-2.5 py-1 rounded-lg border text-[10px] font-bold ${
-                            quickInstructorRole === 'volunteer'
-                              ? 'bg-primary/10 border-primary text-primary'
-                              : 'bg-background border-border text-foreground'
+                            quickInstructorRole === "volunteer"
+                              ? "bg-primary/10 border-primary text-primary"
+                              : "bg-background border-border text-foreground"
                           }`}
                         >
                           Voluntário
                         </button>
                         <button
                           type="button"
-                          onClick={() => setQuickInstructorRole('admin')}
+                          onClick={() => setQuickInstructorRole("admin")}
                           className={`px-2.5 py-1 rounded-lg border text-[10px] font-bold ${
-                            quickInstructorRole === 'admin'
-                              ? 'bg-purple-500/10 border-purple-500 text-purple-600'
-                              : 'bg-background border-border text-foreground'
+                            quickInstructorRole === "admin"
+                              ? "bg-purple-500/10 border-purple-500 text-purple-600"
+                              : "bg-background border-border text-foreground"
                           }`}
                         >
                           Admin
@@ -628,7 +722,7 @@ export const ClassesPage: React.FC = () => {
                         disabled={loading}
                         className="bg-primary text-white hover:bg-primary/90 text-xs font-bold px-3 py-1.5 rounded-lg disabled:opacity-50"
                       >
-                        {loading ? 'Cadastrando...' : 'Cadastrar e Selecionar'}
+                        {loading ? "Cadastrando..." : "Cadastrar e Selecionar"}
                       </button>
                     </div>
                   </div>
@@ -644,8 +738,8 @@ export const ClassesPage: React.FC = () => {
                         onClick={() => toggleInstructor(u.id)}
                         className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-left text-xs font-medium transition-all ${
                           selected
-                            ? 'bg-primary/10 border-primary text-primary'
-                            : 'bg-background border-border/60 hover:bg-muted text-foreground'
+                            ? "bg-primary/10 border-primary text-primary"
+                            : "bg-background border-border/60 hover:bg-muted text-foreground"
                         }`}
                       >
                         <input
@@ -656,7 +750,9 @@ export const ClassesPage: React.FC = () => {
                         />
                         <div className="min-w-0 flex-1">
                           <p className="font-bold truncate">{u.name}</p>
-                          <p className="text-[10px] text-muted-foreground capitalize">{u.role}</p>
+                          <p className="text-[10px] text-muted-foreground capitalize">
+                            {u.role}
+                          </p>
                         </div>
                       </button>
                     );
@@ -682,7 +778,11 @@ export const ClassesPage: React.FC = () => {
                   disabled={loading}
                   className="bg-primary text-white hover:bg-primary/90 transition-colors px-4 py-2 rounded-xl text-sm font-medium disabled:opacity-50"
                 >
-                  {loading ? 'Salvando...' : (editingClassId ? 'Salvar Alterações' : 'Criar Turma')}
+                  {loading
+                    ? "Salvando..."
+                    : editingClassId
+                      ? "Salvar Alterações"
+                      : "Criar Turma"}
                 </button>
               </div>
             </form>
@@ -696,9 +796,12 @@ export const ClassesPage: React.FC = () => {
           <div className="bg-card border border-border shadow-2xl rounded-2xl max-w-2xl w-full overflow-hidden animate-in scale-in duration-200">
             <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-muted/20">
               <div>
-                <h3 className="font-bold text-lg text-foreground">{selectedClass.nomeCurso}</h3>
+                <h3 className="font-bold text-lg text-foreground">
+                  {selectedClass.nomeCurso}
+                </h3>
                 <p className="text-xs text-muted-foreground mt-0.5">
-                  Alunos matriculados: {classStudents.length} / {selectedClass.vagasLimite || 50}
+                  Alunos matriculados: {classStudents.length} /{" "}
+                  {selectedClass.vagasLimite || 50}
                 </p>
               </div>
               <button
@@ -711,7 +814,10 @@ export const ClassesPage: React.FC = () => {
 
             <div className="p-6 space-y-6">
               {/* Form de matrícula */}
-              <form onSubmit={handleEnrollStudent} className="flex flex-col sm:flex-row gap-3 items-end">
+              <form
+                onSubmit={handleEnrollStudent}
+                className="flex flex-col sm:flex-row gap-3 items-end"
+              >
                 <div className="flex-1 space-y-1.5 w-full">
                   <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider block">
                     Matricular Novo Aluno
@@ -723,12 +829,16 @@ export const ClassesPage: React.FC = () => {
                     onInvalid={(e) => {
                       const target = e.target as HTMLSelectElement;
                       if (target.validity.valueMissing) {
-                        target.setCustomValidity('Por favor, selecione um item da lista.');
+                        target.setCustomValidity(
+                          "Por favor, selecione um item da lista.",
+                        );
                       } else {
-                        target.setCustomValidity('');
+                        target.setCustomValidity("");
                       }
                     }}
-                    onInput={(e) => (e.target as HTMLSelectElement).setCustomValidity('')}
+                    onInput={(e) =>
+                      (e.target as HTMLSelectElement).setCustomValidity("")
+                    }
                     className="w-full px-3 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground"
                   >
                     <option value="">Selecione um aluno...</option>
@@ -756,14 +866,21 @@ export const ClassesPage: React.FC = () => {
                 </span>
                 <div className="border border-border rounded-xl divide-y divide-border/60 max-h-[300px] overflow-y-auto bg-muted/10">
                   {classStudents.map((student) => (
-                    <div key={student.id} className="flex items-center justify-between p-3.5 hover:bg-muted/30 transition-colors">
+                    <div
+                      key={student.id}
+                      className="flex items-center justify-between p-3.5 hover:bg-muted/30 transition-colors"
+                    >
                       <div className="flex items-center gap-3">
                         <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center border border-border text-primary flex-shrink-0">
                           <User className="w-4 h-4" />
                         </div>
                         <div>
-                          <p className="font-bold text-foreground text-sm">{student.name}</p>
-                          <p className="text-[10px] text-muted-foreground">{student.codigo_matricula}</p>
+                          <p className="font-bold text-foreground text-sm">
+                            {student.name}
+                          </p>
+                          <p className="text-[10px] text-muted-foreground">
+                            {student.codigo_matricula}
+                          </p>
                         </div>
                       </div>
                       <button
