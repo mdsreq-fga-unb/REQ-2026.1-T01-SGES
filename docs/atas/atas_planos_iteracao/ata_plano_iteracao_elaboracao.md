@@ -27,20 +27,7 @@ Com base na transição de fase, o gerenciamento de riscos do OpenUP foi atualiz
 
 ---
 
-### **3. DISTRIBUIÇÃO DOS ITENS DE TRABALHO (WORK ITEMS)**
-Os itens de trabalho para este ciclo foram organizados com foco em Engenharia de Requisitos e Arquitetura:
-
-| Item de Trabalho (Tarefa) | Responsável Principal | Artefato Gerado / Destino |
-| :--- | :--- | :--- |
-| Aplicação da técnica MoSCoW e refinamento do escopo | Equipe V | `docs/matriz_de_acao_e_priorizacao.md` |
-| Detalhamento e modelagem inicial da Lista de Requisitos | Vinícius | `docs/lista_requisitos.md` |
-| Estruturação das diretrizes arquiteturais e usabilidade | Equipe V | `docs/arquitetura_do_produto.md` |
-| Criação e mapeamento dos esqueletos de Casos de Uso | Vinícius | Pasta `docs/lista_trabalhos/` |
-| Definição dos critérios de DoR (*Definition of Ready*) e DoD | Equipe V | `docs/DoR_e_DoD.md` |
-
----
-
-### **4. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (Marco da Linha de Base da Arquitetura)**
+### **3. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (Marco da Linha de Base da Arquitetura)**
 Para que a fase de Elaboração seja homologada com sucesso na Unidade 2, a equipe deve atingir o seguinte patamar:
 </br>
 * [x] Lista de requisitos e itens de trabalho priorizados sem ambiguidades.

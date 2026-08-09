@@ -24,24 +24,12 @@ O gerenciamento de riscos foi atualizado para mitigar problemas relacionados à 
 
 * **Risco 05: Falha na validação de privacidade ou vazamento de dados sensíveis dos utilizadores.**
     * *Ação de Mitigação:* Implementar testes estritos nos níveis de permissão no painel de controle antes da demonstração prática com a diretoria.
-* **Risco 06: Desalinhamento entre o comportamento real do usuário e o fluxo codificado.**
+* **Risco 06: Desalinhamento entre o comportamento real do usuário e o fluxo codificado**
     * *Ação de Mitigação:* Mapear cenários reais de comportamento do utilizador durante o detalhamento dos Casos de Uso.
 
 ---
 
-### **3. DISTRIBUIÇÃO DOS ITENS DE TRABALHO (WORK ITEMS)**
-Os itens de trabalho foram priorizados para cobrir o primeiro bloco de Casos de Uso funcionais (CSU01 a CSU11):
-
-| Item de Trabalho (Tarefa) | Responsável Principal | Artefato Gerado / Destino |
-| :--- | :--- | :--- |
-| Implementação do módulo de autenticação e perfis | Equipe V | Repositório de Código / Core do Sistema |
-| Desenvolvimento das telas de cadastro e painel de voluntários | Vinícius | Interfaces Operacionais do Sistema |
-| Detalhamento e documentação dos fluxos de Casos de Uso (CSU01 a CSU11) | Vinícius | Pastas específicas em `docs/lista_trabalhos/` |
-| Verificação de conformidade usando o *Definition of Done* (DoD) | Equipe V | Checklist de validação interna |
-
----
-
-### **4. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (Marco de Capacidade Operacional Inicial)**
+### **3. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (Marco de Capacidade Operacional Inicial)**
 Para concluir este ciclo da Unidade 3 com sucesso, o incremento deve atender às seguintes metas:
 <br/>
 * [X] Mecanismo de acesso seguro operando com separação clara de papéis (Diretoria vs. Voluntários).

@@ -23,21 +23,7 @@ Seguindo as diretrizes do OpenUP para gerenciamento focado em riscos, mapeamos o
 * **Risco 02: Curva de aprendizado com as ferramentas de documentação (MkDocs/Git Pages).**
     * *Ação de Mitigação:* Dedicar os primeiros dias à configuração local do ambiente de desenvolvimento por todos os membros da equipe.
 
----
-
-### **3. DISTRIBUIÇÃO DOS ITENS DE TRABALHO (WORK ITEMS)**
-Os micro-incrementos e tarefas necessários para atingir o objetivo foram priorizados e atribuídos aos membros do grupo:
-
-| Item de Trabalho (Tarefa) | Responsável Principal | Artefato Gerado / Destino |
-| :--- | :--- | :--- |
-| Configuração e deploy do ambiente MkDocs local | Vinícius | Repositório GitHub (`mkdocs.yml`) |
-| Elaboração do questionário e roteiro de entrevista | Equipe V | Canal de comunicação interno |
-| Redação das seções de "Cenário Atual" e "Negócio" | Equipe V | `docs/cenario_atual_e_negocio.md` |
-| Criação e refinamento do "Documento de Visão" | Vinícius | `docs/visao_projeto.md` |
-
----
-
-### **4. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (DoD Preliminar)**
+### **3. CRITÉRIOS DE ACEITAÇÃO DA ITERAÇÃO (DoD Preliminar)**
 Para que esta iteração seja considerada concluída e avaliada com sucesso (*Assess Iteration*), os seguintes critérios devem ser atendidos:
 * [X] Todos os documentos Markdown criados revisados e sem links quebrados
 * [X] Pipeline de deploy do Git Pages executando com sucesso em ambiente de produção.
