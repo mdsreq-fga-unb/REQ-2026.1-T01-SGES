@@ -6,8 +6,12 @@
   "directories": {
     "doc": "docs"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
-    "heroku-postbuild": "cd backend && npm install && npm run build",
+    "postinstall": "cd backend && npm install",
+    "heroku-postbuild": "cd backend && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
