@@ -1,0 +1,33 @@
+# Dependencies (reinstalled on Heroku)
+node_modules/
+
+# Documentation and assets (not needed at runtime)
+docs/
+*.md
+*.mp4
+
+# Frontend (deployed separately)
+frontend/
+
+# Tests
+test/
+tests/
+*.spec.ts
+*.test.ts
+
+# Dev configs
+env/
+.env*
+nodemon.json
+.eslintrc*
+.prettierrc*
+docker-compose*.yml
+Dockerfile
+Dockerfile.ci
+Makefile
+run-tests.sh
+
+# Git
+.git/
+.gitignore
+.gitattributes
