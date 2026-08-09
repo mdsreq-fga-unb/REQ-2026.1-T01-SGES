@@ -1,6 +1,6 @@
 # Evidências da Fase de Construção - Iteração 2
 
-[Voltar para Cronograma e Planejamento](../cronograma_e_entregas.md)
+[Voltar para Cronograma e Planejamento](../planejamento_organizacao/cronograma_e_entregas.md)
 
 ## 1. Contexto Breve da Fase
 Nesta segunda iteração da fase de Construção, o foco macro da equipe esteve centrado no desenvolvimento das regras operacionais complexas, inteligência de negócio e sustentabilidade do sistema SGES. O objetivo principal deste ciclo unificado foi concluir todas as funcionalidades previstas para o MVP, estruturando os fluxos de matrículas, mapeando as exceções e tratativas de faltas diárias, e implementando mecanismos automatizados de sinalização visual para alertar sobre participantes em situação de risco de evasão.
@@ -38,5 +38,5 @@ Seguindo o processo ágil e unificado do **OpenUP**, detalhamos abaixo as cerim�
 ### Avaliação e Revisão da Iteração (Assess Iteration)
 * **Execução:** Ao término da iteração, realizamos uma inspeção de software interna completa. Com todas as funcionalidades codificadas e testadas, o sistema foi considerado pronto para avançar para a homologação em produção com o cliente.
 * **Evidências:**
-    * Link para o [Vídeo da Unidade 4 / Demonstração do Módulo Final](../unidade_3_video.md)
+    * Link para o [Vídeo da Unidade 4 / Demonstração do Módulo Final](../unidade_4_video.md)
     * Autoavaliação do ciclo registrada em [Lições Aprendidas](../iteracao/licoes_aprendidas.md).
