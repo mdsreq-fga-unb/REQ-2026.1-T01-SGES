@@ -35,32 +35,22 @@ interface NavItem {
 }
 
 const adminNav: NavItem[] = [
-  { label: "Dashboard", icon: LayoutDashboard, to: "/dashboard", active: true },
+  { label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard', active: true },
   // { label: 'Formulários', icon: FileText, to: '/forms', active: true }, // INATIVADO TEMPORARIAMENTE
-  { label: "Cadastros", icon: ClipboardList, to: "/students", active: true },
-  { label: "Turmas", icon: BookOpen, to: "/classes", active: true },
-  {
-    label: "Registro de Presença",
-    icon: CalendarCheck,
-    to: "/attendance",
-    active: true,
-  },
-  { label: "Instrutores", icon: Shield, to: "/instructors", active: true },
-  { label: "Relatórios", icon: BarChart2, to: "/reports", active: true },
-  { label: "Histórico", icon: History, to: "/history", active: true },
+  { label: 'Cadastros', icon: ClipboardList, to: '/students', active: true },
+  { label: 'Turmas', icon: BookOpen, to: '/classes', active: true },
+  { label: 'Registro de Presença', icon: CalendarCheck, to: '/attendance', active: true },
+  { label: 'Instrutores', icon: Shield, to: '/instructors', active: true },
+  { label: 'Relatórios', icon: BarChart2, to: '/reports', active: true },
+  { label: 'Histórico', icon: History, to: '/history', active: true },
 ];
 
 const volunteerNav: NavItem[] = [
-  { label: "Dashboard", icon: LayoutDashboard, to: "/dashboard", active: true },
+  { label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard', active: true },
   // { label: 'Formulários', icon: FileText, to: '/forms', active: true }, // INATIVADO TEMPORARIAMENTE
-  {
-    label: "Registro de Presença",
-    icon: CalendarCheck,
-    to: "/attendance",
-    active: true,
-  },
-  { label: "Turmas", icon: BookOpen, to: "/classes", active: true },
-  { label: "Histórico", icon: History, to: "/history", active: true },
+  { label: 'Registro de Presença', icon: CalendarCheck, to: '/attendance', active: true },
+  { label: 'Turmas', icon: BookOpen, to: '/classes', active: true },
+  { label: 'Histórico', icon: History, to: '/history', active: true },
 ];
 
 export const DashboardLayout: React.FC = () => {
