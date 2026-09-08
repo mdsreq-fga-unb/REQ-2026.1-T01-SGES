@@ -4,17 +4,22 @@ const envSchema = z.object({
   NODE_ENV: z.enum(['dev', 'test', 'prod']).default('dev'),
   DEBUG: z.coerce.number().default(1),
   PORT: z.coerce.number().default(3000),
-  POSTGRES_URL: z.string(),
+  POSTGRES_URL: z.string().optional(),
+  DATABASE_URL: z.string().optional(),
   SLAVE_POSTGRES_URL: z.string().optional(),
   DATA_SOURCE_POOL_SIZE: z.coerce.number().default(20),
   JWT_SECRET: z.string(),
-  REDIS_URL: z.string(),
-  SMTP_HOST: z.string(),
+  REDIS_URL: z.string().optional(),
+  SMTP_HOST: z.string().optional(),
   SMTP_PORT: z.coerce.number().default(587),
-  SMTP_USER: z.string(),
-  SMTP_PASS: z.string(),
-  SMTP_FROM: z.string(),
-});
+  SMTP_USER: z.string().optional(),
+  SMTP_PASS: z.string().optional(),
+  SMTP_FROM: z.string().optional(),
+}).transform((data) => ({
+  ...data,
+  // Heroku sets DATABASE_URL, but app reads POSTGRES_URL
+  POSTGRES_URL: data.POSTGRES_URL || data.DATABASE_URL || '',
+}));
 
 const parsedEnv = envSchema.safeParse(process.env);
 

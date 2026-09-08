@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Users, BookOpen, AlertTriangle, CheckCircle, BarChart3, Calendar } from 'lucide-react';
-import { reportsApi, type FunnelReportDto } from '@/shared/api/reports';
+import React, { useState, useEffect } from "react";
+import {
+  Users,
+  BookOpen,
+  AlertTriangle,
+  CheckCircle,
+  BarChart3,
+  Calendar,
+} from "lucide-react";
+import { reportsApi, type FunnelReportDto } from "@/shared/api/reports";
 
 export const DashboardPage: React.FC = () => {
-  const [semester, setSemester] = useState('2026.1');
+  const [semester, setSemester] = useState("2026.1");
   const [data, setData] = useState<FunnelReportDto | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -11,10 +18,10 @@ export const DashboardPage: React.FC = () => {
     const fetchFunnelData = async () => {
       setLoading(true);
       try {
-        const res = await reportsApi.getFunnel(semester);
+        const res = await reportsApi.getFunnel();
         setData(res);
       } catch (err) {
-        console.error('Failed to load funnel report data', err);
+        console.error("Failed to load funnel report data", err);
       } finally {
         setLoading(false);
       }
@@ -27,42 +34,43 @@ export const DashboardPage: React.FC = () => {
   const evaded = data?.evaded || 0;
   const completed = data?.completed || 0;
 
-  const activePct = entered > 0 ? ((active / entered) * 100).toFixed(1) : '0';
-  const evadedPct = entered > 0 ? ((evaded / entered) * 100).toFixed(1) : '0';
-  const completedPct = entered > 0 ? ((completed / entered) * 100).toFixed(1) : '0';
+  const activePct = entered > 0 ? ((active / entered) * 100).toFixed(1) : "0";
+  const evadedPct = entered > 0 ? ((evaded / entered) * 100).toFixed(1) : "0";
+  const completedPct =
+    entered > 0 ? ((completed / entered) * 100).toFixed(1) : "0";
 
   const stats = [
     {
-      id: 'stat-matriculados',
-      label: 'Alunos Matriculados',
+      id: "stat-matriculados",
+      label: "Alunos Matriculados",
       value: entered,
       icon: Users,
-      color: 'text-primary',
-      bg: 'bg-primary/10',
+      color: "text-primary",
+      bg: "bg-primary/10",
     },
     {
-      id: 'stat-ativos',
-      label: 'Alunos Ativos',
+      id: "stat-ativos",
+      label: "Alunos Ativos",
       value: active,
       icon: BookOpen,
-      color: 'text-sky-500',
-      bg: 'bg-sky-500/10',
+      color: "text-sky-500",
+      bg: "bg-sky-500/10",
     },
     {
-      id: 'stat-concluintes',
-      label: 'Alunos Concluintes',
+      id: "stat-concluintes",
+      label: "Alunos Concluintes",
       value: completed,
       icon: CheckCircle,
-      color: 'text-emerald-500',
-      bg: 'bg-emerald-500/10',
+      color: "text-emerald-500",
+      bg: "bg-emerald-500/10",
     },
     {
-      id: 'stat-evadidos',
-      label: 'Desistentes / Evasão',
+      id: "stat-evadidos",
+      label: "Desistentes / Evasão",
       value: evaded,
       icon: AlertTriangle,
-      color: 'text-rose-500',
-      bg: 'bg-rose-500/10',
+      color: "text-rose-500",
+      bg: "bg-rose-500/10",
     },
   ];
 
@@ -70,9 +78,12 @@ export const DashboardPage: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-200">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-foreground">Visão Geral do Ciclo</h2>
+          <h2 className="text-xl font-bold text-foreground">
+            Visão Geral do Ciclo
+          </h2>
           <p className="text-sm text-muted-foreground mt-1">
-            Acompanhe a taxa de conversão e evasão dos beneficiários por semestre.
+            Acompanhe a taxa de conversão e evasão dos beneficiários por
+            semestre.
           </p>
         </div>
 
@@ -90,7 +101,9 @@ export const DashboardPage: React.FC = () => {
       </div>
 
       {loading ? (
-        <div className="py-20 text-center text-sm text-muted-foreground">Carregando indicadores...</div>
+        <div className="py-20 text-center text-sm text-muted-foreground">
+          Carregando indicadores...
+        </div>
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -107,8 +120,12 @@ export const DashboardPage: React.FC = () => {
                       <Icon className={`w-5 h-5 ${stat.color}`} />
                     </div>
                   </div>
-                  <p className="text-2xl font-bold text-foreground tabular-nums">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground mt-1.5">{stat.label}</p>
+                  <p className="text-2xl font-bold text-foreground tabular-nums">
+                    {stat.value}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1.5">
+                    {stat.label}
+                  </p>
                 </div>
               );
             })}
@@ -118,7 +135,9 @@ export const DashboardPage: React.FC = () => {
             <div className="lg:col-span-2 bg-card border border-border/40 rounded-2xl p-6 shadow-sm space-y-6">
               <div className="flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-primary" />
-                <h3 className="font-bold text-base text-foreground">Funil de Conversão e Retenção</h3>
+                <h3 className="font-bold text-base text-foreground">
+                  Funil de Conversão e Retenção
+                </h3>
               </div>
 
               <div className="space-y-4">
@@ -138,7 +157,9 @@ export const DashboardPage: React.FC = () => {
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-semibold text-foreground">
                     <span>2. Alunos Ativos (Frequentes)</span>
-                    <span className="font-bold">{activePct}% ({active} alunos)</span>
+                    <span className="font-bold">
+                      {activePct}% ({active} alunos)
+                    </span>
                   </div>
                   <div className="h-7 w-full bg-muted rounded-xl overflow-hidden relative">
                     <div
@@ -154,7 +175,9 @@ export const DashboardPage: React.FC = () => {
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-semibold text-foreground">
                     <span>3. Alunos Concluintes (Sucesso)</span>
-                    <span className="font-bold">{completedPct}% ({completed} alunos)</span>
+                    <span className="font-bold">
+                      {completedPct}% ({completed} alunos)
+                    </span>
                   </div>
                   <div className="h-7 w-full bg-muted rounded-xl overflow-hidden relative">
                     <div
@@ -169,28 +192,46 @@ export const DashboardPage: React.FC = () => {
               </div>
 
               <div className="pt-4 border-t border-border/50 text-[11px] text-muted-foreground flex justify-between">
-                <span>* A taxa de conversão calcula a proporção de alunos que concluíram ou seguem ativos em relação ao total de matriculados.</span>
+                <span>
+                  * A taxa de conversão calcula a proporção de alunos que
+                  concluíram ou seguem ativos em relação ao total de
+                  matriculados.
+                </span>
               </div>
             </div>
 
             <div className="bg-card border border-border/40 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
               <div>
-                <h3 className="font-bold text-base text-foreground mb-4">Taxas de Desempenho</h3>
+                <h3 className="font-bold text-base text-foreground mb-4">
+                  Taxas de Desempenho
+                </h3>
                 <div className="space-y-4">
                   <div className="p-4 bg-rose-50/50 dark:bg-rose-950/10 border border-rose-100 dark:border-rose-950/20 rounded-xl flex justify-between items-center">
                     <div>
-                      <p className="text-xs font-semibold text-muted-foreground">Taxa de Evasão</p>
-                      <p className="text-xs text-rose-600 font-bold mt-0.5">{evadedPct}% de perda</p>
+                      <p className="text-xs font-semibold text-muted-foreground">
+                        Taxa de Evasão
+                      </p>
+                      <p className="text-xs text-rose-600 font-bold mt-0.5">
+                        {evadedPct}% de perda
+                      </p>
                     </div>
-                    <span className="text-2xl font-extrabold text-rose-500">{evaded}</span>
+                    <span className="text-2xl font-extrabold text-rose-500">
+                      {evaded}
+                    </span>
                   </div>
 
                   <div className="p-4 bg-emerald-50/50 dark:bg-emerald-950/10 border border-emerald-100 dark:border-emerald-950/20 rounded-xl flex justify-between items-center">
                     <div>
-                      <p className="text-xs font-semibold text-muted-foreground">Taxa de Conclusão</p>
-                      <p className="text-xs text-emerald-600 font-bold mt-0.5">{completedPct}% de sucesso</p>
+                      <p className="text-xs font-semibold text-muted-foreground">
+                        Taxa de Conclusão
+                      </p>
+                      <p className="text-xs text-emerald-600 font-bold mt-0.5">
+                        {completedPct}% de sucesso
+                      </p>
                     </div>
-                    <span className="text-2xl font-extrabold text-emerald-500">{completed}</span>
+                    <span className="text-2xl font-extrabold text-emerald-500">
+                      {completed}
+                    </span>
                   </div>
                 </div>
               </div>

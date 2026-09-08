@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner } from 'typeorm'
+import { MigrationInterface, QueryRunner } from "typeorm";
 
 export class CreateEnrollmentTables1782000000000 implements MigrationInterface {
   async up(queryRunner: QueryRunner): Promise<void> {
@@ -14,7 +14,7 @@ export class CreateEnrollmentTables1782000000000 implements MigrationInterface {
         updated_at TIMESTAMP NOT NULL DEFAULT now(),
         deleted_at TIMESTAMP
       )
-    `)
+    `);
 
     await queryRunner.query(`
       CREATE TABLE IF NOT EXISTS classes (
@@ -24,11 +24,12 @@ export class CreateEnrollmentTables1782000000000 implements MigrationInterface {
         horario VARCHAR NOT NULL,
         dia_semana VARCHAR NOT NULL,
         vagas_limite INTEGER,
+        semestre VARCHAR,
         created_at TIMESTAMP NOT NULL DEFAULT now(),
         updated_at TIMESTAMP NOT NULL DEFAULT now(),
         deleted_at TIMESTAMP
       )
-    `)
+    `);
 
     await queryRunner.query(`
       CREATE TABLE IF NOT EXISTS class_instructors (
@@ -36,14 +37,14 @@ export class CreateEnrollmentTables1782000000000 implements MigrationInterface {
         user_id UUID NOT NULL,
         PRIMARY KEY (class_id, user_id)
       )
-    `)
+    `);
 
     await queryRunner.query(`
       DO $$ BEGIN
         CREATE TYPE enrollment_status AS ENUM ('ACTIVE', 'EVADED', 'COMPLETED');
       EXCEPTION WHEN duplicate_object THEN NULL;
       END $$;
-    `)
+    `);
 
     await queryRunner.query(`
       CREATE TABLE IF NOT EXISTS enrollments (
@@ -55,14 +56,14 @@ export class CreateEnrollmentTables1782000000000 implements MigrationInterface {
         updated_at TIMESTAMP NOT NULL DEFAULT now(),
         deleted_at TIMESTAMP
       )
-    `)
+    `);
 
     await queryRunner.query(`
       DO $$ BEGIN
         CREATE TYPE attendance_status AS ENUM ('PRESENT', 'ABSENT', 'JUSTIFIED', 'FT');
       EXCEPTION WHEN duplicate_object THEN NULL;
       END $$;
-    `)
+    `);
 
     await queryRunner.query(`
       CREATE TABLE IF NOT EXISTS attendances (
@@ -77,7 +78,7 @@ export class CreateEnrollmentTables1782000000000 implements MigrationInterface {
         updated_at TIMESTAMP NOT NULL DEFAULT now(),
         deleted_at TIMESTAMP
       )
-    `)
+    `);
 
     await queryRunner.query(`
       CREATE TABLE IF NOT EXISTS notifications (
@@ -90,17 +91,17 @@ export class CreateEnrollmentTables1782000000000 implements MigrationInterface {
         updated_at TIMESTAMP NOT NULL DEFAULT now(),
         deleted_at TIMESTAMP
       )
-    `)
+    `);
   }
 
   async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE IF EXISTS notifications`)
-    await queryRunner.query(`DROP TABLE IF EXISTS attendances`)
-    await queryRunner.query(`DROP TABLE IF EXISTS enrollments`)
-    await queryRunner.query(`DROP TABLE IF EXISTS class_instructors`)
-    await queryRunner.query(`DROP TABLE IF EXISTS classes`)
-    await queryRunner.query(`DROP TABLE IF EXISTS students`)
-    await queryRunner.query(`DROP TYPE IF EXISTS attendance_status`)
-    await queryRunner.query(`DROP TYPE IF EXISTS enrollment_status`)
+    await queryRunner.query(`DROP TABLE IF EXISTS notifications`);
+    await queryRunner.query(`DROP TABLE IF EXISTS attendances`);
+    await queryRunner.query(`DROP TABLE IF EXISTS enrollments`);
+    await queryRunner.query(`DROP TABLE IF EXISTS class_instructors`);
+    await queryRunner.query(`DROP TABLE IF EXISTS classes`);
+    await queryRunner.query(`DROP TABLE IF EXISTS students`);
+    await queryRunner.query(`DROP TYPE IF EXISTS attendance_status`);
+    await queryRunner.query(`DROP TYPE IF EXISTS enrollment_status`);
   }
 }

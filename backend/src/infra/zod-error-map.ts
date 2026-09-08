@@ -1,49 +1,49 @@
-import { z } from 'zod'
+import { z } from "zod";
 
-const portugueseErrorMap: z.ZodErrorMap = (issue, ctx) => {
-  let message = ctx.defaultError
+const portugueseErrorMap: z.ZodErrorMap = (issue) => {
+  let message: string = issue.message ?? "Valor inválido.";
 
   switch (issue.code) {
     case z.ZodIssueCode.invalid_type:
-      if (issue.received === 'undefined') {
-        message = 'Este campo é obrigatório.'
+      if (issue.input === undefined || issue.input === null) {
+        message = "Este campo é obrigatório.";
       } else {
-        message = `Tipo esperado: ${issue.expected}, recebido: ${issue.received}.`
+        message = `Tipo esperado: ${issue.expected}.`;
       }
-      break
-    case z.ZodIssueCode.invalid_string:
-      if (issue.validation === 'email') {
-        message = 'O formato do e-mail é inválido.'
-      } else if (issue.validation === 'uuid') {
-        message = 'ID inválido.'
+      break;
+    case "invalid_format":
+      if (issue.format === "email") {
+        message = "O formato do e-mail é inválido.";
+      } else if (issue.format === "uuid") {
+        message = "ID inválido.";
       } else {
-        message = 'Formato inválido.'
+        message = "Formato inválido.";
       }
-      break
+      break;
     case z.ZodIssueCode.too_small:
-      if (issue.type === 'array') {
-        message = `Selecione pelo menos ${issue.minimum} item(ns).`
-      } else if (issue.type === 'string') {
-        message = `O campo deve conter pelo menos ${issue.minimum} caractere(s).`
-      } else if (issue.type === 'number') {
-        message = `O valor deve ser maior ou igual a ${issue.minimum}.`
+      if (issue.origin === "array") {
+        message = `Selecione pelo menos ${issue.minimum} item(ns).`;
+      } else if (issue.origin === "string") {
+        message = `O campo deve conter pelo menos ${issue.minimum} caractere(s).`;
+      } else if (issue.origin === "number") {
+        message = `O valor deve ser maior ou igual a ${issue.minimum}.`;
       }
-      break
+      break;
     case z.ZodIssueCode.too_big:
-      if (issue.type === 'array') {
-        message = `Selecione no máximo ${issue.maximum} item(ns).`
-      } else if (issue.type === 'string') {
-        message = `O campo deve conter no máximo ${issue.maximum} caractere(s).`
-      } else if (issue.type === 'number') {
-        message = `O valor deve ser menor ou igual a ${issue.maximum}.`
+      if (issue.origin === "array") {
+        message = `Selecione no máximo ${issue.maximum} item(ns).`;
+      } else if (issue.origin === "string") {
+        message = `O campo deve conter no máximo ${issue.maximum} caractere(s).`;
+      } else if (issue.origin === "number") {
+        message = `O valor deve ser menor ou igual a ${issue.maximum}.`;
       }
-      break
+      break;
     case z.ZodIssueCode.custom:
-      message = issue.message || 'Valor inválido.'
-      break
+      message = (issue as { message?: string }).message || "Valor inválido.";
+      break;
   }
 
-  return { message }
-}
+  return { message };
+};
 
-z.setErrorMap(portugueseErrorMap)
+z.setErrorMap(portugueseErrorMap);

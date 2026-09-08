@@ -12,7 +12,7 @@ export default defineConfig({
     options.external = ['redis-memory-server', 'ioredis'];
   },
   banner: {
-    js: '"use strict";\nimport "express-async-errors";',
+    js: '"use strict";',
   },
   target: 'node20',
   format: 'esm',
