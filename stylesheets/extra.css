@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap");
+
+/* Variable Definitions for Theme Toggling & Web Accessibility (WCAG 2.1 Contrast Guidelines) */
+:root, [data-md-color-scheme="default"] {
+  --sges-h1-color: #1e3a8a;
+  --sges-h1-border: #e2e8f0;
+  --sges-h2-color: #2563eb;
+  --sges-h3-h4-color: #1d4ed8;
+  --sges-text-color: #1e293b;
+  --sges-link-color: #b91c1c;
+  --sges-link-hover-color: #991b1b;
+  --sges-card-bg: #ffffff;
+  --sges-card-border: #cbd5e1;
+  --sges-card-h3: #1e3a8a;
+  --sges-card-p: #475569;
+  --sges-card-shadow: rgba(0, 0, 0, 0.05);
+  --sges-blockquote-bg: #f1f5f9;
+  --sges-blockquote-text: #475569;
+  --sges-blockquote-border: #2563eb;
+}
+
+[data-md-color-scheme="slate"] {
+  --sges-h1-color: #60a5fa;
+  --sges-h1-border: #1e3a8a;
+  --sges-h2-color: #93c5fd;
+  --sges-h3-h4-color: #bfdbfe;
+  --sges-text-color: #e2e8f0;
+  --sges-link-color: #f87171;
+  --sges-link-hover-color: #fca5a5;
+  --sges-card-bg: #0f172a;
+  --sges-card-border: #1e293b;
+  --sges-card-h3: #93c5fd;
+  --sges-card-p: #94a3b8;
+  --sges-card-shadow: rgba(0, 0, 0, 0.4);
+  --sges-blockquote-bg: #1e293b;
+  --sges-blockquote-text: #cbd5e1;
+  --sges-blockquote-border: #3b82f6;
+}
+
+.md-content {
+  max-width: 980px;
+}
+
+/* Beautiful Trustworthy Blue Headings with Dynamic Themes */
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8rem;
+  color: var(--sges-h1-color) !important;
+  border-bottom: 1px solid var(--sges-h1-border);
+  padding-bottom: 0.3em;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  margin-top: 2rem;
+  color: var(--sges-h2-color) !important;
+}
+
+.md-typeset h3, 
+.md-typeset h4 {
+  font-weight: 600;
+  margin-top: 1.5rem;
+  color: var(--sges-h3-h4-color) !important;
+}
+
+.md-typeset p,
+.md-typeset li {
+  line-height: 1.75;
+  color: var(--sges-text-color);
+}
+
+.md-typeset a {
+  color: var(--sges-link-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--sges-link-hover-color);
+}
+
+/* Custom Hero Section - Navy to Vibrant Blue (Stays constant but ensures high-contrast content) */
+.sges-hero {
+  padding: 1.4rem 1.4rem 1.1rem;
+  margin: 0.4rem 0 1.4rem;
+  border-radius: 16px;
+  color: #ffffff;
+  background: linear-gradient(130deg, #1e3a8a 0%, #2563eb 52%, #3b82f6 100%);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.2);
+}
+
+.sges-hero h1 {
+  color: #ffffff !important;
+  border: none !important;
+  padding-bottom: 0 !important;
+  margin: 0;
+}
+
+.sges-hero p {
+  color: #e0e7ff !important;
+  margin: 0.45rem 0 0;
+  font-size: 1.05rem;
+}
+
+/* Custom Grid & Cards (Dynamically styled per theme) */
+.sges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+  margin: 1rem 0 1.3rem;
+}
+
+.sges-card {
+  border: 1px solid var(--sges-card-border);
+  border-radius: 14px;
+  background: var(--sges-card-bg);
+  padding: 0.9rem 1rem;
+  box-shadow: 0 8px 20px var(--sges-card-shadow);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.sges-card:hover {
+  transform: translateY(-2px);
+  border-color: #3b82f6;
+}
+
+.sges-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: var(--sges-card-h3) !important;
+}
+
+.sges-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--sges-card-p) !important;
+}
+
+/* Enhancing Quotes and Callouts (Dynamically styled per theme) */
+.md-typeset blockquote {
+  border-left: 0.3rem solid var(--sges-blockquote-border);
+  background: var(--sges-blockquote-bg);
+  color: var(--sges-blockquote-text);
+  border-radius: 0 8px 8px 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .sges-hero {
+    padding: 1rem;
+  }
+}
